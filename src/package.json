@@ -1,0 +1,56 @@
+{
+  "name": "v-easy-ui",
+  "description": "vue easy ui",
+  "version": "0.3.5",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
+    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
+  },
+  "dependencies": {
+    "less": "^3.8.1",
+    "less-loader": "^4.1.0",
+    "vue": "^2.5.11",
+    "vue-i18n": "^8.7.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ],
+  "devDependencies": {
+    "deepmerge": "^3.1.0",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-stage-3": "^6.24.1",
+    "cross-env": "^5.0.5",
+    "css-loader": "^3.0.0",
+    "file-loader": "^1.1.4",
+    "vue-loader": "^15.7.0",
+    "vue-template-compiler": "^2.4.4",
+    "webpack": "^4.34.0",
+    "webpack-dev-server": "^3.1.11"
+  },
+  "main": "bin/index.js",
+  "files": [
+    "bin",
+    "style",
+    "lib",
+    "local",
+    "utils",
+    "mixins"
+  ],
+  "keywords": [
+    "message",
+    "vue",
+    "button",
+    "UI",
+    "components"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Linkontoask/v-easy.git"
+  }
+}

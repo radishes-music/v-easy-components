@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "module": "UMD",
+    "target": "es5",
+    "sourceMap": true,
+    "allowJs": true
+  },
+  "files": ["src/ts/main.ts"],
+  "exclude": ["node_modules", "dist", "build", "mock"]
+}
