@@ -48,6 +48,7 @@
     "webpack-merge": "^4.1.0"
   },
   "dependencies": {
+    "@linkorgs/v-easy-ui": "^0.3.5",
     "css-loader": "^3.0.0",
     "html-webpack-plugin": "^3.2.0",
     "path": "^0.12.7",

@@ -1,7 +1,7 @@
 <h1 align="center">v-easy-ui</h1>
 
 <p align="center">
-    <a href="https://github.com/Linkontoask/v-easy"><img src="https://img.shields.io/badge/dev-v0.3.5-blue.svg" alt=""></a>
+    <a href="https://github.com/Linkontoask/v-easy"><img src="https://img.shields.io/badge/dev-v0.3.6-blue.svg" alt=""></a>
     <a href="https://github.com/Linkontoask/v-easy"><img src="https://img.shields.io/badge/size-239kb-green.svg" alt=""></a>
     <a href="https://github.com/Linkontoask/v-easy"><img src="https://img.shields.io/badge/vue-2.x-orange.svg" alt=""></a>
     <a href="https://github.com/Linkontoask/v-easy"><img src="https://img.shields.io/badge/license-MIT-red.svg" alt=""></a>
@@ -15,20 +15,28 @@
 
 ### Install
 ```
-npm install v-easy-ui -s
+npm install @linkorgs/v-easy-ui -s
 ```
 
 ### Quick Start
 ``` javascript
-import vEasy from 'v-easy-ui'
+import vEasy from '@linkorgs/v-easy-ui'
 
 Vue.use(vEasy);
 ```
 
+### Use CDN
+```html
+<!-- 引入样式 -->
+<link rel="stylesheet" href="https://unpkg.com/@linkorgs/v-easy-ui/bin/index.css">
+<!-- 引入组件库 -->
+<script src="https://unpkg.com/@linkorgs/v-easy-ui/bin/index.js"></script>
+```
+
 ### use I18n
 ```javascript
-import vEasy from 'v-easy-ui'
-import locale from 'v-easy-ui/local/en'
+import vEasy from '@linkorgs/v-easy-ui'
+import locale from '@linkorgs/v-easy-ui/local/en'
 
 Vue.use(vEasy, { locale });
 ```
@@ -41,13 +49,13 @@ module: {
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        include: [resolve('/node_modules/v-easy-ui')]
+        include: [resolve('/node_modules/@linkorgs/v-easy-ui')]
       }
     ]
 },
 
 // vue.config.js (vue-cli3)
-transpileDependencies: ['v-easy-ui']
+transpileDependencies: ['@linkorgs/v-easy-ui']
 ```
 
 ### Demo
