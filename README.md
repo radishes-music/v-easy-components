@@ -46,13 +46,13 @@ Vue.use(vEasy, { locale });
 ``` javascript
 // webpack.base.conf.js
 module: {
-    rules: [
-      {
-        test: /\.js$/,
-        loader: 'babel-loader',
-        include: [resolve('/node_modules/@linkorgs/v-easy-ui')]
-      }
-    ]
+  rules: [
+    {
+      test: /\.js$/,
+      loader: 'babel-loader',
+      include: [resolve('/node_modules/@linkorgs/v-easy-ui')]
+    }
+  ]
 },
 
 // vue.config.js (vue-cli3)
@@ -70,26 +70,26 @@ transpileDependencies: ['@linkorgs/v-easy-ui']
 
 <script>
 export default {
-    data() {
-        return: {
-            str: ''
-        }
-    },
-    methods: {
-        plainInput(val) {
-            console.log(`%c input ${this.str}`, 'color: blue');
-        },
-        send(type) {
-            this.$msg({
-                type: type, //'success', 'error','info','warning'
-                message: 'infomation',
-                duration: 3000,
-                onClose: () => {
-                    console.log('callback');
-                }
-            });
-        }
+  data() {
+    return: {
+      str: ''
     }
+  },
+  methods: {
+    plainInput(val) {
+      console.log(`%c input ${this.str}`, 'color: blue');
+    },
+    send(type) {
+      this.$msg({
+        type: type, //'success', 'error','info','warning'
+        message: 'infomation',
+        duration: 3000,
+        onClose: () => {
+          console.log('callback');
+        }
+      });
+    }
+  }
 }
 </script>
 ```
