@@ -8,6 +8,8 @@ const UgliedJsPlugin = require('uglifyjs-webpack-plugin');
 const merge = require('webpack-merge');
 const dev = require('./config/webpack-dev-config');
 const build = require('./config/webpack-build-config');
+const TerserJSPlugin = require('terser-webpack-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 const TARGET = process.env.npm_lifecycle_event;
 
@@ -33,7 +35,9 @@ const base = {
         chunkFilter: (chunk) => {
           return chunk.name !== 'vendor'; // 过滤chunk名字为vendor，避免编译打包静态资源再次被生成影响缓存
         }
-      })
+      }),
+      new TerserJSPlugin({}),
+      new OptimizeCSSAssetsPlugin({})
     ],
     /*splitChunks: {
       cacheGroups: {
