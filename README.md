@@ -20,6 +20,7 @@ npm install @linkorgs/v-easy-ui -s
 
 ### Quick Start
 ``` javascript
+import '@linkorgs/v-easy-ui/bin/index.css'
 import vEasy from '@linkorgs/v-easy-ui'
 
 Vue.use(vEasy);
@@ -28,9 +29,9 @@ Vue.use(vEasy);
 ### Use CDN
 ```html
 <!-- 引入样式 -->
-<link rel="stylesheet" href="https://unpkg.com/@linkorgs/v-easy-ui/bin/index.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@linkorgs/v-easy-ui/bin/index.css">
 <!-- 引入组件库 -->
-<script src="https://unpkg.com/@linkorgs/v-easy-ui/bin/index.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@linkorgs/v-easy-ui"></script>
 ```
 
 ### use I18n
