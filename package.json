@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack-dev-server --inline --progress",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production",
+    "build:cm": "webpack --mode production --config config/webpack-build-components.js"
   },
   "author": "",
   "license": "ISC",
@@ -49,8 +50,10 @@
   },
   "dependencies": {
     "@linkorgs/v-easy-ui": "^0.3.5",
+    "acorn": "^6.0.5",
     "css-loader": "^3.0.0",
     "html-webpack-plugin": "^3.2.0",
+    "json-loader": "^0.5.7",
     "optimize-css-assets-webpack-plugin": "^5.0.1",
     "path": "^0.12.7",
     "raw-loader": "^3.0.0",

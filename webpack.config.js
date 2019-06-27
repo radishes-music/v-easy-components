@@ -39,42 +39,8 @@ const base = {
       new TerserJSPlugin({}),
       new OptimizeCSSAssetsPlugin({})
     ],
-    /*splitChunks: {
-      cacheGroups: {
-        styles: {
-          name: 'styles',
-          test: /\.css$/,
-          chunks: 'all',
-          enforce: true,
-        },
-      },
-    }*/
-    /*splitChunks: {
-      chunks: 'all',
-      minSize: 30000,
-      minChunks: 1,
-      maxAsyncRequests: 5,
-      maxInitialRequests: 3,
-      automaticNameDelimiter: '~',
-      name: true,
-      cacheGroups: {
-        vendors: {
-          test: /[\\/]node_modules[\\/]/, // 只缓存node_modules
-          priority: -10
-        },
-        default: {
-          minChunks: 2,
-          priority: -20,
-          reuseExistingChunk: true
-        }
-      }
-    },
-    runtimeChunk: {
-      name: "manifest", // 构建manifest清单文件，描述了webpack加载文件，无需手动配置，因为HtmlWebpackPlugin已自动在html文件中引用
-    },*/
   },
-}
-// console.log('target:', TARGET);
+};
 if (TARGET === 'start') {
   module.exports = merge(base, {
     entry: dev.entry,
