@@ -1,4 +1,4 @@
-<h1 align="center">v-easy-ui</h1>
+<h1 align="center">v-easy-components</h1>
 
 <p align="center">
     <a href="https://github.com/Linkontoask/v-easy"><img src="https://img.shields.io/badge/dev-v0.3.6-blue.svg" alt=""></a>
@@ -15,13 +15,13 @@
 
 ### Install
 ```
-npm install @linkorgs/v-easy-ui -s
+npm install v-easy-components -s
 ```
 
 ### Quick Start
 ``` javascript
-import '@linkorgs/v-easy-ui/bin/index.css'
-import vEasy from '@linkorgs/v-easy-ui'
+import 'v-easy-components/bin/index.css'
+import vEasy from 'v-easy-components'
 
 Vue.use(vEasy);
 ```
@@ -29,15 +29,15 @@ Vue.use(vEasy);
 ### Use CDN
 ```html
 <!-- 引入样式 -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@linkorgs/v-easy-ui/bin/index.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/v-easy-components/bin/index.css">
 <!-- 引入组件库 -->
-<script src="https://cdn.jsdelivr.net/npm/@linkorgs/v-easy-ui"></script>
+<script src="https://cdn.jsdelivr.net/npm/v-easy-components"></script>
 ```
 
 ### use I18n
 ```javascript
-import vEasy from '@linkorgs/v-easy-ui'
-import locale from '@linkorgs/v-easy-ui/local/en'
+import vEasy from 'v-easy-components'
+import locale from 'v-easy-components/local/en'
 
 Vue.use(vEasy, { locale });
 ```
@@ -50,13 +50,13 @@ module: {
     {
       test: /\.js$/,
       loader: 'babel-loader',
-      include: [resolve('/node_modules/@linkorgs/v-easy-ui')]
+      include: [resolve('/node_modules/v-easy-components')]
     }
   ]
 },
 
 // vue.config.js (vue-cli3)
-transpileDependencies: ['@linkorgs/v-easy-ui']
+transpileDependencies: ['v-easy-components']
 ```
 
 ### Demo
@@ -95,31 +95,34 @@ export default {
 ```
 
 ### Update
-+ 0.3.5 (2019.6.23)
++ 0.4.0 (2019.07.18)
+    + v-easy-message更名为v-easy-components
+    + 添加 `v-loading-dom` 命令
++ 0.3.5 (2019.06.23)
     + v-easy-message更名为v-easy-ui，更新项目打包方式以及其它优化
-+ 0.2.41 (2019.2.16)
++ 0.2.41 (2019.02.16)
     + 优化 `v-tip` 字体模糊问题
-+ 0.2.25 (2019.1.28)
++ 0.2.25 (2019.01.28)
     + `ve-ip` 和 `ve-subnet` 发生错误不会自动对焦到下一位
     + 新增v-tip信息框
-+ 0.1.48 (2019.1.17)
++ 0.1.48 (2019.01.17)
     + 新增 `ve-plain-input` 触发接收类型，支持多种类型触发检测
     + 支持多语言版本
 + 0.1.18 (2018.10.5)
     + `ve-ip` 和 `ve-subnet` 类似于windows输入框，可使用鼠标操作，小数点偏移
-+ 0.1.16 (2018.9.29)
++ 0.1.16 (2018.09.29)
     + 修复 `ve-ip`、`ve-plain-input`、`ve-subnet` 绑定数据的问题
-+ 0.1.13 (2018.9.28)
++ 0.1.13 (2018.09.28)
     + 新增 `ve-plain-input` 组件
-+ 0.1.12 (2018.9.27)
++ 0.1.12 (2018.09.27)
     + 优化 `ve-ip` 和 `ve-subnet` 组件
-+ 0.0.8 (2018.9.27)
++ 0.0.8 (2018.09.27)
     + 新增 `ve-subnet` 组件，优化样式代码
-+ 0.0.5 (2018.8.29)
++ 0.0.5 (2018.08.29)
     + 新增 `ve-ip` 组件
-+ 0.0.4 (2018.8.25)
++ 0.0.4 (2018.08.25)
     + 新增 `ve-button` 组件
-+ 0.0.1 (2018.8.23)
++ 0.0.1 (2018.08.23)
     + 建立仓库，编写架构
     + 支持使用 `this.$msg` 呼叫message信息
 

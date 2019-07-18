@@ -4,7 +4,7 @@ module.exports = {
     index: ['./src/index.js']
   },
   output: {
-    path: path.resolve(__dirname, '../v-easy/bin'),
+    path: path.resolve(__dirname, '../v-easy-components/bin'),
     publicPath: './',
     filename: 'index.js',
     chunkFilename: '[id].js',

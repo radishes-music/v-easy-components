@@ -1,7 +1,7 @@
 {
-  "name": "@linkorgs/v-easy-ui",
-  "description": "vue.js ui",
-  "version": "0.3.6",
+  "name": "v-easy-components",
+  "description": "Vue.js UI Components",
+  "version": "0.4.0",
   "license": "MIT",
   "private": false,
   "scripts": {
@@ -43,11 +43,11 @@
     "mixins"
   ],
   "keywords": [
-    "message",
-    "vue",
-    "button",
+    "Message",
+    "Vue",
     "UI",
-    "components"
+    "Components",
+    "Link-ui"
   ],
   "repository": {
     "type": "git",

@@ -44,8 +44,8 @@ if (TARGET === 'start') {
 if (TARGET === 'build') {
   common = [
     new CopyPlugin([
-      { from: resolve('../src/'), to: resolve('../v-easy/'), toType: 'dir'},
-      { from: resolve('../README.md'), to: resolve('../v-easy/README.md'), toType: 'file', force: true,},
+      { from: resolve('../src/'), to: resolve('../v-easy-components/'), toType: 'dir'},
+      { from: resolve('../README.md'), to: resolve('../v-easy-components/README.md'), toType: 'file', force: true,},
     ]),
     new MiniCssExtractPlugin({
       filename: 'index.css',
