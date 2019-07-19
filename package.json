@@ -1,7 +1,7 @@
 {
-  "name": "linkfront",
-  "version": "1.0.0",
-  "description": "webpack first project",
+  "name": "v-easy-components",
+  "version": "0.4.0",
+  "description": "Build v-easy-components with webpack",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

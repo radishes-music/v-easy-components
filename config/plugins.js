@@ -9,8 +9,6 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CopyPlugin = require('copy-webpack-plugin');
 const path = require('path');
 
-const TARGET = process.env.npm_lifecycle_event;
-
 const resolve = (src) => path.resolve(__dirname, src);
 
 
@@ -33,7 +31,7 @@ const base = [
 ]
 
 let common = [];
-if (TARGET === 'start') {
+if (config.target === 'start') {
   common = [
     new HtmlWebpackPlugin({
       template: './example/index.html'
@@ -41,7 +39,7 @@ if (TARGET === 'start') {
   ]
 }
 
-if (TARGET === 'build') {
+if (config.target === 'build') {
   common = [
     new CopyPlugin([
       { from: resolve('../src/'), to: resolve('../v-easy-components/'), toType: 'dir'},

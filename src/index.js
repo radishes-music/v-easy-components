@@ -6,32 +6,34 @@ import VEPlainInput from './lib/plainInput/index'
 import VESwitch from './lib/switch/index'
 import locale from './local/index'
 import vTip from './lib/tooltip/index'
+import loadingDom from './lib/loadingDom/index'
 
 const components = [
-    Message,
-    Button,
-    Ip,
-    Subnet,
-    VEPlainInput,
-    VESwitch,
+  Message,
+  Button,
+  Ip,
+  Subnet,
+  VEPlainInput,
+  VESwitch
 ];
 
 const install = function (Vue, opts = {}) {
-    locale.use(opts.locale);
-    locale.i18n(opts.i18n);
+  locale.use(opts.locale);
+  locale.i18n(opts.i18n);
 
-    components.forEach(component => {
-       Vue.component(component.name, component)
-    });
+  components.forEach(component => {
+    Vue.component(component.name, component)
+  });
 
-    Vue.use(vTip.directive);
+  Vue.use(vTip.directive);
+  Vue.use(loadingDom.directive);
 
-    Vue.prototype.$msg = Message;
+  Vue.prototype.$msg = Message;
 
 };
 
 if (typeof window !== 'undefined' && window.Vue) {
-    install(window.Vue);
+  install(window.Vue);
 }
 
 export default {
@@ -47,6 +49,7 @@ export default {
   Subnet,
   VEPlainInput,
   VESwitch,
+  loadingDom
 };
 
 module.exports.default = module.exports;*/

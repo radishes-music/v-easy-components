@@ -10,8 +10,7 @@ const dev = require('./config/webpack-dev-config');
 const build = require('./config/webpack-build-config');
 const TerserJSPlugin = require('terser-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-
-const TARGET = process.env.npm_lifecycle_event;
+const config = require('./index');
 
 const base = {
   mode: process.env.NODE_ENV,
@@ -41,14 +40,14 @@ const base = {
     ],
   },
 };
-if (TARGET === 'start') {
+if (config.target === 'start') {
   module.exports = merge(base, {
     entry: dev.entry,
     output: dev.output
   })
 }
 
-if (TARGET === 'build') {
+if (config.target === 'build') {
   module.exports = merge(base, {
     entry: build.entry,
     output: build.output
