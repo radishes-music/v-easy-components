@@ -11,12 +11,19 @@ const insertDom = (el, binding) => {
   // const rect = el.getBoundingClientRect() || {};
   // const width = +el.getAttribute('data-loading-width') || rect.width || getStyle(el, 'width');
   // const height = +el.getAttribute('data-loading-height') || rect.height || getStyle(el, 'height');
-  const nodeNum = el.getAttribute('data-node-num');
+  const nodeNum = el.getAttribute('data-loading-num');
+  const type = el.getAttribute('data-loading-type') || 'rect';
+  const d = el.getAttribute('data-loading-diameter') || '16';
 
   const data = {
     // width,
     // height,
-    nodeNum
+    nodeNum,
+    type,
+    circleStyle: {
+      width: d + 'px',
+      height: d + 'px'
+    }
   };
 
   const loading = new loadingDom({

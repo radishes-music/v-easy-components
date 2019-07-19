@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server --inline --progress",
+    "start": "webpack-dev-server --inline --progress --config config/webpack-dev-build-base.js",
     "build": "webpack --mode production",
     "build:cm": "webpack --mode production --config config/webpack-build-components.js"
   },
