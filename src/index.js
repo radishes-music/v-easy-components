@@ -7,6 +7,7 @@ import VESwitch from './lib/switch/index'
 import locale from './local/index'
 import vTip from './lib/tooltip/index'
 import loadingDom from './lib/loadingDom/index'
+import './style/index'
 
 const components = [
   Message,

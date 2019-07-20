@@ -1,16 +1,22 @@
 <template>
-  <div style="position:relative;width: 800px;margin: 0 auto">
+  <div style="position:relative;padding: 20px;">
+    <ve-ip v-model="ipv4" maxWidth="220"></ve-ip>
+    <ve-subnet v-model="ipv4" maxWidth="180"></ve-subnet>
+    <ve-plain-input v-model="ipv4" maxWidth="180" placeholder="普通输入框"></ve-plain-input>
+    <ve-button :plain="true" icon="snowflake-o" @click="handleClick" v-tip="'click me tip and send message'">info</ve-button>
     <div class="title">
       <span v-loading-dom="visible.title1" data-loading-type="circle" data-loading-diameter="24" class="fa" :class="fa" style="margin: 0 10px"></span>
-      <h1 v-loading-dom="visible.title1" data-loading-num="3">{{ titlea }}</h1>
+      <h1 v-loading-dom="visible.title1" data-loading-text="3">{{ titlea }}</h1>
     </div>
-    <div v-loading-dom="visible.content1" data-loading-num="30" class="main">
+    <div v-loading-dom="visible.content1" data-loading-text="30" class="main">
       <p v-for="(item, index) in data1" :key="index">{{ item }}</p>
     </div>
     <hr class="hr" />
-    <h1 v-loading-dom="visible.title2" data-loading-num="2" class="title">{{ titleb }}</h1>
-    <span v-loading-dom="visible.title2" data-loading-type="circle" class="fa" :class="faItem" style="margin: 0 10px;display: inline-block;vertical-align: middle"></span>
-    <div v-loading-dom="visible.content2" data-loading-num="120" class="main">
+    <div class="flex">
+      <h1 v-loading-dom="visible.title2" data-loading-text="2" class="title">{{ titleb }}</h1>
+      <span v-loading-dom="visible.title2" data-loading-type="rect" class="fa" :class="faItem" style="margin: 0 10px;display: inline-block;vertical-align: middle"></span>
+    </div>
+    <div v-loading-dom="visible.content2" data-loading-text="120" class="main">
       <p v-for="(item, index) in data2" :key="index">{{ item }}</p>
     </div>
   </div>
@@ -20,6 +26,8 @@
   export default {
     data() {
       return {
+        ipv4: '',
+        veSwitch: '',
         data1: [],
         data2: [],
         titlea: '',
@@ -35,6 +43,12 @@
       }
     },
     methods: {
+      handleClick() {
+        this.$msg({
+          type: 'success',
+          message: 'ok'
+        })
+      },
       promise(ms, data) {
         return new Promise(resolve => {
           setTimeout(() => {
@@ -88,7 +102,6 @@
     background-color: rgb(230, 236, 241);
   }
   .main {
-    height: 110px;
     margin: 0.67em 0;
   }
 </style>
