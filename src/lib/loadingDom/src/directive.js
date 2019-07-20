@@ -49,7 +49,7 @@ const removeLoadingDom = (el, visible) => {
 
 loadingDirective.install = Vue => {
 
-  Vue.directive('loading-dom', {
+  Vue.directive('loading-preload', {
     bind: function (el, binding) {
       addClass(el, 've-loading-parent--relative');
 

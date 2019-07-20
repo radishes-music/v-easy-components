@@ -1,8 +1,8 @@
 <h1 align="center">v-easy-components</h1>
 
 <p align="center">
-    <a href="https://github.com/Linkontoask/v-easy"><img src="https://img.shields.io/badge/dev-v0.3.6-blue.svg" alt=""></a>
-    <a href="https://github.com/Linkontoask/v-easy"><img src="https://img.shields.io/badge/size-239kb-green.svg" alt=""></a>
+    <a href="https://github.com/Linkontoask/v-easy"><img src="https://img.shields.io/badge/dev-v0.4.0-blue.svg" alt=""></a>
+    <a href="https://github.com/Linkontoask/v-easy"><img src="https://img.shields.io/badge/size-88kb-green.svg" alt=""></a>
     <a href="https://github.com/Linkontoask/v-easy"><img src="https://img.shields.io/badge/vue-2.x-orange.svg" alt=""></a>
     <a href="https://github.com/Linkontoask/v-easy"><img src="https://img.shields.io/badge/license-MIT-red.svg" alt=""></a>
 </p>
@@ -59,45 +59,10 @@ module: {
 transpileDependencies: ['v-easy-components']
 ```
 
-### Demo
-``` javascript
-<template>
-    <VEButton @click="send('info')" class="center" type="primary" icon="chrome" :rotate="true" :circle="true"></VEButton>
-    <VEPlainInput v-model="str" message="字符超出范围" 
-        :options="{min: 20,max: 30}" 
-        @input="plainInput"></VEPlainInput>
-</template>
-
-<script>
-export default {
-  data() {
-    return: {
-      str: ''
-    }
-  },
-  methods: {
-    plainInput(val) {
-      console.log(`%c input ${this.str}`, 'color: blue');
-    },
-    send(type) {
-      this.$msg({
-        type: type, //'success', 'error','info','warning'
-        message: 'infomation',
-        duration: 3000,
-        onClose: () => {
-          console.log('callback');
-        }
-      });
-    }
-  }
-}
-</script>
-```
-
 ### Update
-+ 0.4.0 (2019.07.18)
++ 0.4.0 (2019.07.20)
     + v-easy-message更名为v-easy-components
-    + 添加 `v-loading-dom` 命令
+    + 添加 `v-loading-preload` 命令
 + 0.3.5 (2019.06.23)
     + v-easy-message更名为v-easy-ui，更新项目打包方式以及其它优化
 + 0.2.41 (2019.02.16)
@@ -127,4 +92,4 @@ export default {
     + 支持使用 `this.$msg` 呼叫message信息
 
 ### LICENSE
-[MIT](https://raw.githubusercontent.com/Linkontoask/v-easy/master/src/components/v-easy/LICENSE)
+[MIT](https://raw.githubusercontent.com/Linkontoask/v-easy-components/master/src/LICENSE?token=AGJ7ZL34DISJSX6O2X67MDC5GL7DG)

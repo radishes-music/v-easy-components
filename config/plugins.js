@@ -27,7 +27,11 @@ const base = [
       ? utils.createNotifierCallback()
       : undefined,
     clearConsole: true,
-  })
+  }),
+  new MiniCssExtractPlugin({
+    filename: 'index.css',
+    chunkFilename: '[id].css',
+  }),
 ]
 
 let common = [];
@@ -45,10 +49,6 @@ if (config.target === 'build') {
       { from: resolve('../src/'), to: resolve('../v-easy-components/'), toType: 'dir'},
       { from: resolve('../README.md'), to: resolve('../v-easy-components/README.md'), toType: 'file', force: true,},
     ]),
-    new MiniCssExtractPlugin({
-      filename: 'index.css',
-      chunkFilename: '[id].css',
-    }),
   ]
 }
 

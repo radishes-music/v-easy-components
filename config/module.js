@@ -2,6 +2,7 @@ const path = require('path');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const config = require('./index');
 
+const dev = config.target === 'start';
 const resolve = (dir) => {
   return path.join(__dirname, '..', dir)
 };
@@ -27,9 +28,9 @@ module.exports = {
     {
       test: /\.less$/,
       use: [
-        config.devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
+        dev ? 'style-loader' : MiniCssExtractPlugin.loader,
         'css-loader',
-        'less-loader',
+        'less-loader'
       ],
       // loader: ['style-loader','css-loader','less-loader', /*'postcss-loader'*/]
     },
@@ -51,10 +52,10 @@ module.exports = {
     {
       test: /\.css$/,
       use: [
-        {loader: 'style-loader'},
         {
-          loader: 'css-loader',
-        }
+          loader: MiniCssExtractPlugin.loader,
+        },
+        'css-loader'
       ]
     },
     {

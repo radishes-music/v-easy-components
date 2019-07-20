@@ -9,7 +9,7 @@
 </template>
 
 <script>
-  import {_initArray} from '../../../utils/ArrayExtend'
+  import { _initArray } from '../../../utils/ArrayExtend'
 
   const char = '—';
   const map = [2, 0, 2, 0, 2, 0, 1, 0, 2, 0, 5, 0, 5, 0, 2, 0, 1, 0, 3, 0,
@@ -19,7 +19,7 @@
     3, 0, 2, 0, 2, 0, 1, 0, 2, 0, 2, 0, 4];
 
   export default {
-    name: 'v-tip',
+    name: 'v-loading-preload-style',
     data() {
       return {
         width: 0,

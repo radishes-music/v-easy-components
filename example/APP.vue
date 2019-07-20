@@ -5,18 +5,18 @@
     <ve-plain-input v-model="ipv4" maxWidth="180" placeholder="普通输入框"></ve-plain-input>
     <ve-button :plain="true" icon="snowflake-o" @click="handleClick" v-tip="'click me tip and send message'">info</ve-button>
     <div class="title">
-      <span v-loading-dom="visible.title1" data-loading-type="circle" data-loading-diameter="24" class="fa" :class="fa" style="margin: 0 10px"></span>
-      <h1 v-loading-dom="visible.title1" data-loading-text="3">{{ titlea }}</h1>
+      <span v-loading-preload="visible.title1" data-loading-type="circle" data-loading-diameter="24" class="fa" :class="fa" style="margin: 0 10px"></span>
+      <h1 v-loading-preload="visible.title1" data-loading-text="3">{{ titlea }}</h1>
     </div>
-    <div v-loading-dom="visible.content1" data-loading-text="30" class="main">
+    <div v-loading-preload="visible.content1" data-loading-text="30" class="main">
       <p v-for="(item, index) in data1" :key="index">{{ item }}</p>
     </div>
     <hr class="hr" />
     <div class="flex">
-      <h1 v-loading-dom="visible.title2" data-loading-text="2" class="title">{{ titleb }}</h1>
-      <span v-loading-dom="visible.title2" data-loading-type="rect" class="fa" :class="faItem" style="margin: 0 10px;display: inline-block;vertical-align: middle"></span>
+      <h1 v-loading-preload="visible.title2" data-loading-text="2" class="title">{{ titleb }}</h1>
+      <span v-loading-preload="visible.title2" data-loading-type="rect" class="fa" :class="faItem" style="margin: 0 10px;display: inline-block;vertical-align: middle"></span>
     </div>
-    <div v-loading-dom="visible.content2" data-loading-text="120" class="main">
+    <div v-loading-preload="visible.content2" data-loading-text="120" class="main">
       <p v-for="(item, index) in data2" :key="index">{{ item }}</p>
     </div>
   </div>

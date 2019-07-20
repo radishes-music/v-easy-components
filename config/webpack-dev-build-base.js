@@ -3,7 +3,7 @@ const Module = require('./module');
 const stats = require('./stats');
 const plugins = require('./plugins');
 const devServer = require('./devServer');
-const { evalSourceMap } = require('./devtool');
+const { evalSourceMap, eval, sourceMap } = require('./devtool');
 const UgliedJsPlugin = require('uglifyjs-webpack-plugin');
 const merge = require('webpack-merge');
 const dev = require('./webpack-dev-config');
@@ -15,7 +15,7 @@ const config = require('./index');
 const base = {
   mode: process.env.NODE_ENV,
   devServer,
-  // devtool: evalSourceMap,
+  devtool: config.target === 'start' ? evalSourceMap : sourceMap,
   module: {
     rules: Module.rules
   },
@@ -42,15 +42,13 @@ const base = {
 };
 if (config.target === 'start') {
   module.exports = merge(base, {
-    entry: dev.entry,
-    output: dev.output
+    ...dev
   })
 }
 
 if (config.target === 'build') {
   module.exports = merge(base, {
-    entry: build.entry,
-    output: build.output
+    ...build,
   })
 }
 
