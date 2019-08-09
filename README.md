@@ -60,7 +60,7 @@ transpileDependencies: ['v-easy-components']
 ```
 
 ### Update
-[Change Log](./blob/master/ChangeLog.md)
+[Change Log](./ChangeLog.md)
 
 ### Plan
 - [ ] 支持 `TypeScript`
