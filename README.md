@@ -92,8 +92,8 @@ transpileDependencies: ['v-easy-components']
     + 支持使用 `this.$msg` 呼叫message信息
 
 ### Plan
-- [] 支持 `TypeScript`
-- [] 支持按需加载
+- [ ] 支持 `TypeScript`
+- [ ] 支持按需加载
 - [x] 支持 `script` 标签引入
 
 ### LICENSE
