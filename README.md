@@ -91,5 +91,10 @@ transpileDependencies: ['v-easy-components']
     + 建立仓库，编写架构
     + 支持使用 `this.$msg` 呼叫message信息
 
+### Plan
+- [] 支持 `TypeScript`
+- [] 支持按需加载
+- [x] 支持 `script` 标签引入
+
 ### LICENSE
 [MIT](https://raw.githubusercontent.com/Linkontoask/v-easy-components/master/src/LICENSE?token=AGJ7ZL34DISJSX6O2X67MDC5GL7DG)
