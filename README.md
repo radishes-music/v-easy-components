@@ -1,11 +1,12 @@
 <h1 align="center">v-easy-components</h1>
 
 <p align="center">
-    <a href="https://github.com/Linkontoask/v-easy"><img src="https://img.shields.io/badge/dev-v0.4.0-blue.svg" alt=""></a>
-    <a href="https://github.com/Linkontoask/v-easy"><img src="https://img.shields.io/badge/size-88kb-green.svg" alt=""></a>
-    <a href="https://github.com/Linkontoask/v-easy"><img src="https://img.shields.io/badge/vue-2.x-orange.svg" alt=""></a>
-    <a href="https://github.com/Linkontoask/v-easy"><img src="https://img.shields.io/badge/license-MIT-red.svg" alt=""></a>
+  <a href="https://github.com/Linkontoask/v-easy"><img src="https://img.shields.io/badge/dev-v0.4.0-blue.svg" alt=""></a>
+  <a href="https://github.com/Linkontoask/v-easy"><img src="https://img.shields.io/badge/size-88kb-green.svg" alt=""></a>
+  <a href="https://github.com/Linkontoask/v-easy"><img src="https://img.shields.io/badge/vue-2.x-orange.svg" alt=""></a>
+  <a href="https://github.com/Linkontoask/v-easy"><img src="https://img.shields.io/badge/license-MIT-red.svg" alt=""></a>
 </p>
+[![Build Status](https://travis-ci.com/Linkontoask/v-easy-components.svg?token=DxCbMdsVpziN8id5YUJs&branch=master)](https://travis-ci.com/Linkontoask/v-easy-components)
 
 ### Demo
 [OnlineDemo](https://linkontoask.github.io/demo/v-easy/index.html)
