@@ -9,8 +9,8 @@
     "build": "webpack --mode production --config config/webpack-dev-build-base.js",
     "build:cm": "webpack --mode production --config config/webpack-build-components.js"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Link",
+  "license": "MIT",
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.5",
