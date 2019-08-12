@@ -13,7 +13,7 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const config = require('./index');
 
 const base = {
-  mode: process.env.NODE_ENV,
+  mode: 'production',
   devServer,
   devtool: config.target === 'start' ? evalSourceMap : sourceMap,
   module: {

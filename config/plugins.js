@@ -1,6 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+// const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const webpack = require('webpack');
 const config = require('./index');
 const utils = require('../utils');
@@ -13,7 +13,6 @@ const resolve = (src) => path.resolve(__dirname, src);
 
 
 const base = [
-  new CleanWebpackPlugin(),
   new VueLoaderPlugin(),
   new FriendlyErrorsWebpackPlugin({
     compilationSuccessInfo: {
@@ -48,6 +47,7 @@ if (config.target === 'build') {
     new CopyPlugin([
       { from: resolve('../src/'), to: resolve('../v-easy-components/'), toType: 'dir'},
       { from: resolve('../README.md'), to: resolve('../v-easy-components/README.md'), toType: 'file', force: true,},
+      { from: resolve('../package.json'), to: resolve('../v-easy-components/package.json'), toType: 'file', force: true,},
     ]),
   ]
 }

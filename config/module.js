@@ -34,20 +34,6 @@ module.exports = {
       ],
       // loader: ['style-loader','css-loader','less-loader', /*'postcss-loader'*/]
     },
-    {
-      test: /\.pug$/, loader: [
-        'raw-loader',
-        {
-          loader: 'pug-html-loader',
-          options: {
-            pretty: true,
-            data: {
-              pageTitle: 'Link'
-            }
-          },
-        },
-      ]
-    },
     {test: /\.ts$/, exclude: /(node_modules)/, use: 'ts-loader'},
     {
       test: /\.css$/,

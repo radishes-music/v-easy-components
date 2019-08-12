@@ -33,18 +33,11 @@ const install = function (Vue, opts = {}) {
 
 };
 
-if (typeof window !== 'undefined' && window.Vue) {
-  install(window.Vue);
-}
-
-export default {
-  install
-}
-
-/*module.exports = {
-  version: '2.4.11',
+module.exports = {
+  version: '0.5.1',
   locale: locale.use,
   i18n: locale.i18n,
+  install,
   Button,
   Ip,
   Subnet,
@@ -53,5 +46,5 @@ export default {
   loadingDom
 };
 
-module.exports.default = module.exports;*/
+module.exports.default = module.exports;
 

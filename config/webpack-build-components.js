@@ -7,6 +7,7 @@ const TerserJSPlugin = require('terser-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 const Components = require('../components.json');
+const config = require('./config');
 
 const resolve = (dir) => {
   return path.join(__dirname, '..', dir)
@@ -14,14 +15,13 @@ const resolve = (dir) => {
 
 const webpackConfig = {
   entry: Components,
-  externals: {
-    'vue': 'Vue',
-  },
+  mode: 'production',
+  externals: config.externals,
   resolve: {
     extensions: ['.js', '.vue', '.json']
   },
   output: {
-    path: resolve('/v-easy/bin'),
+    path: resolve('/v-easy-components/bin'),
     publicPath: './',
     filename: '[name].js',
     chunkFilename: '[id].js',

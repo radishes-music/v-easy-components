@@ -11,13 +11,5 @@ module.exports = {
     libraryTarget: 'umd',
     library: 'VEASY',
     umdNamedDefine: true
-  },
-  externals: {
-    vue: {
-      root: 'Vue',
-      commonjs: 'vue',
-      commonjs2: 'vue',
-      amd: 'vue'
-    }
   }
 }
