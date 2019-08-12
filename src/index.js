@@ -8,6 +8,7 @@ import locale from './local/index'
 import vTip from './lib/tooltip/index'
 import loadingDom from './lib/loadingDom/index'
 import './style/index'
+import Package from '../package'
 
 const components = [
   Message,
@@ -39,7 +40,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 }
 
 module.exports = {
-  version: '0.5.1',
+  version: Package.version,
   locale: locale.use,
   i18n: locale.i18n,
   install,
