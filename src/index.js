@@ -33,6 +33,11 @@ const install = function (Vue, opts = {}) {
 
 };
 
+// 静态资源加载
+if (typeof window !== 'undefined' && window.Vue) {
+  install(window.Vue);
+}
+
 module.exports = {
   version: '0.5.1',
   locale: locale.use,
