@@ -5,6 +5,9 @@ install:
 - npm install
 script:
 - npm run build
+before_deploy:
+- cd v-easy-components
+- pwd
 deploy:
   provider: npm
   email: linkorgs@163.com
