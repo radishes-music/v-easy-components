@@ -1,7 +1,8 @@
 <template>
   <transition :name="transition">
     <div :class="['tip', 've-tip-'+placement, Class]" v-show="domVisible" @mouseenter="enter" @mouseleave="leave">
-      <p ref="_tip_content__">{{ content }}</p>
+      <p v-if="content" ref="_tip_content__">{{ content }}</p>
+      <slot></slot>
     </div>
   </transition>
 </template>
@@ -13,7 +14,6 @@
       return {
         placement: 'top',
         Class: [],
-        vNode: '',
         content: '',
         domVisible: false,
         hover: false,
@@ -40,10 +40,10 @@
       }
     },
     mounted() {
-      if (typeof this.vNode === 'object') {
-        this.content = '';
-        this.vNode.$mount(this.$refs._tip_content__);
-      }
+
+    },
+    beforeCreate() {
+
     }
   }
 </script>

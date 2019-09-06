@@ -68,13 +68,13 @@ tipDirective.install = Vue => {
       el.instance.domVisible = true;
       el.instance.hover = true;
     } else {
+      // First rendering
       el._uuid_tip_ = index;
       let value = binding.value;
 
       let data = simple ? {
         ...value,
         placement: value['placement'] || 'top',
-        vNode: typeof value['vNode'] === 'function' && value['vNode'](),
         domVisible: true
       } : {
         content: value,
@@ -88,6 +88,17 @@ tipDirective.install = Vue => {
       el.instance = tip;
       el.tip = tip.$el;
       el.tipStyle = {};
+
+      let vNode
+      if (typeof value['vNode'] === 'function') {
+        vNode = value['vNode']()
+        if (!Object.prototype.hasOwnProperty.call(vNode, 'componentOptions')) {
+          throw value['vNode'].name + 'Function return value is not a VNode type'
+        } else {
+          el.instance.$slots.default = vNode;
+          el.instance.$forceUpdate() // 强制重新渲染 solt
+        }
+      }
 
     }
 

@@ -1,8 +1,7 @@
-import 'v-easy-components/bin/index.css'
-// import vEasy from '../src/index'
-import vEasy from 'v-easy-components'
-// import '../v-easy-components/bin/index.css'
-// import easy from '../v-easy-components/bin/index'
+// import 'v-easy-components/bin/index.css'
+import vEasy from '../src/index'
+// import vEasy from 'v-easy-components'
+import '../v-easy-components/bin/index.css'
 import Vue from 'vue'
 import APP from './APP.vue'
 // Vue.use(easy)

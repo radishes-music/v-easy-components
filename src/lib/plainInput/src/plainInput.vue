@@ -29,7 +29,7 @@
     model: {
       event: 'changeResult'
     },
-    name: 'VePlainInput',
+    name: 'VeInput',
     data() {
       return {
         currentVal: this.value === undefined || this.value === null
@@ -67,7 +67,7 @@
       typeInput: {type: String, default: 'text'},
       target: {type: [String, Array], default: 'blur'},
       options: [Object, Array],
-      value: [String, Object]
+      value: {default: ''}
     },
 
     computed: {

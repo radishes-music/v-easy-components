@@ -1,9 +1,9 @@
-
 @keyframes rect-flicker {
   100% {
     opacity: 0.5;
   }
 }
+
 @keyframes rotate {
   100% {
     transform: rotate(360deg);
@@ -103,6 +103,7 @@
     }
   }
 }
+
 .v-easy-error-enter, .v-easy-error-leave-to {
   transform: translateY(-100%);
   opacity: 0;
@@ -150,7 +151,7 @@
   top: 20px;
   transform: translateX(-50%);
   background-color: #edf2fc;
-  transition: opacity .3s,transform .4s;
+  transition: opacity .3s, transform .4s;
   overflow: hidden;
   padding: 15px 15px 15px 20px;
   display: flex;
@@ -175,6 +176,7 @@
     cursor: pointer;
   }
 }
+
 .easy-message-success {
   background-color: #f0f9eb;
   border-color: #e1f3d8;
@@ -183,6 +185,7 @@
     color: @success;
   }
 }
+
 .easy-message-warning {
   background-color: #fdf6ec;
   border-color: #faecd8;
@@ -191,6 +194,7 @@
     color: @warning;
   }
 }
+
 .easy-message-error {
   background-color: #fef0f0;
   border-color: #fde2e2;
@@ -199,6 +203,7 @@
     color: @error;
   }
 }
+
 .easy-message-animation-enter, .easy-message-animation-leave-to {
   transform: translate(-50%, -100%);
   opacity: 0;
@@ -246,6 +251,7 @@
     animation: rotate 1s linear infinite;
   }
 }
+
 .button-is-circle {
   button {
     border-radius: 50%;
@@ -258,94 +264,114 @@
     border-radius: 50%;
   }
 }
-.button-is-disabled button{
+
+.button-is-disabled button {
   opacity: .4;
   cursor: not-allowed;
 }
+
 .button.button-is-plain button {
   background: none;
   border: 1px solid #eeeeee;
 }
-.button.button-is-plain.easy-button-primary button{
+
+.button.button-is-plain.easy-button-primary button {
   color: @info;
   border: 1px solid #eeeeee;
 }
-.button.button-is-plain.easy-button-success button{
+
+.button.button-is-plain.easy-button-success button {
   color: @success;
   border: 1px solid #eeeeee;
 }
-.button.button-is-plain.easy-button-warning button{
+
+.button.button-is-plain.easy-button-warning button {
   color: @warning;
   border: 1px solid #eeeeee;
 }
-.button.button-is-plain.easy-button-error button{
+
+.button.button-is-plain.easy-button-error button {
   color: @error;
   border: 1px solid #eeeeee;
 }
-.button.easy-button-primary:hover button{
+
+.button.easy-button-primary:hover button, .button.easy-button-primary button:focus {
   color: #fff;
   background: #0d85ff;
   border-color: #0d85ff;
 }
-.button.easy-button-success:hover button{
+
+.button.easy-button-success:hover button, .button.easy-button-success button:focus {
   color: #fff;
   background-color: #85ce61;
   border-color: #85ce61;
 }
-.button.easy-button-warning:hover button{
+
+.button.easy-button-warning:hover button, .button.easy-button-warning button:focus {
   color: #fff;
   background-color: #ebb563;
   border-color: #ebb563;
 }
-.button.easy-button-error:hover button{
+
+.button.easy-button-error:hover button, .button.easy-button-error button:focus{
   color: #fff;
   background-color: #f78989;
   border-color: #f78989;
 }
-.easy-button-primary button{
+
+.easy-button-primary button {
   color: #fff;
   background-color: #409eff;
   border-color: #409eff;
 }
-.easy-button-success button{
+
+.easy-button-success button {
   color: #fff;
   background-color: @success;
   border-color: @success;
 }
-.easy-button-warning button{
+
+.easy-button-warning button {
   color: #fff;
   background-color: @warning;
   border-color: @warning;
 }
-.easy-button-error button{
+
+.easy-button-error button {
   color: #fff;
   background-color: @error;
   border-color: @error;
 }
-.v-easy-button:focus,.v-easy-button:hover .button-mask {
+
+.v-easy-button:focus, .v-easy-button:hover .button-mask {
   left: 100%;
 }
-.button+.button{
-  margin-left:10px;
+
+.button + .button {
+  margin-left: 10px;
 }
-.button:focus,.button:hover button{
-  color:#409EFF;
-  border-color:#c6e2ff;
-  background-color:#ecf5ff;
+
+.button button:focus, .button:hover button {
+  color: #409EFF;
+  border-color: #c6e2ff;
+  background-color: #ecf5ff;
 }
-.button:active{
-  color:#3a8ee6;
-  border-color:#3a8ee6;
-  outline:0;
+
+.button:active {
+  color: #3a8ee6;
+  border-color: #3a8ee6;
+  outline: 0;
 }
-.button [class*=el-icon-]+span{
-  margin-left:5px;
+
+.button [class*=el-icon-] + span {
+  margin-left: 5px;
 }
 
 /* loading.vue */
 .ve-loading-parent--relative {
   position: relative;
 }
+
 .ve-loading {
   display: inline-block;
   font-size: 2em;
@@ -407,7 +433,7 @@
     box-sizing: border-box;
     background: #dcdfe6;
     cursor: pointer;
-    transition: border-color .3s,background-color .3s;
+    transition: border-color .3s, background-color .3s;
     vertical-align: middle;
   }
   .v-easy-core::after {
@@ -422,10 +448,12 @@
     background-color: #fff;
   }
 }
+
 .v-easy-switch.is-checked .v-easy-core::after {
   left: 100%;
   margin-left: -17px;
 }
+
 .v-easy-label {
   transition: .2s;
   height: 20px;
@@ -436,12 +464,15 @@
   vertical-align: middle;
   color: #303133;
 }
+
 .v-easy-label--right {
   margin-left: 10px;
 }
+
 .v-easy-label--left {
   margin-right: 10px;
 }
+
 .v-easy-label.is-active {
   color: #409eff;
 }
@@ -453,9 +484,11 @@
   border-@{a}: 6px solid @q;
   border-@{c}: 6px solid @u;
 }
+
 .ve-tip-parent--relative {
   position: relative;
 }
+
 .tip {
   position: absolute;
   color: white;
@@ -477,6 +510,7 @@
     height: 0;
   }
 }
+
 .tip.ve-tip-top {
   transform: translate(-50%, -50%);
   &::before {
@@ -484,6 +518,7 @@
     .Triangle(left, right, top)
   }
 }
+
 .ve-tip-bottom {
   transform: translate(-50%, 100%);
   &::before {
@@ -491,6 +526,7 @@
     .Triangle(left, right, bottom)
   }
 }
+
 .ve-tip-left {
   transform: translate(-100%, -50%);
   &::before {
@@ -500,6 +536,7 @@
     .Triangle(top, bottom, left)
   }
 }
+
 .ve-tip-right {
   transform: translate(6px, -50%);
   &::before {
@@ -509,6 +546,7 @@
     .Triangle(bottom, top, right)
   }
 }
+
 .fade-enter, .fade-leave-to {
   opacity: 0;
 }
