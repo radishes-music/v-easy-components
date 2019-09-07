@@ -25,11 +25,11 @@ tipDirective.install = Vue => {
 
       switch (el.instance.placement) {
         case 'top':
-          el.tipStyle['top'] -= (rectDom['height'] / 2 + offset);
+          el.tipStyle['top'] -= (offset + 6);
           el.tipStyle['left'] += (rectDom['width'] / 2);
           break;
         case 'bottom':
-          el.tipStyle['top'] += (rectDom['height'] / 2 + offset);
+          el.tipStyle['top'] += (rectDom['height'] + offset + 6);
           el.tipStyle['left'] += (rectDom['width'] / 2);
           break;
         case 'left':
@@ -83,22 +83,24 @@ tipDirective.install = Vue => {
       const tip = new tipDom({
         el: document.createElement('div'),
         data,
+        beforeCreate() {
+          let vNode
+          if (typeof value['vNode'] === 'function') {
+            vNode = value['vNode']()
+            if (!Object.prototype.hasOwnProperty.call(vNode, 'componentOptions')) {
+              throw value['vNode'].name + ' Function return value is not a VNode type'
+            } else {
+              this.$slots.default = vNode;
+            }
+          }
+        }
       });
       tip._uuid_tip_ = index;
       el.instance = tip;
       el.tip = tip.$el;
       el.tipStyle = {};
 
-      let vNode
-      if (typeof value['vNode'] === 'function') {
-        vNode = value['vNode']()
-        if (!Object.prototype.hasOwnProperty.call(vNode, 'componentOptions')) {
-          throw value['vNode'].name + 'Function return value is not a VNode type'
-        } else {
-          el.instance.$slots.default = vNode;
-          el.instance.$forceUpdate() // 强制重新渲染 solt
-        }
-      }
+
 
     }
 

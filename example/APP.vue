@@ -1,6 +1,11 @@
 <template>
-  <div style="position:relative;padding: 20px;">
-    <ve-button v-tip="{placement: 'bottom', offset: 12, vNode: render, enterable: true, hideAfter: 100, Class: 'my-tip'}">target</ve-button>
+  <div style="display: flex;justify-content: space-around;margin-top: 30px">
+    <ve-button v-tip="{placement: 'top', vNode: render, enterable: true, hideAfter: 100, Class: 'my-tip'}">target</ve-button>
+    <ve-button v-tip="{placement: 'bottom', vNode: render, enterable: true, hideAfter: 100, Class: 'my-tip'}">target</ve-button>
+    <ve-button v-tip="{placement: 'left', content: 'Link'}">target</ve-button>
+    <ve-button v-tip="{placement: 'right', content: 'Link'}">target</ve-button>
+    <ve-button v-tip="{placement: 'top', Class: 'h360', content: 'Link'}">target</ve-button>
+    <ve-button v-tip="{placement: 'bottom', Class: 'h360', content: 'Link'}">target</ve-button>
   </div>
 </template>
 
@@ -13,7 +18,16 @@
     methods: {
       render() {
         var h = this.$createElement;
-        var vnode = h('h1', 'Link')
+        var vnode = h('div', null, [
+          h('ve-input'),
+          h('ve-button', {
+            on: {
+              click: () => {
+                this.$msg({type: 'success', message: 'hello'})
+              }
+            }
+          }, ['submit'])
+        ])
         return vnode
       },
       handleClick() {
@@ -53,5 +67,8 @@
   }
   .main {
     margin: 0.67em 0;
+  }
+  .h360 {
+    height: 520px;
   }
 </style>
