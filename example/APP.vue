@@ -1,5 +1,5 @@
 <template>
-  <div style="display: flex;justify-content: space-around;margin-top: 30px">
+  <div style="margin-top: 30px">
     <ve-button v-tip="{placement: 'top', vNode: render, enterable: true, hideAfter: 100, Class: 'my-tip'}">target</ve-button>
     <ve-button v-tip="{placement: 'bottom', vNode: render, enterable: true, hideAfter: 100, Class: 'my-tip'}">target</ve-button>
     <ve-button v-tip="{placement: 'left', content: 'Link'}">target</ve-button>
