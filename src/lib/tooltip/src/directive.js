@@ -25,11 +25,11 @@ tipDirective.install = Vue => {
 
       switch (el.instance.placement) {
         case 'top':
-          el.tipStyle['top'] -= (offset + 6);
+          el.tipStyle['top'] -= (rectDom['top'] + offset - 24);
           el.tipStyle['left'] += (rectDom['width'] / 2);
           break;
         case 'bottom':
-          el.tipStyle['top'] += (rectDom['height'] + offset + 6);
+          el.tipStyle['top'] += (rectDom['top'] + offset + 16);
           el.tipStyle['left'] += (rectDom['width'] / 2);
           break;
         case 'left':
