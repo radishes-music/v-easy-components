@@ -1,9 +1,9 @@
-const path = require('path');
-const TerserJSPlugin = require('terser-webpack-plugin');
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const UgliedJsPlugin = require('uglifyjs-webpack-plugin');
+const path = require('path')
+const ProgressBarPlugin = require('progress-bar-webpack-plugin')
+const TerserPlugin = require('terser-webpack-plugin')
 
 module.exports = {
+  mode: 'production',
   entry: {
     index: ['./src/index.js']
   },
@@ -16,6 +16,10 @@ module.exports = {
     library: 'VEASY',
     umdNamedDefine: true
   },
+  resolve: {
+    extensions: ['.js', '.vue', '.json']
+  },
+  devtool: 'source-map',
   externals: {
     vue: {
       root: 'Vue',
@@ -26,19 +30,16 @@ module.exports = {
   },
   optimization: {
     minimizer: [
-      new UgliedJsPlugin({
-        uglifyOptions: { //webpack4 版本配置方法
-          compress: {
-            drop_console: true // 去除product 下的console
-          },
-        },
-        test: /\.js(\?.*)?$/i,
-        chunkFilter: (chunk) => {
-          return chunk.name !== 'vendor'; // 过滤chunk名字为vendor，避免编译打包静态资源再次被生成影响缓存
+      new TerserPlugin({
+        terserOptions: {
+          output: {
+            comments: false
+          }
         }
       }),
-      new TerserJSPlugin({}),
-      new OptimizeCSSAssetsPlugin({})
     ],
   },
+  plugins: [
+    new ProgressBarPlugin(),
+  ]
 }

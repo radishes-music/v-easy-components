@@ -39,7 +39,7 @@ if (typeof window !== 'undefined' && window.Vue) {
   install(window.Vue);
 }
 
-module.exports = {
+export default {
   version: Package.version,
   locale: locale.use,
   i18n: locale.i18n,
@@ -50,6 +50,4 @@ module.exports = {
   VEPlainInput,
   VESwitch,
   loadingDom
-};
-
-module.exports.default = module.exports;
+}

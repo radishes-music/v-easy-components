@@ -29,10 +29,9 @@ module.exports = {
       test: /\.less$/,
       use: [
         dev ? 'style-loader' : MiniCssExtractPlugin.loader,
-        'css-loader',
+        { loader: 'css-loader', options: { importLoaders: 1 } },
         'less-loader'
-      ],
-      // loader: ['style-loader','css-loader','less-loader', /*'postcss-loader'*/]
+      ]
     },
     {test: /\.ts$/, exclude: /(node_modules)/, use: 'ts-loader'},
     {

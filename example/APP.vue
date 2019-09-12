@@ -1,11 +1,6 @@
 <template>
-  <div style="margin-top: 30px">
-    <ve-button v-tip="{placement: 'top', vNode: render, enterable: true, hideAfter: 100, Class: 'my-tip'}">target</ve-button>
-    <ve-button v-tip="{placement: 'bottom', vNode: render, enterable: true, hideAfter: 100, Class: 'my-tip'}">target</ve-button>
-    <ve-button v-tip="{placement: 'left', content: 'Link'}">target</ve-button>
-    <ve-button v-tip="{placement: 'right', content: 'Link'}">target</ve-button>
-    <ve-button v-tip="{placement: 'top', Class: 'h360', content: 'Link'}">target</ve-button>
-    <ve-button v-tip="{placement: 'bottom', Class: 'h360', content: 'Link'}">target</ve-button>
+  <div class="app">
+
   </div>
 </template>
 
@@ -16,26 +11,7 @@
       }
     },
     methods: {
-      render() {
-        var h = this.$createElement;
-        var vnode = h('div', null, [
-          h('ve-input'),
-          h('ve-button', {
-            on: {
-              click: () => {
-                this.$msg({type: 'success', message: 'hello'})
-              }
-            }
-          }, ['submit'])
-        ])
-        return vnode
-      },
-      handleClick() {
-        this.$msg({
-          type: 'success',
-          message: 'ok'
-        })
-      },
+
     },
     mounted() {
     }
@@ -44,6 +20,9 @@
 
 <style>
   * {margin: 0;padding: 0;box-sizing: border-box}
+  .app {
+
+  }
   .ve-loading-parent--relative {
     position: relative;
   }
