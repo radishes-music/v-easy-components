@@ -1,6 +1,11 @@
 const path = require('path')
 const ProgressBarPlugin = require('progress-bar-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
+const CopyPlugin = require('copy-webpack-plugin')
+const MiniCssExtractPlugin = require("mini-css-extract-plugin")
+const { VueLoaderPlugin } = require('vue-loader')
+
+const resolve = (src) => path.resolve(__dirname, '../', src)
 
 module.exports = {
   mode: 'production',
@@ -8,7 +13,7 @@ module.exports = {
     index: ['./src/index.js']
   },
   output: {
-    path: path.resolve(__dirname, '../v-easy-components/bin'),
+    path: resolve('v-easy-components/bin'),
     publicPath: './',
     filename: 'index.js',
     chunkFilename: '[id].js',
@@ -16,10 +21,16 @@ module.exports = {
     library: 'VEASY',
     umdNamedDefine: true
   },
+  stats: {
+    modules: false,
+    children: false,
+    chunks: false,
+    chunkModules: false
+  },
   resolve: {
     extensions: ['.js', '.vue', '.json']
   },
-  devtool: 'source-map',
+  devtool: 'source',
   externals: {
     vue: {
       root: 'Vue',
@@ -39,7 +50,59 @@ module.exports = {
       }),
     ],
   },
+  module: {
+    rules: [
+      {
+        test: /\.vue$/,
+        loader: 'vue-loader',
+        options: {
+          preserveWhitespace: false
+        }
+      },
+      {
+        test: /\.otf|ttf|woff2?|eot(\?\S*)?$/,
+        loader: 'url-loader',
+        query: {
+          limit: 10000,
+          name: path.posix.join('static', '[name].[hash:7].[ext]')
+        }
+      },
+      {
+        test: /\.less$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          { loader: 'css-loader', options: { importLoaders: 1 } },
+          'less-loader'
+        ]
+      },
+      {test: /\.ts$/, exclude: /(node_modules)/, use: 'ts-loader'},
+      {
+        test: /\.css$/,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+          },
+          'css-loader'
+        ]
+      },
+      {
+        test: /\.js$/,
+        loader: 'babel-loader',
+        include: [resolve('src')]
+      }
+    ]
+  },
   plugins: [
     new ProgressBarPlugin(),
+    new VueLoaderPlugin(),
+    new MiniCssExtractPlugin({
+      filename: 'index.css',
+      chunkFilename: '[id].css',
+    }),
+    new CopyPlugin([
+      { from: resolve('src/'), to: resolve('v-easy-components/'), toType: 'dir'},
+      { from: resolve('README.md'), to: resolve('v-easy-components/README.md'), toType: 'file', force: true,},
+      { from: resolve('package.json'), to: resolve('v-easy-components/package.json'), toType: 'file', force: true,},
+    ]),
   ]
 }

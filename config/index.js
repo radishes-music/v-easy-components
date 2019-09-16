@@ -5,6 +5,5 @@ module.exports = {
 		host: 'localhost',
 		notifyOnErrors: true,
 	},
-  devMode: process.env.NODE_ENV !== 'production',
-  target: process.env.npm_lifecycle_event
+  devMode: process.env.NODE_ENV !== 'production'
 }

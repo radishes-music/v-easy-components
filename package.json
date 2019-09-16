@@ -24,10 +24,13 @@
     "url": "https://github.com/Linkontoask/v-easy-components.git"
   },
   "scripts": {
-    "start": "webpack-dev-server --inline --progress --config config/webpack-dev-build-base.js",
-    "build": "npm run clean && webpack --config config/webpack-dev-build-base.js && webpack --config config/webpack-common.js && webpack --config config/webpack-build-components.js",
-    "test": "webpack --config config/webpack-common.js",
-    "clean": "node config/clean.js"
+    "dev": "webpack-dev-server --inline --progress --config config/webpack-dev-config.js",
+    "build": "npm run clean && npm run build:main && npm run build:cm && npm run build:common",
+    "build:main": "webpack --config config/webpack-build-config.js",
+    "build:cm": "webpack --config config/webpack-build-components.js",
+    "build:common": "webpack --config config/webpack-common.js",
+    "test": "",
+    "clean": "rimraf v-easy-components"
   },
   "style": "bin/index.css",
   "typings": "types/index.d.ts",
@@ -78,9 +81,14 @@
     "webpack-cli": "^3.3.5",
     "webpack-dev-server": "^3.3.1",
     "webpack-merge": "^4.1.0",
-    "webpack-node-externals": "^1.7.2"
+    "webpack-node-externals": "^1.7.2",
+    "rimraf": "^3.0.0",
+    "terser-webpack-plugin": "latest"
   },
   "dependencies": {
     "deepmerge": "^3.1.0"
+  },
+  "peerDependencies": {
+    "vue": "^2.6.10"
   }
 }

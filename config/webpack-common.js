@@ -1,9 +1,8 @@
-const path = require('path');
-const webpack = require('webpack');
-const { VueLoaderPlugin } = require('vue-loader');
-const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const ProgressBarPlugin = require('progress-bar-webpack-plugin');
+const path = require('path')
+const webpack = require('webpack')
+const { VueLoaderPlugin } = require('vue-loader')
+const MiniCssExtractPlugin = require("mini-css-extract-plugin")
+const ProgressBarPlugin = require('progress-bar-webpack-plugin')
 
 const config = require('./config');
 
@@ -62,22 +61,13 @@ module.exports = {
           MiniCssExtractPlugin.loader,
           'css-loader',
           'less-loader'
-        ],
-        // loader: ['style-loader','css-loader','less-loader', /*'postcss-loader'*/]
+        ]
       },
     ]
   },
   plugins: [
     new ProgressBarPlugin(),
     new VueLoaderPlugin(),
-    new FriendlyErrorsWebpackPlugin({
-      compilationSuccessInfo: {
-        messages: [
-            `Build v-easy-component.common.js Compilation Success in v-easy-component/bin`
-        ],
-      },
-      clearConsole: true
-    }),
     new MiniCssExtractPlugin({
       filename: 'index.css',
       chunkFilename: '[id].css',
