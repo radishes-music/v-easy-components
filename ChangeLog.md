@@ -1,3 +1,7 @@
++ 0.5.10 (2019.09.16)
+	+ 优化打包方式
+	+ 优化 `button` 按钮，添加 `mask` 动画
+	+ 优化 `$msg` 命令
 + 0.4.0 (2019.07.20)
     + v-easy-message更名为v-easy-components
     + 添加 `v-loading-preload` 命令
