@@ -1,9 +1,22 @@
 <template>
   <div class="app">
-    <ve-button type="mask" :disabled="true">Link</ve-button>
-    <ve-button type="mask">Link</ve-button>
+    <ve-button :disabled="true">Link</ve-button>
+    <ve-button @click="a = {}">Link</ve-button>
     <ve-button :disabled="true" >成功按钮</ve-button>
-    <ve-button type="primary" @click="$msg({message: 'Link'})">成功按钮</ve-button>
+    <ve-button type="primary" @click="a = {
+        width: '1200px',
+        height: '1200px',
+        left: '-390px',
+        top: '-480px'
+      }">成功按钮</ve-button>
+    <div class="abc">
+      <span :style="a"></span>
+    </div>
+    <ve-button mask="true">Link</ve-button>
+    <ve-button type="primary">circle</ve-button>
+    <ve-button mask="true" mask-type="success">circle</ve-button>
+    <ve-button mask="true" mask-type="warning">circle</ve-button>
+    <ve-button mask="true" mask-type="error">circle</ve-button>
   </div>
 </template>
 
@@ -11,6 +24,7 @@
   export default {
     data() {
       return {
+        a: {}
       }
     },
     methods: {
@@ -28,6 +42,26 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
+  }
+  .abc {
+    position: relative;
+    width: 350px;
+    height: 560px;
+    border: 1px solid;
+    overflow: hidden;
+  }
+  .abc .mask {
+
+  }
+  .abc span {
+    position: absolute;
+    left: 210px;
+    top: 120px;
+    width: 0;
+    height: 0;
+    background-color: #f56c6c;
+    border-radius: 50%;
+    transition: all 1s linear;
   }
   .ve-loading-parent--relative {
     position: relative;

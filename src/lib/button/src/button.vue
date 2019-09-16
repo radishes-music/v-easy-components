@@ -1,51 +1,106 @@
 <template>
-  <div class="v-easy-button button"
-       :class="[type ? 'easy-button-' + type : '', {
-        'button-is-disabled': buttonDisabled,
-        'button-is-plain': plain,
-        'button-is-circle': circle
-     }]">
-    <button @click="handleClick" :type="nativeType">
-      <i :class="['fa', 'fa-' + icon, { 'is-rotate': rotate }]" v-if="icon"></i>
-      <span v-if="$slots.default"><slot></slot></span>
-    </button>
-    <span class="button-mask" :class="maskType" v-if="mask"></span>
-  </div>
+  <button class="v-easy-button button"
+          :class="[type ? 'easy-button-' + type : '', {
+          'button-is-disabled': buttonDisabled,
+          'button-is-plain': plain,
+          'button-is-circle': circle,
+          'button-is-mask': mask,
+          ['button-is-mask-' + maskType]: mask
+        }]"
+          ref="button"
+          @mouseleave="leave"
+          @mouseenter="enter"
+          @click="handleClick"
+          :type="nativeType">
+    <i :class="['fa', 'fa-' + icon, { 'is-rotate': rotate }]" v-if="icon"></i>
+    <span v-if="$slots.default" class="button-text button-mask-text">
+      <slot></slot>
+    </span>
+    <span class="button-mask" :class="'button-mask-' + maskType" v-if="mask" :style="style"></span>
+  </button>
 </template>
 
 <script>
+  let rect = {},
+    d = 0;
   export default {
     name: 'VeButton',
 
-    inject: {
-      elForm: {
-        default: ''
-      },
+    data() {
+      return {
+        style: {}
+      }
     },
 
     props: {
       type: {type: String, default: 'default'},
       nativeType: {type: String, default: 'button'},
-      maskType: {type: String, default: 'button-default-mask'},
+      maskType: {type: String, default: 'primary'},
       size: String,
       icon: {type: String},
       disabled: Boolean,
       circle: Boolean,
       plain: Boolean,
       rotate: Boolean,
-      mask: {type: Boolean, default: false}
+      mask: {type: [Boolean, String], default: false}
     },
 
     computed: {
       buttonDisabled() {
-        return this.disabled || (this.elForm || {}).disabled;
+        return this.disabled;
       }
     },
 
     methods: {
+      calc(parent) {
+        const w = parent.offsetHeight,
+          h = parent.offsetWidth
+        d = Math.floor(Math.sqrt(Math.pow(w, 2) + Math.pow(h, 2)))
+
+        rect = {
+          width: d * 2,
+          height: d * 2
+        }
+
+      },
+      leave(e) {
+        if (this.maskType === 'default') return false
+
+        this.style = {
+          left: e.offsetX,
+          top: e.offsetY,
+          transition: 'all .2s linear'
+        }
+      },
+      enter(e) {
+        if (this.maskType === 'default') return false
+
+        rect['left'] = -(Math.abs(d - e.offsetX))
+        rect['top'] = -(Math.abs(d - e.offsetY))
+        this.style = {
+          left: e.offsetX,
+          top: e.offsetY,
+          transition: ''
+        }
+
+        // Last position offset problem
+        setTimeout(() => {
+          this.style = {
+            ...rect,
+            transition: 'all .2s linear'
+          }
+        }, 14)
+
+      },
       handleClick(evt) {
         if (this.buttonDisabled) return false;
         this.$emit('click', evt);
+      }
+    },
+
+    mounted() {
+      if (this.maskType !== 'default') {
+        this.calc(this.$refs.button)
       }
     }
   }
