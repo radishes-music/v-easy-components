@@ -153,7 +153,7 @@
   top: 20px;
   transform: translateX(-50%);
   background-color: #edf2fc;
-  transition: opacity .3s, transform .4s;
+  transition: opacity .3s, transform .4s, top .3s;
   overflow: hidden;
   padding: 15px 15px 15px 20px;
   display: flex;
@@ -297,28 +297,34 @@
   border: 1px solid #eeeeee;
 }
 
-.button.easy-button-primary:hover button, .button.easy-button-primary button:focus {
+.button.easy-button-primary:hover:not(.button-is-disabled) button, .button.easy-button-primary:not(.button-is-disabled) button:focus {
   color: #fff;
   background: #0d85ff;
   border-color: #0d85ff;
 }
 
-.button.easy-button-success:hover button, .button.easy-button-success button:focus {
+.button.easy-button-success:hover:not(.button-is-disabled) button, .button.easy-button-success:not(.button-is-disabled) button:focus {
   color: #fff;
   background-color: #85ce61;
   border-color: #85ce61;
 }
 
-.button.easy-button-warning:hover button, .button.easy-button-warning button:focus {
+.button.easy-button-warning:hover:not(.button-is-disabled) button, .button.easy-button-warning:not(.button-is-disabled) button:focus {
   color: #fff;
   background-color: #ebb563;
   border-color: #ebb563;
 }
 
-.button.easy-button-error:hover button, .button.easy-button-error button:focus{
+.button.easy-button-error:hover:not(.button-is-disabled) button, .button.easy-button-error:not(.button-is-disabled) button:focus {
   color: #fff;
   background-color: #f78989;
   border-color: #f78989;
+}
+
+.button:not(.button-is-disabled) button:focus, .button:hover:not(.button-is-disabled) button {
+  color: #409EFF;
+  border-color: #c6e2ff;
+  background-color: #ecf5ff;
 }
 
 .easy-button-primary button {
@@ -351,12 +357,6 @@
 
 .button + .button {
   margin-left: 10px;
-}
-
-.button button:focus, .button:hover button {
-  color: #409EFF;
-  border-color: #c6e2ff;
-  background-color: #ecf5ff;
 }
 
 .button:active {

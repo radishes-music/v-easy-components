@@ -1,6 +1,9 @@
 <template>
   <div class="app">
-
+    <ve-button type="mask" :disabled="true">Link</ve-button>
+    <ve-button type="mask">Link</ve-button>
+    <ve-button :disabled="true" >成功按钮</ve-button>
+    <ve-button type="primary" @click="$msg({message: 'Link'})">成功按钮</ve-button>
   </div>
 </template>
 
@@ -21,7 +24,10 @@
 <style>
   * {margin: 0;padding: 0;box-sizing: border-box}
   .app {
-
+    padding: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
   }
   .ve-loading-parent--relative {
     position: relative;

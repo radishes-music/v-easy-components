@@ -1,6 +1,7 @@
 <template>
-  <transition name="easy-message-animation">
+  <transition name="easy-message-animation" @after-leave="handleAfterLeave">
     <div :class="['easy-message-' + type, 'message']"
+         :style="positionStyle"
          v-show="visible"
          @mouseenter="clearTimer"
          @mouseleave="startTimer">
@@ -31,26 +32,23 @@
         showClose: true,
         onClose: null,
         timer: null,
+        verticalOffset: 20
       }
     },
 
     computed: {
       typeIcon() {
         return typeMap[this.type];
+      },
+      positionStyle() {
+        return {
+          'top': `${ this.verticalOffset }px`
+        };
       }
     },
 
-    watch: {
-      visible(val) {
-        if (!val) {
-          this.$el.addEventListener('transitionend', this.destoryElement);
-        }
-      },
-    },
-
     methods: {
-      destoryElement() {
-        this.$el.removeEventListener('transitionend', this.destoryElement);
+      handleAfterLeave() {
         this.$destroy(true);
         this.$el.parentNode.removeChild(this.$el);
       },
