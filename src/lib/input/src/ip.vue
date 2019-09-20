@@ -14,7 +14,6 @@
                :disabled="disabled"
                v-bind="$attrs"
                @keydown="keyDown(index, $event)"
-               @keyup="handleKeyUp(index, $event)"
                @input="handleInput(index, $event)"
                @focus="handleFocus(index, $event)"
                @blur="handelBlur(index, $event)">
@@ -29,7 +28,7 @@
 
 <script>
   import {t} from '../../../local/index'
-  import {_initArray} from '../../../utils/ArrayExtend'
+  import { _initArray } from '../../../utils/ArrayExtend'
   import merge from '../../../mixins/merge'
 
   export default {
@@ -38,20 +37,8 @@
     },
     name: 'VeIp',
     mixins: [merge],
-    data() {
-      return {
-        maxLength: _initArray(4, '3'),
-      }
-    },
 
     props: {
-      maxWidth: {type: String},
-      width: [String],
-      disabled: {type: [Boolean, String], default: false},
-      spliceChar: {type: String, default: '.'},
-      readonly: {type: [Boolean, String], default: false},
-      message: {type: String},
-      value: [String, Array],
       format: {type: String, default: 'ipv4'}
     },
 

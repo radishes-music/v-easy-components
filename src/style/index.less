@@ -29,9 +29,6 @@
 /* input.vue */
 .input {
   color: @info;
-  padding: 0 4px;
-  margin-bottom: 30px;
-  position: relative;
   .inspection {
     color: #f56c6c;
     font-size: 12px;
@@ -43,7 +40,6 @@
 
 /* ip.vue */
 .input-ip, .input-subnet {
-  height: 40px;
   .disabled {
     background-color: #f5f7fa;
     border-color: #e4e7ed;
@@ -51,6 +47,9 @@
     cursor: not-allowed;
   }
   ul {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     min-width: 138px;
     min-height: 38px;
     margin: 0;
@@ -62,24 +61,19 @@
       width: 62px;
     }
     li {
-      position: relative;
       list-style-type: none;
-      float: left;
-      height: 100%;
       vertical-align: middle;
       width: calc(24% - 3px);
       overflow: visible;
       margin-right: 4px;
+      display: flex;
+      align-items: flex-end;
       input {
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left: 0;
         color: @inputColor;
         margin: auto;
         text-align: center;
         width: 100%;
-        height: 64%;
+        height: 100%;
         border: none;
       }
       input:focus {
@@ -92,9 +86,6 @@
         cursor: not-allowed;
       }
       span {
-        position: absolute;
-        bottom: 12px;
-        right: -4px;
         color: #333;
         user-select: none;
       }

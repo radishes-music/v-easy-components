@@ -1,19 +1,10 @@
 <template>
   <div class="app">
-    <ve-button :disabled="true">Link</ve-button>
-    <ve-button @click="a = {}">Link</ve-button>
-    <ve-button :disabled="true" >成功按钮</ve-button>
-    <ve-button type="primary" @click="a = {
-        width: '1200px',
-        height: '1200px',
-        left: '-390px',
-        top: '-480px'
-      }">成功按钮</ve-button>
-    <div class="abc">
-      <span :style="a"></span>
-    </div>
-    <ve-button mask="true">Link</ve-button>
-    <ve-button type="primary">circle</ve-button>
+    <ve-button @click="++b">change</ve-button>
+    <ve-input v-model="b"></ve-input>
+    <ve-button @click="ch">change ip</ve-button>
+    <ve-ip v-model="c"></ve-ip>
+    <ve-subnet v-model="c"></ve-subnet>
     <ve-button mask="true" mask-type="success">circle</ve-button>
     <ve-button mask="true" mask-type="warning">circle</ve-button>
     <ve-button mask="true" mask-type="error">circle</ve-button>
@@ -24,11 +15,15 @@
   export default {
     data() {
       return {
-        a: {}
+        a: {},
+        b: 123,
+        c: []
       }
     },
     methods: {
-
+      ch() {
+        this.c = [1,3,1,1]
+      }
     },
     mounted() {
     }
