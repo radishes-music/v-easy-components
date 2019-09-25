@@ -1,9 +1,9 @@
 {
   "button": "./src/lib/button/index.js",
-  "input": "./src/lib/input/index.js",
+  "input": "./src/lib/ip/index.js",
   "subnet": "./src/lib/subnet/index.js",
-  "plainInput": "./src/lib/plainInput/index.js",
+  "plainInput": "./src/lib/plain-input/index.js",
   "switch": "./src/lib/switch/index.js",
   "message": "./src/lib/message/index.js",
-  "tooltip": "./src/lib/tooltip/index.js"
+  "tooltip": "./src/lib/tool-tip/index.js"
 }

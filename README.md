@@ -19,16 +19,25 @@ npm install v-easy-components -s
 
 ### Quick Start
 ``` javascript
-import 'v-easy-components/bin/index.css'
+import 'v-easy-components/bin/theme-chalk/index.css'
 import vEasy from 'v-easy-components'
 
 Vue.use(vEasy);
 ```
 
+### Separation
+[所有组件分离方法](https://linkorg.club/#/view/quickstart)
+```javascript
+import Button from 'v-easy-components/bin/button.js'
+import 'v-easy-components/bin/theme-chalk/button.css'
+
+Vue.use(Button);
+```
+
 ### Use CDN
 ```html
 <!-- 引入样式 -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/v-easy-components/bin/index.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/v-easy-components/bin/theme-chalk/index.css">
 <!-- 引入组件库 -->
 <script src="https://cdn.jsdelivr.net/npm/v-easy-components"></script>
 ```
@@ -39,23 +48,6 @@ import vEasy from 'v-easy-components'
 import locale from 'v-easy-components/local/en'
 
 Vue.use(vEasy, { locale });
-```
-
-### use babel
-``` javascript
-// webpack.base.conf.js
-module: {
-  rules: [
-    {
-      test: /\.js$/,
-      loader: 'babel-loader',
-      include: [resolve('/node_modules/v-easy-components')]
-    }
-  ]
-},
-
-// vue.config.js (vue-cli3)
-transpileDependencies: ['v-easy-components']
 ```
 
 ### Update

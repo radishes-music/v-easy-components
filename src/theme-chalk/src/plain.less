@@ -1,0 +1,46 @@
+@info: #909399;
+@inputColor: #606266;
+@error: #f56c6c;
+.input {
+  color: @info;
+  .inspection {
+    color: #f56c6c;
+    font-size: 12px;
+    text-align: left;
+    margin: 6px 0;
+    transition: all 0.3s;
+  }
+}
+.input-plain {
+  min-height: 24px;
+  min-width: 114px;
+  input {
+    color: @inputColor;
+    margin: auto;
+    padding: 2px 12px;
+    min-width: 64px;
+    min-height: 28px;
+    width: calc(100% - 24px);
+    border: 1px solid #c0c4cc;
+    border-radius: 4px;
+    transition: box-shadow .4s;
+    box-sizing: content-box;
+  }
+  input:focus {
+    outline: none;
+    box-shadow: 0 0 4px 1px #4190f3;
+  }
+  input:disabled {
+    background-color: #f5f7fa;
+    border-color: #e4e7ed;
+    color: #c0c4cc;
+    cursor: not-allowed;
+  }
+  .red {
+    box-shadow: 0 0 4px 1px @error;
+  }
+}
+.v-easy-error-enter, .v-easy-error-leave-to {
+  transform: translateY(-100%);
+  opacity: 0;
+}

@@ -1,0 +1,104 @@
+@success: #67c23a;
+@warning: #e6a23c;
+@error: #f56c6c;
+@info: #909399;
+@font-face {
+  font-family: 'FontAwesome';
+  src: url('./fonts/fontawesome-webfont.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.fa {
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.fa-remove:before,
+.fa-close:before,
+.fa-times:before {
+  content: "\f00d";
+}
+.fa-thumbs-up:before {
+  content: "\f164";
+}
+.fa-hand-stop-o:before,
+.fa-hand-paper-o:before {
+  content: "\f256";
+}
+.fa-info-circle:before {
+  content: "\f05a";
+}
+.fa-thumbs-down:before {
+  content: "\f165";
+}
+.message {
+  min-width: 340px;
+  box-sizing: border-box;
+  border-radius: 4px;
+  border: 1px solid #ebeef5;
+  position: fixed;
+  left: 50%;
+  top: 20px;
+  transform: translateX(-50%);
+  background-color: #edf2fc;
+  transition: opacity .3s, transform .4s, top .3s;
+  overflow: hidden;
+  padding: 15px 15px 15px 20px;
+  display: flex;
+  align-items: center;
+  z-index: 9999;
+  p {
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    line-height: 1;
+    color: @info;
+  }
+  .message-type {
+    margin-right: 10px;
+  }
+  .easy_message_close {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+  }
+  .fa-times {
+    cursor: pointer;
+  }
+}
+
+.easy-message-success {
+  background-color: #f0f9eb;
+  border-color: #e1f3d8;
+  color: @success;
+  .message-type, p {
+    color: @success;
+  }
+}
+
+.easy-message-warning {
+  background-color: #fdf6ec;
+  border-color: #faecd8;
+  color: @warning;
+  .message-type, p {
+    color: @warning;
+  }
+}
+
+.easy-message-error {
+  background-color: #fef0f0;
+  border-color: #fde2e2;
+  color: @error;
+  .message-type, p {
+    color: @error;
+  }
+}
+
+.easy-message-animation-enter, .easy-message-animation-leave-to {
+  transform: translate(-50%, -100%);
+  opacity: 0;
+}

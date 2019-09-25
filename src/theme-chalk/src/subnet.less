@@ -1,0 +1,79 @@
+@info: #909399;
+@inputColor: #606266;
+@error: #f56c6c;
+.input {
+  color: @info;
+  height: 40px;
+  .inspection {
+    color: #f56c6c;
+    font-size: 12px;
+    text-align: left;
+    margin: 6px 0;
+    transition: all 0.3s;
+  }
+}
+.input-subnet {
+  .disabled {
+    background-color: #f5f7fa;
+    border-color: #e4e7ed;
+    color: #c0c4cc;
+    cursor: not-allowed;
+  }
+  ul {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-width: 138px;
+    min-height: 38px;
+    margin: 0;
+    padding: 0;
+    border: 1px solid #c0c4cc;
+    border-radius: 4px;
+    .ipv6 {
+      width: 62px;
+    }
+    li {
+      list-style-type: none;
+      vertical-align: middle;
+      width: calc(24% - 3px);
+      overflow: visible;
+      margin-right: 4px;
+      display: flex;
+      align-items: flex-end;
+      input {
+        color: @inputColor;
+        margin: auto;
+        text-align: center;
+        width: 100%;
+        height: 100%;
+        border: none;
+      }
+      input:focus {
+        outline: none;
+      }
+      input:disabled {
+        background-color: #f5f7fa;
+        border-color: #e4e7ed;
+        color: #c0c4cc;
+        cursor: not-allowed;
+      }
+      span {
+        color: #333;
+        user-select: none;
+      }
+      .none {
+        color: @inputColor;
+      }
+      .red {
+        color: @error;
+      }
+    }
+    li:last-child {
+      margin-right: 0;
+    }
+  }
+}
+.v-easy-error-enter, .v-easy-error-leave-to {
+  transform: translateY(-100%);
+  opacity: 0;
+}

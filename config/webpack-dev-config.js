@@ -62,11 +62,20 @@ module.exports = {
         }
       },
       {
+        test: /\.(png|jpg|JPG|gif)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {},
+          },
+        ],
+      },
+      {
         test: /\.less$/,
         use: [
           'style-loader',
           { loader: 'css-loader', options: { importLoaders: 1 } },
-          'less-loader'
+          'less-loader',
         ]
       },
       {test: /\.ts$/, exclude: /(node_modules)/, use: 'ts-loader'},
@@ -76,7 +85,7 @@ module.exports = {
           {
             loader: MiniCssExtractPlugin.loader,
           },
-          'css-loader'
+          'css-loader',
         ]
       },
       {

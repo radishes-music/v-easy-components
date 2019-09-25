@@ -1,13 +1,13 @@
 import Message from './lib/message/index'
 import Button from './lib/button/index'
-import Ip from './lib/input/index'
+import Ip from './lib/ip/index'
 import Subnet from './lib/subnet/index'
-import VEPlainInput from './lib/plainInput/index'
+import VEPlainInput from './lib/plain-input/index'
 import VESwitch from './lib/switch/index'
 import locale from './local/index'
-import vTip from './lib/tooltip/index'
-import loadingDom from './lib/loadingDom/index'
-import './style/index'
+import vTip from './lib/tool-tip/index'
+import loadingDom from './lib/loading-dom/index'
+import imageRead from './lib/Image-read/index'
 import Package from '../package'
 
 const components = [
@@ -29,6 +29,7 @@ const install = function (Vue, opts = {}) {
 
   Vue.use(vTip.directive);
   Vue.use(loadingDom.directive);
+  Vue.use(imageRead.Image);
 
   Vue.prototype.$msg = Message;
 
@@ -49,5 +50,6 @@ export default {
   Subnet,
   VEPlainInput,
   VESwitch,
-  loadingDom
+  loadingDom,
+  imageRead
 }

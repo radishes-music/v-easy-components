@@ -70,7 +70,6 @@ module.exports = {
       {
         test: /\.less$/,
         use: [
-          MiniCssExtractPlugin.loader,
           { loader: 'css-loader', options: { importLoaders: 1 } },
           'less-loader'
         ]
@@ -79,9 +78,6 @@ module.exports = {
       {
         test: /\.css$/,
         use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
-          },
           'css-loader'
         ]
       },
@@ -95,10 +91,6 @@ module.exports = {
   plugins: [
     new ProgressBarPlugin(),
     new VueLoaderPlugin(),
-    new MiniCssExtractPlugin({
-      filename: 'index.css',
-      chunkFilename: '[id].css',
-    }),
     new CopyPlugin([
       { from: resolve('src/'), to: resolve('v-easy-components/'), toType: 'dir'},
       { from: resolve('README.md'), to: resolve('v-easy-components/README.md'), toType: 'file', force: true,},

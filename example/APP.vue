@@ -1,7 +1,20 @@
 <template>
   <div class="app">
-    <ve-button @click="++b">change</ve-button>
-    <ve-input v-model="b"></ve-input>
+    <ve-button v-image :data-preview-src="require('./assets/1.JPG')" type="text">点击预览图片</ve-button>
+    <ve-button @click="f = !f">移除第一个image</ve-button>
+    <img v-image v-if="f" src="./assets/1.JPG" alt="">
+    <img v-image :data-preview-src="img[0]" src="./assets/1-min.png" alt="">
+    <ve-button @click="img.push(require('./assets/3-max.png'))">动态添加一个img</ve-button>
+    <div v-image>
+      <img src="./assets/1-min.png" :data-preview-src="require('./assets/1-max.png')" alt="1-max">
+      <img v-for="item in img" :key="item" :src="item" alt="">
+    </div>
+    <div v-image="config">
+      <img src="./assets/2-min.png" alt="">
+      <img src="./assets/1-min.png" alt="" class="image">
+      <img src="./assets/3-min.png" alt="">
+      <img src="./assets/2-min.png" alt="" class="image">
+    </div>
     <ve-button @click="ch">change ip</ve-button>
     <ve-ip v-model="c"></ve-ip>
     <ve-subnet v-model="c"></ve-subnet>
@@ -16,8 +29,16 @@
     data() {
       return {
         a: {},
+        f: true,
         b: 123,
-        c: []
+        c: [],
+        img: [require('./assets/1-max.png'), require('./assets/2-max.png')],
+        config: {
+          el: '.image',
+          rule (item, index) {
+            return require(`./assets/${index+1}-max.png`)
+          }
+        }
       }
     },
     methods: {
@@ -30,13 +51,10 @@
   }
 </script>
 
-<style>
+<style scoped>
   * {margin: 0;padding: 0;box-sizing: border-box}
   .app {
     padding: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
   }
   .abc {
     position: relative;
@@ -44,6 +62,9 @@
     height: 560px;
     border: 1px solid;
     overflow: hidden;
+  }
+  img {
+    width: 50px;
   }
   .abc .mask {
 
