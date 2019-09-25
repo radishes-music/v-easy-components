@@ -47,7 +47,7 @@ function targetParent(el, binding, _NodeID) {
   const targetNode = binding.value ? binding.value.el : 'img'
 
   const nodes = el.querySelectorAll(targetNode)
-  console.log(nodes)
+  
   if (_NodeID) {
     ImageBoxParent = ImageBoxParents[_NodeID]
   } else {
