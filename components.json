@@ -5,5 +5,7 @@
   "plainInput": "./src/lib/plain-input/index.js",
   "switch": "./src/lib/switch/index.js",
   "message": "./src/lib/message/index.js",
-  "tooltip": "./src/lib/tool-tip/index.js"
+  "tooltip": "./src/lib/tool-tip/index.js",
+  "loadDom": "./src/lib/loading-dom/index.js",
+  "imageRead": "./src/lib/image-read/index.js"
 }
