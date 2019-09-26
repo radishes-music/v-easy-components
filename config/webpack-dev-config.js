@@ -2,7 +2,6 @@ const path =  require('path')
 const config = require('./index')
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 const { VueLoaderPlugin } = require('vue-loader')
 
 const HOST = process.env.HOST;
@@ -80,15 +79,6 @@ module.exports = {
       },
       {test: /\.ts$/, exclude: /(node_modules)/, use: 'ts-loader'},
       {
-        test: /\.css$/,
-        use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
-          },
-          'css-loader',
-        ]
-      },
-      {
         test: /\.js$/,
         loader: 'babel-loader',
         include: [resolve('src')]
@@ -99,10 +89,6 @@ module.exports = {
     new VueLoaderPlugin(),
     new HtmlWebpackPlugin({
       template: './example/index.html',
-    }),
-    new MiniCssExtractPlugin({
-      filename: 'index.css',
-      chunkFilename: '[id].css',
     }),
     new FriendlyErrorsWebpackPlugin({
       compilationSuccessInfo: {

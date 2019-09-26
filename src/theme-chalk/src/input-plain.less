@@ -1,16 +1,10 @@
-@info: #909399;
-@inputColor: #606266;
-@error: #f56c6c;
+@import "./mixins/_color.less";
+@import "./mixins/_input.less";
+
 .input {
-  color: @info;
-  .inspection {
-    color: #f56c6c;
-    font-size: 12px;
-    text-align: left;
-    margin: 6px 0;
-    transition: all 0.3s;
-  }
+  .-input()
 }
+
 .input-plain {
   min-height: 24px;
   min-width: 114px;
@@ -40,7 +34,7 @@
     box-shadow: 0 0 4px 1px @error;
   }
 }
+
 .v-easy-error-enter, .v-easy-error-leave-to {
-  transform: translateY(-100%);
-  opacity: 0;
+  .-input-error()
 }

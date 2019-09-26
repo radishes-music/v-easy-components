@@ -1,13 +1,13 @@
 import Message from './lib/message/index'
 import Button from './lib/button/index'
-import Ip from './lib/ip/index'
-import Subnet from './lib/subnet/index'
-import VEPlainInput from './lib/plain-input/index'
+import Ip from './lib/input-ip/index'
+import Subnet from './lib/input-subnet/index'
+import VEPlainInput from './lib/input-plain/index'
 import VESwitch from './lib/switch/index'
 import locale from './local/index'
 import vTip from './lib/tool-tip/index'
 import loadingDom from './lib/loading-dom/index'
-import imageRead from './lib/image-read/index'
+import imageRead from './lib/image-preview/index'
 import Package from '../package'
 
 const components = [

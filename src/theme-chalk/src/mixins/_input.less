@@ -1,7 +1,6 @@
-@info: #909399;
-@inputColor: #606266;
-@error: #f56c6c;
-.input {
+@import "_color.less";
+
+.-input() {
   color: @info;
   height: 40px;
   .inspection {
@@ -12,7 +11,8 @@
     transition: all 0.3s;
   }
 }
-.input-subnet {
+
+.-input-children() {
   .disabled {
     background-color: #f5f7fa;
     border-color: #e4e7ed;
@@ -73,7 +73,8 @@
     }
   }
 }
-.v-easy-error-enter, .v-easy-error-leave-to {
+
+.-input-error() {
   transform: translateY(-100%);
   opacity: 0;
 }
