@@ -21,14 +21,15 @@
 </template>
 
 <script>
-  let rect = {},
-    d = 0;
+
   export default {
     name: 'VeButton',
 
     data() {
       return {
-        style: {}
+        style: {},
+        rect: {},
+        d: 0
       }
     },
 
@@ -54,12 +55,12 @@
     methods: {
       calc(parent) {
         const w = parent.offsetHeight,
-          h = parent.offsetWidth
-        d = Math.floor(Math.sqrt(Math.pow(w, 2) + Math.pow(h, 2)))
+          h = parent.offsetWidth;
+        this.d = Math.floor(Math.sqrt(Math.pow(w, 2) + Math.pow(h, 2)))
 
-        rect = {
-          width: d * 2,
-          height: d * 2
+        this.rect = {
+          width: this.d * 2,
+          height: this.d * 2
         }
 
       },
@@ -75,8 +76,9 @@
       enter(e) {
         if (this.maskType === 'default') return false
 
-        rect['left'] = -(Math.abs(d - e.offsetX))
-        rect['top'] = -(Math.abs(d - e.offsetY))
+        this.rect['left'] = -(Math.abs(this.d - e.offsetX))
+        this.rect['top'] = -(Math.abs(this.d - e.offsetY))
+
         this.style = {
           left: e.offsetX,
           top: e.offsetY,
@@ -86,7 +88,7 @@
         // Last position offset problem
         setTimeout(() => {
           this.style = {
-            ...rect,
+            ...this.rect,
             transition: 'all .2s linear'
           }
         }, 14)
@@ -100,7 +102,7 @@
 
     mounted() {
       if (this.maskType !== 'default') {
-        this.calc(this.$refs.button)
+        this.$nextTick(this.calc(this.$refs.button))
       }
     }
   }
