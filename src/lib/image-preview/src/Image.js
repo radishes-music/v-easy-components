@@ -3,13 +3,14 @@ import _Vue from 'vue'
 
 const imageDirective = {}
 
-const ImageBoxInstance = new (_Vue.extend(ImageBox))({el: document.createElement('div'), src: [], visible: false})
+const ImageBoxInstance = new (_Vue.extend(ImageBox))({el: document.createElement('div')})
 
 let Nodes = {}
 
 let NodeID = 0
 
 let ImageBoxParents = []
+let handlerIndicator = new WeakMap()
 
 function handlerControl(src, instance, index) {
 
@@ -55,8 +56,6 @@ function targetParent(el, binding, _NodeID) {
     Nodes[el._NodeID] = nodes
     ImageBoxParent = new (_Vue.extend(ImageBox))({
       el: document.createElement('div'),
-      src: [],
-      visible: false
     })
     ImageBoxParent['_NodeID'] = el._NodeID
     ImageBoxParents.push(ImageBoxParent)
@@ -72,9 +71,13 @@ function targetParent(el, binding, _NodeID) {
     }
   })
 
+
+
   nodes.forEach((item, index) => {
-    item.removeEventListener('click', handlerControl)
-    item.addEventListener('click', handlerControl.bind(null, src, ImageBoxParent, index))
+    item.removeEventListener('click', handlerIndicator.get(item))
+    handlerIndicator.has(item) && handlerIndicator.delete(item) // Delete the destroyed listener handler
+    handlerIndicator.set(item, handlerControl.bind(null, src, ImageBoxParent, index))
+    item.addEventListener('click', handlerIndicator.get(item))
   })
 
 }

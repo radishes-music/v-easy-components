@@ -51,7 +51,7 @@
   }
 </script>
 
-<style scoped>
+<style scoped lang="less">
   * {margin: 0;padding: 0;box-sizing: border-box}
   .app {
     padding: 40px;
