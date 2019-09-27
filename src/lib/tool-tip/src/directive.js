@@ -117,7 +117,7 @@ tipDirective.install = Vue => {
 
     update: function (el, binding) {
       if (!_isEqual(binding.value, binding.oldValue)) {
-        if (el.tip.isConnected) {
+        if (el.tip && el.tip.isConnected) {
           document.body.removeChild(el.tip);
           el.removeEventListener('mouseenter', enter, false);
           el.removeEventListener('mouseleave', leave, false);
