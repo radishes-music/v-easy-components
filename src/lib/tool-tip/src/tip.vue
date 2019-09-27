@@ -2,7 +2,7 @@
   <transition :name="transition">
     <div :class="['tip', 've-tip-'+placement, Class]" v-show="domVisible" @mouseenter="enter" @mouseleave="leave">
       <p v-if="content" ref="_tip_content__">{{ content }}</p>
-      <slot></slot>
+      <render-node v-else></render-node>
     </div>
   </transition>
 </template>
@@ -19,8 +19,15 @@
         hover: false,
         hideAfter: 200,
         transition: 'fade',
-        enterable: false,
+        enterable: true,
       };
+    },
+    components: {
+      renderNode: {
+        render (h) {
+          return this.$parent.VNode()
+        }
+      }
     },
     methods: {
       enter() {

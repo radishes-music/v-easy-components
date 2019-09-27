@@ -21,6 +21,8 @@
     <ve-button mask="true" mask-type="success">circle</ve-button>
     <ve-button mask="true" mask-type="warning">circle</ve-button>
     <ve-button mask="true" mask-type="error">circle</ve-button>
+    <div class="box" v-tip="{placement: 'top', VNode: render}">Target</div>
+    <div class="box" v-tip="{placement: 'top', content: 'Hello'}">Target</div>
   </div>
 </template>
 
@@ -44,7 +46,19 @@
     methods: {
       ch() {
         this.c = [1,3,1,1]
-      }
+      },
+      render() {
+        const h = this.$createElement;
+        return h('div', null, [
+          h('ve-button', {
+            on: {
+              click: () => {
+                this.$msg({type: 'success', message: 'Hello VEasy'})
+              }
+            }
+          }, ['submit'])
+        ])
+      },
     },
     mounted() {
     }
@@ -62,6 +76,10 @@
     height: 560px;
     border: 1px solid;
     overflow: hidden;
+  }
+  .box {
+    margin-top: 10px;
+    text-align: center;
   }
   img {
     width: 50px;

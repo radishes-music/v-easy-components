@@ -83,24 +83,11 @@ tipDirective.install = Vue => {
       const tip = new tipDom({
         el: document.createElement('div'),
         data,
-        beforeCreate() {
-          let vNode
-          if (typeof value['vNode'] === 'function') {
-            vNode = value['vNode']()
-            if (!Object.prototype.hasOwnProperty.call(vNode, 'componentOptions')) {
-              throw value['vNode'].name + ' Function return value is not a VNode type'
-            } else {
-              this.$slots.default = vNode;
-            }
-          }
-        }
       });
       tip._uuid_tip_ = index;
       el.instance = tip;
       el.tip = tip.$el;
       el.tipStyle = {};
-
-
 
     }
 
