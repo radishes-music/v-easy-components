@@ -1,7 +1,6 @@
 const path = require('path')
 const webpack = require('webpack')
 const { VueLoaderPlugin } = require('vue-loader')
-const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 const ProgressBarPlugin = require('progress-bar-webpack-plugin')
 
 const config = require('./config');
@@ -42,36 +41,15 @@ module.exports = {
       },
       {test: /\.ts$/, exclude: /(node_modules)/, use: 'ts-loader'},
       {
-        test: /\.css$/,
-        use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
-          },
-          'css-loader'
-        ]
-      },
-      {
         test: /\.js$/,
         loader: 'babel-loader',
         include: [resolve('src')]
-      },
-      {
-        test: /\.less$/,
-        use: [
-          MiniCssExtractPlugin.loader,
-          'css-loader',
-          'less-loader'
-        ]
       },
     ]
   },
   plugins: [
     new ProgressBarPlugin(),
     new VueLoaderPlugin(),
-    new MiniCssExtractPlugin({
-      filename: 'index.css',
-      chunkFilename: '[id].css',
-    }),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('production')
     }),

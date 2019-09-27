@@ -7,12 +7,12 @@
     <ul ref="box" :class="disabled
                               ? 'disabled'
                               : ''">
-      <li v-for="(val, index) in maxs" :key="index">
+      <li v-for="(val, index) in maxLength" :key="index">
         <input type="text"
                :value="result[index]"
                :readonly="readonly"
                :class="errorClass[index]"
-               :maxlength="maxs[index]"
+               :maxlength="maxLength[index]"
                :disabled="disabled"
                v-bind="$attrs"
                @keydown="handleKeyDown(index, $event)"
@@ -21,7 +21,7 @@
                @input="handleInput(index, $event)"
                @blur="handleBlur(index, $event)"
         >
-        <span v-if="index !== (maxs.length - 1)">{{ spliceChar }}</span>
+        <span v-if="index !== (maxLength.length - 1)">{{ spliceChar }}</span>
       </li>
     </ul>
     <transition name="v-easy-error">
@@ -32,7 +32,6 @@
 
 <script>
   import {t} from '../../../local/index'
-  import {_initArray} from '../../../utils/ArrayExtend'
   import merge from '../../../mixins/merge'
 
   export default {
@@ -41,11 +40,6 @@
     },
     name: 'VeSubnet',
     mixins: [merge],
-    data() {
-      return {
-        maxs: _initArray(4, '3'),
-      }
-    },
 
     watch: {
       result(val) {
@@ -63,16 +57,6 @@
       }
     },
 
-    props: {
-      maxWidth: {type: String},
-      width: [String],
-      disabled: {type: [Boolean, String], default: false},
-      spliceChar: {type: String, default: '.'},
-      message: {type: String},
-      readonly: {type: [Boolean, String], default: false},
-      value: [String, Array],
-    },
-
     computed: {
       msg() {
         return this.message || t('subnet.err')
@@ -87,8 +71,8 @@
         let first = this.result[index - 1] !== '255';
         if (index === 0) first = false;
         if (first) {
-          for (let i = index; i < this.maxs.length; i++) {
-            this.maxs[i] = '1'
+          for (let i = index; i < this.maxLength.length; i++) {
+            this.maxLength[i] = '1'
           }
           if (this.result[index] !== '0') {
             this.errorClass[index] = 'red';
@@ -98,8 +82,8 @@
             this.errorClass[index] = 'none'
           }
         } else {
-          for (let i = index; i < this.maxs.length; i++) {
-            this.maxs[i] = '3'
+          for (let i = index; i < this.maxLength.length; i++) {
+            this.maxLength[i] = '3'
           }
           let regexp = /^(255|254|252|248|240|224|192|128|0)$/;
           if (!regexp.test(this.result[index]) && this.result[index].length === 3) {
@@ -110,11 +94,11 @@
             this.errorClass[index] = 'none';
           }
         }
-        if (!this.conformity && index !== 3 && this.result[index] && this.result[index].length >= this.maxs[index]) {
+        if (!this.conformity && index !== 3 && this.result[index] && this.result[index].length >= this.maxLength[index]) {
           this.$refs.box.getElementsByTagName('input')[index + 1].focus();
         }
         if (Number($event.target.value) === 0) {
-          this.maxs[index] = '1';
+          this.maxLength[index] = '1';
         }
 
         this.$emit('input', {$event, index});

@@ -1,9 +1,11 @@
 {
   "button": "./src/lib/button/index.js",
-  "input": "./src/lib/input/index.js",
-  "subnet": "./src/lib/subnet/index.js",
-  "plainInput": "./src/lib/plainInput/index.js",
+  "input-ip": "./src/lib/input-ip/index.js",
+  "input-subnet": "./src/lib/input-subnet/index.js",
+  "input-plain": "./src/lib/input-plain/index.js",
   "switch": "./src/lib/switch/index.js",
   "message": "./src/lib/message/index.js",
-  "tooltip": "./src/lib/tooltip/index.js"
+  "tool-tip": "./src/lib/tool-tip/index.js",
+  "loading-dom": "./src/lib/loading-dom/index.js",
+  "image-preview": "./src/lib/image-preview/index.js"
 }
