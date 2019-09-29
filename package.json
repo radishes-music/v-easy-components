@@ -1,7 +1,7 @@
 {
   "name": "v-easy-components",
   "description": "Vue.js UI Components",
-  "version": "0.5.14",
+  "version": "0.5.15",
   "main": "bin/v-easy-component.common.js",
   "files": [
     "bin",
@@ -30,7 +30,7 @@
     "build:main": "webpack --config config/webpack-build-config.js",
     "build:cm": "webpack --config config/webpack-build-components.js",
     "build:common": "webpack --config config/webpack-build-common.js",
-    "build:theme": "rimraf src/theme-chalk/lib && gulp build --gulpfile src/theme-chalk/gulpfile.js && cp-cli src/theme-chalk/lib v-easy-components/bin/theme-chalk && rimraf v-easy-components/theme-chalk/lib",
+    "build:theme": "rimraf src/theme-chalk/lib && gulp build --gulpfile src/theme-chalk/gulpfile.js && rimraf src/theme-chalk/lib/_font.css && cp-cli src/theme-chalk/lib v-easy-components/bin/theme-chalk && rimraf v-easy-components/theme-chalk/lib",
     "test": "",
     "clean": "rimraf v-easy-components"
   },
