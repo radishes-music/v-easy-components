@@ -19,7 +19,8 @@ module.exports = {
     publicPath: './',
     filename: 'v-easy-component.common.js',
     chunkFilename: '[id].js',
-    libraryTarget: 'commonjs2'
+    libraryTarget: 'commonjs2',
+    library: 'v-easy-components'
   },
   externals: config.externals,
   module: {

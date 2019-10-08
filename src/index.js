@@ -7,7 +7,7 @@ import VESwitch from './lib/switch/index'
 import locale from './local/index'
 import vTip from './lib/tool-tip/index'
 import loadingDom from './lib/loading-dom/index'
-import imageRead from './lib/image-preview/index'
+import imagePreview from './lib/image-preview/index'
 import Package from '../package'
 
 const components = [
@@ -29,7 +29,7 @@ const install = function (Vue, opts = {}) {
 
   Vue.use(vTip.directive);
   Vue.use(loadingDom.directive);
-  Vue.use(imageRead.Image);
+  Vue.use(imagePreview.Image);
 
   Vue.prototype.$msg = Message;
 
@@ -51,5 +51,6 @@ export default {
   VEPlainInput,
   VESwitch,
   loadingDom,
-  imageRead
+  imagePreview,
+  vTip
 }
