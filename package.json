@@ -1,7 +1,7 @@
 {
   "name": "v-easy-components",
   "description": "Vue.js UI Components",
-  "version": "0.5.15",
+  "version": "0.5.16",
   "main": "bin/v-easy-component.common.js",
   "files": [
     "bin",

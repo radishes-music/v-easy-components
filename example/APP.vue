@@ -1,5 +1,7 @@
 <template>
   <div class="app">
+    <ve-button type="success">aaaa</ve-button>
+    <ve-button>aaaa</ve-button>
     <ve-button v-image :data-preview-src="require('./assets/1.JPG')" type="text">点击预览图片</ve-button>
     <ve-button @click="f = !f">移除第一个image</ve-button>
     <img v-image v-if="f" src="./assets/1.JPG" alt="">

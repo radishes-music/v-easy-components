@@ -12,7 +12,7 @@
           @mouseenter="enter"
           @click="handleClick"
           :type="nativeType">
-    <i :class="['fa', 'fa-' + icon, { 'is-rotate': rotate }]" v-if="icon"></i>
+    <i :class="['fa', 'fa-' + icon, {'button-icon-normal': $slots.default}, { 'is-rotate': rotate }]" v-if="icon"></i>
     <span v-if="$slots.default" class="button-text button-mask-text">
       <slot></slot>
     </span>
