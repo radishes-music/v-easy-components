@@ -1,10 +1,12 @@
 <template>
   <div class="app">
     <ve-button type="success">aaaa</ve-button>
-    <ve-button>aaaa</ve-button>
+    <ve-button v-tip="{placement: 'left', content: 'hello'}">aaaa</ve-button>
+    <ve-button v-tip="{placement: 'right', content: 'hello'}">aaaa</ve-button>
+    <ve-button v-tip="{placement: 'bottom', content: 'hello'}">aaaa</ve-button>
     <ve-button v-image :data-preview-src="require('./assets/1.JPG')" type="text">点击预览图片</ve-button>
     <ve-button @click="f = !f">移除第一个image</ve-button>
-    <img v-image v-if="f" src="./assets/1.JPG" alt="">
+    <img v-image v-tip="'hello'" v-if="f" src="./assets/1.JPG" alt="">
     <img v-image :data-preview-src="img[0]" src="./assets/1-min.png" alt="">
     <ve-button @click="img.push(require('./assets/3-max.png'))">动态添加一个img</ve-button>
     <div v-image>
