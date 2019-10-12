@@ -1,4 +1,4 @@
-import vEasy from '@/index.js'
+import vEasy from '@/index'
 import '@/theme-chalk/src/index.less'
 import Vue from 'vue'
 import APP from './APP.vue'
