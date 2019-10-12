@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Tip from './tip.vue'
-import {addClass, getStyle} from '../../../utils/dom'
-import {_isEqual} from '../../../utils/ArrayExtend'
+import {addClass, getStyle} from '@/utils/dom'
+import {_isEqual} from '@/utils/ArrayExtend'
 
 const tipDom = Vue.extend(Tip);
 

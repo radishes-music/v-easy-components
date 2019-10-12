@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import loading from './loading.vue'
-import {addClass, removeClass, setStyle, getStyle} from '../../../utils/dom'
+import {addClass, removeClass, setStyle, getStyle} from '@/utils/dom'
 
 const loadingDom = Vue.extend(loading);
 
