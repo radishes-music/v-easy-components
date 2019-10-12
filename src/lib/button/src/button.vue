@@ -7,13 +7,13 @@
           'button-is-mask': mask,
           ['button-is-mask-' + maskType]: mask
         }]"
-          ref="button"
+          ref="ButtonBox"
           @mouseleave="leave"
           @mouseenter="enter"
           @click="handleClick"
           :type="nativeType">
     <i :class="['fa', 'fa-' + icon, {'button-icon-normal': $slots.default}, { 'is-rotate': rotate }]" v-if="icon"></i>
-    <span v-if="$slots.default" class="button-text button-mask-text">
+    <span v-if="$slots.default" :class="['button-text', {'button-mask-text': mask}]">
       <slot></slot>
     </span>
     <span class="button-mask" :class="'button-mask-' + maskType" v-if="mask" :style="style"></span>
@@ -28,7 +28,7 @@
     data() {
       return {
         style: {},
-        rect: {},
+        maskPosition: {},
         d: 0
       }
     },
@@ -36,7 +36,7 @@
     props: {
       type: {type: String, default: 'default'},
       nativeType: {type: String, default: 'button'},
-      maskType: {type: String, default: 'primary'},
+      maskType: {type: String, default: 'default'},
       size: String,
       icon: {type: String},
       disabled: Boolean,
@@ -53,14 +53,15 @@
     },
 
     methods: {
-      calc(parent) {
+      calc() {
+        const parent = this.$refs.ButtonBox;
         const w = parent.offsetHeight,
           h = parent.offsetWidth;
         this.d = Math.floor(Math.sqrt(Math.pow(w, 2) + Math.pow(h, 2)))
 
-        this.rect = {
-          width: this.d * 2,
-          height: this.d * 2
+        this.maskPosition = {
+          width: this.d * 2 + 'px',
+          height: this.d * 2 + 'px'
         }
 
       },
@@ -68,27 +69,27 @@
         if (this.maskType === 'default') return false
 
         this.style = {
-          left: e.offsetX,
-          top: e.offsetY,
+          left: e.offsetX + 'px',
+          top: e.offsetY + 'px',
           transition: 'all .2s linear'
         }
       },
       enter(e) {
-        if (this.maskType === 'default') return false
+        if (this.maskType === 'default') return false;
 
-        this.rect['left'] = -(Math.abs(this.d - e.offsetX))
-        this.rect['top'] = -(Math.abs(this.d - e.offsetY))
+        this.maskPosition.left = -(Math.abs(this.d - e.offsetX)) + 'px';
+        this.maskPosition.top = -(Math.abs(this.d - e.offsetY)) + 'px';
 
         this.style = {
-          left: e.offsetX,
-          top: e.offsetY,
+          left: e.offsetX + 'px',
+          top: e.offsetY + 'px',
           transition: ''
-        }
+        };
 
         // Last position offset problem
         setTimeout(() => {
           this.style = {
-            ...this.rect,
+            ...this.maskPosition,
             transition: 'all .2s linear'
           }
         }, 14)
@@ -102,7 +103,7 @@
 
     mounted() {
       if (this.maskType !== 'default') {
-        this.$nextTick(this.calc(this.$refs.button))
+        this.$nextTick(this.calc)
       }
     }
   }
