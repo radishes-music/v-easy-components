@@ -1,7 +1,7 @@
 <template>
   <div class="app">
     <ve-button type="success">aaaa</ve-button>
-    <ve-button v-tip="{placement: 'left', content: 'hello'}">aaaa</ve-button>
+    <ve-button v-tip="{placement: 'left', html: '<h1>hello</h1>'}">aaaa</ve-button>
     <ve-button v-tip="{placement: 'right', content: 'hello'}">aaaa</ve-button>
     <ve-button v-tip="{placement: 'bottom', content: 'hello'}">aaaa</ve-button>
     <ve-button v-image :data-preview-src="require('./assets/1.JPG')" type="text">点击预览图片</ve-button>
