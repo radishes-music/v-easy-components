@@ -1,8 +1,8 @@
 {
   "name": "v-easy-components",
   "description": "Vue.js UI Components",
-  "version": "0.5.17",
-  "main": "bin/v-easy-component.common.js",
+  "version": "0.5.20",
+  "main": "bin/v-easy-components.common.js",
   "files": [
     "bin",
     "style",
@@ -10,7 +10,8 @@
     "local",
     "utils",
     "mixins",
-    "types"
+    "types",
+    "packages"
   ],
   "keywords": [
     "Message",

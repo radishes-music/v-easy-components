@@ -14,7 +14,7 @@ const webpackConfig = {
   mode: 'production',
   externals: config.externals,
   output: {
-    path: resolve('/v-easy-components/bin'),
+    path: resolve('v-easy-components/bin'),
     publicPath: './',
     filename: '[name].js',
     libraryTarget: 'commonjs2',
@@ -60,7 +60,7 @@ const webpackConfig = {
       },
       {
         test: /\.js$/,
-        include: resolve('/src'),
+        include: [resolve('src'), resolve('packages')],
         loader: 'babel-loader'
       }
     ]

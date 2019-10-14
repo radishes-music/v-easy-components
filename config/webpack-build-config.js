@@ -63,7 +63,7 @@ module.exports = {
         }
       },
       {test: /\.ts$/, exclude: /(node_modules)/, use: 'ts-loader'},
-      {test: /\.js$/, loader: 'babel-loader', include: [resolve('src')]}
+      {test: /\.js$/, loader: 'babel-loader', include: [resolve('src'), resolve('packages')]}
     ]
   },
   plugins: [
