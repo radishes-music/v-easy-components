@@ -16,7 +16,7 @@ module.exports = {
   output: {
     path: resolve('/v-easy-components/bin'),
     publicPath: './',
-    filename: 'v-easy-component.common.js',
+    filename: 'v-easy-components.common.js',
     libraryTarget: 'commonjs2',
     library: 'v-easy-components'
   },
@@ -47,7 +47,7 @@ module.exports = {
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        include: [resolve('src')]
+        include: [resolve('src'), resolve('packages')]
       },
     ]
   },
