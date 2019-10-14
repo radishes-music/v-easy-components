@@ -3,6 +3,7 @@ const ProgressBarPlugin = require('progress-bar-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
 const CopyPlugin = require('copy-webpack-plugin')
 const {VueLoaderPlugin} = require('vue-loader')
+const config = require('./config')
 
 const resolve = (src) => path.resolve(__dirname, '../', src)
 
@@ -15,19 +16,14 @@ module.exports = {
     path: resolve('v-easy-components/bin'),
     publicPath: './',
     filename: 'index.js',
-    chunkFilename: '[id].js',
     libraryTarget: 'umd',
     library: 'VEASY',
     umdNamedDefine: true
   },
-  stats: {
-    modules: false,
-    children: false,
-    chunks: false,
-    chunkModules: false
-  },
+  stats: 'errors-only',
   resolve: {
-    extensions: ['.js', '.vue', '.json']
+    extensions: config.extensions,
+    alias: config.alias,
   },
   devtool: 'source',
   externals: {
@@ -75,6 +71,7 @@ module.exports = {
     new VueLoaderPlugin(),
     new CopyPlugin([
       {from: resolve('src/'), to: resolve('v-easy-components/'), toType: 'dir'},
+      {from: resolve('packages/'), to: resolve('v-easy-components/packages/'), toType: 'dir'},
       {from: resolve('README.md'), to: resolve('v-easy-components/README.md'), toType: 'file', force: true,},
       {from: resolve('package.json'), to: resolve('v-easy-components/package.json'), toType: 'file', force: true,},
     ]),

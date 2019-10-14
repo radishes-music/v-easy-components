@@ -2,7 +2,6 @@ const path = require('path')
 const webpack = require('webpack')
 const { VueLoaderPlugin } = require('vue-loader')
 const ProgressBarPlugin = require('progress-bar-webpack-plugin')
-
 const config = require('./config');
 
 const resolve = (dir) => {
@@ -18,9 +17,14 @@ module.exports = {
     path: resolve('/v-easy-components/bin'),
     publicPath: './',
     filename: 'v-easy-component.common.js',
-    chunkFilename: '[id].js',
-    libraryTarget: 'commonjs2'
+    libraryTarget: 'commonjs2',
+    library: 'v-easy-components'
   },
+  resolve: {
+    extensions: config.extensions,
+    alias: config.alias
+  },
+  stats: 'errors-only',
   externals: config.externals,
   module: {
     rules: [

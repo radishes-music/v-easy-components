@@ -1,8 +1,9 @@
 const path =  require('path')
-const config = require('./index')
+const configDev = require('./dev-server-config')
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { VueLoaderPlugin } = require('vue-loader')
+const config = require('./config')
 
 const HOST = process.env.HOST;
 const PORT = process.env.PORT && Number(process.env.PORT);
@@ -22,26 +23,13 @@ module.exports = {
   },
   devServer: {
     quiet: true,
-    host: HOST || config.dev.host,
-    port: PORT || config.dev.port,
+    host: HOST || configDev.dev.host,
+    port: PORT || configDev.dev.port,
     clientLogLevel: 'none',
   },
-  stats: {
-    modules: false,
-    children: false,
-    chunks: false,
-    chunkModules: false
-  },
   resolve: {
-    extensions: ['.js', '.vue', '.json'],
-    alias: {
-      // 'v-easy-components': resolve('src/index.js'),
-    }
-  },
-  optimization: {
-    splitChunks: {
-      chunks: 'all'
-    }
+    extensions: config.extensions,
+    alias: config.alias,
   },
   module: {
     rules: [
@@ -93,7 +81,7 @@ module.exports = {
     new FriendlyErrorsWebpackPlugin({
       compilationSuccessInfo: {
         messages: [
-          `Your application is running here: ${config.dev.https ? 'https' : 'http'}://${config.dev.host}:${config.dev.port}`
+          `Your application is running here: ${configDev.dev.https ? 'https' : 'http'}://${configDev.dev.host}:${configDev.dev.port}`
         ],
       },
       clearConsole: true,

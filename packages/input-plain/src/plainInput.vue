@@ -22,8 +22,8 @@
 </template>
 
 <script>
-  import {t} from '../../../local/index'
-  import {contain} from '../../../utils/ArrayExtend'
+  import {t} from '@/local/index'
+  import {contain} from '@/utils/ArrayExtend'
 
   export default {
     model: {

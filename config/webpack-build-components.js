@@ -13,19 +13,17 @@ const webpackConfig = {
   entry: Components,
   mode: 'production',
   externals: config.externals,
-  resolve: {
-    extensions: ['.js', '.vue', '.json']
-  },
   output: {
     path: resolve('/v-easy-components/bin'),
     publicPath: './',
     filename: '[name].js',
-    chunkFilename: '[id].js',
     libraryTarget: 'commonjs2',
   },
-  optimization: {
-    minimize: false
+  resolve: {
+    extensions: config.extensions,
+    alias: config.alias,
   },
+  stats: 'errors-only',
   module: {
     rules: [
       {

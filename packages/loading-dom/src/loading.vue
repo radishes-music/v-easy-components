@@ -9,7 +9,7 @@
 </template>
 
 <script>
-  import { _initArray } from '../../../utils/ArrayExtend'
+  import { _initArray } from '@/utils/ArrayExtend'
 
   const char = '—';
   const map = [2, 0, 2, 0, 2, 0, 1, 0, 2, 0, 5, 0, 5, 0, 2, 0, 1, 0, 3, 0,

@@ -31,8 +31,8 @@
 </template>
 
 <script>
-  import {t} from '../../../local/index'
-  import merge from '../../../mixins/merge'
+  import {t} from '@/local/index'
+  import merge from '@/mixins/merge'
 
   export default {
     model: {

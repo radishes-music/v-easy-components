@@ -27,9 +27,9 @@
 </template>
 
 <script>
-  import {t} from '../../../local/index'
-  import { _initArray } from '../../../utils/ArrayExtend'
-  import merge from '../../../mixins/merge'
+  import {t} from '@/local/index'
+  import { _initArray } from '@/utils/ArrayExtend'
+  import merge from '@/mixins/merge'
 
   export default {
     model: {

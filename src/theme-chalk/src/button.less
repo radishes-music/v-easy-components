@@ -1,3 +1,4 @@
+@import "./_font";
 @import "./mixins/_color.less";
 
 @keyframes rotate {
@@ -19,19 +20,20 @@ button.v-easy-button {
   box-sizing: border-box;
   outline: 0;
   margin: 0;
-  transition: .1s;
   font-weight: 500;
   padding: 12px 20px;
   font-size: 14px;
   border-radius: 4px;
   overflow: hidden;
-  i {
+  .button-icon-normal {
     margin-right: 10px;
   }
   .button-text {
     position: relative;
     z-index: 1;
-    transition: color .2s linear;
+  }
+  .button-mask-text {
+    transition: color .2s;
   }
   .button-mask {
     position: absolute;
@@ -138,7 +140,7 @@ button.button.easy-button-error:hover:not(.button-is-disabled):not(.button-is-ma
   border-color: #f78989;
 }
 
-button.button:not(.button-is-disabled):not(.button-is-mask):focus, button.button:hover:not(.button-is-disabled):not(.button-is-mask) {
+button.button.easy-button-default:not(.button-is-disabled):not(.button-is-mask):not(.easy-button-text):focus, button.button.easy-button-default:hover:not(.button-is-disabled):not(.button-is-mask):not(.easy-button-text) {
   color: #409EFF;
   border-color: #c6e2ff;
   background-color: #ecf5ff;
@@ -169,6 +171,9 @@ button.easy-button-text {
   background-color: transparent;
   border: none;
   padding: 0;
+  .button-text {
+    transition: color .2s linear;
+  }
 }
 
 button.easy-button-primary {
