@@ -38,7 +38,7 @@ function handlerControl(src, instance, index) {
 
 function targetImage(el) {
   el.classList.add('image-read-parent')
-  const src = el.dataset.previewSrc || el.src
+  const src = el.dataset?.previewSrc || el.src
   el.addEventListener('click', handlerControl.bind(null, src, ImageBoxInstance))
 }
 
@@ -67,7 +67,7 @@ function targetParent(el, binding, _NodeID) {
     if (binding.value && typeof binding.value.rule === 'function') {
       src.push(binding.value.rule(item, index))
     } else {
-      src.push(item.dataset.previewSrc || item.src)
+      src.push(item.dataset?.previewSrc || item.src)
     }
   })
 
@@ -87,7 +87,7 @@ imageDirective.install = function (Vue) {
   Vue.directive('image', {
 
     bind: function (el, binding) {
-      if (el.tagName === 'IMG' || el.dataset.previewSrc) {
+      if (el.tagName === 'IMG' || el.dataset?.previewSrc) {
         targetImage(el)
       } else {
         targetParent(el, binding)

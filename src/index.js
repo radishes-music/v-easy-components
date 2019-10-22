@@ -7,7 +7,7 @@ import VESwitch from '@packages/switch/index'
 import vTip from '@packages/tool-tip/index'
 import loadingDom from '@packages/loading-dom/index'
 import imagePreview from '@packages/image-preview/index'
-import locale from '@/local/index'
+import locale from "@/local/index"
 import Package from '../package'
 
 const components = [

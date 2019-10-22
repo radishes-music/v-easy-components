@@ -1,12 +1,12 @@
-const path =  require('path')
+const path = require('path')
 const configDev = require('./dev-server-config')
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const { VueLoaderPlugin } = require('vue-loader')
+const {VueLoaderPlugin} = require('vue-loader')
 const config = require('./config')
 
-const HOST = process.env.HOST;
-const PORT = process.env.PORT && Number(process.env.PORT);
+const HOST = process.env.HOST
+const PORT = process.env.PORT && Number(process.env.PORT)
 
 const resolve = (src) => path.resolve(__dirname, '../', src)
 
@@ -15,8 +15,8 @@ module.exports = {
     index: './example/main.js'
   },
   output: {
-    filename: '[chunkhash].bundle.[name].js',
-    chunkFilename: '[name].bundle.js',
+    filename: '[name].js',
+    chunkFilename: '[name].chunk.js',
   },
   performance: {
     hints: false
@@ -27,6 +27,7 @@ module.exports = {
     port: PORT || configDev.dev.port,
     clientLogLevel: 'none',
   },
+  devtool: "",
   resolve: {
     extensions: config.extensions,
     alias: config.alias,
@@ -61,7 +62,7 @@ module.exports = {
         test: /\.less$/,
         use: [
           'style-loader',
-          { loader: 'css-loader', options: { importLoaders: 1 } },
+          {loader: 'css-loader', options: {importLoaders: 1}},
           'less-loader',
         ]
       },
@@ -69,7 +70,7 @@ module.exports = {
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        include: [resolve('src'), resolve('packages')]
+        include: [resolve('example'), resolve('src'), resolve('packages')]
       }
     ]
   },

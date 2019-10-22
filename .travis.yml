@@ -9,7 +9,6 @@ install:
 script:
 - npm run build
 before_deploy:
-- cd v-easy-components
 - pwd
 deploy:
   provider: npm
