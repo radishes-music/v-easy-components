@@ -2,7 +2,8 @@ const path = require('path')
 const configDev = require('./dev-server-config')
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const {VueLoaderPlugin} = require('vue-loader')
+const { VueLoaderPlugin } = require('vue-loader')
+const notifier = require('node-notifier')
 const config = require('./config')
 
 const HOST = process.env.HOST
@@ -26,6 +27,7 @@ module.exports = {
     host: HOST || configDev.dev.host,
     port: PORT || configDev.dev.port,
     clientLogLevel: 'none',
+    historyApiFallback: true,
   },
   devtool: "",
   resolve: {
@@ -84,6 +86,17 @@ module.exports = {
         messages: [
           `Your application is running here: ${configDev.dev.https ? 'https' : 'http'}://${configDev.dev.host}:${configDev.dev.port}`
         ],
+      },
+      onErrors: function (severity, errors) {
+        if (severity !== 'error') {
+          return
+        }
+        const error = errors[0]
+        notifier.notify({
+          title: "Webpack error",
+          message: severity + ': ' + error.name,
+          subtitle: error.file || ''
+        })
       },
       clearConsole: true,
     }),

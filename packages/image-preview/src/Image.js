@@ -13,7 +13,6 @@ let ImageBoxParents = []
 let handlerIndicator = new WeakMap()
 
 function handlerControl(src, instance, index) {
-
   if (Array.isArray(src)) {
     src.forEach(item => {
       if (!instance.src.includes(item)) {
@@ -45,7 +44,7 @@ function targetImage(el) {
 function targetParent(el, binding, _NodeID) {
 
   let ImageBoxParent
-  const targetNode = binding.value ? binding.value.el : 'img'
+  const targetNode = binding?.value?.el || 'img'
 
   const nodes = el.querySelectorAll(targetNode)
 
@@ -71,7 +70,7 @@ function targetParent(el, binding, _NodeID) {
     }
   })
 
-
+  console.log(ImageBoxParent)
 
   nodes.forEach((item, index) => {
     item.removeEventListener('click', handlerIndicator.get(item))
@@ -95,6 +94,7 @@ imageDirective.install = function (Vue) {
     },
 
     componentUpdated: function (el, binding) {
+      console.log(binding.oldValue, binding.value)
       if (el._NodeID) {
         targetParent(el, binding, el._NodeID)
       }
