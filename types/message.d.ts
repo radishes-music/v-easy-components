@@ -4,7 +4,7 @@ import Vue, {VNode} from 'vue'
 export type MessageType = 'success' | 'warning' | 'info' | 'error'
 
 /** Message Component */
-export declare class ElMessageComponent extends Vue {
+export declare class VeMessageComponent extends Vue {
   /** Close the Loading instance */
   close (): void
 }
@@ -15,7 +15,7 @@ export interface CloseEventHandler {
    *
    * @param instance The message component that is being closed
    */
-  (instance: ElMessageComponent): void
+  (instance: VeMessageComponent): void
 }
 
 /** Options used in Message */
@@ -53,34 +53,34 @@ export interface ElMessageOptions {
 
 export interface VeMessage {
   /** Show an info message */
-  (text: string): ElMessageComponent
+  (text: string): VeMessageComponent
 
   /** Show message */
-  (options: ElMessageOptions): ElMessageComponent
+  (options: ElMessageOptions): VeMessageComponent
 
   /** Show a success message */
-  success (text: string): ElMessageComponent
+  success (text: string): VeMessageComponent
 
   /** Show a success message with options */
-  success (options: ElMessageOptions): ElMessageComponent
+  success (options: ElMessageOptions): VeMessageComponent
 
   /** Show a warning message */
-  warning (text: string): ElMessageComponent
+  warning (text: string): VeMessageComponent
 
   /** Show a warning message with options */
-  warning (options: ElMessageOptions): ElMessageComponent
+  warning (options: ElMessageOptions): VeMessageComponent
 
   /** Show an info message */
-  info (text: string): ElMessageComponent
+  info (text: string): VeMessageComponent
 
   /** Show an info message with options */
-  info (options: ElMessageOptions): ElMessageComponent
+  info (options: ElMessageOptions): VeMessageComponent
 
   /** Show an error message */
-  error (text: string): ElMessageComponent
+  error (text: string): VeMessageComponent
 
   /** Show an error message with options */
-  error (options: ElMessageOptions): ElMessageComponent
+  error (options: ElMessageOptions): VeMessageComponent
 }
 
 declare module 'vue/types/vue' {
