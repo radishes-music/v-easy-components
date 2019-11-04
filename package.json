@@ -29,7 +29,14 @@
     "build:common": "webpack --config config/webpack-build-common.js",
     "build:theme": "rimraf src/theme-chalk/lib && gulp build --gulpfile src/theme-chalk/gulpfile.js && rimraf src/theme-chalk/lib/_font.css && cp-cli src/theme-chalk/lib bin/theme-chalk && rimraf bin/theme-chalk/lib",
     "test": "",
-    "clean": "rimraf bin"
+    "clean": "rimraf bin",
+    "test:commit": "validate-commit-msg"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run test:commit",
+      "pre-push": "echo none"
+    }
   },
   "style": "bin/index.css",
   "typings": "types/index.d.ts",
@@ -56,6 +63,7 @@
     "gulp-less": "^4.0.1",
     "gulp-postcss": "^8.0.0",
     "html-webpack-plugin": "^3.2.0",
+    "husky": "^3.0.9",
     "jest": "^24.9.0",
     "less": "^3.8.1",
     "less-loader": "^4.1.0",
@@ -71,6 +79,7 @@
     "ts-loader": "^6.0.3",
     "typescript": "^3.5.2",
     "url-loader": "^2.0.0",
+    "validate-commit-msg": "^2.14.0",
     "vue": "^2.6.10",
     "vue-i18n": "^8.7.0",
     "vue-loader": "^15.7.0",
