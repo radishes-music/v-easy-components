@@ -1,40 +1,30 @@
-+ 0.5.21 (2019.10.26)
-	+ 添加 `d.ts` 文件支持
-+ 0.5.20 (2019.10.15)
-	+ 压缩资源
-	+ `v-tip` 支持 `HTML` 渲染
-	+ 按钮样式更改
-+ 0.5.10 (2019.09.16)
-	+ 优化打包方式
-	+ 优化 `button` 按钮，添加 `mask` 动画
-	+ 优化 `$msg` 命令
-+ 0.4.0 (2019.07.20)
-    + v-easy-message更名为v-easy-components
-    + 添加 `v-loading-preload` 命令
-+ 0.3.5 (2019.06.23)
-    + v-easy-message更名为v-easy-ui，更新项目打包方式以及其它优化
-+ 0.2.41 (2019.02.16)
-    + 优化 `v-tip` 字体模糊问题
-+ 0.2.25 (2019.01.28)
-    + `ve-ip` 和 `ve-subnet` 发生错误不会自动对焦到下一位
-    + 新增v-tip信息框
-+ 0.1.48 (2019.01.17)
-    + 新增 `ve-plain-input` 触发接收类型，支持多种类型触发检测
-    + 支持多语言版本
-+ 0.1.18 (2018.10.5)
-    + `ve-ip` 和 `ve-subnet` 类似于windows输入框，可使用鼠标操作，小数点偏移
-+ 0.1.16 (2018.09.29)
-    + 修复 `ve-ip`、`ve-plain-input`、`ve-subnet` 绑定数据的问题
-+ 0.1.13 (2018.09.28)
-    + 新增 `ve-plain-input` 组件
-+ 0.1.12 (2018.09.27)
-    + 优化 `ve-ip` 和 `ve-subnet` 组件
-+ 0.0.8 (2018.09.27)
-    + 新增 `ve-subnet` 组件，优化样式代码
-+ 0.0.5 (2018.08.29)
-    + 新增 `ve-ip` 组件
-+ 0.0.4 (2018.08.25)
-    + 新增 `ve-button` 组件
-+ 0.0.1 (2018.08.23)
-    + 建立仓库，编写架构
-    + 支持使用 `this.$msg` 呼叫message信息
+## [0.5.21](https://github.com/Linkontoask/v-easy-components/compare/0.5.10...0.5.21) (2019-11-04)
+
+
+### Bug Fixes
+
+* push error ([43060db](https://github.com/Linkontoask/v-easy-components/commit/43060db205733c4feb5afad3044f1ec11368f2b5))
+
+
+### Features
+
+* commit check ([045a59a](https://github.com/Linkontoask/v-easy-components/commit/045a59a05fd02f97228be83589bb0d7b80217b62))
+
+
+
+## [0.5.10](https://github.com/Linkontoask/v-easy-components/compare/0.5.8...0.5.10) (2019-09-16)
+
+
+
+## [0.5.8](https://github.com/Linkontoask/v-easy-components/compare/0.5.7...0.5.8) (2019-09-07)
+
+
+
+## [0.5.6](https://github.com/Linkontoask/v-easy-components/compare/0.5.5...0.5.6) (2019-09-06)
+
+
+
+## 0.5.4 (2019-08-12)
+
+
+

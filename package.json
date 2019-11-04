@@ -30,7 +30,8 @@
     "build:theme": "rimraf src/theme-chalk/lib && gulp build --gulpfile src/theme-chalk/gulpfile.js && rimraf src/theme-chalk/lib/_font.css && cp-cli src/theme-chalk/lib bin/theme-chalk && rimraf bin/theme-chalk/lib",
     "test": "",
     "clean": "rimraf bin",
-    "test:commit": "validate-commit-msg"
+    "test:commit": "validate-commit-msg",
+    "change:log": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0"
   },
   "husky": {
     "hooks": {
@@ -52,6 +53,7 @@
     "acorn": "^6.3.0",
     "autoprefixer": "^9.6.1",
     "babel-loader": "^8.0.6",
+    "conventional-changelog-cli": "^2.0.25",
     "core-js": "3",
     "cp-cli": "^2.0.0",
     "cross-env": "^5.0.5",
@@ -67,7 +69,6 @@
     "jest": "^24.9.0",
     "less": "^3.8.1",
     "less-loader": "^4.1.0",
-    "node-notifier": "^5.4.0",
     "path": "^0.12.7",
     "postcss": "^5.2.18",
     "postcss-loader": "^3.0.0",
