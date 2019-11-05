@@ -14,7 +14,7 @@ const webpackConfig = {
   mode: 'production',
   externals: config.externals,
   output: {
-    path: resolve('v-easy-components/bin'),
+    path: resolve('bin'),
     publicPath: './',
     filename: '[name].js',
     libraryTarget: 'commonjs2',

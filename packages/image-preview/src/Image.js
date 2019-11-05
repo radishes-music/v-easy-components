@@ -13,7 +13,6 @@ let ImageBoxParents = []
 let handlerIndicator = new WeakMap()
 
 function handlerControl(src, instance, index) {
-
   if (Array.isArray(src)) {
     src.forEach(item => {
       if (!instance.src.includes(item)) {
@@ -38,14 +37,14 @@ function handlerControl(src, instance, index) {
 
 function targetImage(el) {
   el.classList.add('image-read-parent')
-  const src = el.dataset.previewSrc || el.src
+  const src = el.dataset?.previewSrc || el.src
   el.addEventListener('click', handlerControl.bind(null, src, ImageBoxInstance))
 }
 
 function targetParent(el, binding, _NodeID) {
 
   let ImageBoxParent
-  const targetNode = binding.value ? binding.value.el : 'img'
+  const targetNode = binding?.value?.el || 'img'
 
   const nodes = el.querySelectorAll(targetNode)
 
@@ -67,11 +66,11 @@ function targetParent(el, binding, _NodeID) {
     if (binding.value && typeof binding.value.rule === 'function') {
       src.push(binding.value.rule(item, index))
     } else {
-      src.push(item.dataset.previewSrc || item.src)
+      src.push(item.dataset?.previewSrc || item.src)
     }
   })
 
-
+  console.log(ImageBoxParent)
 
   nodes.forEach((item, index) => {
     item.removeEventListener('click', handlerIndicator.get(item))
@@ -87,7 +86,7 @@ imageDirective.install = function (Vue) {
   Vue.directive('image', {
 
     bind: function (el, binding) {
-      if (el.tagName === 'IMG' || el.dataset.previewSrc) {
+      if (el.tagName === 'IMG' || el.dataset?.previewSrc) {
         targetImage(el)
       } else {
         targetParent(el, binding)
@@ -95,6 +94,7 @@ imageDirective.install = function (Vue) {
     },
 
     componentUpdated: function (el, binding) {
+      console.log(binding.oldValue, binding.value)
       if (el._NodeID) {
         targetParent(el, binding, el._NodeID)
       }

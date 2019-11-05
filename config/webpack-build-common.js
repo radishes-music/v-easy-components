@@ -2,7 +2,8 @@ const path = require('path')
 const webpack = require('webpack')
 const { VueLoaderPlugin } = require('vue-loader')
 const ProgressBarPlugin = require('progress-bar-webpack-plugin')
-const config = require('./config');
+const TerserPlugin = require('terser-webpack-plugin')
+const config = require('./config')
 
 const resolve = (dir) => {
   return path.join(__dirname, '..', dir)
@@ -11,20 +12,35 @@ const resolve = (dir) => {
 module.exports = {
   mode: 'production',
   entry: {
-    index: ['./src/index.js']
+    'v-easy-components.common': './src/index.js',
+    'v-easy-components.common.min': './src/index.js'
   },
   output: {
-    path: resolve('/v-easy-components/bin'),
+    path: resolve('bin'),
     publicPath: './',
-    filename: 'v-easy-components.common.js',
+    filename: '[name].js',
     libraryTarget: 'commonjs2',
-    library: 'v-easy-components'
+    libraryExport: 'default',
+    library: 'VEASY'
   },
   resolve: {
     extensions: config.extensions,
     alias: config.alias
   },
   stats: 'errors-only',
+  optimization: {
+    minimize: true,
+    minimizer: [
+      new TerserPlugin({
+        include: /\.min\.js$/,
+        terserOptions: {
+          output: {
+            comments: false
+          }
+        }
+      }),
+    ],
+  },
   externals: config.externals,
   module: {
     rules: [
@@ -56,9 +72,6 @@ module.exports = {
     new VueLoaderPlugin(),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('production')
-    }),
-    new webpack.LoaderOptionsPlugin({
-      minimize: true
     })
   ]
 };

@@ -2,19 +2,20 @@
 
 [![Build Status](https://travis-ci.com/Linkontoask/v-easy-components.svg?token=DxCbMdsVpziN8id5YUJs&branch=master)](https://travis-ci.com/Linkontoask/v-easy-components)
 <a href="https://github.com/Linkontoask/v-easy"><img src="https://img.shields.io/badge/dev-v0.5.4-blue.svg" alt=""></a>
-<a href="https://github.com/Linkontoask/v-easy"><img src="https://img.shields.io/badge/size-44kb-green.svg" alt=""></a>
+<a href="https://github.com/Linkontoask/v-easy"><img src="https://img.shields.io/badge/size-48kb-green.svg" alt=""></a>
 <a href="https://github.com/Linkontoask/v-easy"><img src="https://img.shields.io/badge/vue-2.x-orange.svg" alt=""></a>
 <a href="https://github.com/Linkontoask/v-easy"><img src="https://img.shields.io/badge/license-MIT-red.svg" alt=""></a>
-
-### Demo
-[OnlineDemo](https://linkontoask.github.io/demo/v-easy/index.html)
 
 ### Document
 [Official website](https://linkorg.club)
 
 ### Install
 ```
-npm install v-easy-components -s
+npm install v-easy-components -D
+```
+or
+```
+yarn add v-easy-components -D
 ```
 
 ### Quick Start
@@ -36,10 +37,10 @@ Vue.use(Button);
 
 ### Use CDN
 ```html
-<!-- 引入样式 -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/v-easy-components/bin/theme-chalk/index.css">
 <!-- 引入组件库 -->
-<script src="https://cdn.jsdelivr.net/npm/v-easy-components"></script>
+<script src="https://unpkg.com/v-easy-components"></script>
+<!-- 引入样式 -->
+<link rel="stylesheet" href="https://unpkg.com/v-easy-components/bin/theme-chalk/index.css">
 ```
 
 ### use I18n

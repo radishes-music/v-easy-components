@@ -172,3 +172,8 @@ export function setStyle(element, styleName, value) {
         }
     }
 }
+
+/* Whether it exists in the DOM tree */
+export const isInPage = function isInPage(node) {
+  return (node === document.body) ? false : document.body.contains(node);
+}

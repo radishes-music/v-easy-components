@@ -1,21 +1,21 @@
 const path = require('path')
 const ProgressBarPlugin = require('progress-bar-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
-const CopyPlugin = require('copy-webpack-plugin')
 const {VueLoaderPlugin} = require('vue-loader')
 const config = require('./config')
 
 const resolve = (src) => path.resolve(__dirname, '../', src)
 
 module.exports = {
-  mode: 'production',
+  mode: 'none', // Support for compressed file packaging
   entry: {
-    index: ['./src/index.js']
+    'index': './src/index.js',
+    'index.min': './src/index.js'
   },
   output: {
-    path: resolve('v-easy-components/bin'),
+    path: resolve('bin'),
     publicPath: './',
-    filename: 'index.js',
+    filename: '[name].js',
     libraryTarget: 'umd',
     library: 'VEASY',
     umdNamedDefine: true
@@ -35,8 +35,10 @@ module.exports = {
     }
   },
   optimization: {
+    minimize: true,
     minimizer: [
       new TerserPlugin({
+        include: /\.min\.js$/,
         terserOptions: {
           output: {
             comments: false
@@ -68,12 +70,6 @@ module.exports = {
   },
   plugins: [
     new ProgressBarPlugin(),
-    new VueLoaderPlugin(),
-    new CopyPlugin([
-      {from: resolve('src/'), to: resolve('v-easy-components/'), toType: 'dir'},
-      {from: resolve('packages/'), to: resolve('v-easy-components/packages/'), toType: 'dir'},
-      {from: resolve('README.md'), to: resolve('v-easy-components/README.md'), toType: 'file', force: true,},
-      {from: resolve('package.json'), to: resolve('v-easy-components/package.json'), toType: 'file', force: true,},
-    ]),
+    new VueLoaderPlugin()
   ]
 }
