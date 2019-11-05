@@ -1,11 +1,29 @@
 import Vue from 'vue'
 import Tip from './tip.vue'
-import {addClass, getStyle} from '@/utils/dom'
+import {addClass, getStyle, isInPage} from '@/utils/dom'
 import {_isEqual} from '@/utils/ArrayExtend'
 
 const tipDom = Vue.extend(Tip);
-
 const tipDirective = {};
+const mutationCallback = (mutationsList) => {
+  for(let mutation of mutationsList) {
+    let type = mutation.type;
+    if (type === 'childList') {
+      mutation.removedNodes.forEach(item => {
+        if (item.tip && item.autoRemoveTip && isInPage(item.tip)) {
+          document.body.removeChild(item.tip)
+          if (item._observer) {
+            item._observer.disconnect();
+          }
+        }
+      })
+    }
+  }
+};
+// https://developer.mozilla.org/zh-CN/docs/Web/API/MutationObserverInit
+let config = {
+  childList: true,
+};
 let index = 233;
 
 tipDirective.install = Vue => {
@@ -85,10 +103,15 @@ tipDirective.install = Vue => {
         data,
       });
       tip._uuid_tip_ = index;
+      // Whether to automatically remove the tip
+      el.autoRemoveTip = typeof value.autoRemoveTip === 'undefined';
       el.instance = tip;
       el.tip = tip.$el;
       el.tipStyle = {};
 
+      // Monitor whether the target DOM still exists in the DOM tree
+      el._observer = new MutationObserver(mutationCallback);
+      el._observer.observe(el.parentElement, config);
     }
 
     binding.value && toggleTip(el, binding);
