@@ -6,7 +6,7 @@
 
 <script>
   export default {
-    name: "ip",
+    name: "test-ip",
     data() {
       return {
         c: []

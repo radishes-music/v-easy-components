@@ -1,30 +1,12 @@
 import Vue from 'vue'
 import Tip from './tip.vue'
-import {addClass, getStyle, isInPage} from '@/utils/dom'
+import {addClass, getStyle} from '@/utils/dom'
 import {_isEqual} from '@/utils/ArrayExtend'
 
 const tipDom = Vue.extend(Tip);
 const tipDirective = {};
-const mutationCallback = (mutationsList) => {
-  for(let mutation of mutationsList) {
-    let type = mutation.type;
-    if (type === 'childList') {
-      mutation.removedNodes.forEach(item => {
-        if (item.tip && item.autoRemoveTip && isInPage(item.tip)) {
-          document.body.removeChild(item.tip)
-          if (item._observer) {
-            item._observer.disconnect();
-          }
-        }
-      })
-    }
-  }
-};
-// https://developer.mozilla.org/zh-CN/docs/Web/API/MutationObserverInit
-let config = {
-  childList: true,
-};
-let index = 233;
+let index = 1;
+let tipInstance = [];
 
 tipDirective.install = Vue => {
   const toggleTip = (el, binding) => {
@@ -65,7 +47,7 @@ tipDirective.install = Vue => {
 
   };
 
-  const insertDom = (el, binding) => {
+  const insertDom = (el) => {
     if (getStyle(el, 'display') !== 'none' && getStyle(el, 'visibility') !== 'hidden') {
       Object.keys(el.tipStyle).forEach(property => {
         el.tip.style[property] = el.tipStyle[property] + 'px';
@@ -87,6 +69,7 @@ tipDirective.install = Vue => {
       el.instance.hover = true;
     } else {
       // First rendering
+      index += 1;
       el._uuid_tip_ = index;
       let value = binding.value;
 
@@ -104,14 +87,16 @@ tipDirective.install = Vue => {
       });
       tip._uuid_tip_ = index;
       // Whether to automatically remove the tip
-      el.autoRemoveTip = typeof value.autoRemoveTip === 'undefined';
+      el._autoRemoveTip = typeof value.autoRemoveTip === 'undefined';
       el.instance = tip;
       el.tip = tip.$el;
       el.tipStyle = {};
 
-      // Monitor whether the target DOM still exists in the DOM tree
-      el._observer = new MutationObserver(mutationCallback);
-      el._observer.observe(el.parentElement, config);
+      // Manage Tip Instances
+      tipInstance.push({
+        [index]: tip.$el
+      })
+
     }
 
     binding.value && toggleTip(el, binding);
@@ -151,7 +136,15 @@ tipDirective.install = Vue => {
       }
     },
 
-    unbind: function (el, binding) {
+    unbind: function (el) {
+      if (el._autoRemoveTip) {
+        const id = el._uuid_tip_
+        const tipIndex = tipInstance.findIndex(o => o[id])
+        if (tipIndex === 0 || tipIndex) {
+          const tip = tipInstance.splice(tipIndex, 1)[0][id]
+          document.body.removeChild(tip)
+        }
+      }
     }
   });
 };
