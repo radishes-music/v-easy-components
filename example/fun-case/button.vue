@@ -8,7 +8,7 @@
 
 <script>
   export default {
-    name: "button",
+    name: "test-button",
     data() {
       return {}
     },

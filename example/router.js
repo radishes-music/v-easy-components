@@ -13,47 +13,71 @@ Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/',
-    redirect: '/image-preview'
-  },
-  {
     path: '/image-preview',
     name: 'ImagePreview',
+    meta: {
+      formatter: 'v-image'
+    },
     component: ImagePreview
   },
   {
     path: '/button',
     name: 'Button',
+    meta: {
+      formatter: 've-button'
+    },
     component: Button
   },
   {
     path: '/input',
     name: 'Input',
+    meta: {
+      formatter: 've-input'
+    },
     component: Input
   },
   {
     path: '/ip',
     name: 'Ip',
+    meta: {
+      formatter: 've-ip'
+    },
     component: Ip
   },
   {
     path: '/loading-dom',
     name: 'LoadingDom',
+    meta: {
+      formatter: 'v-loading-preload'
+    },
     component: LoadingDom
   },
   {
     path: '/tool-tip',
     name: 'ToolTip',
+    meta: {
+      formatter: 'v-tip'
+    },
     component: ToolTip
   },
   {
     path: '/message',
     name: 'Message',
+    meta: {
+      formatter: '$msg'
+    },
     component: Message
   },
 ]
 
+export {
+  routes
+};
+
 export default new VueRouter({
   mode: 'history',
-  routes,
+  routes: [{
+    path: '/',
+    redirect: '/image-preview'
+  }].concat(routes),
 })

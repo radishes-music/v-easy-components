@@ -1,7 +1,7 @@
 {
   "name": "v-easy-components",
   "description": "Vue.js UI Components",
-  "version": "0.5.21-beta.0",
+  "version": "0.5.21-beta.1",
   "main": "bin/v-easy-components.common.min.js",
   "files": [
     "bin",
@@ -54,7 +54,6 @@
     "autoprefixer": "^9.6.1",
     "babel-loader": "^8.0.6",
     "conventional-changelog-cli": "^2.0.25",
-    "core-js": "3",
     "cp-cli": "^2.0.0",
     "cross-env": "^5.0.5",
     "css-loader": "^3.2.0",
@@ -95,7 +94,8 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.6.3",
-    "deepmerge": "^3.1.0"
+    "deepmerge": "^3.1.0",
+    "core-js": "3"
   },
   "peerDependencies": {
     "vue": "^2.6.10"

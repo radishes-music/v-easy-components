@@ -6,7 +6,7 @@
 
 <script>
   export default {
-    name: "input",
+    name: "test-input",
     data() {
       return {}
     },
