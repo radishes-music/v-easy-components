@@ -59,10 +59,16 @@ module.exports = {
           name: path.posix.join('static', '[name].[hash:7].[ext]')
         }
       },
-      {test: /\.ts$/, exclude: /(node_modules)/, use: 'ts-loader'},
+      {
+        test: /\.ts$/,
+        exclude: /(node_modules)/,
+        use: 'ts-loader'},
       {
         test: /\.js$/,
-        loader: 'babel-loader',
+        loader: [
+          'babel-loader',
+          'eslint-loader'
+        ],
         include: [resolve('src'), resolve('packages')]
       },
     ]

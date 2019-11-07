@@ -70,8 +70,6 @@ function targetParent(el, binding, _NodeID) {
     }
   })
 
-  console.log(ImageBoxParent)
-
   nodes.forEach((item, index) => {
     item.removeEventListener('click', handlerIndicator.get(item))
     handlerIndicator.has(item) && handlerIndicator.delete(item) // Delete the destroyed listener handler
@@ -94,7 +92,6 @@ imageDirective.install = function (Vue) {
     },
 
     componentUpdated: function (el, binding) {
-      console.log(binding.oldValue, binding.value)
       if (el._NodeID) {
         targetParent(el, binding, el._NodeID)
       }

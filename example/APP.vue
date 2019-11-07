@@ -34,7 +34,7 @@
 </script>
 
 <style scoped lang="less">
-  /deep/ * {margin: 0;padding: 0;box-sizing: border-box}
+  /deep/ * {box-sizing: border-box}
   .aside {
     ul {
       display: flex;

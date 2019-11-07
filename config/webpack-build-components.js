@@ -61,7 +61,10 @@ const webpackConfig = {
       {
         test: /\.js$/,
         include: [resolve('src'), resolve('packages')],
-        loader: 'babel-loader'
+        loader: [
+          'babel-loader',
+          'eslint-loader'
+        ]
       }
     ]
   },
