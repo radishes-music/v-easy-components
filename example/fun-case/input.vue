@@ -1,6 +1,6 @@
 <template>
   <div>
-
+    <ve-input></ve-input>
   </div>
 </template>
 
