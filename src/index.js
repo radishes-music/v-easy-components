@@ -46,6 +46,7 @@ export default {
   locale: locale.use,
   i18n: locale.i18n,
   install,
+  Message,
   Button,
   Ip,
   Subnet,
