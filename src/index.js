@@ -1,3 +1,4 @@
+import "@babel/polyfill"
 import Message from '@packages/message/index'
 import Button from '@packages/button/index'
 import Ip from '@packages/input-ip/index'

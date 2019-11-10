@@ -1,12 +1,12 @@
 import Vue from 'vue'
 import loading from './loading.vue'
-import {addClass, removeClass, setStyle, getStyle} from '@/utils/dom'
+import {addClass, removeClass} from '@/utils/dom'
 
 const loadingDom = Vue.extend(loading);
 
 const loadingDirective = {};
 
-const insertDom = (el, binding) => {
+const insertDom = (el) => {
 
   // const rect = el.getBoundingClientRect() || {};
   // const width = +el.getAttribute('data-loading-width') || rect.width || getStyle(el, 'width');
@@ -50,7 +50,7 @@ const removeLoadingDom = (el, visible) => {
 loadingDirective.install = Vue => {
 
   Vue.directive('loading-preload', {
-    bind: function (el, binding) {
+    bind: function (el) {
       addClass(el, 've-loading-parent--relative');
 
       insertDom(el)
@@ -60,8 +60,6 @@ loadingDirective.install = Vue => {
       removeLoadingDom(el, binding.value)
     },
 
-    unbind: function (el, binding) {
-    }
   });
 };
 

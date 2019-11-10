@@ -3,7 +3,7 @@ function throttle(fn, delay) {
   return function () {
     const now = Date.now()
     if (now - prev > delay) {
-      fn()
+      fn();
       prev = Date.now()
     }
   }

@@ -2,7 +2,7 @@ const path = require('path')
 const configDev = require('./dev-server-config')
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const { VueLoaderPlugin } = require('vue-loader')
+const {VueLoaderPlugin} = require('vue-loader')
 const notifier = require('node-notifier')
 const config = require('./config')
 
@@ -64,15 +64,31 @@ module.exports = {
         test: /\.less$/,
         use: [
           'style-loader',
-          {loader: 'css-loader', options: {importLoaders: 1}},
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 1
+            }
+          },
           'less-loader',
         ]
       },
-      {test: /\.ts$/, exclude: /(node_modules)/, use: 'ts-loader'},
+      {
+        test: /\.ts$/,
+        exclude: /(node_modules)/,
+        use: 'ts-loader'
+      },
       {
         test: /\.js$/,
-        loader: 'babel-loader',
-        include: [resolve('example'), resolve('src'), resolve('packages')]
+        loader: [
+          'babel-loader',
+          'eslint-loader'
+        ],
+        include: [
+          resolve('example'),
+          resolve('src'),
+          resolve('packages')
+        ]
       }
     ]
   },
