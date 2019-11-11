@@ -27,7 +27,7 @@
 </template>
 
 <script>
-  import {t} from '@/local/index'
+  import {t} from '@/locale/index'
   import { _initArray } from '@/utils/ArrayExtend'
   import merge from '@/mixins/merge'
 

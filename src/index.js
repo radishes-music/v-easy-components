@@ -7,11 +7,10 @@ import VESwitch from '@packages/switch/index'
 import vTip from '@packages/tool-tip/index'
 import loadingDom from '@packages/loading-dom/index'
 import imagePreview from '@packages/image-preview/index'
-import locale from "@/local/index"
+import locale from '@/locale/index'
 import Package from '../package'
 
 const components = [
-  Message,
   Button,
   Ip,
   Subnet,
@@ -45,6 +44,7 @@ export default {
   locale: locale.use,
   i18n: locale.i18n,
   install,
+  Message,
   Button,
   Ip,
   Subnet,
