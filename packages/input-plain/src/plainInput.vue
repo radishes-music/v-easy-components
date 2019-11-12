@@ -16,7 +16,7 @@
            @change="handleChange"
     >
     <transition name="v-easy-error">
-      <div class="error inspection" v-show="error" :style="errorOptions">{{ msg }}</div>
+      <div class="error inspection" v-if="error" :style="errorOptions">{{ msg }}</div>
     </transition>
   </div>
 </template>
