@@ -1,3 +1,4 @@
+import "@babel/polyfill"
 import vEasy from '@/index'
 import '@/theme-chalk/src/index.less'
 import Vue from 'vue'
