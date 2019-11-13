@@ -27,6 +27,7 @@ const insertDom = (el, binding) => {
   const data = {
     nodeNum,
     type,
+    domVisible: !binding.value,
     circleStyle: {
       width: d + 'px',
       height: d + 'px'
