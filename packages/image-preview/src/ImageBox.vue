@@ -39,10 +39,10 @@
         }
       },
       isDisabledNext () {
-        return this.current >= this.src.length - 1
+        return this.current < this.src.length - 1
       },
       isDisabledPrev () {
-        return this.current <= 0
+        return this.current > 0
       }
     },
     methods: {
