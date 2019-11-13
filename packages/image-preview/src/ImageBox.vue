@@ -1,7 +1,7 @@
 <template>
   <transition name="fade">
     <div v-show="visible" class="image-read-box" @click.stop="handlerClose">
-      <button class="prev" :disabled="isDisabledPrev" @click.stop="handlerPrev">
+      <button class="prev" v-show="isDisabledPrev" @click.stop="handlerPrev">
         <i class="fa fa-angle-left fa-4x" aria-hidden="true"></i>
       </button>
       <div class="box">
@@ -13,7 +13,7 @@
           </div>
         </ul>
       </div>
-      <button class="next" :disabled="isDisabledNext" @click.stop="handlerNext">
+      <button class="next" v-show="isDisabledNext" @click.stop="handlerNext">
         <i class="fa fa-angle-right fa-4x" aria-hidden="true"></i>
       </button>
     </div>
