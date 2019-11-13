@@ -72,12 +72,6 @@ loadingDirective.install = Vue => {
       removeLoadingDom(el, binding)
     },
 
-    unbind: function (el) {
-      if (el.$loading) {
-        el.removeChild(el.$loading)
-      }
-    }
-
   });
 };
 
