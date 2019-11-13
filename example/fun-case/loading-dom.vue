@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1 v-loading-preload.2="visible[0]">{{ title }}</h1>
-    <h1 v-loading-preload.a="visible[0]">{{ title }}</h1>
+    <!--<h1 v-loading-preload.a="visible[0]">{{ title }}</h1>-->
     <p v-loading-preload.68="visible[1]">{{ content }}</p>
     <div>
       <ve-button @click="retry">重新加载</ve-button>
@@ -16,7 +16,7 @@
       return {
         title: '',
         content: '',
-        visible: Array.from({length: 10}).fill(false),
+        visible: Array.from({length: 10}).fill(true),
       }
     },
     methods: {

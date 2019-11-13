@@ -27,6 +27,7 @@ const insertDom = (el, binding) => {
   const data = {
     nodeNum,
     type,
+    domVisible: !binding.value,
     circleStyle: {
       width: d + 'px',
       height: d + 'px'
@@ -71,12 +72,6 @@ loadingDirective.install = Vue => {
     componentUpdated: function (el, binding) {
       removeLoadingDom(el, binding)
     },
-
-    unbind: function (el) {
-      if (el.$loading) {
-        el.removeChild(el.$loading)
-      }
-    }
 
   });
 };
