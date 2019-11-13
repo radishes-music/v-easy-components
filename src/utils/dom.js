@@ -177,3 +177,34 @@ export function setStyle(element, styleName, value) {
 export const isInPage = function isInPage(node) {
   return (node === document.body) ? false : document.body.contains(node);
 }
+
+export const removeChildren = function removeChildren (node, option) {
+  let excludeCount = 0 // 排除的子节点
+  if (typeof option === 'object') {
+    if (option.exclude) {
+      excludeCount = 1
+    }
+    if (Array.isArray(option.exclude)) {
+      excludeCount = option.exclude.length
+      let index = 0
+      while (node.childNodes.length - excludeCount) {
+        const el = node.childNodes[index]
+        if (option.exclude.includes(el)) {
+          index++
+          continue
+        }
+        node.removeChild(el)
+      }
+      return true
+    }
+  }
+  let currentIndex = 0
+  while (node.childNodes.length - excludeCount) {
+    const el = node.childNodes[currentIndex]
+    if (option.exclude === el) {
+      currentIndex++
+      continue
+    }
+    node.removeChild(el)
+  }
+}

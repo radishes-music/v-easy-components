@@ -31,7 +31,7 @@
 </template>
 
 <script>
-  import {t} from '@/local/index'
+  import {t} from '@/locale/index'
   import merge from '@/mixins/merge'
 
   export default {

@@ -1,7 +1,11 @@
 <template>
   <div>
-    <h1 v-loading-preload="visible" data-loading-text="2">{{ title }}</h1>
-    <p v-loading-preload="visible1" data-loading-text="14">{{ content }}</p>
+    <h1 v-loading-preload.2="visible[0]">{{ title }}</h1>
+    <h1 v-loading-preload.a="visible[0]">{{ title }}</h1>
+    <p v-loading-preload.68="visible[1]">{{ content }}</p>
+    <div>
+      <ve-button @click="retry">重新加载</ve-button>
+    </div>
   </div>
 </template>
 
@@ -12,8 +16,7 @@
       return {
         title: '',
         content: '',
-        visible: false,
-        visible1: false
+        visible: Array.from({length: 10}).fill(false),
       }
     },
     methods: {
@@ -24,15 +27,23 @@
           }, ms)
         })
       },
-      async task() {
-        this.title = await this.promise(3200, 'Link');
-        this.visible = true;
-        this.content = await this.promise(12000, 'v-easy-conponents ui');
-        this.visible1 = true;
+      retry() {
+        this.task(0)
+      },
+      async task(index) {
+        this.visible = this.visible.map(() => false)
+        this.title = this.content = '';
+        this.title = await this.promise(1600, 'Little Red Riding Hood');
+        this.visible[index] = true;
+        this.content = await this.promise(500, 'Once upon a time there was a sweet little girl.' +
+          ' Everyone who saw her liked her, but most of all her grandmother, who did not know what to give the child next. ' +
+          'Once she gave her a little cap made of red velvet. Because it suited her so well, and she wanted to wear it all the time, ' +
+          'she came to be known as Little Red Riding Hood.');
+        this.visible[index + 1] = true;
       }
     },
     mounted() {
-      this.task()
+      this.task(0)
     }
   }
 </script>

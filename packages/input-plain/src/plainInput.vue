@@ -16,13 +16,13 @@
            @change="handleChange"
     >
     <transition name="v-easy-error">
-      <div class="error inspection" v-show="error" :style="errorOptions">{{ msg }}</div>
+      <div class="error inspection" v-if="error" :style="errorOptions">{{ msg }}</div>
     </transition>
   </div>
 </template>
 
 <script>
-  import {t} from '@/local/index'
+  import {t} from '@/locale/index'
   import {contain} from '@/utils/ArrayExtend'
 
   export default {
