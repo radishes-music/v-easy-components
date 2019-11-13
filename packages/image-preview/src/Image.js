@@ -35,9 +35,14 @@ function handlerControl(src, instance, index) {
   }
 }
 
-function targetImage(el) {
+function targetImage(el, binding) {
   el.classList.add('image-read-parent')
-  const src = el.dataset?.previewSrc || el.src
+  let src
+  if (typeof binding.value === 'string') {
+    src = binding.value
+  } else {
+    src = el.dataset?.previewSrc || el.src
+  }
   el.addEventListener('click', handlerControl.bind(null, src, ImageBoxInstance))
 }
 
@@ -85,7 +90,7 @@ imageDirective.install = function (Vue) {
 
     bind: function (el, binding) {
       if (el.tagName === 'IMG' || el.dataset?.previewSrc) {
-        targetImage(el)
+        targetImage(el, binding)
       } else {
         targetParent(el, binding)
       }

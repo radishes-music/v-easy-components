@@ -12,6 +12,7 @@
       <img src="../assets/2-min.png" alt="" class="image">
     </div>-->
     <img v-image :data-preview-src="require('../assets/CSS.jpg')" src="../assets/CSS-min.jpg" alt="CSS">
+    <img v-image="require('../assets/CSS.jpg')" src="../assets/CSS-min.jpg" alt="CSS">
     <div v-image>
       <img src="../assets/1-min.png" alt="https://linkorg.club" :data-preview-src="img[0]">
       HTML is well known as the native language for web content—but its close counterpart CSS (Cascading Style Sheets) is the language used to style, format, and present it. CSS is incredibly powerful. It also has a reputation for being tricky to learn and even harder to master, but that’s not necessarily true. CSS is straightforward to learn if you slow down and take it step by step. And it’s extremely helpful to know, even if you aren’t planning a career in web design. Here’s why you should add a little CSS coding to your skills, and have some fun in the process:
