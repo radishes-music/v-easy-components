@@ -5,8 +5,6 @@ const imageDirective = {}
 
 const ImageBoxInstance = new (_Vue.extend(ImageBox))({el: document.createElement('div')})
 
-let Nodes = {}
-
 let NodeID = 0
 
 let ImageBoxParents = []
@@ -35,9 +33,14 @@ function handlerControl(src, instance, index) {
   }
 }
 
-function targetImage(el) {
+function targetImage(el, binding) {
   el.classList.add('image-read-parent')
-  const src = el.dataset?.previewSrc || el.src
+  let src
+  if (typeof binding.value === 'string') {
+    src = binding.value
+  } else {
+    src = el.dataset?.previewSrc || el.src
+  }
   el.addEventListener('click', handlerControl.bind(null, src, ImageBoxInstance))
 }
 
@@ -52,12 +55,12 @@ function targetParent(el, binding, _NodeID) {
     ImageBoxParent = ImageBoxParents[_NodeID]
   } else {
     el._NodeID = ++NodeID // 标记父容器
-    Nodes[el._NodeID] = nodes
     ImageBoxParent = new (_Vue.extend(ImageBox))({
       el: document.createElement('div'),
     })
-    ImageBoxParent['_NodeID'] = el._NodeID
-    ImageBoxParents.push(ImageBoxParent)
+    el.$instace = ImageBoxParent
+    ImageBoxParent._NodeID = el._NodeID
+    ImageBoxParents[el._NodeID] = ImageBoxParent
   }
 
   let src = []
@@ -85,7 +88,7 @@ imageDirective.install = function (Vue) {
 
     bind: function (el, binding) {
       if (el.tagName === 'IMG' || el.dataset?.previewSrc) {
-        targetImage(el)
+        targetImage(el, binding)
       } else {
         targetParent(el, binding)
       }
@@ -95,6 +98,19 @@ imageDirective.install = function (Vue) {
       if (el._NodeID) {
         targetParent(el, binding, el._NodeID)
       }
+    },
+
+    unbind: function (el) {
+      if (el._NodeID) {
+        const needRemoveElement = el.$instace
+        if (needRemoveElement.$el && document.body.contains(needRemoveElement.$el)) {
+          document.body.removeChild(needRemoveElement.$el)
+        }
+      } /*else {
+        if (document.body.contains(ImageBoxInstance.$el)) {
+          document.body.removeChild(ImageBoxInstance.$el)
+        }
+      }*/
     }
   });
 

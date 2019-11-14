@@ -1,14 +1,14 @@
 @import "./mixins/_color";
 @import "./mixins/_input";
 
-.input {
-  .-input()
-}
-
 .input-plain {
+  position: relative;
   min-height: 24px;
   min-width: 114px;
-  input {
+  input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+  }
+  input, textarea {
     color: @inputColor;
     margin: auto;
     padding: 2px 12px;
@@ -20,18 +20,44 @@
     transition: box-shadow .4s;
     box-sizing: content-box;
   }
-  input:focus {
+  textarea:focus, input:focus {
     outline: none;
     box-shadow: 0 0 4px 1px #4190f3;
   }
-  input:disabled {
+  textarea:disabled, input:disabled {
     background-color: #f5f7fa;
     border-color: #e4e7ed;
     color: #c0c4cc;
     cursor: not-allowed;
   }
+  textarea {
+    padding: 4px 10px;
+  }
   .red {
     box-shadow: 0 0 4px 1px @error;
+  }
+  .input-inner-spin {
+    position: absolute;
+    right: -1px;
+    top: 0;
+    font-size: 10px;
+    i {
+      padding: 2px 10px;
+      display: block;
+      cursor: pointer;
+      border: 1px solid @borderColor1;
+      border-right: none;
+      border-bottom: none;
+      &:hover {
+        color: @primary;
+      }
+      &:first-child {
+        border-top-right-radius: 4px;
+      }
+      &:last-child {
+        border-bottom-right-radius: 4px;
+      }
+    }
   }
 }
 

@@ -1,34 +1,40 @@
 <template>
   <div class="v-easy-input input input-plain"
        :style="{'max-width': maxWidth + 'px'}">
-    <input :type="typeInput"
-           :value="currentVal"
-           @compositionstart="handleComposition"
-           @compositionupdate="handleComposition"
-           @compositionend="handleComposition"
-           :class="error && 'red'"
-           :disabled="disabled"
-           :readonly="readonly"
-           v-bind="$attrs"
-           @input="handleInput"
-           @blur="handleBlur"
-           @focus="handleFocus"
-           @change="handleChange"
-    >
-    <transition name="v-easy-error">
-      <div class="error inspection" v-if="error" :style="errorOptions">{{ msg }}</div>
-    </transition>
+    <textarea v-if="typeInput === 'textarea'" v-bind="$attrs"></textarea>
+    <template v-else>
+      <input :type="typeInput"
+             :value="currentVal"
+             :max="propertyMaxMin ? propertyMaxMin.max : null"
+             :min="propertyMaxMin ? propertyMaxMin.min : null"
+             :step="typeInput === 'number' ? step : null"
+             @compositionstart="handleComposition"
+             @compositionupdate="handleComposition"
+             @compositionend="handleComposition"
+             :class="error && 'red'"
+             :disabled="disabled"
+             :readonly="readonly"
+             v-bind="$attrs"
+             @input="handleInput"
+             @blur="handleBlur"
+             @focus="handleFocus"
+             @change="handleChange">
+      <div class="input-inner-spin" v-if="isNumberPrefix">
+        <i class="fa fa-chevron-up" @click="handleIncrease"></i>
+        <i class="fa fa-chevron-down" @click="handleDecrease"></i>
+      </div>
+      <transition name="v-easy-error">
+        <div class="error inspection" v-if="error" :style="errorOptions">{{ msg }}</div>
+      </transition>
+    </template>
   </div>
 </template>
 
 <script>
-  import {t} from '@/locale/index'
-  import {contain} from '@/utils/ArrayExtend'
+  import { t } from '@/locale/index'
+  import { contain } from '@/utils/ArrayExtend'
 
   export default {
-    model: {
-      event: 'changeResult'
-    },
     name: 'VeInput',
     data() {
       return {
@@ -65,44 +71,68 @@
       inspect: {type: String, default: '/^.?$/g'},
       type: {type: String, default: 'length'},
       typeInput: {type: String, default: 'text'},
+      step: {type: [Number, String], default: 1},
       target: {type: [String, Array], default: 'blur'},
       options: [Object, Array],
       value: {default: ''}
     },
 
     computed: {
+      normalizedOptions() {
+        return (Array.isArray(this.options) ? {min: this.options[0], max: this.options[1]} : this.options)
+      },
       opt_type() {
         return this.options
-          ? (Array.isArray(this.options) ? {min: this.options[0], max: this.options[1]} : this.options)
-          : null
+          ? this.normalizedOptions
+          : {min: -Infinity, max: Infinity}
+      },
+      propertyMaxMin() {
+        if (this.typeInput === 'number') {
+          return this.normalizedOptions
+        }
+        return null
       },
       msg() {
         return this.options
-          ? `${this.message}(${this.options.min} - ${this.options.max})`
+          ? `${this.message}(${this.opt_type.min} - ${this.opt_type.max})`
           : (this.message || t('plain.err'))
       },
+      isNumberPrefix() {
+        return this.typeInput === 'number'
+      }
     },
 
     methods: {
+      handleIncrease() {
+        if (this.exceedMax()) {
+          this.setCurrentValue(+this.currentVal + +this.step);
+        }
+      },
+      handleDecrease() {
+        if (this.exceedMin()) {
+          this.setCurrentValue(+this.currentVal - +this.step);
+        }
+      },
+      exceedMax() {
+        return +this.currentVal < this.opt_type?.max
+      },
+      exceedMin() {
+        return +this.currentVal > this.opt_type?.min
+      },
       err() {
         return t('plain.err');
       },
       handleInput(event) {
         this.setCurrentValue(event.target.value);
-
         this.mergeTarget('input');
-
-        this.$emit('input', event);
-
+        this.$emit('input', event.target.value);
       },
       handleBlur(event) {
         this.$emit('blur', event);
-
         this.mergeTarget('blur')
       },
       handleFocus(event) {
         this.$emit('focus', event);
-
         this.mergeTarget('focus')
       },
       handleChange(event) {
@@ -130,9 +160,9 @@
         }
       },
       mergeMesh(val) {
-        if (this.opt_type) {
+        if (this.type === 'length') {
           if (val === this.target) {
-            this.error = (this.currentVal.length < this.options.min || this.currentVal.length > this.options.max);
+            this.error = (this.currentVal.length < this.opt_type.min || this.currentVal.length > this.opt_type.max);
           }
         } else if (this.type === 'reg' && contain(this.target, val)) {
           let regexp = new RegExp(this.inspect);
@@ -141,8 +171,16 @@
       },
       setCurrentValue(value) {
         if (value === this.currentVal) return;
-        this.currentVal = value;
-        this.$emit('changeResult', this.currentVal);
+        this.currentVal = value
+        if (this.typeInput === 'number') {
+          if (!this.exceedMax()) {
+            this.currentVal = this.normalizedOptions.max
+          }
+          if (!this.exceedMin()) {
+            this.currentVal = this.normalizedOptions.min
+          }
+        }
+        this.$emit('input', this.currentVal);
       },
     }
   }
