@@ -3,8 +3,6 @@ import _Vue from 'vue'
 
 const imageDirective = {}
 
-const ImageBoxInstance = new (_Vue.extend(ImageBox))({el: document.createElement('div')})
-
 let NodeID = 0
 
 let ImageBoxParents = []
@@ -41,6 +39,10 @@ function targetImage(el, binding) {
   } else {
     src = el.dataset?.previewSrc || el.src
   }
+  /* fix isServer */
+  const ImageBoxInstance = new (_Vue.extend(ImageBox))({
+    el: document.createElement('div')
+  })
   el.addEventListener('click', handlerControl.bind(null, src, ImageBoxInstance))
 }
 
