@@ -44,7 +44,6 @@ tipDirective.install = Vue => {
 
       insertDom(el, binding);
     })
-
   };
 
   const insertDom = (el) => {
@@ -115,12 +114,10 @@ tipDirective.install = Vue => {
 
   Vue.directive('tip', {
     bind: function (el, binding) {
-
       el._uuid_tip_ = 0;
       el._is_instance_remove_ = false;
 
       addEvent(el, binding, typeof binding.value !== 'string');
-
     },
 
     update: function (el, binding) {
