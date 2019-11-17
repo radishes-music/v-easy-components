@@ -34,7 +34,7 @@ tipDirective.install = Vue => {
           break;
         case 'left':
           el.tipStyle['top'] += (rectDom['height'] / 2);
-          el.tipStyle['left'] -= (6 + offset); // 支持IE
+          el.tipStyle['left'] -= (6 + offset); // support IE
           break;
         case 'right':
           el.tipStyle['top'] += (rectDom['height'] / 2);
@@ -70,26 +70,28 @@ tipDirective.install = Vue => {
       // First rendering
       index += 1;
       el._uuid_tip_ = index;
-      let value = binding.value;
-
-      let data = simple ? {
+      const value = binding.value;
+      const modifiers = Object.keys(binding.modifiers)
+      const placement = modifiers.length > 0 ? modifiers[0] : (value['placement'] || 'top');
+      const data = simple ? {
         ...value,
-        placement: value['placement'] || 'top',
+        placement: placement,
         domVisible: true
       } : {
         content: value,
+        placement: placement,
         domVisible: true,
       };
       const tip = new tipDom({
         el: document.createElement('div'),
         data,
       });
-      tip._uuid_tip_ = index;
+      tip._uuid_tip_ = index
       // Whether to automatically remove the tip
-      el._autoRemoveTip = typeof value.autoRemoveTip === 'undefined';
-      el.instance = tip;
-      el.tip = tip.$el;
-      el.tipStyle = {};
+      el._autoRemoveTip = typeof value.autoRemoveTip === 'undefined'
+      el.instance = tip
+      el.tip = tip.$el
+      el.tipStyle = {}
 
       // Manage Tip Instances
       tipInstance.push({
@@ -98,38 +100,38 @@ tipDirective.install = Vue => {
 
     }
 
-    binding.value && toggleTip(el, binding);
+    binding.value && toggleTip(el, binding)
   };
 
   const leave = (el) => {
-    el.instance.leave();
-  };
+    el.instance.leave()
+  }
 
   const addEvent = (el, binding, simple) => {
     Vue.nextTick(() => {
-      el.addEventListener('mouseenter', enter.bind(null, el, binding, simple), false);
-      el.addEventListener('mouseleave', leave.bind(null, el), false);
-    });
-  };
+      el.addEventListener('mouseenter', enter.bind(null, el, binding, simple), false)
+      el.addEventListener('mouseleave', leave.bind(null, el), false)
+    })
+  }
 
   Vue.directive('tip', {
     bind: function (el, binding) {
-      el._uuid_tip_ = 0;
-      el._is_instance_remove_ = false;
+      el._uuid_tip_ = 0
+      el._is_instance_remove_ = false
 
-      addEvent(el, binding, typeof binding.value !== 'string');
+      addEvent(el, binding, typeof binding.value !== 'string')
     },
 
     update: function (el, binding) {
       if (!_isEqual(binding.value, binding.oldValue)) {
         if (el.tip && el.tip.isConnected) {
-          document.body.removeChild(el.tip);
-          el.removeEventListener('mouseenter', enter, false);
-          el.removeEventListener('mouseleave', leave, false);
-          el._is_instance_remove_ = true;
+          document.body.removeChild(el.tip)
+          el.removeEventListener('mouseenter', enter, false)
+          el.removeEventListener('mouseleave', leave, false)
+          el._is_instance_remove_ = true
         }
-        enter(el, binding, typeof binding.value !== 'string');
-        addEvent(el, binding, typeof binding.value !== 'string');
+        enter(el, binding, typeof binding.value !== 'string')
+        addEvent(el, binding, typeof binding.value !== 'string')
       }
     },
 

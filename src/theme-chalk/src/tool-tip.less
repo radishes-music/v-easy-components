@@ -1,8 +1,11 @@
 @tip-width: 3px;
-.Triangle(@w: left,@a: right,@c: top,@t:transparent,@q:transparent,@u:#333) {
-  border-@{w}: 6px solid @t;
-  border-@{a}: 6px solid @q;
-  border-@{c}: 6px solid @u;
+@border-color: #333333;
+.Triangle(@w: left, @a: right, @c: top, @px: 6px) {
+  @t: transparent;
+  @q: transparent;
+  border-@{w}: @px solid @t;
+  border-@{a}: @px solid @q;
+  border-@{c}: @px solid @border-color;
 }
 
 .ve-tip-parent--relative {
@@ -50,10 +53,10 @@
 .ve-tip-left {
   transform: translate(-100%, -50%);
   &::before {
-    left: calc(100% + 6px);
+    left: calc(100% + 5px);
     top: 50%;
     transform: translateY(-50%);
-    .Triangle(top, bottom, left)
+    .Triangle(top, bottom, left, 7px)
   }
 }
 
