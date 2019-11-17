@@ -1,7 +1,7 @@
 {
   "name": "v-easy-components",
   "description": "Vue.js UI Components",
-  "version": "0.6.1",
+  "version": "0.6.2.beta.1",
   "main": "bin/v-easy-components.common.min.js",
   "files": [
     "bin",
@@ -96,7 +96,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.6.3",
-    "core-js": "^2.6.10",
+    "core-js": "3.4.1",
     "deepmerge": "^3.1.0"
   },
   "peerDependencies": {
