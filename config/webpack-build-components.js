@@ -14,7 +14,7 @@ const webpackConfig = {
   mode: 'production',
   externals: config.externals,
   output: {
-    path: resolve('bin'),
+    path: resolve('lib'),
     publicPath: './',
     filename: '[name].js',
     libraryTarget: 'commonjs2',

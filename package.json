@@ -1,10 +1,10 @@
 {
   "name": "v-easy-components",
   "description": "Vue.js UI Components",
-  "version": "0.6.2.beta.1",
-  "main": "bin/v-easy-components.common.min.js",
+  "version": "0.6.2-beta.1",
+  "main": "index.js",
   "files": [
-    "bin",
+    "lib",
     "src",
     "types",
     "packages"
@@ -26,9 +26,9 @@
     "build:main": "webpack --config config/webpack-build-config.js",
     "build:cm": "webpack --config config/webpack-build-components.js",
     "build:common": "webpack --config config/webpack-build-common.js",
-    "build:theme": "rimraf src/theme-chalk/lib && gulp build --gulpfile src/theme-chalk/gulpfile.js && rimraf src/theme-chalk/lib/_font.css && cp-cli src/theme-chalk/lib bin/theme-chalk && rimraf bin/theme-chalk/lib",
+    "build:theme": "rimraf src/theme-chalk/lib && gulp build --gulpfile src/theme-chalk/gulpfile.js && rimraf src/theme-chalk/lib/_font.css && cp-cli src/theme-chalk/lib lib/theme-chalk && rimraf lib/theme-chalk/lib",
     "test": "eslint",
-    "clean": "rimraf bin",
+    "clean": "rimraf lib",
     "test:commit": "validate-commit-msg",
     "change:log": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0"
   },
@@ -38,9 +38,9 @@
       "pre-push": "echo 'No specification'"
     }
   },
-  "style": "bin/index.css",
+  "style": "lib/index.css",
   "typings": "types/index.d.ts",
-  "unpkg": "bin/index.min.js",
+  "unpkg": "lib/index.min.js",
   "author": "Link",
   "license": "MIT",
   "devDependencies": {
