@@ -38,7 +38,11 @@
       "pre-push": "echo 'No specification'"
     }
   },
-  "style": "lib/index.css",
+  "homepage": "https://linkorg.club",
+  "bugs": {
+    "url": "https://github.com/Linkontoask/v-easy-components/issues"
+  },
+  "style": "lib/theme-chalk/index.css",
   "typings": "types/index.d.ts",
   "unpkg": "lib/index.min.js",
   "author": "Link",
