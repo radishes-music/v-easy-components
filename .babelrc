@@ -17,7 +17,9 @@
     ]
   ],
   "plugins": [
-    "@babel/plugin-transform-runtime",
-    "@babel/plugin-proposal-optional-chaining"
+    ["@babel/transform-runtime", {
+      "corejs": 3
+    }],
+    "@babel/proposal-optional-chaining"
   ]
 }
