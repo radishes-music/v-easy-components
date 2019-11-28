@@ -3,8 +3,8 @@
     [
       "@babel/preset-env",
       {
-        "useBuiltIns": "entry",
-        "corejs": 2,
+        "useBuiltIns": "usage",
+        "corejs": 3,
         "targets": {
           "ie": 9,
           "browsers": [

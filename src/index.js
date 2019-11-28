@@ -1,10 +1,10 @@
-import "@babel/polyfill"
 import Message from '@packages/message/index'
 import Button from '@packages/button/index'
 import Ip from '@packages/input-ip/index'
 import Subnet from '@packages/input-subnet/index'
 import VEPlainInput from '@packages/input-plain/index'
 import VESwitch from '@packages/switch/index'
+import { VESteps, VEStep } from '@packages/steps/index'
 import vTip from '@packages/tool-tip/index'
 import loadingDom from '@packages/loading-dom/index'
 import imagePreview from '@packages/image-preview/index'
@@ -16,7 +16,9 @@ const components = [
   Ip,
   Subnet,
   VEPlainInput,
-  VESwitch
+  VESwitch,
+  VESteps,
+  VEStep,
 ];
 
 const install = function (Vue, opts = {}) {
@@ -51,6 +53,8 @@ export default {
   Subnet,
   VEPlainInput,
   VESwitch,
+  VESteps,
+  VEStep,
   loadingDom,
   imagePreview,
   vTip

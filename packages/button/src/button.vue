@@ -12,7 +12,8 @@
           @mouseenter="enter"
           @click="handleClick"
           :type="nativeType">
-    <i :class="['fa', 'fa-' + icon, {'button-icon-normal': $slots.default}, { 'is-rotate': rotate }]" v-if="icon"></i>
+    <i class="fa fa-spinner fa-spin fa-pulse" v-if="loading"></i>
+    <i :class="['fa', 'fa-' + icon, {'button-icon-normal': $slots.default}, { 'fa-spin': rotate }]" v-else-if="icon"></i>
     <span v-if="$slots.default" :class="['button-text', {'button-mask-text': mask}]">
       <slot></slot>
     </span>
@@ -29,7 +30,8 @@
       return {
         style: {},
         maskPosition: {},
-        d: 0
+        d: 0,
+
       }
     },
 
@@ -39,16 +41,17 @@
       maskType: {type: String, default: 'default'},
       size: String,
       icon: {type: String},
-      disabled: Boolean,
+      disabled: {type: Boolean, default: false},
       circle: Boolean,
       plain: Boolean,
       rotate: Boolean,
-      mask: {type: [Boolean, String], default: false}
+      mask: {type: [Boolean, String], default: false},
+      loading: {type: Boolean, default: false},
     },
 
     computed: {
       buttonDisabled() {
-        return this.disabled;
+        return this.disabled || this.loading;
       }
     },
 

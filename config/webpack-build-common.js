@@ -16,7 +16,7 @@ module.exports = {
     'v-easy-components.common.min': './src/index.js'
   },
   output: {
-    path: resolve('bin'),
+    path: resolve('lib'),
     publicPath: './',
     filename: '[name].js',
     libraryTarget: 'commonjs2',

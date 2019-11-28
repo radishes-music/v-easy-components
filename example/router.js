@@ -8,6 +8,7 @@ import Ip from './fun-case/ip'
 import LoadingDom from './fun-case/loading-dom'
 import ToolTip from './fun-case/tool-tip'
 import Message from './fun-case/message'
+import Step from './fun-case/step'
 
 Vue.use(VueRouter)
 
@@ -43,6 +44,14 @@ const routes = [
       formatter: 've-ip'
     },
     component: Ip
+  },
+  {
+    path: '/step',
+    name: 'Step',
+    meta: {
+      formatter: 've-step'
+    },
+    component: Step
   },
   {
     path: '/loading-dom',

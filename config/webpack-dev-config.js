@@ -33,6 +33,7 @@ module.exports = {
   resolve: {
     extensions: config.extensions,
     alias: config.alias,
+    modules: config.modules,
   },
   module: {
     rules: [
