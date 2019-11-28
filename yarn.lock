@@ -675,6 +675,14 @@
     js-levenshtein "^1.1.3"
     semver "^5.5.0"
 
+"@babel/runtime-corejs3@^7.7.4":
+  version "7.7.4"
+  resolved "https://registry.yarnpkg.com/@babel/runtime-corejs3/-/runtime-corejs3-7.7.4.tgz#f861adc1cecb9903dfd66ea97917f02ff8d79888"
+  integrity sha512-BBIEhzk8McXDcB3IbOi8zQPzzINUp4zcLesVlBSOcyGhzPUU8Xezk5GAG7Sy5GVhGmAO0zGd2qRSeY2g4Obqxw==
+  dependencies:
+    core-js-pure "^3.0.0"
+    regenerator-runtime "^0.13.2"
+
 "@babel/runtime@^7.6.3":
   version "7.6.3"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.6.3.tgz#935122c74c73d2240cafd32ddb5fc2a6cd35cf1f"
@@ -2839,10 +2847,15 @@ core-js-compat@^3.1.1:
     browserslist "^4.7.1"
     semver "^6.3.0"
 
-core-js@3.4.1:
-  version "3.4.1"
-  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.4.1.tgz#76dd6828412900ab27c8ce0b22e6114d7ce21b18"
-  integrity sha512-KX/dnuY/J8FtEwbnrzmAjUYgLqtk+cxM86hfG60LGiW3MmltIc2yAmDgBgEkfm0blZhUrdr1Zd84J2Y14mLxzg==
+core-js-pure@^3.0.0:
+  version "3.4.5"
+  resolved "https://registry.yarnpkg.com/core-js-pure/-/core-js-pure-3.4.5.tgz#284474cb48d134e26e6e314cb89986c6c59480fb"
+  integrity sha512-v3BoUOhmBvs4Z17jG/oM7qyv+tEEMvD1FYDDfxa6uD5W2rA/DpKvhvmyrBzxuMQTa/91UQKisaiqe0+0GuL2oA==
+
+core-js@3:
+  version "3.4.5"
+  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.4.5.tgz#3dda65611d95699b5eb7742ea451ea052d37aa65"
+  integrity sha512-OuvejWH6vIaUo59Ndlh89purNm4DCIy/v3QoYlcGnn+PkYI8BhNHfCuAESrWX+ZPfq9JccVJ+XXgOMy77PJexg==
 
 core-js@^1.0.0:
   version "1.2.7"
