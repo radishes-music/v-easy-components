@@ -1,0 +1,83 @@
+<template>
+  <div class="ve-steps" v-bind="$attrs">
+    <div class="ve-steps-nav" :style="{order: orderNav}">
+      <ul>
+        <li v-for="(item, index) in steps"
+            :key="index"
+            :class="{
+              've-steps-active': active === index,
+              've-steps-success': successStatus.includes(index),
+              've-steps-error': errorStatus.includes(index),
+            }"><i class="fa" :class="['fa-' + item.icon]"></i>{{ item.title }}</li>
+      </ul>
+    </div>
+    <div class="ve-steps-content" :style="{order: orderContent}">
+      <slot></slot>
+      <div class="ve-steps-footer">
+        <div :class="['ve-steps-btn', 've-steps-btn-' + placement]">
+          <slot name="footer"></slot>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+  export default {
+    name: "VeSteps",
+
+    props: {
+      active: {
+        type: Number,
+        required: true,
+      },
+      placement: {
+        type: String,
+        default: 'left'
+      }
+    },
+
+    computed: {
+      orderNav() {
+        return this.placement === 'left' ? 0 : 1
+      },
+      orderContent() {
+        return this.placement === 'left' ? 1 : 0
+      }
+    },
+
+    data() {
+      return {
+        steps: [],
+        successStatus: [],
+        errorStatus: [],
+        oldActive: 0,
+      }
+    },
+
+    watch: {
+      active: {
+        handler: async function(index) {
+          await this.$nextTick()
+          const steps = this.$slots.default.filter(o => o.componentInstance)
+          if (steps.length) {
+            const oldComponentInstance = steps[this.oldActive].componentInstance
+            const componentInstance = steps[index].componentInstance
+            oldComponentInstance.updateStatus(false)
+            componentInstance.updateStatus(true)
+
+            /* Documenting steps completed */
+            if (index >= this.oldActive) {
+              this.successStatus.push(index)
+            } else {
+              this.successStatus.pop()
+            }
+
+            this.oldActive = index
+          }
+        },
+        immediate: true
+      }
+    },
+  }
+</script>
