@@ -1,4 +1,4 @@
-## [0.6.1](https://github.com/Linkontoask/v-easy-components/compare/0.5.10...0.6.1) (2019-11-17)
+# [0.7.0-beta.0](https://github.com/Linkontoask/v-easy-components/compare/0.5.10...0.7.0-beta.0) (2019-11-28)
 
 
 ### Bug Fixes
@@ -19,6 +19,7 @@
 ### Features
 
 * Add ESLint function ([0e49e9c](https://github.com/Linkontoask/v-easy-components/commit/0e49e9cdfdb6724b7531386cbbdc06806240266e))
+* add steps and add button loading status ([64a806a](https://github.com/Linkontoask/v-easy-components/commit/64a806a69c92e52684117889e28a7f7f4479afb5))
 * commit check ([045a59a](https://github.com/Linkontoask/v-easy-components/commit/045a59a05fd02f97228be83589bb0d7b80217b62))
 * Submit log automation and remove node-notifier ([8df5303](https://github.com/Linkontoask/v-easy-components/commit/8df5303926b3e8bf5f19783b18715fbd42c9ce89))
 * Support v-image upload value in img tag ([1eb1355](https://github.com/Linkontoask/v-easy-components/commit/1eb1355f23ecd05644b354d0ebc2d7653441388b))
