@@ -78,6 +78,7 @@
     "postcss-loader": "^3.0.0",
     "postcss-salad": "^2.0.1",
     "progress-bar-webpack-plugin": "^1.12.1",
+    "regenerator-runtime": "^0.13.3",
     "rimraf": "^3.0.0",
     "style-loader": "^0.23.1",
     "terser-webpack-plugin": "latest",
