@@ -17,7 +17,6 @@ module.exports = {
     publicPath: './',
     filename: '[name].js',
     libraryTarget: 'umd',
-    libraryExport: 'default',
     library: 'VEASY',
     umdNamedDefine: true
   },

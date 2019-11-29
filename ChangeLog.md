@@ -1,8 +1,9 @@
-# [0.7.0-beta.0](https://github.com/Linkontoask/v-easy-components/compare/0.5.10...0.7.0-beta.0) (2019-11-28)
+# [0.7.0-beta.1](https://github.com/Linkontoask/v-easy-components/compare/0.5.10...0.7.0-beta.1) (2019-11-29)
 
 
 ### Bug Fixes
 
+* core-js@3 to core-js@2 [#8](https://github.com/Linkontoask/v-easy-components/issues/8) ([d09dac7](https://github.com/Linkontoask/v-easy-components/commit/d09dac763f7e13d166b9b5c5e3dec856c2dc678a))
 * core-js@3 to core-js@2 and useBuiltIns: "entry" ([25cc285](https://github.com/Linkontoask/v-easy-components/commit/25cc28543972c5c1e3147ba286bdfd1fc51ddbd2))
 * directive loading-preload unbind hook: "NotFoundError: Failed to execute 'removeChild' on 'Node' ([f7b0ef2](https://github.com/Linkontoask/v-easy-components/commit/f7b0ef2c5e1409f8418ddb80f78a4057b996c8fb))
 * fix server document is not defined ([3cf93ab](https://github.com/Linkontoask/v-easy-components/commit/3cf93aba20d3e07aed8848e8f5a85ae14872eb4b))

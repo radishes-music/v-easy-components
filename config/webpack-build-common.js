@@ -21,7 +21,6 @@ module.exports = {
     filename: '[name].js',
     libraryTarget: 'commonjs2',
     libraryExport: 'default',
-    library: 'VEASY'
   },
   resolve: {
     extensions: config.extensions,
