@@ -43,13 +43,16 @@
       },
       orderContent() {
         return this.placement === 'left' ? 1 : 0
+      },
+      successStatus() {
+        /* Documenting steps completed */
+        return Object.keys(Array.from({length: this.active})).map(i => +i)
       }
     },
 
     data() {
       return {
         steps: [],
-        successStatus: [],
         errorStatus: [],
         oldActive: 0,
       }
@@ -65,13 +68,6 @@
             const componentInstance = steps[index].componentInstance
             oldComponentInstance.updateStatus(false)
             componentInstance.updateStatus(true)
-
-            /* Documenting steps completed */
-            if (index >= this.oldActive) {
-              this.successStatus.push(index)
-            } else {
-              this.successStatus.pop()
-            }
 
             this.oldActive = index
           }

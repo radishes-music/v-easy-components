@@ -19,7 +19,7 @@
     name: "step",
     data() {
       return {
-        active: 0,
+        active: 2,
         loading: false
       }
     },
@@ -52,7 +52,7 @@
     box-shadow: 0 2px 4px 1px #e2e2e2;
   }
   .step-box {
-    height: 320px;
+    height: 420px;
   }
   .step-li {
     line-height: 2;
