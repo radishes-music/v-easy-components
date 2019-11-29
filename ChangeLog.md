@@ -1,4 +1,4 @@
-# [0.7.0-beta.1](https://github.com/Linkontoask/v-easy-components/compare/0.5.10...0.7.0-beta.1) (2019-11-29)
+# [0.7.0-beta.3](https://github.com/Linkontoask/v-easy-components/compare/0.5.10...0.7.0-beta.3) (2019-11-29)
 
 
 ### Bug Fixes
@@ -12,6 +12,7 @@
 * Optimize automatic deletion of tip instances and increase test code ([f228354](https://github.com/Linkontoask/v-easy-components/commit/f22835437d52e7173f5469ae9848341bd812eec4))
 * push error ([43060db](https://github.com/Linkontoask/v-easy-components/commit/43060db205733c4feb5afad3044f1ec11368f2b5))
 * release 0.6.1 ([a5c1961](https://github.com/Linkontoask/v-easy-components/commit/a5c1961acf425aa8bc6cb8a784c321a60f54818c))
+* steps placement border direction ([f6d86eb](https://github.com/Linkontoask/v-easy-components/commit/f6d86ebf8f3d98ab5f916714b334633ef0b4a1ed))
 * use npm install prompt core-js library is not installed ([4f9f907](https://github.com/Linkontoask/v-easy-components/commit/4f9f90757d36ab63cb08f8424022f82009b59644))
 * v-image v-show bug ([82d1709](https://github.com/Linkontoask/v-easy-components/commit/82d17094e11d0074608a62cebcf6568a9b3f87ba))
 * v-loading-preload init fix and add validate-commit-msg config ([916fdae](https://github.com/Linkontoask/v-easy-components/commit/916fdae84b1b8097b99356d0bb5025c3c1805390))
@@ -22,6 +23,9 @@
 * Add ESLint function ([0e49e9c](https://github.com/Linkontoask/v-easy-components/commit/0e49e9cdfdb6724b7531386cbbdc06806240266e))
 * add steps and add button loading status ([64a806a](https://github.com/Linkontoask/v-easy-components/commit/64a806a69c92e52684117889e28a7f7f4479afb5))
 * commit check ([045a59a](https://github.com/Linkontoask/v-easy-components/commit/045a59a05fd02f97228be83589bb0d7b80217b62))
+* steps supports add nav-class-name property ([75d5d3f](https://github.com/Linkontoask/v-easy-components/commit/75d5d3fe7bf4089d84854e04bb43d937784f13bb))
+* steps supports normal active ([f0259b5](https://github.com/Linkontoask/v-easy-components/commit/f0259b5f287c0f6a2642516996ec2df4015cb4fc))
+* steps supports placement top ([ec390b6](https://github.com/Linkontoask/v-easy-components/commit/ec390b6c608712cbc93f0706952149637dcf85aa))
 * Submit log automation and remove node-notifier ([8df5303](https://github.com/Linkontoask/v-easy-components/commit/8df5303926b3e8bf5f19783b18715fbd42c9ce89))
 * Support v-image upload value in img tag ([1eb1355](https://github.com/Linkontoask/v-easy-components/commit/1eb1355f23ecd05644b354d0ebc2d7653441388b))
 * Tool-tip Add autoRemoveTip attribute ([8131d45](https://github.com/Linkontoask/v-easy-components/commit/8131d45d09ef8dcb6041c1fb18321bf56093780d))

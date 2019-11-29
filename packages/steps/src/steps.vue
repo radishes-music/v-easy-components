@@ -1,6 +1,6 @@
 <template>
-  <div class="ve-steps" v-bind="$attrs">
-    <div class="ve-steps-nav" :style="{order: orderNav}">
+  <div :class="['ve-steps', 've-steps__' + placement]" v-bind="$attrs">
+    <div :class="['ve-steps-nav', 've-steps-nav__' + placement, navClassName]">
       <ul>
         <li v-for="(item, index) in steps"
             :key="index"
@@ -11,7 +11,7 @@
             }"><i class="fa" :class="['fa-' + item.icon]"></i>{{ item.title }}</li>
       </ul>
     </div>
-    <div class="ve-steps-content" :style="{order: orderContent}">
+    <div :class="['ve-steps-content', 've-steps-content__' + placement]">
       <slot></slot>
       <div class="ve-steps-footer">
         <div :class="['ve-steps-btn', 've-steps-btn-' + placement]">
@@ -34,22 +34,22 @@
       placement: {
         type: String,
         default: 'left'
+      },
+      navClassName: {
+        type: String
       }
     },
 
     computed: {
-      orderNav() {
-        return this.placement === 'left' ? 0 : 1
-      },
-      orderContent() {
-        return this.placement === 'left' ? 1 : 0
+      successStatus() {
+        /* Documenting steps completed */
+        return Object.keys(Array.from({length: this.active})).map(i => +i)
       }
     },
 
     data() {
       return {
         steps: [],
-        successStatus: [],
         errorStatus: [],
         oldActive: 0,
       }
@@ -65,13 +65,6 @@
             const componentInstance = steps[index].componentInstance
             oldComponentInstance.updateStatus(false)
             componentInstance.updateStatus(true)
-
-            /* Documenting steps completed */
-            if (index >= this.oldActive) {
-              this.successStatus.push(index)
-            } else {
-              this.successStatus.pop()
-            }
 
             this.oldActive = index
           }
