@@ -8,7 +8,6 @@
   padding: 20px;
   .ve-steps-nav {
     padding: 0 20px;
-    order: 0;
     ul {
       margin: 0;
       padding: 0;
@@ -32,14 +31,18 @@
       }
     }
   }
+  .ve-steps-nav__left {
+    order: 0;
+  }
+  .ve-steps-nav__right {
+    order: 1;
+  }
   .ve-steps-content {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     flex: 1;
-    order: 1;
     height: 100%;
-    border-left: 1px solid @border-color-leave3;
     padding-left: 20px;
     .ve-steps-footer {
       display: flex;
@@ -52,5 +55,13 @@
         margin-right: auto;
       }
     }
+  }
+  .ve-steps-content__left {
+    order: 1;
+    border-left: 1px solid @border-color-leave3;
+  }
+  .ve-steps-content__right {
+    order: 0;
+    border-right: 1px solid @border-color-leave3;
   }
 }
