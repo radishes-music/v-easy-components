@@ -8,7 +8,7 @@
               've-steps-active': active === index,
               've-steps-success': successStatus.includes(index),
               've-steps-error': errorStatus.includes(index),
-            }"><i class="fa" :class="['fa-' + item.icon]"></i>{{ item.title }}</li>
+            }"><i v-if="item.icon" :class="['fa', 'fa-' + item.icon]"></i>{{ item.title }}</li>
       </ul>
     </div>
     <div :class="['ve-steps-content', 've-steps-content__' + placement]">
