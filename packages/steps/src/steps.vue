@@ -1,6 +1,6 @@
 <template>
   <div class="ve-steps" v-bind="$attrs">
-    <div :class="['ve-steps-nav', 've-steps-nav__' + placement]">
+    <div :class="['ve-steps-nav', 've-steps-nav__' + placement, navClassName]">
       <ul>
         <li v-for="(item, index) in steps"
             :key="index"
@@ -34,6 +34,9 @@
       placement: {
         type: String,
         default: 'left'
+      },
+      navClassName: {
+        type: String
       }
     },
 
