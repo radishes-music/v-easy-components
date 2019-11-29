@@ -37,6 +37,23 @@
   .ve-steps-nav__right {
     order: 1;
   }
+  .ve-steps-nav__top {
+    width: 100%;
+    padding-bottom: 20px;
+    ul {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      li {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      li + li {
+        margin-top: 0;
+      }
+    }
+  }
   .ve-steps-content {
     display: flex;
     flex-direction: column;
@@ -54,6 +71,9 @@
       .ve-steps-btn-right {
         margin-right: auto;
       }
+      .ve-steps-btn-top {
+        margin-left: auto;
+      }
     }
   }
   .ve-steps-content__left {
@@ -64,4 +84,10 @@
     order: 0;
     border-right: 1px solid @border-color-leave3;
   }
+  .ve-steps-content__top {
+    width: 100%;
+  }
+}
+.ve-steps__top {
+  flex-direction: column;
 }
