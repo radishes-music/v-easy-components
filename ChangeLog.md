@@ -1,4 +1,4 @@
-# [0.7.0-beta.3](https://github.com/Linkontoask/v-easy-components/compare/0.5.10...0.7.0-beta.3) (2019-11-29)
+## [0.7.1](https://github.com/Linkontoask/v-easy-components/compare/0.5.10...0.7.1) (2019-12-01)
 
 
 ### Bug Fixes
@@ -22,12 +22,14 @@
 
 * Add ESLint function ([0e49e9c](https://github.com/Linkontoask/v-easy-components/commit/0e49e9cdfdb6724b7531386cbbdc06806240266e))
 * add steps and add button loading status ([64a806a](https://github.com/Linkontoask/v-easy-components/commit/64a806a69c92e52684117889e28a7f7f4479afb5))
+* add ve-icon component ([720d878](https://github.com/Linkontoask/v-easy-components/commit/720d878311403a0f057a4d95b35444b89afcfa92))
 * commit check ([045a59a](https://github.com/Linkontoask/v-easy-components/commit/045a59a05fd02f97228be83589bb0d7b80217b62))
 * steps supports add nav-class-name property ([75d5d3f](https://github.com/Linkontoask/v-easy-components/commit/75d5d3fe7bf4089d84854e04bb43d937784f13bb))
 * steps supports normal active ([f0259b5](https://github.com/Linkontoask/v-easy-components/commit/f0259b5f287c0f6a2642516996ec2df4015cb4fc))
 * steps supports placement top ([ec390b6](https://github.com/Linkontoask/v-easy-components/commit/ec390b6c608712cbc93f0706952149637dcf85aa))
 * Submit log automation and remove node-notifier ([8df5303](https://github.com/Linkontoask/v-easy-components/commit/8df5303926b3e8bf5f19783b18715fbd42c9ce89))
 * Support v-image upload value in img tag ([1eb1355](https://github.com/Linkontoask/v-easy-components/commit/1eb1355f23ecd05644b354d0ebc2d7653441388b))
+* supports button size ([a780550](https://github.com/Linkontoask/v-easy-components/commit/a78055047fc852ae2584a1ca13556098e75ead55))
 * Tool-tip Add autoRemoveTip attribute ([8131d45](https://github.com/Linkontoask/v-easy-components/commit/8131d45d09ef8dcb6041c1fb18321bf56093780d))
 * v-image non-img element supports destroying elements when unbinding ([fe9f032](https://github.com/Linkontoask/v-easy-components/commit/fe9f032c061a5c486267198a02b58bc205992617))
 * v-loading-preload support Modifier ([4233d24](https://github.com/Linkontoask/v-easy-components/commit/4233d24c62ec78d6742e98a4decf902d668420b3))
