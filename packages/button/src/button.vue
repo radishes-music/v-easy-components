@@ -1,6 +1,6 @@
 <template>
   <button class="v-easy-button button"
-          :class="[type ? 'easy-button-' + type : '', {
+          :class="[type ? 'easy-button-' + type : '', 'easy-button__' + size, {
           'button-is-disabled': buttonDisabled,
           'button-is-plain': plain,
           'button-is-circle': circle,
@@ -30,8 +30,7 @@
       return {
         style: {},
         maskPosition: {},
-        d: 0,
-
+        rect: 0,
       }
     },
 
@@ -39,7 +38,7 @@
       type: {type: String, default: 'default'},
       nativeType: {type: String, default: 'button'},
       maskType: {type: String, default: 'default'},
-      size: String,
+      size: {type: String, default: 'default'},
       icon: {type: String},
       disabled: {type: Boolean, default: false},
       circle: Boolean,
@@ -60,11 +59,11 @@
         const parent = this.$refs.ButtonBox;
         const w = parent.offsetHeight,
           h = parent.offsetWidth;
-        this.d = Math.floor(Math.sqrt(Math.pow(w, 2) + Math.pow(h, 2)))
+        this.rect = Math.floor(Math.sqrt(Math.pow(w, 2) + Math.pow(h, 2)))
 
         this.maskPosition = {
-          width: this.d * 2 + 'px',
-          height: this.d * 2 + 'px'
+          width: this.rect * 2 + 'px',
+          height: this.rect * 2 + 'px'
         }
 
       },
@@ -80,8 +79,8 @@
       enter(e) {
         if (this.maskType === 'default') return false;
 
-        this.maskPosition.left = -(Math.abs(this.d - e.offsetX)) + 'px';
-        this.maskPosition.top = -(Math.abs(this.d - e.offsetY)) + 'px';
+        this.maskPosition.left = -(Math.abs(this.rect - e.offsetX)) + 'px';
+        this.maskPosition.top = -(Math.abs(this.rect - e.offsetY)) + 'px';
 
         this.style = {
           left: e.offsetX + 'px',

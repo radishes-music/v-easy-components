@@ -12,7 +12,7 @@
 
 ### Document
 
-+ Homepage and documentation 
++ Homepage and documentation
   + [International users](https://linkorg.club)
   + [Chinese users](https://linkorg.club/zh/)
 + [fontawesome 5.6.3](https://fontawesome.com/start)
@@ -28,7 +28,7 @@ yarn add v-easy-components -D
 
 ### Quick Start
 ``` javascript
-import 'v-easy-components/bin/theme-chalk/index.css'
+import 'v-easy-components/lib/theme-chalk/index.css'
 import VEasy from 'v-easy-components'
 
 Vue.use(VEasy);
