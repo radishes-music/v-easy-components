@@ -9,6 +9,7 @@ import LoadingDom from './fun-case/loading-dom'
 import ToolTip from './fun-case/tool-tip'
 import Message from './fun-case/message'
 import Step from './fun-case/step'
+import Icon from './fun-case/icon'
 
 Vue.use(VueRouter)
 
@@ -20,6 +21,14 @@ const routes = [
       formatter: 'v-image'
     },
     component: ImagePreview
+  },
+  {
+    path: '/icon',
+    name: 'Icon',
+    meta: {
+      formatter: 've-icon'
+    },
+    component: Icon
   },
   {
     path: '/button',

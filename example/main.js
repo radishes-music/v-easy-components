@@ -1,10 +1,10 @@
-import vEasy from '@/index'
+import VEasy from '@/index'
 import '@/theme-chalk/src/index.less'
 import Vue from 'vue'
 import APP from './APP.vue'
 import router from './router'
 
-Vue.use(vEasy)
+Vue.use(VEasy)
 
 new Vue({
   router,

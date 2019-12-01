@@ -1,3 +1,4 @@
+import VEIcon from '@packages/icon/index'
 import Message from '@packages/message/index'
 import Button from '@packages/button/index'
 import Ip from '@packages/input-ip/index'
@@ -12,6 +13,7 @@ import locale from '@/locale/index'
 import Package from '../package'
 
 const components = [
+  VEIcon,
   Button,
   Ip,
   Subnet,
@@ -42,11 +44,12 @@ if (typeof window !== 'undefined' && window.Vue) {
   install(window.Vue);
 }
 
-export default {
+export const main = {
   version: Package.version,
   locale: locale.use,
   i18n: locale.i18n,
   install,
+  VEIcon,
   Message,
   Button,
   Ip,
@@ -57,5 +60,7 @@ export default {
   VEStep,
   loadingDom,
   imagePreview,
-  vTip
+  vTip,
 }
+
+export default main
