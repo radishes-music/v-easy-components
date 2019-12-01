@@ -1,7 +1,8 @@
 import { VEasyComponent } from './component'
+import { Size } from './size'
 
 /** Button type */
-export type ButtonType = 'primary' | 'success' | 'warning' | 'danger' | 'info' | 'text'
+export type ButtonType = 'primary' | 'success' | 'warning' | 'error' | 'info' | 'text'
 
 /** Same as native button's type */
 export type ButtonNativeType = 'button' | 'submit' | 'reset' | 'menu'
@@ -26,9 +27,8 @@ export declare class VeButton extends VEasyComponent {
   /** Button icon, accepts an icon name of Element icon component */
   icon: string
 
-  /** Same as native button's autofocus */
-  autofocus: boolean
-
   /** Same as native button's type */
   nativeType: ButtonNativeType
+
+  size: Size
 }

@@ -10,7 +10,7 @@
 button.v-easy-button {
   position: relative;
   display: inline-block;
-  line-height: 1;
+  line-height: 1.5;
   white-space: nowrap;
   cursor: pointer;
   background: #fff;
@@ -18,10 +18,12 @@ button.v-easy-button {
   color: #606266;
   text-align: center;
   box-sizing: border-box;
+  touch-action: manipulation;
+  height: 32px;
+  padding: 0 15px;
   outline: 0;
   margin: 0;
   font-weight: 500;
-  padding: 12px 20px;
   font-size: 14px;
   border-radius: 4px;
   overflow: hidden;
@@ -200,6 +202,21 @@ button.easy-button-error {
   border-color: @error;
 }
 
+button.easy-button__small {
+  height: 24px;
+  padding: 0 7px;
+}
+
+button.easy-button__default {
+
+}
+
+button.easy-button__large {
+  height: 40px;
+  padding: 0 15px;
+  font-size: 16px;
+}
+
 button.button + button.button {
   margin-left: 10px;
 }
@@ -212,4 +229,8 @@ button.button:not(.button-is-disabled):not(.button-is-mask):active {
 
 button.button [class*=el-icon-] + span {
   margin-left: 5px;
+}
+
+button, html [type="button"], [type="reset"], [type="submit"] {
+  -webkit-appearance: button;
 }
