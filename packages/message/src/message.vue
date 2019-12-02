@@ -7,7 +7,8 @@
          @mouseleave="startTimer">
       <slot>
         <i :class="typeIcon" class="message-type fa"></i>
-        <p>{{ message }}</p>
+        <p v-if="html" v-html="message"></p>
+        <p v-else>{{ message }}</p>
       </slot>
       <i v-if="showClose" class="easy_message_close fa fa-times" @click="close"></i>
     </div>
@@ -16,10 +17,10 @@
 
 <script>
   let typeMap = {
-    success: 'fa-thumbs-up',
-    warning: 'fa-hand-paper-o',
-    info: 'fa-info',
-    error: 'fa-thumbs-down'
+    success: 'fa-check-circle',
+    warning: 'fa-exclamation-circle',
+    info: 'fa-info-circle',
+    error: 'fa-times-circle'
   };
   export default {
     name: 'Message',
@@ -28,6 +29,7 @@
         visible: false,
         type: 'info',
         message: '',
+        html: false,
         duration: 3000,
         showClose: true,
         onClose: null,
