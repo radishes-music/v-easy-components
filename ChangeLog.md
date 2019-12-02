@@ -1,8 +1,9 @@
-## [0.7.1](https://github.com/Linkontoask/v-easy-components/compare/0.5.10...0.7.1) (2019-12-01)
+## [0.7.2](https://github.com/Linkontoask/v-easy-components/compare/0.5.10...0.7.2) (2019-12-02)
 
 
 ### Bug Fixes
 
+* Button circle styles ([07228c6](https://github.com/Linkontoask/v-easy-components/commit/07228c6b962c34a5d41469a0837e6c2e91607785))
 * core-js@3 to core-js@2 [#8](https://github.com/Linkontoask/v-easy-components/issues/8) ([d09dac7](https://github.com/Linkontoask/v-easy-components/commit/d09dac763f7e13d166b9b5c5e3dec856c2dc678a))
 * core-js@3 to core-js@2 and useBuiltIns: "entry" ([25cc285](https://github.com/Linkontoask/v-easy-components/commit/25cc28543972c5c1e3147ba286bdfd1fc51ddbd2))
 * directive loading-preload unbind hook: "NotFoundError: Failed to execute 'removeChild' on 'Node' ([f7b0ef2](https://github.com/Linkontoask/v-easy-components/commit/f7b0ef2c5e1409f8418ddb80f78a4057b996c8fb))
@@ -13,6 +14,8 @@
 * push error ([43060db](https://github.com/Linkontoask/v-easy-components/commit/43060db205733c4feb5afad3044f1ec11368f2b5))
 * release 0.6.1 ([a5c1961](https://github.com/Linkontoask/v-easy-components/commit/a5c1961acf425aa8bc6cb8a784c321a60f54818c))
 * steps placement border direction ([f6d86eb](https://github.com/Linkontoask/v-easy-components/commit/f6d86ebf8f3d98ab5f916714b334633ef0b4a1ed))
+* supports split icon component ([ea62b3a](https://github.com/Linkontoask/v-easy-components/commit/ea62b3aff381267f92426f140720b710a2f9b3f5))
+* upgrade to fontawesome 5.11.2 ([db37da2](https://github.com/Linkontoask/v-easy-components/commit/db37da21f2de0fe9b9eef88c7db4a0927bbb2995))
 * use npm install prompt core-js library is not installed ([4f9f907](https://github.com/Linkontoask/v-easy-components/commit/4f9f90757d36ab63cb08f8424022f82009b59644))
 * v-image v-show bug ([82d1709](https://github.com/Linkontoask/v-easy-components/commit/82d17094e11d0074608a62cebcf6568a9b3f87ba))
 * v-loading-preload init fix and add validate-commit-msg config ([916fdae](https://github.com/Linkontoask/v-easy-components/commit/916fdae84b1b8097b99356d0bb5025c3c1805390))
