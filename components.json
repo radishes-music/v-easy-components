@@ -8,5 +8,6 @@
   "tool-tip": "./packages/tool-tip/index.js",
   "loading-dom": "./packages/loading-dom/index.js",
   "image-preview": "./packages/image-preview/index.js",
-  "steps": "./packages/steps/index.js"
+  "steps": "./packages/steps/index.js",
+  "icon": "./packages/icon/index.js"
 }

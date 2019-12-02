@@ -1,6 +1,6 @@
 <template>
   <transition :name="transition">
-    <div :class="['tip', 've-tip-'+placement, Class]" v-show="domVisible" @mouseenter="enter" @mouseleave="leave">
+    <div :class="['v-easy-tip', 've-tip-'+placement, Class]" v-show="domVisible" @mouseenter="enter" @mouseleave="leave">
       <p v-if="html" v-html="html"></p>
       <p v-else-if="content">{{ content }}</p>
       <render-node v-else></render-node>
