@@ -13,7 +13,7 @@
           @click="handleClick"
           :type="nativeType">
     <i class="fa fa-spinner fa-spin fa-pulse" v-if="loading"></i>
-    <i :class="['fa', 'fa-' + icon, {'button-icon-normal': $slots.default}, { 'fa-spin': rotate }]" v-else-if="icon"></i>
+    <i :class="[iconClass, 'fa-' + icon, {'button-icon-normal': $slots.default}, { 'fa-spin': rotate }]" v-else-if="icon"></i>
     <span v-if="$slots.default" :class="['button-text', {'button-mask-text': mask}]">
       <slot></slot>
     </span>
@@ -31,6 +31,11 @@
         style: {},
         maskPosition: {},
         rect: 0,
+        iconS: {
+          brands: 'fab',
+          regular: 'far',
+          solid: 'fa',
+        }
       }
     },
 
@@ -40,6 +45,7 @@
       maskType: {type: String, default: 'default'},
       size: {type: String, default: 'default'},
       icon: {type: String},
+      iconStyle: {type: [String, Array], default: 'solid'},
       disabled: {type: Boolean, default: false},
       circle: Boolean,
       plain: Boolean,
@@ -51,6 +57,20 @@
     computed: {
       buttonDisabled() {
         return this.disabled || this.loading;
+      },
+      iconClass() {
+        let className = '';
+        if (Array.isArray(this.iconStyle)) {
+          className = this.iconStyle.map(item => this.iconS[item]).join(' ')
+        } else {
+          switch (this.iconStyle) {
+            case 'brands': className = 'fab'; break;
+            case 'regular': className = 'far'; break;
+            case 'solid': className = 'fa'; break;
+            default: className = 'fa';
+          }
+        }
+        return className;
       }
     },
 
