@@ -15,7 +15,7 @@
 + Homepage and documentation
   + [International users](https://linkorg.club)
   + [Chinese users](https://linkorg.club/zh/)
-+ [fontawesome 5.6.3](https://fontawesome.com/start)
++ [fontawesome](https://fontawesome.com/start)
 
 ### Install
 ```

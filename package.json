@@ -1,7 +1,7 @@
 {
   "name": "v-easy-components",
   "description": "Vue.js UI Components",
-  "version": "0.7.2",
+  "version": "0.7.3-beta.1",
   "main": "index.js",
   "files": [
     "lib",
@@ -78,7 +78,6 @@
     "postcss-loader": "^3.0.0",
     "postcss-salad": "^2.0.1",
     "progress-bar-webpack-plugin": "^1.12.1",
-    "regenerator-runtime": "^0.13.3",
     "rimraf": "^3.0.0",
     "style-loader": "^0.23.1",
     "terser-webpack-plugin": "latest",
@@ -99,6 +98,7 @@
     "webpack-node-externals": "^1.7.2"
   },
   "dependencies": {
+    "regenerator-runtime": "^0.13.3",
     "core-js": "2",
     "deepmerge": "^3.1.0"
   },
