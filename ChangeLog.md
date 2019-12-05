@@ -1,13 +1,15 @@
-## [0.7.2](https://github.com/Linkontoask/v-easy-components/compare/0.5.10...0.7.2) (2019-12-02)
+## [0.7.3-beta.2](https://github.com/Linkontoask/v-easy-components/compare/0.5.10...0.7.3-beta.2) (2019-12-05)
 
 
 ### Bug Fixes
 
+* [#27](https://github.com/Linkontoask/v-easy-components/issues/27) ([1440dfc](https://github.com/Linkontoask/v-easy-components/commit/1440dfcd3c41840cbdcfe00113106a38205c0b3f))
 * Button circle styles ([07228c6](https://github.com/Linkontoask/v-easy-components/commit/07228c6b962c34a5d41469a0837e6c2e91607785))
 * core-js@3 to core-js@2 [#8](https://github.com/Linkontoask/v-easy-components/issues/8) ([d09dac7](https://github.com/Linkontoask/v-easy-components/commit/d09dac763f7e13d166b9b5c5e3dec856c2dc678a))
 * core-js@3 to core-js@2 and useBuiltIns: "entry" ([25cc285](https://github.com/Linkontoask/v-easy-components/commit/25cc28543972c5c1e3147ba286bdfd1fc51ddbd2))
 * directive loading-preload unbind hook: "NotFoundError: Failed to execute 'removeChild' on 'Node' ([f7b0ef2](https://github.com/Linkontoask/v-easy-components/commit/f7b0ef2c5e1409f8418ddb80f78a4057b996c8fb))
 * fix server document is not defined ([3cf93ab](https://github.com/Linkontoask/v-easy-components/commit/3cf93aba20d3e07aed8848e8f5a85ae14872eb4b))
+* Font icon is separated, fix the style after component is not found xxx.css ([b9816fd](https://github.com/Linkontoask/v-easy-components/commit/b9816fd80273d072c0aeed09486e4f5b3ac2ace8))
 * import add Message ([9e2bdab](https://github.com/Linkontoask/v-easy-components/commit/9e2bdabc57fcf1ebc1eb78b652560dac875d4388))
 * libraryExport: 'default' config ([ac5b3ab](https://github.com/Linkontoask/v-easy-components/commit/ac5b3ab3f796914d460a312f9e55bd84606a22c5))
 * Optimize automatic deletion of tip instances and increase test code ([f228354](https://github.com/Linkontoask/v-easy-components/commit/f22835437d52e7173f5469ae9848341bd812eec4))
