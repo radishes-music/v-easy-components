@@ -5,6 +5,8 @@
 </template>
 
 <script>
+  import { computedIconStyle } from '@/utils/icon-style'
+
   export default {
     name: "VeStep",
 
@@ -16,6 +18,10 @@
       icon: {
         type: String,
         required: false
+      },
+      iconStyle: {
+        type: String,
+        default: 'solid'
       },
     },
 
@@ -36,6 +42,7 @@
         this.$parent.steps.push({
           title: this.title,
           icon: this.icon,
+          iconClass: computedIconStyle(this.iconStyle)
         })
       }
     }

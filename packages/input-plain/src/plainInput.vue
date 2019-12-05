@@ -32,7 +32,7 @@
 
 <script>
   import { t } from '@/locale/index'
-  import { contain } from '@/utils/ArrayExtend'
+  import { contain } from '@/utils/array-extend'
 
   export default {
     name: 'VeInput',

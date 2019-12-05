@@ -1,26 +1,26 @@
-import VEIcon from '@packages/icon/index'
+import Icon from '@packages/icon/index'
 import Message from '@packages/message/index'
 import Button from '@packages/button/index'
-import Ip from '@packages/input-ip/index'
-import Subnet from '@packages/input-subnet/index'
-import VEPlainInput from '@packages/input-plain/index'
-import VESwitch from '@packages/switch/index'
-import { VESteps, VEStep } from '@packages/steps/index'
-import vTip from '@packages/tool-tip/index'
-import loadingDom from '@packages/loading-dom/index'
-import imagePreview from '@packages/image-preview/index'
+import InputIp from '@packages/input-ip/index'
+import InputSubnet from '@packages/input-subnet/index'
+import InputPlain from '@packages/input-plain/index'
+import Switch from '@packages/switch/index'
+import {Steps, Step} from '@packages/steps/index'
+import ToolTip from '@packages/tool-tip/index'
+import Skeleton from '@packages/loading-dom/index'
+import ImagePreview from '@packages/image-preview/index'
 import locale from '@/locale/index'
 import Package from '../package'
 
 const components = [
-  VEIcon,
+  Icon,
   Button,
-  Ip,
-  Subnet,
-  VEPlainInput,
-  VESwitch,
-  VESteps,
-  VEStep,
+  InputIp,
+  InputSubnet,
+  InputPlain,
+  Switch,
+  Steps,
+  Step,
 ];
 
 const install = function (Vue, opts = {}) {
@@ -31,9 +31,13 @@ const install = function (Vue, opts = {}) {
     Vue.component(component.name, component)
   });
 
-  Vue.use(vTip.directive);
-  Vue.use(loadingDom.directive);
-  Vue.use(imagePreview.Image);
+  Vue.use(ToolTip.directive);
+  Vue.use(Skeleton.directive);
+  Vue.use(ImagePreview.Image);
+
+  Vue.prototype.$VEasy = {
+    iconStyle: opts.iconStyle || 'fa'
+  };
 
   Vue.prototype.$msg = Message;
 
@@ -49,18 +53,18 @@ export const main = {
   locale: locale.use,
   i18n: locale.i18n,
   install,
-  VEIcon,
+  Icon,
   Message,
   Button,
-  Ip,
-  Subnet,
-  VEPlainInput,
-  VESwitch,
-  VESteps,
-  VEStep,
-  loadingDom,
-  imagePreview,
-  vTip,
+  InputIp,
+  InputSubnet,
+  InputPlain,
+  Switch,
+  Steps,
+  Step,
+  Skeleton,
+  ImagePreview,
+  ToolTip,
 }
 
 export default main

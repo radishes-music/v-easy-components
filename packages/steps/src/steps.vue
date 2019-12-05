@@ -8,7 +8,7 @@
               've-steps-active': active === index,
               've-steps-success': successStatus.includes(index),
               've-steps-error': errorStatus.includes(index),
-            }"><i v-if="item.icon" :class="['fa', 'fa-' + item.icon]"></i>{{ item.title }}</li>
+            }"><i v-if="item.icon" :class="[item.iconClass, 'fa-' + item.icon]"></i>{{ item.title }}</li>
       </ul>
     </div>
     <div :class="['ve-steps-content', 've-steps-content__' + placement]">
@@ -37,14 +37,18 @@
       },
       navClassName: {
         type: String
-      }
+      },
+      iconStyle: {
+        type: String,
+        default: 'solid'
+      },
     },
 
     computed: {
       successStatus() {
         /* Documenting steps completed */
         return Object.keys(Array.from({length: this.active})).map(i => +i)
-      }
+      },
     },
 
     data() {
