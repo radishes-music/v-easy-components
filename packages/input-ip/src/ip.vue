@@ -28,7 +28,7 @@
 
 <script>
   import {t} from '@/locale/index'
-  import { _initArray } from '@/utils/ArrayExtend'
+  import { _initArray } from '@/utils/array-extend'
   import merge from '@/mixins/merge'
 
   export default {

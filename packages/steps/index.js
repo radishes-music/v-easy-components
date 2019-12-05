@@ -1,15 +1,15 @@
-import VESteps from './src/steps.vue';
-import VEStep from './src/step.vue';
+import Steps from './src/steps.vue';
+import Step from './src/step.vue';
 
-VESteps.install = function (Vue) {
-  Vue.component(VESteps.name, VESteps);
+Steps.install = function (Vue) {
+  Vue.component(Steps.name, Steps);
 };
 
-VEStep.install = function (Vue) {
-  Vue.component(VEStep.name, VEStep);
+Step.install = function (Vue) {
+  Vue.component(Step.name, Step);
 };
 
 export {
-  VESteps,
-  VEStep
+  Steps,
+  Step
 };

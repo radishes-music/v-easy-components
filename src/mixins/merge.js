@@ -1,4 +1,4 @@
-import { _initArray } from '../utils/ArrayExtend'
+import { _initArray } from '../utils/array-extend'
 export default {
   data() {
     return {

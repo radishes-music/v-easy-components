@@ -22,6 +22,7 @@
 </template>
 
 <script>
+  import { computedIconStyle } from '@/utils/icon-style'
 
   export default {
     name: 'VeButton',
@@ -45,7 +46,7 @@
       maskType: {type: String, default: 'default'},
       size: {type: String, default: 'default'},
       icon: {type: String},
-      iconStyle: {type: [String, Array], default: 'solid'},
+      iconStyle: {type: String, default: 'solid'},
       disabled: {type: Boolean, default: false},
       circle: Boolean,
       plain: Boolean,
@@ -59,18 +60,7 @@
         return this.disabled || this.loading;
       },
       iconClass() {
-        let className = '';
-        if (Array.isArray(this.iconStyle)) {
-          className = this.iconStyle.map(item => this.iconS[item]).join(' ')
-        } else {
-          switch (this.iconStyle) {
-            case 'brands': className = 'fab'; break;
-            case 'regular': className = 'far'; break;
-            case 'solid': className = 'fa'; break;
-            default: className = 'fa';
-          }
-        }
-        return className;
+        return computedIconStyle(this.iconStyle);
       }
     },
 
