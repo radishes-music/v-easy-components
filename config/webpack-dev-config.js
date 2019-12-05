@@ -1,15 +1,15 @@
-const path = require('path')
-const configDev = require('./dev-server-config')
-const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const {VueLoaderPlugin} = require('vue-loader')
-const notifier = require('node-notifier')
-const config = require('./config')
+const path = require('path');
+const configDev = require('./dev-server-config');
+const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const {VueLoaderPlugin} = require('vue-loader');
+const notifier = require('node-notifier');
+const config = require('./config');
 
-const HOST = process.env.HOST
-const PORT = process.env.PORT && Number(process.env.PORT)
+const HOST = process.env.HOST;
+const PORT = process.env.PORT && Number(process.env.PORT);
 
-const resolve = (src) => path.resolve(__dirname, '../', src)
+const resolve = (src) => path.resolve(__dirname, '../', src);
 
 module.exports = {
   entry: {
@@ -29,7 +29,6 @@ module.exports = {
     clientLogLevel: 'none',
     historyApiFallback: true,
   },
-  devtool: "",
   resolve: {
     extensions: config.extensions,
     alias: config.alias,
@@ -47,10 +46,6 @@ module.exports = {
       {
         test: /\.otf|ttf|woff2?|eot(\?\S*)?$/,
         loader: 'url-loader',
-        query: {
-          limit: 10000,
-          name: path.posix.join('static', '[name].[hash:7].[ext]')
-        }
       },
       {
         test: /\.(png|jpg|JPG|gif)$/,
@@ -108,7 +103,7 @@ module.exports = {
         if (severity !== 'error') {
           return
         }
-        const error = errors[0]
+        const error = errors[0];
         notifier.notify({
           title: "Webpack error",
           message: severity + ': ' + error.name,

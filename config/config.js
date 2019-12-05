@@ -4,7 +4,7 @@ const Components = require('../components.json');
 
 let externals = {};
 
-const resolve = (src) => path.resolve(__dirname, '../', src)
+const resolve = (src) => path.resolve(__dirname, '../', src);
 
 Object.keys(Components).forEach((key) => {
   externals[`v-easy-components/packages/${key}`] = `v-easy-components/lib/${key}`;
@@ -23,9 +23,9 @@ exports.alias = {
   '@packages': resolve('packages'),
 };
 
-exports.extensions = ['.js', '.vue', '.json']
+exports.extensions = ['.js', '.vue', '.json'];
 
-exports.modules = [resolve('node_modules')]
+exports.modules = [resolve('node_modules')];
 
 exports.vue = {
   root: 'Vue',
