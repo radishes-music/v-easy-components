@@ -1,0 +1,44 @@
+@import "mixins/_color";
+
+.color-placeholder() {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAIAAADZF8uwAAAAGUlEQVQYV2M4gwH+YwCGIasIUwhT25BVBADtzYNYrHvv4gAAAABJRU5ErkJggg==);
+}
+
+.border(@color) {
+  border-radius: 2px;
+  border: 1px solid @color;
+}
+
+.position() {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.v-color-picker {
+  display: inline-block;
+  .v-color-simple-placeholder {
+    .border(@border-color-leave0);
+    padding: 2px;
+    cursor: pointer;
+    .simple-placeholder {
+      .color-placeholder();
+      .border(@border-color-leave3);
+      height: 100%;
+    }
+  }
+}
+
+.v-color-content {
+  position: relative;
+  .v-color-white {
+    .position();
+    background: linear-gradient(90deg,#fff,hsla(0,0%,100%,0));
+  }
+  .v-color-black {
+    .position();
+    background: linear-gradient(0deg,#000,transparent);
+  }
+}

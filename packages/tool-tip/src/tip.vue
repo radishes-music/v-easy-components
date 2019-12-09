@@ -1,6 +1,6 @@
 <template>
   <transition :name="transition">
-    <div :class="['v-easy-tip', 've-tip-'+placement, Class]" v-show="domVisible" @mouseenter="enter" @mouseleave="leave">
+    <div :class="['v-easy-tip', 've-tip-'+placement, Class]" v-show="domVisible" @mouseenter="enter" @mouseleave="handleMouseLeave" @click="handleClick">
       <p v-if="html" v-html="html"></p>
       <p v-else-if="content">{{ content }}</p>
       <render-node v-else></render-node>
@@ -21,17 +21,29 @@
         hideAfter: 200,
         transition: 'fade',
         enterable: true,
+        target: '',
         html: ''
       };
     },
     components: {
       renderNode: {
         render (h) {
-          return this.$parent.VNode()
-        }
+          const VNode = this.$parent.VNode();
+          return VNode
+        },
       }
     },
     methods: {
+      handleClick(event) {
+        event.stopPropagation();
+      },
+      handleMouseLeave() {
+        if (this.target === 'click') {
+
+        } else {
+          this.leave()
+        }
+      },
       enter() {
         if (!this.enterable) return false;
         this.hover = true;
