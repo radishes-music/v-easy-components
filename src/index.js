@@ -65,6 +65,6 @@ export const main = {
   Skeleton,
   ImagePreview,
   ToolTip,
-}
+};
 
 export default main

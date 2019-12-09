@@ -1,7 +1,7 @@
 {
   "name": "v-easy-components",
   "description": "Vue.js UI Components",
-  "version": "0.7.3-beta.2",
+  "version": "0.7.3",
   "main": "index.js",
   "files": [
     "lib",
@@ -80,7 +80,7 @@
     "progress-bar-webpack-plugin": "^1.12.1",
     "rimraf": "^3.0.0",
     "style-loader": "^0.23.1",
-    "terser-webpack-plugin": "latest",
+    "terser-webpack-plugin": "2.2.2",
     "ts-loader": "^6.0.3",
     "typescript": "^3.5.2",
     "url-loader": "^2.0.0",
@@ -98,9 +98,9 @@
     "webpack-node-externals": "^1.7.2"
   },
   "dependencies": {
-    "regenerator-runtime": "^0.13.3",
     "core-js": "2",
-    "deepmerge": "^3.1.0"
+    "deepmerge": "^3.1.0",
+    "regenerator-runtime": "^0.13.3"
   },
   "peerDependencies": {
     "vue": "^2.6.10"
