@@ -8,7 +8,9 @@
 
 <script>
   import { directive } from '@packages/tool-tip/src/directive'
-  import { formatCss } from "@/utils/css";
+  import Color from './color'
+  import bus from "@/utils/bus";
+  import { formatCss } from "@/utils/css"
   import ColorPicker from './color-picker'
 
   export default {
@@ -33,11 +35,13 @@
         type: [String, Number],
         default: 150
       },
-    },
-    provide() {
-      return {
-        width: this.width,
-        height: this.height
+      value: {
+        type: String,
+        default: 'hsl(50, 100%, 50%)'
+      },
+      colorFormat: {
+        type: String,
+        default: 'rgb'
       }
     },
     computed: {
@@ -49,11 +53,38 @@
         }
       }
     },
+    data() {
+      const color = new Color({
+        format: this.colorFormat
+      });
+
+      return {
+        color,
+      }
+    },
     methods: {
+      setColor(value) {
+        bus.$on('color-picker:change', value => {
+          this.color.set({
+            value,
+          });
+        });
+        this.$emit('value', value)
+      },
       RenderContent() {
         const h = this.$createElement;
         return h(ColorPicker);
       }
+    },
+    created() {
+      this.setColor(this.value)
+    },
+    beforeMount() {
+
+    },
+    mounted() {
+      console.log('parent:mounted')
+      bus.$emit('color-picker:get', this.color.fromString())
     }
   }
 </script>

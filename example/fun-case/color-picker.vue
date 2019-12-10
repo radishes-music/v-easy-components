@@ -9,7 +9,12 @@
     name: "color-picker",
     data() {
       return {
-        value: ''
+        value: 'hsl(50, 100%, 50%)'
+      }
+    },
+    watch: {
+      value(val) {
+        console.log(val)
       }
     }
   }

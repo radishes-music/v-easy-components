@@ -33,16 +33,42 @@
   }
 }
 
-.v-color-content {
-  position: relative;
+.v-color {
 
-  .v-color-white {
+  &-content {
+    position: relative;
+  }
+
+  &-white {
     .position();
     background: linear-gradient(90deg, #fff, hsla(0, 0%, 100%, 0));
   }
 
-  .v-color-black {
+  &-black {
     .position();
     background: linear-gradient(0deg, #000, transparent);
+  }
+
+  &-pointer {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    border: 1px solid white;
+    user-select: none;
+  }
+
+  &-bottom {
+    display: flex;
+    padding: 10px 0;
+  }
+
+  &-preview {
+    @size: 20px;
+    width: @size;
+    height: @size;
+    background: hsl(0, 100%, 50%);
   }
 }
