@@ -1,22 +1,23 @@
 <template>
   <div class="v-color-picker">
-    <div class="v-color-simple-placeholder" :style="sizeStyle" v-tooltip="{VNode: RenderContent, placement: 'bottom', offset: 10, effect: 'light', target: 'click'}">
+    <div class="v-color-simple-placeholder" :style="sizeStyle">
       <div class="simple-placeholder"></div>
     </div>
+    <transition name="stretch">
+      <color-picker :width="width" :height="height" :color="color" />
+    </transition>
   </div>
 </template>
 
 <script>
-  import { directive } from '@packages/tool-tip/src/directive'
   import Color from './color'
-  import bus from "@/utils/bus";
   import { formatCss } from "@/utils/css"
   import ColorPicker from './color-picker'
 
   export default {
     name: "VeColorPicker",
-    directives: {
-      tooltip: directive
+    components: {
+      ColorPicker
     },
     props: {
       simple: {
@@ -37,11 +38,11 @@
       },
       value: {
         type: String,
-        default: 'hsl(50, 100%, 50%)'
+        required: true
       },
       colorFormat: {
         type: String,
-        default: 'rgb'
+        default: 'hex'
       }
     },
     computed: {
@@ -57,34 +58,22 @@
       const color = new Color({
         format: this.colorFormat
       });
+      color.fromString(this.value);
 
       return {
         color,
       }
     },
-    methods: {
-      setColor(value) {
-        bus.$on('color-picker:change', value => {
-          this.color.set({
-            value,
-          });
-        });
-        this.$emit('value', value)
-      },
-      RenderContent() {
-        const h = this.$createElement;
-        return h(ColorPicker);
+    watch: {
+      color: {
+        deep: true,
+        handler: function (value) {
+          this.$emit('value', value.value)
+        }
       }
     },
-    created() {
-      this.setColor(this.value)
-    },
-    beforeMount() {
+    methods: {
 
     },
-    mounted() {
-      console.log('parent:mounted')
-      bus.$emit('color-picker:get', this.color.fromString())
-    }
   }
 </script>

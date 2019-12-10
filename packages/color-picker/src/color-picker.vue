@@ -1,67 +1,96 @@
 <template>
   <div>
     <div class="v-color-content"
-         :style="mergeStyle"
-         @mousedown.left="handleMouseDown"
-         @mouseup.left="handleMouseUp"
-         @mousemove.capture="handleMove"
-    >
+         ref="content"
+         :style="mergeStyle">
       <div class="v-color-white"></div>
       <div class="v-color-black"></div>
       <div class="v-color-pointer" :style="pointerStyle"></div>
     </div>
     <div class="v-color-bottom">
       <div class="v-color-preview" :style="{backgroundColor: previewColor}"></div>
+      <ve-input v-model="formatString" />
     </div>
   </div>
 </template>
 
 <script>
   import { formatCss } from "@/utils/css";
-  import bus from '@/utils/bus'
+  import draggable from "@packages/color-picker/src/draggable";
+  import VeInput from '@packages/input-plain/src/main'
 
   export default {
     name: "color-picker",
+    components: {
+      VeInput
+    },
+    props: {
+      width: {
+        required: true
+      },
+      height: {
+        required: true
+      },
+      color: {
+        required: true
+      },
+    },
     computed: {
       mergeStyle() {
-        const width = formatCss(300);
-        const height = formatCss(100);
+        const width = formatCss(this.width);
+        const height = formatCss(this.height);
         return {
           width,
           height,
-          backgroundColor: this.color
+          backgroundColor: this.color.value
         }
       },
       previewColor() {
-        return this.color;
+        return this.color.value;
+      },
+      pointerStyle() {
+        const left = formatCss(this.cursorLeft);
+        const top = formatCss(this.cursorTop);
+        return {
+          left,
+          top,
+        }
       }
     },
     data() {
       return {
-        pointerStyle: {},
-        focus: false,
-        color: ''
+        formatString: this.color.value,
+        cursorLeft: '',
+        cursorTop: '',
+      }
+    },
+    watch: {
+      color: {
+        deep: true,
+        handler: function (value) {
+          this.formatString = value.value
+        }
       }
     },
     methods: {
-      handleMouseDown(event) {
-        this.focus = true;
-        this.handleGetPointer(event);
-        document.documentElement.addEventListener('mouseup', event => {
-          this.focus = false;
-        }, {
-          once: true
-        });
+      update() {
+        const saturation = this.color.get('saturation');
+        const value = this.color.get('value');
+
+        const el = this.$refs.content;
+        let { clientWidth: width, clientHeight: height } = el;
+
+        this.cursorLeft = saturation * width / 100 - 4;
+        this.cursorTop = (100 - value) * height / 100 - 4;
+
+        this.background = 'hsl(' + this.color.get('hue') + ', 100%, 50%)';
       },
-      handleMouseUp(event) {
-        this.focus = false;
-      },
-      handleMove(event) {
-        if (!this.focus) return false;
+
+      handleDrag(event) {
         this.handleGetPointer(event);
       },
       handleGetPointer(event) {
-        const el = this.$el;
+        const el = this.$refs.content;
         const rect = el.getBoundingClientRect();
 
         let left = event.clientX - rect.left;
@@ -74,19 +103,27 @@
 
         const value = 100 - top / rect.height * 100;
 
-        bus.$emit('color-picker:change', value);
-
-        ['left', 'top'].forEach(item => {
-          this.$set(this.pointerStyle, item, formatCss(item === 'left' ? left - 2 : top - 2))
+        this.color.set({
+          _saturation: left / rect.width * 100,
+          value: value
         });
+
+        this.cursorLeft = left - 4;
+        this.cursorTop = top - 4;
+
       }
     },
     mounted() {
-      console.log('mounted')
-      bus.$on('color-picker:get', value => {
-        console.log(value)
-        this.color = value
-      })
+      draggable(this.$refs.content, {
+        drag: (event) => {
+          this.handleDrag(event);
+        },
+        end: (event) => {
+          this.handleDrag(event);
+        }
+      });
+
+      this.update();
     }
   }
 </script>

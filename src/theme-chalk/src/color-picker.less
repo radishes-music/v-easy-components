@@ -24,6 +24,7 @@
     .border(@border-color-leave0);
     padding: 2px;
     cursor: pointer;
+    margin: 0 auto;
 
     .simple-placeholder {
       .color-placeholder();
@@ -53,8 +54,8 @@
     position: absolute;
     left: 0;
     top: 0;
-    width: 4px;
-    height: 4px;
+    width: 8px;
+    height: 8px;
     border-radius: 50%;
     border: 1px solid white;
     user-select: none;
@@ -66,9 +67,9 @@
   }
 
   &-preview {
-    @size: 20px;
+    @size: 34px;
     width: @size;
     height: @size;
-    background: hsl(0, 100%, 50%);
+    margin-right: 10px;
   }
 }
