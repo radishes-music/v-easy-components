@@ -1,6 +1,6 @@
 <template>
   <transition :name="transition">
-    <div :class="['v-easy-tip', 've-tip-'+placement, Class]" v-show="domVisible" @mouseenter="enter" @mouseleave="handleMouseLeave" @click="handleClick">
+    <div :class="['v-easy-tip', 've-tip-'+placement, 've-tip--' + effect, Class]" v-show="domVisible" @mouseenter="enter" @mouseleave="handleMouseLeave" @click="handleClick">
       <p v-if="html" v-html="html"></p>
       <p v-else-if="content">{{ content }}</p>
       <render-node v-else></render-node>
@@ -22,13 +22,20 @@
         transition: 'fade',
         enterable: true,
         target: '',
-        html: ''
+        html: '',
+        effect: 'dark',
       };
     },
     components: {
       renderNode: {
         render (h) {
-          const VNode = this.$parent.VNode();
+          const parent = this.$parent;
+          let VNode = h('span');
+          if (typeof parent.VNode === 'function') {
+            VNode = parent.VNode()
+          } else {
+            console.warn('VNode is not a function')
+          }
           return VNode
         },
       }

@@ -75,13 +75,16 @@ const enter = (el, binding, simple, event) => {
     const value = binding.value;
     const modifiers = Object.keys(binding.modifiers);
     const placement = modifiers.length > 0 ? modifiers[0] : (value['placement'] || 'top');
+    const effect = value.effect || 'dark';
     const data = simple ? {
       ...value,
       placement: placement,
+      effect: effect,
       domVisible: true
     } : {
       content: value,
       placement: placement,
+      effect: effect,
       domVisible: true,
     };
     const tip = new tipDom({

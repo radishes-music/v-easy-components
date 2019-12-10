@@ -19,10 +19,12 @@
 
 .v-color-picker {
   display: inline-block;
+
   .v-color-simple-placeholder {
     .border(@border-color-leave0);
     padding: 2px;
     cursor: pointer;
+
     .simple-placeholder {
       .color-placeholder();
       .border(@border-color-leave3);
@@ -33,12 +35,14 @@
 
 .v-color-content {
   position: relative;
+
   .v-color-white {
     .position();
-    background: linear-gradient(90deg,#fff,hsla(0,0%,100%,0));
+    background: linear-gradient(90deg, #fff, hsla(0, 0%, 100%, 0));
   }
+
   .v-color-black {
     .position();
-    background: linear-gradient(0deg,#000,transparent);
+    background: linear-gradient(0deg, #000, transparent);
   }
 }

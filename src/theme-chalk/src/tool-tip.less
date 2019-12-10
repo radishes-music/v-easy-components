@@ -1,11 +1,34 @@
+@import "./mixins/_color";
+
 @tip-width: 3px;
-@border-color: #333333;
-.Triangle(@w: left, @a: right, @c: top, @px: 6px) {
+.Triangle(@w: left, @a: right, @c: top, @px: 6px, @border-color: @border-color-black) {
   @t: transparent;
   @q: transparent;
   border-@{w}: @px solid @t;
   border-@{a}: @px solid @q;
   border-@{c}: @px solid @border-color;
+}
+
+.MergeTopBottom(@offset: -5px, @position: bottom) {
+  &::after {
+    top: @offset;
+    border-@{position}-color: white;
+  }
+  &::before {
+    top: calc(@offset - 2px);
+    border-@{position}-color: @border-color-leave3;
+  }
+}
+
+.MergeLeftRight(@offsetA: 0, @offsetB: 0, @position: left) {
+  &::after {
+    left: @offsetA;
+    border-@{position}-color: white;
+  }
+  &::before {
+    left: @offsetB;
+    border-@{position}-color: @border-color-leave3;
+  }
 }
 
 .ve-tip-parent--relative {
@@ -14,8 +37,6 @@
 
 .v-easy-tip {
   position: absolute;
-  color: white;
-  background-color: #333;
   border-radius: 4px;
   font-size: 12px;
   padding: 6px 12px;
@@ -24,7 +45,7 @@
   p {
     margin: 0;
   }
-  &::before {
+  &::before, &::after {
     content: '';
     position: absolute;
     left: 50%;
@@ -34,39 +55,59 @@
   }
 }
 
-.v-easy-tip.ve-tip-top {
-  transform: translate(-50%, -100%);
-  &::before {
-    top: 100%;
-    .Triangle(left, right, top)
+.v-easy-tip.ve-tip {
+  &--dark {
+    color: white;
+    background-color: @border-color-black;
   }
-}
-
-.ve-tip-bottom {
-  transform: translate(-50%, 0);
-  &::before {
-    top: -6px;
-    .Triangle(left, right, bottom)
+  &--light {
+    border: 1px solid @border-color-leave3;
+    color: @border-color-black;
+    background-color: white;
   }
-}
-
-.ve-tip-left {
-  transform: translate(-100%, -50%);
-  &::before {
-    left: calc(100% + 5px);
-    top: 50%;
-    transform: translateY(-50%);
-    .Triangle(top, bottom, left, 7px)
+  &--light&-top {
+    .MergeTopBottom(100%, top)
   }
-}
-
-.ve-tip-right {
-  transform: translate(6px, -50%);
-  &::before {
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    .Triangle(bottom, top, right)
+  &--light&-bottom {
+    .MergeTopBottom(-5px, bottom)
+  }
+  &--light&-left {
+    .MergeLeftRight(calc(100% + 5px), calc(100% + 7px), left)
+  }
+  &--light&-right {
+    .MergeLeftRight(1px, -1px, right)
+  }
+  &-top {
+    transform: translate(-50%, -100%);
+    &::before, &::after {
+      top: 100%;
+      .Triangle(left, right, top);
+    }
+  }
+  &-bottom {
+    transform: translate(-50%, 0);
+    &::before, &::after {
+      top: -6px;
+      .Triangle(left, right, bottom);
+    }
+  }
+  &-left {
+    transform: translate(-100%, -50%);
+    &::before, &::after {
+      left: calc(100% + 5px);
+      top: 50%;
+      transform: translateY(-50%);
+      .Triangle(top, bottom, left, 7px);
+    }
+  }
+  &-right {
+    transform: translate(6px, -50%);
+    &::before, &::after {
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      .Triangle(bottom, top, right);
+    }
   }
 }
 

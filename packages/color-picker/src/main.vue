@@ -1,6 +1,6 @@
 <template>
   <div class="v-color-picker">
-    <div class="v-color-simple-placeholder" :style="sizeStyle" v-tooltip="{VNode: RenderContent, placement: 'bottom', offset: 10, target: 'click'}">
+    <div class="v-color-simple-placeholder" :style="sizeStyle" v-tooltip="{VNode: RenderContent, placement: 'bottom', offset: 10, effect: 'light', target: 'click'}">
       <div class="simple-placeholder"></div>
     </div>
   </div>
