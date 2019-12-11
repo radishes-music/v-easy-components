@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import Message from './message.vue'
+import Message from './main.vue'
 
 const hasOwnProperty = Object.prototype.hasOwnProperty;
 

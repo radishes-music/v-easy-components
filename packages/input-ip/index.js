@@ -1,4 +1,4 @@
-import VEIp from './src/ip.vue';
+import VEIp from './src/main.vue';
 
 VEIp.install = function (Vue) {
   Vue.component(VEIp.name, VEIp);

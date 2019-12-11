@@ -1,4 +1,4 @@
-import ImageBox from './ImageBox.vue'
+import ImageBox from './main.vue'
 import _Vue from 'vue'
 
 const imageDirective = {}

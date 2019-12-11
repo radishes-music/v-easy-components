@@ -1,6 +1,6 @@
 <template>
   <div class="ve-step" v-bind="$attrs" v-show="isActive">
-    <slot></slot>
+    <slot />
   </div>
 </template>
 

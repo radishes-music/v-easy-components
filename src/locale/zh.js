@@ -7,5 +7,9 @@ export default {
   },
   subnet: {
     err: '请输入正确的子网掩码',
+  },
+  button: {
+    confirm: '确定',
+    cancel: '取消'
   }
 }

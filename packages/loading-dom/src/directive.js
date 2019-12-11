@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import loading from './loading.vue'
+import loading from './main.vue'
 import { addClass, removeClass } from '@/utils/dom'
 
 const loadingDom = Vue.extend(loading);

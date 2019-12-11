@@ -20,7 +20,7 @@ exports.externals = externals;
 
 exports.alias = {
   '@': resolve('src'),
-  '@packages': resolve('packages'),
+  '@packages': resolve('packages')
 };
 
 exports.extensions = ['.js', '.vue', '.json'];

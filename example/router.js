@@ -10,6 +10,7 @@ import ToolTip from './fun-case/tool-tip'
 import Message from './fun-case/message'
 import Step from './fun-case/step'
 import Icon from './fun-case/icon'
+import ColorPicker from './fun-case/color-picker'
 
 Vue.use(VueRouter)
 
@@ -85,6 +86,14 @@ const routes = [
       formatter: '$msg'
     },
     component: Message
+  },
+  {
+    path: '/color-picker',
+    name: 'ColorPicker',
+    meta: {
+      formatter: 've-color-picker'
+    },
+    component: ColorPicker
   },
 ]
 

@@ -1,4 +1,4 @@
-import VEPlainInput from './src/plainInput.vue';
+import VEPlainInput from './src/main.vue';
 
 VEPlainInput.install = function (Vue) {
   Vue.component(VEPlainInput.name, VEPlainInput);

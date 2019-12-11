@@ -1,0 +1,148 @@
+@import "mixins/_color";
+
+.color-placeholder() {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAIAAADZF8uwAAAAGUlEQVQYV2M4gwH+YwCGIasIUwhT25BVBADtzYNYrHvv4gAAAABJRU5ErkJggg==);
+}
+
+.border(@color) {
+  border-radius: 2px;
+  border: 1px solid @color;
+}
+
+.position() {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.v-color-picker {
+  display: inline-block;
+
+  .v-color-simple-placeholder {
+    .border(@border-color-leave0);
+    padding: 2px;
+    cursor: pointer;
+    margin: 0 auto;
+
+    .simple-placeholder {
+      .color-placeholder();
+      .border(@border-color-leave3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      i {
+        color: white;
+      }
+    }
+  }
+}
+
+.v-color {
+
+  &-main {
+    margin-top: 6px;
+    padding: 6px;
+    box-shadow: -2px 1px 5px 2px #f1f1f1;
+  }
+
+  &-content {
+    position: relative;
+  }
+
+  &-white {
+    .position();
+    background: linear-gradient(90deg, #fff, hsla(0, 0%, 100%, 0));
+  }
+
+  &-black {
+    .position();
+    background: linear-gradient(0deg, #000, transparent);
+  }
+
+  &-pointer {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    border: 1px solid white;
+    user-select: none;
+  }
+
+  &-top {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &-hue {
+    position: relative;
+    width: 12px;
+    margin-left: 6px;
+    align-items: stretch;
+    &__bar {
+      background: linear-gradient(180deg,red 0,#ff0 17%,#0f0 33%,#0ff 50%,#00f 67%,#f0f 83%,red);
+      height: 100%;
+    }
+    &__thumb {
+      position: absolute;
+      cursor: pointer;
+      box-sizing: border-box;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 4px;
+      border-radius: 1px;
+      background: #fff;
+      border: 1px solid #f0f0f0;
+      box-shadow: 0 0 2px rgba(0,0,0,.6);
+      z-index: 1;
+    }
+  }
+
+  &-bottom {
+    display: flex;
+    padding: 10px 0 0;
+    .v-easy-button {
+      margin-left: auto;
+    }
+  }
+
+  &-preview {
+    @size: 34px;
+    width: @size;
+    height: @size;
+    margin-right: 10px;
+  }
+}
+
+.v-stretch-active {
+  transition: transform .2s ease, opacity .2s ease;
+  transform-origin: top;
+}
+
+.v-stretch {
+  &-enter {
+    transform: rotateX(90deg);
+    opacity: 0;
+    &-active {
+      .v-stretch-active();
+    }
+    &-to {
+      transform: rotateX(0deg);
+      opacity: 1;
+    }
+  }
+  &-leave {
+    &-active {
+      .v-stretch-active();
+    }
+    &-to {
+      transform: rotateX(90deg);
+      opacity: 0;
+    }
+  }
+}
