@@ -1,4 +1,4 @@
-import Image from './src/Image';
+import Image from './src/directive';
 
 export default {
   install(Vue) {

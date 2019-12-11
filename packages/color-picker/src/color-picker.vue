@@ -95,6 +95,7 @@
       noop() {},
       handleChange(value) {
         this.color.fromString(this.formatString);
+        this.tickUpdate();
         this.handleConfirm()
       },
       handleConfirm() {

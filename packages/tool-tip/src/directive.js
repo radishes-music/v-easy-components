@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import Tip from './tip.vue'
+import Tip from './main.vue'
 import {addClass, getStyle} from '@/utils/dom'
 import {_isEqual} from '@/utils/array-extend'
 
