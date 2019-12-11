@@ -1,11 +1,14 @@
 <template>
-  <div>
-    <div class="v-color-content"
-         ref="content"
-         :style="mergeStyle">
-      <div class="v-color-white"></div>
-      <div class="v-color-black"></div>
-      <div class="v-color-pointer" :style="pointerStyle"></div>
+  <div class="v-color-main">
+    <div class="v-color-top">
+      <div class="v-color-content"
+           ref="content"
+           :style="mergeStyle">
+        <div class="v-color-white"></div>
+        <div class="v-color-black"></div>
+        <div class="v-color-pointer" :style="pointerStyle"></div>
+      </div>
+      <color-hue :color="color" />
     </div>
     <div class="v-color-bottom">
       <div class="v-color-preview" :style="{backgroundColor: previewColor}"></div>
@@ -15,14 +18,16 @@
 </template>
 
 <script>
-  import { formatCss } from "@/utils/css";
-  import draggable from "@packages/color-picker/src/draggable";
+  import { formatCss } from "@/utils/css"
+  import draggable from "@packages/color-picker/src/draggable"
   import VeInput from '@packages/input-plain/src/main'
+  import ColorHue from '@packages/color-picker/src/color-hue'
 
   export default {
     name: "color-picker",
     components: {
-      VeInput
+      VeInput,
+      ColorHue,
     },
     props: {
       width: {
@@ -42,7 +47,7 @@
         return {
           width,
           height,
-          backgroundColor: this.color.value
+          backgroundColor: this.previewColor
         }
       },
       previewColor() {
