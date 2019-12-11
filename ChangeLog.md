@@ -1,10 +1,11 @@
-# [0.8.0-beta.1](https://github.com/Linkontoask/v-easy-components/compare/0.5.10...0.8.0-beta.1) (2019-12-10)
+# [0.8.0-beta.1](https://github.com/Linkontoask/v-easy-components/compare/0.5.10...0.8.0-beta.1) (2019-12-11)
 
 
 ### Bug Fixes
 
 * [#27](https://github.com/Linkontoask/v-easy-components/issues/27) ([1440dfc](https://github.com/Linkontoask/v-easy-components/commit/1440dfcd3c41840cbdcfe00113106a38205c0b3f))
 * Button circle styles ([07228c6](https://github.com/Linkontoask/v-easy-components/commit/07228c6b962c34a5d41469a0837e6c2e91607785))
+* color-picker not available ([26e6d14](https://github.com/Linkontoask/v-easy-components/commit/26e6d14fdeef2fc3ce0aa626e51772563705f213))
 * core-js@3 to core-js@2 [#8](https://github.com/Linkontoask/v-easy-components/issues/8) ([d09dac7](https://github.com/Linkontoask/v-easy-components/commit/d09dac763f7e13d166b9b5c5e3dec856c2dc678a))
 * core-js@3 to core-js@2 and useBuiltIns: "entry" ([25cc285](https://github.com/Linkontoask/v-easy-components/commit/25cc28543972c5c1e3147ba286bdfd1fc51ddbd2))
 * directive loading-preload unbind hook: "NotFoundError: Failed to execute 'removeChild' on 'Node' ([f7b0ef2](https://github.com/Linkontoask/v-easy-components/commit/f7b0ef2c5e1409f8418ddb80f78a4057b996c8fb))
@@ -12,6 +13,7 @@
 * Font icon is separated, fix the style after component is not found xxx.css ([b9816fd](https://github.com/Linkontoask/v-easy-components/commit/b9816fd80273d072c0aeed09486e4f5b3ac2ace8))
 * import add Message ([9e2bdab](https://github.com/Linkontoask/v-easy-components/commit/9e2bdabc57fcf1ebc1eb78b652560dac875d4388))
 * libraryExport: 'default' config ([ac5b3ab](https://github.com/Linkontoask/v-easy-components/commit/ac5b3ab3f796914d460a312f9e55bd84606a22c5))
+* Manual input pointer position is not updated and Rename file ([287cfd6](https://github.com/Linkontoask/v-easy-components/commit/287cfd674dae6dcf45828880247a2fea282291fa))
 * Optimize automatic deletion of tip instances and increase test code ([f228354](https://github.com/Linkontoask/v-easy-components/commit/f22835437d52e7173f5469ae9848341bd812eec4))
 * push error ([43060db](https://github.com/Linkontoask/v-easy-components/commit/43060db205733c4feb5afad3044f1ec11368f2b5))
 * release 0.6.1 ([a5c1961](https://github.com/Linkontoask/v-easy-components/commit/a5c1961acf425aa8bc6cb8a784c321a60f54818c))
@@ -29,6 +31,8 @@
 * Add ESLint function ([0e49e9c](https://github.com/Linkontoask/v-easy-components/commit/0e49e9cdfdb6724b7531386cbbdc06806240266e))
 * add steps and add button loading status ([64a806a](https://github.com/Linkontoask/v-easy-components/commit/64a806a69c92e52684117889e28a7f7f4479afb5))
 * add ve-icon component ([720d878](https://github.com/Linkontoask/v-easy-components/commit/720d878311403a0f057a4d95b35444b89afcfa92))
+* color-picker 30% ([4ce2704](https://github.com/Linkontoask/v-easy-components/commit/4ce270458c23185ccbab79e6a073f44baf593e78))
+* color-picker support tip command ([8282fc9](https://github.com/Linkontoask/v-easy-components/commit/8282fc9553a0c1492332c4fcf18202c427a1d555))
 * commit check ([045a59a](https://github.com/Linkontoask/v-easy-components/commit/045a59a05fd02f97228be83589bb0d7b80217b62))
 * steps supports add nav-class-name property ([75d5d3f](https://github.com/Linkontoask/v-easy-components/commit/75d5d3fe7bf4089d84854e04bb43d937784f13bb))
 * steps supports normal active ([f0259b5](https://github.com/Linkontoask/v-easy-components/commit/f0259b5f287c0f6a2642516996ec2df4015cb4fc))
