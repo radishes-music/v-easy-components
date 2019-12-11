@@ -29,7 +29,13 @@
     .simple-placeholder {
       .color-placeholder();
       .border(@border-color-leave3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
       height: 100%;
+      i {
+        color: white;
+      }
     }
   }
 }
@@ -38,6 +44,8 @@
 
   &-main {
     margin-top: 6px;
+    padding: 6px;
+    box-shadow: -2px 1px 5px 2px #f1f1f1;
   }
 
   &-content {
@@ -97,7 +105,10 @@
 
   &-bottom {
     display: flex;
-    padding: 10px 0;
+    padding: 10px 0 0;
+    .v-easy-button {
+      margin-left: auto;
+    }
   }
 
   &-preview {
@@ -105,5 +116,33 @@
     width: @size;
     height: @size;
     margin-right: 10px;
+  }
+}
+
+.v-stretch-active {
+  transition: transform .2s ease, opacity .2s ease;
+  transform-origin: top;
+}
+
+.v-stretch {
+  &-enter {
+    transform: rotateX(90deg);
+    opacity: 0;
+    &-active {
+      .v-stretch-active();
+    }
+    &-to {
+      transform: rotateX(0deg);
+      opacity: 1;
+    }
+  }
+  &-leave {
+    &-active {
+      .v-stretch-active();
+    }
+    &-to {
+      transform: rotateX(90deg);
+      opacity: 0;
+    }
   }
 }

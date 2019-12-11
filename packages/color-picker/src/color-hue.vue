@@ -42,6 +42,7 @@
         this.update();
       }
     },
+
     methods: {
       handleClick(event) {
         const thumb = this.$refs.thumb;
@@ -98,6 +99,7 @@
         this.thumbTop = this.getThumbTop();
       }
     },
+
     mounted() {
       const {bar, thumb} = this.$refs;
 

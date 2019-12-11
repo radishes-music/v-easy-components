@@ -1,6 +1,12 @@
 <template>
   <div class="flex">
-    <ve-color-picker style="margin: 0 auto" v-model="value" />
+    <ve-color-picker style="margin: 0 auto" v-model="value" color-format="hsl" />
+    <div>
+        <div class="preview" :style="{
+        backgroundColor: value1
+      }"></div>
+      <ve-color-picker style="margin: 0 auto" simple v-model="value1" color-format="hsl" />
+    </div>
   </div>
 </template>
 
@@ -9,14 +15,10 @@
     name: "color-picker",
     data() {
       return {
-        value: 'hsl(50, 100%, 50%)'
+        value: 'rgb(0, 87, 209)',
+        value1: 'hsl(68, 87%, 60%)',
       }
     },
-    watch: {
-      value(val) {
-        console.log(val)
-      }
-    }
   }
 </script>
 
@@ -26,4 +28,8 @@
   align-content: center;
   justify-items: center;
 }
+  .preview {
+    width: 200px;
+    height: 200px;
+  }
 </style>

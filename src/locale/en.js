@@ -7,5 +7,9 @@ export default {
   },
   subnet: {
     err: 'Please enter the correct subnet mask',
+  },
+  button: {
+    confirm: 'confirm',
+    cancel: 'cancel'
   }
 }

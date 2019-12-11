@@ -9,28 +9,6 @@
   border-@{c}: @px solid @border-color;
 }
 
-.MergeTopBottom(@offset: -5px, @position: bottom) {
-  &::after {
-    top: @offset;
-    border-@{position}-color: white;
-  }
-  &::before {
-    top: calc(@offset - 2px);
-    border-@{position}-color: @border-color-leave3;
-  }
-}
-
-.MergeLeftRight(@offsetA: 0, @offsetB: 0, @position: left) {
-  &::after {
-    left: @offsetA;
-    border-@{position}-color: white;
-  }
-  &::before {
-    left: @offsetB;
-    border-@{position}-color: @border-color-leave3;
-  }
-}
-
 .ve-tip-parent--relative {
   position: relative;
 }
@@ -39,7 +17,7 @@
   position: absolute;
   border-radius: 4px;
   font-size: 12px;
-  padding: 6px 12px;
+  padding: 8px 12px;
   transition: opacity .3s, transform .3s;
   z-index: 1;
   p {
@@ -55,6 +33,28 @@
   }
 }
 
+.MergeTopBottom(@offsetA: 0, @offsetB: 0, @position: bottom) {
+  &::after {
+    top: @offsetA;
+    border-@{position}-color: white;
+  }
+  &::before {
+    top: calc(@offsetA - @offsetB);
+    border-@{position}-color: @border-color-leave3;
+  }
+}
+
+.MergeLeftRight(@offsetA: 0, @offsetB: 0, @position: left) {
+  &::after {
+    left: @offsetA;
+    border-@{position}-color: white;
+  }
+  &::before {
+    left: @offsetB;
+    border-@{position}-color: @border-color-leave3;
+  }
+}
+
 .v-easy-tip.ve-tip {
   &--dark {
     color: white;
@@ -66,10 +66,10 @@
     background-color: white;
   }
   &--light&-top {
-    .MergeTopBottom(100%, top)
+    .MergeTopBottom(100%, -1px, top)
   }
   &--light&-bottom {
-    .MergeTopBottom(-5px, bottom)
+    .MergeTopBottom(-5px, 2px, bottom)
   }
   &--light&-left {
     .MergeLeftRight(calc(100% + 5px), calc(100% + 7px), left)

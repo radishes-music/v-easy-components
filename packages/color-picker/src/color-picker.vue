@@ -1,26 +1,31 @@
 <template>
-  <div class="v-color-main">
-    <div class="v-color-top">
-      <div class="v-color-content"
-           ref="content"
-           :style="mergeStyle">
-        <div class="v-color-white"></div>
-        <div class="v-color-black"></div>
-        <div class="v-color-pointer" :style="pointerStyle"></div>
+  <transition name="v-stretch">
+    <div v-show="display" class="v-color-main" @click.stop="noop">
+      <div class="v-color-top">
+        <div class="v-color-content"
+             ref="content"
+             :style="mergeStyle">
+          <div class="v-color-white"></div>
+          <div class="v-color-black"></div>
+          <div class="v-color-pointer" :style="pointerStyle"></div>
+        </div>
+        <color-hue ref="hue" :color="color" />
       </div>
-      <color-hue :color="color" />
+      <div class="v-color-bottom">
+        <div class="v-color-preview" :style="{backgroundColor: previewColor}"></div>
+        <ve-input v-model="formatString" @change="handleChange" @keyup.native.enter="handleChange" />
+        <ve-button @click="handleConfirm">{{ t('button.confirm') }}</ve-button>
+      </div>
     </div>
-    <div class="v-color-bottom">
-      <div class="v-color-preview" :style="{backgroundColor: previewColor}"></div>
-      <ve-input v-model="formatString" />
-    </div>
-  </div>
+  </transition>
 </template>
 
 <script>
   import { formatCss } from "@/utils/css"
+  import { t } from "@/locale/index"
   import draggable from "@packages/color-picker/src/draggable"
   import VeInput from '@packages/input-plain/src/main'
+  import VeButton from '@packages/button/src/main'
   import ColorHue from '@packages/color-picker/src/color-hue'
 
   export default {
@@ -28,6 +33,7 @@
     components: {
       VeInput,
       ColorHue,
+      VeButton,
     },
     props: {
       width: {
@@ -39,6 +45,7 @@
       color: {
         required: true
       },
+      display: Boolean,
     },
     computed: {
       mergeStyle() {
@@ -47,7 +54,7 @@
         return {
           width,
           height,
-          backgroundColor: this.previewColor
+          backgroundColor: 'hsl(' + this.color.get('hue') + ', 100%, 50%)'
         }
       },
       previewColor() {
@@ -67,6 +74,8 @@
         formatString: this.color.value,
         cursorLeft: '',
         cursorTop: '',
+        background: '',
+        t: t,
       }
     },
     watch: {
@@ -75,9 +84,28 @@
         handler: function (value) {
           this.formatString = value.value
         }
+      },
+      display(v) {
+        if (v) {
+          this.tickUpdate()
+        }
       }
     },
     methods: {
+      noop() {},
+      handleChange(value) {
+        this.color.fromString(this.formatString);
+        this.handleConfirm()
+      },
+      handleConfirm() {
+        this.$emit('confirm')
+      },
+      async tickUpdate() {
+        await this.$nextTick();
+        const { hue } = this.$refs;
+        this.update();
+        hue.update();
+      },
       update() {
         const saturation = this.color.get('saturation');
         const value = this.color.get('value');
@@ -87,6 +115,8 @@
 
         this.cursorLeft = saturation * width / 100 - 4;
         this.cursorTop = (100 - value) * height / 100 - 4;
+
+        console.log(this.cursorLeft, this.cursorTop);
 
         this.background = 'hsl(' + this.color.get('hue') + ', 100%, 50%)';
       },
@@ -109,7 +139,7 @@
         const value = 100 - top / rect.height * 100;
 
         this.color.set({
-          _saturation: left / rect.width * 100,
+          saturation: left / rect.width * 100,
           value: value
         });
 
@@ -128,7 +158,11 @@
         }
       });
 
-      this.update();
+      if (this.$parent.simple) {
+        this.tickUpdate();
+      } else {
+        this.update();
+      }
     }
   }
 </script>
