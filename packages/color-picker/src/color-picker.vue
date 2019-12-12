@@ -117,8 +117,6 @@
         this.cursorLeft = saturation * width / 100 - 4;
         this.cursorTop = (100 - value) * height / 100 - 4;
 
-        console.log(this.cursorLeft, this.cursorTop);
-
         this.background = 'hsl(' + this.color.get('hue') + ', 100%, 50%)';
       },
 
