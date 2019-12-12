@@ -1,8 +1,19 @@
 <template>
   <transition :name="transition">
-    <div :class="['v-easy-tip', 've-tip-'+placement, 've-tip--' + effect, Class]" v-show="domVisible" @mouseenter="enter" @mouseleave="handleMouseLeave" @click="handleClick">
-      <p v-if="html" v-html="html" />
-      <p v-else-if="content">{{ content }}</p>
+    <div
+      v-show="domVisible"
+      :class="['v-easy-tip', 've-tip-'+placement, 've-tip--' + effect, Class]"
+      @mouseenter="enter"
+      @mouseleave="handleMouseLeave"
+      @click="handleClick"
+    >
+      <p
+        v-if="html"
+        v-html="html"
+      />
+      <p v-else-if="content">
+        {{ content }}
+      </p>
       <render-node v-else />
     </div>
   </transition>
@@ -10,7 +21,22 @@
 
 <script>
   export default {
-    name: 'v-tip',
+    name: 'VTip',
+    components: {
+      renderNode: {
+        render (h) {
+          const parent = this.$parent;
+          let VNode = h('span');
+          if (typeof parent.VNode === 'function') {
+            VNode = parent.VNode()
+          } else {
+            // eslint-disable-next-line no-console
+            console.warn('VNode is not a function')
+          }
+          return VNode
+        },
+      }
+    },
     data() {
       return {
         placement: 'top',
@@ -26,19 +52,11 @@
         effect: 'dark',
       };
     },
-    components: {
-      renderNode: {
-        render (h) {
-          const parent = this.$parent;
-          let VNode = h('span');
-          if (typeof parent.VNode === 'function') {
-            VNode = parent.VNode()
-          } else {
-            console.warn('VNode is not a function')
-          }
-          return VNode
-        },
-      }
+    mounted() {
+
+    },
+    beforeCreate() {
+
     },
     methods: {
       handleClick(event) {
@@ -52,7 +70,7 @@
         }
       },
       enter() {
-        if (!this.enterable) return false;
+        if (!this.enterable || this.target === 'click') return false;
         this.hover = true;
         this.domVisible = true;
       },
@@ -66,12 +84,6 @@
           this.domVisible = false;
         }
       }
-    },
-    mounted() {
-
-    },
-    beforeCreate() {
-
     }
   }
 </script>
