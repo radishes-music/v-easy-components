@@ -67,7 +67,8 @@ const enter = (el, binding, simple, event) => {
   }
   const target = binding.value.target;
   if (el._uuid_tip_ && !el._is_instance_remove_) {
-    el.instance.enter();
+    el.instance.hover = true;
+    el.instance.domVisible = true;
   } else {
     // First rendering
     index += 1;
