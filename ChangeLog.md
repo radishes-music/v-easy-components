@@ -1,4 +1,4 @@
-# [0.8.0-beta.1](https://github.com/Linkontoask/v-easy-components/compare/0.5.10...0.8.0-beta.1) (2019-12-11)
+## [0.8.1](https://github.com/Linkontoask/v-easy-components/compare/0.5.10...0.8.1) (2019-12-12)
 
 
 ### Bug Fixes
@@ -19,6 +19,7 @@
 * release 0.6.1 ([a5c1961](https://github.com/Linkontoask/v-easy-components/commit/a5c1961acf425aa8bc6cb8a784c321a60f54818c))
 * steps placement border direction ([f6d86eb](https://github.com/Linkontoask/v-easy-components/commit/f6d86ebf8f3d98ab5f916714b334633ef0b4a1ed))
 * supports split icon component ([ea62b3a](https://github.com/Linkontoask/v-easy-components/commit/ea62b3aff381267f92426f140720b710a2f9b3f5))
+* target: click No content displayed when moving in again ([c0f50cb](https://github.com/Linkontoask/v-easy-components/commit/c0f50cbd38910d947a63ba76c20aa12279666d70))
 * upgrade to fontawesome 5.11.2 ([db37da2](https://github.com/Linkontoask/v-easy-components/commit/db37da21f2de0fe9b9eef88c7db4a0927bbb2995))
 * use npm install prompt core-js library is not installed ([4f9f907](https://github.com/Linkontoask/v-easy-components/commit/4f9f90757d36ab63cb08f8424022f82009b59644))
 * v-image v-show bug ([82d1709](https://github.com/Linkontoask/v-easy-components/commit/82d17094e11d0074608a62cebcf6568a9b3f87ba))
