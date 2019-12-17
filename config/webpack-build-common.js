@@ -52,11 +52,7 @@ module.exports = {
       },
       {
         test: /\.otf|ttf|woff2?|eot(\?\S*)?$/,
-        loader: 'url-loader',
-        query: {
-          limit: 10000,
-          name: path.posix.join('static', '[name].[hash:7].[ext]')
-        }
+        loader: 'url-loader'
       },
       {
         test: /\.ts$/,
