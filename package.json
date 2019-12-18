@@ -31,13 +31,13 @@
     "test": "npm run lint && karma start test/karma.conf.js --single-run",
     "test:watch": "npm run lint && karma start test/karma.conf.js",
     "clean": "rimraf lib",
-    "test:commit": "validate-commit-msg",
+    "validate:commit": "validate-commit-msg",
     "change:log": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
     "prettier": "prettier --write packages/**/*.vue packages/**/*.js"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run test:commit && npm run lint"
+      "pre-commit": "npm run validate:commit && npm run lint"
     }
   },
   "prettier": {
