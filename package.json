@@ -27,8 +27,9 @@
     "build:cm": "webpack --config config/webpack-build-components.js",
     "build:common": "webpack --config config/webpack-build-common.js",
     "build:theme": "rimraf src/theme-chalk/lib && gulp build --gulpfile src/theme-chalk/gulpfile.js && rimraf src/theme-chalk/lib/_font.css && cp-cli src/theme-chalk/lib lib/theme-chalk && rimraf lib/theme-chalk/lib",
-    "lint": "eslint packages/**/*.vue packages/**/*.js --quiet",
-    "test": "npm run lint && karma start test/karma.conf.js",
+    "lint": "eslint config/* packages/**/* src/**/*.js test/**/*.js  --quiet",
+    "test": "npm run lint && karma start test/karma.conf.js --single-run",
+    "test:watch": "npm run lint && karma start test/karma.conf.js",
     "clean": "rimraf lib",
     "test:commit": "validate-commit-msg",
     "change:log": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
@@ -38,6 +39,11 @@
     "hooks": {
       "pre-commit": "npm run test:commit && npm run lint"
     }
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true,
+    "printWidth": 80
   },
   "homepage": "https://linkorg.club",
   "bugs": {
