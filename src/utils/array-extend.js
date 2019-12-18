@@ -6,9 +6,9 @@
  * @returns {boolean}
  */
 export const contain = (arr, ...target) => {
-    const array = target.map(val => arr.includes(val));
-    return array.filter(value => value).length === target.length;
-};
+  const array = target.map(val => arr.includes(val))
+  return array.filter(value => value).length === target.length
+}
 
 /**
  * 初始化数组并赋值
@@ -18,8 +18,8 @@ export const contain = (arr, ...target) => {
  * @private
  */
 export const _initArray = (length, normal = '') => {
-    return Array.from({length}).fill(normal);
-};
+  return Array.from({ length }).fill(normal)
+}
 
 /**
  * 判断两个数值是否相等，结果不考虑两层及以上
@@ -29,22 +29,25 @@ export const _initArray = (length, normal = '') => {
  * @private
  */
 export const _isEqual = (value, oldValue) => {
-    if (value === oldValue) {
-        return true;
+  if (value === oldValue) {
+    return true
+  }
+  if (typeof value === 'object' && typeof oldValue === 'object') {
+    if (Object.keys(value).length !== Object.keys(oldValue).length) {
+      return false
     }
-    if ((typeof value) === 'object' && (typeof oldValue) === 'object') {
-        if (Object.keys(value).length !== Object.keys(oldValue).length) {
-            return false;
+    for (let [key] of Object.entries(value)) {
+      if (Array.isArray(value[key])) {
+        if (
+          !Array.isArray(oldValue[key]) ||
+          value[key].toString() !== oldValue[key].toString()
+        ) {
+          return false
         }
-        for (let [key] of Object.entries(value)) {
-            if (Array.isArray(value[key])) {
-                if (!Array.isArray(oldValue[key]) || value[key].toString() !== oldValue[key].toString()) {
-                    return false;
-                }
-            } else if (oldValue[key] !== value[key]) {
-                return false;
-            }
-        }
-        return true;
+      } else if (oldValue[key] !== value[key]) {
+        return false
+      }
     }
-};
+    return true
+  }
+}

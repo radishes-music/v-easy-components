@@ -47,7 +47,6 @@ function targetImage(el, binding) {
 }
 
 function targetParent(el, binding, _NodeID) {
-
   let ImageBoxParent
   const targetNode = binding?.value?.el || 'img'
 
@@ -58,7 +57,7 @@ function targetParent(el, binding, _NodeID) {
   } else {
     el._NodeID = ++NodeID // 标记父容器
     ImageBoxParent = new (_Vue.extend(ImageBox))({
-      el: document.createElement('div'),
+      el: document.createElement('div')
     })
     el.$instace = ImageBoxParent
     ImageBoxParent._NodeID = el._NodeID
@@ -78,17 +77,17 @@ function targetParent(el, binding, _NodeID) {
   nodes.forEach((item, index) => {
     item.removeEventListener('click', handlerIndicator.get(item))
     handlerIndicator.has(item) && handlerIndicator.delete(item) // Delete the destroyed listener handler
-    handlerIndicator.set(item, handlerControl.bind(null, src, ImageBoxParent, index))
+    handlerIndicator.set(
+      item,
+      handlerControl.bind(null, src, ImageBoxParent, index)
+    )
     item.addEventListener('click', handlerIndicator.get(item))
   })
-
 }
 
-imageDirective.install = function (Vue) {
-
+imageDirective.install = function(Vue) {
   Vue.directive('image', {
-
-    bind: function (el, binding) {
+    bind: function(el, binding) {
       if (el.tagName === 'IMG' || el.dataset?.previewSrc) {
         targetImage(el, binding)
       } else {
@@ -96,16 +95,19 @@ imageDirective.install = function (Vue) {
       }
     },
 
-    componentUpdated: function (el, binding) {
+    componentUpdated: function(el, binding) {
       if (el._NodeID) {
         targetParent(el, binding, el._NodeID)
       }
     },
 
-    unbind: function (el) {
+    unbind: function(el) {
       if (el._NodeID) {
         const needRemoveElement = el.$instace
-        if (needRemoveElement.$el && document.body.contains(needRemoveElement.$el)) {
+        if (
+          needRemoveElement.$el &&
+          document.body.contains(needRemoveElement.$el)
+        ) {
           document.body.removeChild(needRemoveElement.$el)
         }
       } /*else {
@@ -114,8 +116,7 @@ imageDirective.install = function (Vue) {
         }
       }*/
     }
-  });
-
+  })
 }
 
 export default imageDirective

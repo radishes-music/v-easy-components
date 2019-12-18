@@ -5,7 +5,7 @@ import InputIp from '@packages/input-ip/index'
 import InputSubnet from '@packages/input-subnet/index'
 import InputPlain from '@packages/input-plain/index'
 import Switch from '@packages/switch/index'
-import {Steps, Step} from '@packages/steps/index'
+import { Steps, Step } from '@packages/steps/index'
 import ToolTip from '@packages/tool-tip/index'
 import Skeleton from '@packages/loading-dom/index'
 import ImagePreview from '@packages/image-preview/index'
@@ -22,32 +22,31 @@ const components = [
   Switch,
   Steps,
   Step,
-  ColorPicker,
-];
+  ColorPicker
+]
 
-const install = function (Vue, opts = {}) {
-  locale.use(opts.locale);
-  locale.i18n(opts.i18n);
+const install = function(Vue, opts = {}) {
+  locale.use(opts.locale)
+  locale.i18n(opts.i18n)
 
   components.forEach(component => {
     Vue.component(component.name, component)
-  });
+  })
 
-  Vue.use(ToolTip.directive);
-  Vue.use(Skeleton.directive);
-  Vue.use(ImagePreview.Image);
+  Vue.use(ToolTip.directive)
+  Vue.use(Skeleton.directive)
+  Vue.use(ImagePreview.Image)
 
   Vue.prototype.$VEasy = {
     iconStyle: opts.iconStyle || 'fa'
-  };
+  }
 
-  Vue.prototype.$msg = Message;
-
-};
+  Vue.prototype.$msg = Message
+}
 
 // 静态资源加载
 if (typeof window !== 'undefined' && window.Vue) {
-  install(window.Vue);
+  install(window.Vue)
 }
 
 export const main = {
@@ -67,7 +66,7 @@ export const main = {
   Skeleton,
   ImagePreview,
   ToolTip,
-  ColorPicker,
-};
+  ColorPicker
+}
 
 export default main

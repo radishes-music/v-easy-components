@@ -1,8 +1,8 @@
-import Image from './src/directive';
+import Image from './src/directive'
 
 export default {
   install(Vue) {
-    Vue.use(Image);
+    Vue.use(Image)
   },
-  Image,
-};
+  Image
+}

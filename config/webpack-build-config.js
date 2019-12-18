@@ -1,15 +1,15 @@
 const path = require('path')
 const ProgressBarPlugin = require('progress-bar-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
-const {VueLoaderPlugin} = require('vue-loader')
+const { VueLoaderPlugin } = require('vue-loader')
 const config = require('./config')
 
-const resolve = (src) => path.resolve(__dirname, '../', src)
+const resolve = src => path.resolve(__dirname, '../', src)
 
 module.exports = {
   mode: 'none', // Support for compressed file packaging
   entry: {
-    'index': './src/index.js',
+    index: './src/index.js',
     'index.min': './src/index.js'
   },
   output: {
@@ -23,7 +23,7 @@ module.exports = {
   stats: 'errors-only',
   resolve: {
     extensions: config.extensions,
-    alias: config.alias,
+    alias: config.alias
   },
   externals: {
     vue: {
@@ -43,8 +43,8 @@ module.exports = {
             comments: false
           }
         }
-      }),
-    ],
+      })
+    ]
   },
   module: {
     rules: [
@@ -62,19 +62,14 @@ module.exports = {
       {
         test: /\.ts$/,
         exclude: /(node_modules)/,
-        use: 'ts-loader'},
+        use: 'ts-loader'
+      },
       {
         test: /\.js$/,
-        loader: [
-          'babel-loader',
-          'eslint-loader'
-        ],
+        loader: ['babel-loader', 'eslint-loader'],
         include: [resolve('src'), resolve('packages')]
       }
     ]
   },
-  plugins: [
-    new ProgressBarPlugin(),
-    new VueLoaderPlugin()
-  ]
+  plugins: [new ProgressBarPlugin(), new VueLoaderPlugin()]
 }

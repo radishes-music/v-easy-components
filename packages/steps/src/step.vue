@@ -5,46 +5,46 @@
 </template>
 
 <script>
-  import { computedIconStyle } from '@/utils/icon-style'
+import { computedIconStyle } from '@/utils/icon-style'
 
-  export default {
-    name: "VeStep",
+export default {
+  name: 'VeStep',
 
-    props: {
-      title: {
-        type: String,
-        required: true
-      },
-      icon: {
-        type: String,
-        required: false
-      },
-      iconStyle: {
-        type: String,
-        default: 'solid'
-      },
+  props: {
+    title: {
+      type: String,
+      required: true
     },
-
-    data() {
-      return {
-        isActive: false
-      }
+    icon: {
+      type: String,
+      required: false
     },
+    iconStyle: {
+      type: String,
+      default: 'solid'
+    }
+  },
 
-    methods: {
-      updateStatus(status) {
-        this.isActive = status
-      }
-    },
+  data() {
+    return {
+      isActive: false
+    }
+  },
 
-    created() {
-      if (Array.isArray(this.$parent.steps)) {
-        this.$parent.steps.push({
-          title: this.title,
-          icon: this.icon,
-          iconClass: computedIconStyle(this.iconStyle)
-        })
-      }
+  methods: {
+    updateStatus(status) {
+      this.isActive = status
+    }
+  },
+
+  created() {
+    if (Array.isArray(this.$parent.steps)) {
+      this.$parent.steps.push({
+        title: this.title,
+        icon: this.icon,
+        iconClass: computedIconStyle(this.iconStyle)
+      })
     }
   }
+}
 </script>

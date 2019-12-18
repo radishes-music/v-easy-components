@@ -1,13 +1,12 @@
-import {hasOwn} from './util';
+import { hasOwn } from './util'
 
-const RE_NARGS = /(%|)\{([0-9a-zA-Z_]+)\}/g;
+const RE_NARGS = /(%|)\{([0-9a-zA-Z_]+)\}/g
 /**
  *  String format template
  *  - Inspired:
  *    https://github.com/Matt-Esch/string-template/index.js
  */
-export default function () {
-
+export default function() {
   /**
    * template
    *
@@ -18,29 +17,28 @@ export default function () {
 
   function template(string, ...args) {
     if (args.length === 1 && typeof args[0] === 'object') {
-      args = args[0];
+      args = args[0]
     }
 
     if (!args || !args.hasOwnProperty) {
-      args = {};
+      args = {}
     }
 
     return string.replace(RE_NARGS, (match, prefix, i, index) => {
-      let result;
+      let result
 
-      if (string[index - 1] === '{' &&
-        string[index + match.length] === '}') {
-        return i;
+      if (string[index - 1] === '{' && string[index + match.length] === '}') {
+        return i
       } else {
-        result = hasOwn(args, i) ? args[i] : null;
+        result = hasOwn(args, i) ? args[i] : null
         if (result === null || result === undefined) {
-          return '';
+          return ''
         }
 
-        return result;
+        return result
       }
-    });
+    })
   }
 
-  return template;
+  return template
 }

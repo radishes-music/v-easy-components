@@ -1,7 +1,7 @@
-import VEIcon from './src/main.vue';
+import VEIcon from './src/main.vue'
 
-VEIcon.install = function (Vue) {
-  Vue.component(VEIcon.name, VEIcon);
-};
+VEIcon.install = function(Vue) {
+  Vue.component(VEIcon.name, VEIcon)
+}
 
-export default VEIcon;
+export default VEIcon

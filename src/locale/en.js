@@ -1,12 +1,12 @@
 export default {
   plain: {
-    err: 'Incorrect input',
+    err: 'Incorrect input'
   },
   ip: {
-    err: 'Please enter the correct IP address',
+    err: 'Please enter the correct IP address'
   },
   subnet: {
-    err: 'Please enter the correct subnet mask',
+    err: 'Please enter the correct subnet mask'
   },
   button: {
     confirm: 'Confirm',
