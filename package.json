@@ -30,13 +30,20 @@
     "test": "eslint",
     "clean": "rimraf lib",
     "test:commit": "validate-commit-msg",
-    "change:log": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0"
+    "change:log": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
+    "lint": "prettier --write packages/**/*.vue packages/**/*.js"
   },
   "husky": {
     "hooks": {
       "pre-commit": "npm run test:commit",
       "pre-push": "echo 'No specification'"
     }
+  },
+  "lint-staged": {
+    "*.{js, vue}": [
+      "prettier --write",
+      "git add"
+    ]
   },
   "homepage": "https://linkorg.club",
   "bugs": {
@@ -74,10 +81,12 @@
     "jest": "^24.9.0",
     "less": "^3.8.1",
     "less-loader": "^4.1.0",
+    "lint-staged": "^9.5.0",
     "path": "^0.12.7",
     "postcss": "^5.2.18",
     "postcss-loader": "^3.0.0",
     "postcss-salad": "^2.0.1",
+    "prettier": "^1.19.1",
     "progress-bar-webpack-plugin": "^1.12.1",
     "rimraf": "^3.0.0",
     "style-loader": "^0.23.1",
