@@ -1,7 +1,7 @@
 {
   "name": "v-easy-components",
   "description": "Vue.js UI Components",
-  "version": "0.9.1",
+  "version": "0.9.1-beta.1",
   "main": "index.js",
   "files": [
     "lib",
@@ -52,6 +52,7 @@
   "style": "lib/theme-chalk/index.css",
   "typings": "types/index.d.ts",
   "unpkg": "lib/index.min.js",
+  "module": "src/index.js",
   "author": "Link",
   "license": "MIT",
   "devDependencies": {
