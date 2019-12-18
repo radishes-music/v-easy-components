@@ -12,6 +12,7 @@ const PORT = process.env.PORT && Number(process.env.PORT)
 const resolve = src => path.resolve(__dirname, '../', src)
 
 module.exports = {
+  mode: "development",
   entry: {
     index: './example/main.js'
   },

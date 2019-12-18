@@ -28,7 +28,8 @@ exports.externals = externals
 
 exports.alias = {
   '@': resolve('src'),
-  '@packages': resolve('packages')
+  '@packages': resolve('packages'),
+  'lib': resolve('lib')
 }
 
 exports.extensions = ['.js', '.vue', '.json']

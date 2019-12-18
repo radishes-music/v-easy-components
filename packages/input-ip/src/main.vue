@@ -7,7 +7,7 @@
     }"
   >
     <ul ref="box" :class="disabled ? 'disabled' : ''">
-      <li v-for="(item, index) in vHtml" :key="index" :class="format">
+      <li v-for="(item, index) in VHtml" :key="index" :class="format">
         <input
           type="text"
           :maxLength="maxLength[index]"
@@ -21,7 +21,7 @@
           @focus="handleFocus(index, $event)"
           @blur="handelBlur(index, $event)"
         />
-        <span v-if="index !== vHtml.length - 1">{{ splitChar }}</span>
+        <span v-if="index !== VHtml.length - 1">{{ splitChar }}</span>
       </li>
     </ul>
     <transition name="v-easy-error">
@@ -36,14 +36,39 @@ import { _initArray } from '@/utils/array-extend'
 import merge from '@/mixins/merge'
 
 export default {
+  name: 'VeIp',
+  mixins: [merge],
   model: {
     event: 'changeResult'
   },
-  name: 'VeIp',
-  mixins: [merge],
 
   props: {
     format: { type: String, default: 'ipv4' }
+  },
+
+  computed: {
+    msg() {
+      return this.message || t('ip.err')
+    },
+    splitChar() {
+      if (this.spliceChar !== '.') {
+        return this.spliceChar
+      }
+      return this.format === 'ipv4' ? '.' : ':'
+    },
+    VHtml() {
+      let len = []
+      if (this.format === 'ipv4') {
+        // eslint-disable-next-line vue/no-side-effects-in-computed-properties
+        this.maxLength = _initArray(4, '3')
+        len = _initArray(4)
+      } else if (this.format === 'ipv6') {
+        // eslint-disable-next-line vue/no-side-effects-in-computed-properties
+        this.maxLength = _initArray(8, '4')
+        len = _initArray(8)
+      }
+      return len
+    }
   },
 
   watch: {
@@ -63,36 +88,13 @@ export default {
     }
   },
 
-  computed: {
-    msg() {
-      return this.message || t('ip.err')
-    },
-    splitChar() {
-      if (this.spliceChar !== '.') {
-        return this.spliceChar
-      }
-      return this.format === 'ipv4' ? '.' : ':'
-    },
-    vHtml() {
-      let len = []
-      if (this.format === 'ipv4') {
-        this.maxLength = _initArray(4, '3')
-        len = _initArray(4)
-      } else if (this.format === 'ipv6') {
-        this.maxLength = _initArray(8, '4')
-        len = _initArray(8)
-      }
-      return len
-    }
-  },
-
   methods: {
     handleInput(index, $event) {
       this.setCurrentValue($event.target.value, index)
 
       this.format === 'ipv4' ? this.isIpv4(index) : this.isIpv6(index, $event)
 
-      if ($event.target.value == 0) {
+      if ($event.target.value === 0) {
         this.maxLength[index] = '1'
       } else {
         this.maxLength[index] = this.format === 'ipv4' ? '3' : '4'
@@ -103,7 +105,7 @@ export default {
         !this.conformity &&
         this.result[index] &&
         this.result[index].length === Number(this.maxLength[index]) &&
-        index < this.vHtml.length - 1
+        index < this.VHtml.length - 1
       ) {
         this.$refs.box.getElementsByTagName('input')[index + 1].focus()
       }

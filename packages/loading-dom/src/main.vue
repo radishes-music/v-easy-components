@@ -1,5 +1,5 @@
 <template>
-  <div class="ve-loading" data-loading-id="ve-loading-dom" v-show="domVisible">
+  <div v-show="domVisible" class="ve-loading" data-loading-id="ve-loading-dom">
     <span v-if="type === 'text'" class="ve-loading-dom-rect">{{
       content
     }}</span>
@@ -7,12 +7,12 @@
       v-if="type === 'circle'"
       class="ve-loading-dom ve-loading-dom-circle"
       :style="circleStyle"
-    ></span>
+    />
     <span
       v-if="type === 'rect'"
       class="ve-loading-dom ve-loading-dom-rect"
       :style="circleStyle"
-    ></span>
+    />
   </div>
 </template>
 
@@ -139,14 +139,15 @@ export default {
   },
   computed: {
     content() {
-      let content = char
+      let placeholder = char
       if (this.nodeNum) {
-        content = ''
+        placeholder = ''
         if (this.nodeNum > this.map.length) {
           const copyCount = ~~(this.nodeNum / this.map.length)
           let i = 0,
             temp = this.map
           for (; i < copyCount; i++) {
+            // eslint-disable-next-line vue/no-side-effects-in-computed-properties
             this.map = [].concat(this.map, temp)
           }
         }
@@ -154,13 +155,13 @@ export default {
           .filter((o, i) => i < this.nodeNum)
           .forEach(item => {
             if (item) {
-              content += _initArray(item, char).join('')
+              placeholder += _initArray(item, char).join('')
             } else {
-              content += ' '
+              placeholder += ' '
             }
           })
       }
-      return content
+      return placeholder
     }
   },
   methods: {

@@ -61,10 +61,8 @@ export default {
 
       if (!this.vertical) {
         let left = event.clientX - rect.left
-        console.log('a:', left)
         left = Math.min(left, rect.width - thumb.offsetWidth / 2)
         left = Math.max(thumb.offsetWidth / 2, left)
-        console.log('b:', left)
         hue = Math.round(
           ((left - thumb.offsetWidth / 2) / (rect.width - thumb.offsetWidth)) *
             360
