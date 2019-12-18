@@ -1,4 +1,4 @@
-## [0.8.1](https://github.com/Linkontoask/v-easy-components/compare/0.5.10...0.8.1) (2019-12-12)
+## [0.8.1](https://github.com/Linkontoask/v-easy-components/compare/0.5.10...0.8.1) (2019-12-18)
 
 
 ### Bug Fixes
