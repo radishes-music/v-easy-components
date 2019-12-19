@@ -2,7 +2,7 @@ import { Message } from "lib/v-easy-components.common"
 import { sleep } from '../utils'
 
 describe('Message', () => {
-  it('should message dom', done => {
+  it('should message dom', async () => {
     Message({
       message: 'Link',
       duration: 500
@@ -11,10 +11,8 @@ describe('Message', () => {
     expect(document.querySelector('.message')).to.exist
     expect(message.textContent).to.equal('Link')
 
-    setTimeout(() => {
-      expect(document.querySelector('.message')).to.not.exist
-      done()
-    }, 1000)
+    await sleep(1000)
+    expect(document.querySelector('.message')).to.not.exist
   })
 
   it('manually close', async () => {
@@ -27,7 +25,7 @@ describe('Message', () => {
     expect(document.querySelector('.message')).to.not.exist
   })
 
-  it('check message type', done => {
+  it('check message type', () => {
     let typeMap = {
       success: 'fa-check-circle',
       warning: 'fa-exclamation-circle',
@@ -41,7 +39,6 @@ describe('Message', () => {
         duration: 100
       })
       expect(instancc.typeIcon).to.equal(typeMap[item])
-      done()
     })
   })
 })
