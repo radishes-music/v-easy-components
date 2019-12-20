@@ -37,7 +37,7 @@ import merge from '@/mixins/merge'
 
 export default {
   model: {
-    event: 'changeResult'
+    event: 'change'
   },
   name: 'VeSubnet',
   mixins: [merge],

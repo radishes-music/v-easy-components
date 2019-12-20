@@ -44,7 +44,7 @@ export default {
     setCurrentValue(value, index) {
       if (value.toString() === this.result.join('.')) return
       this.$set(this.result, index, value.replace(/\D/g, ''))
-      this.$emit('changeResult', this.result)
+      this.$emit('change', this.result)
     },
     getCursortPosition(el) {
       let cursorPos = 0

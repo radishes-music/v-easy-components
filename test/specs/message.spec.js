@@ -1,8 +1,8 @@
-import { Message } from "lib/v-easy-components.common"
+import Message from "@packages/message/index"
 import { sleep } from '../utils'
 
 describe('Message', () => {
-  it('should message dom', async () => {
+  it('message basic', async () => {
     Message({
       message: 'Link',
       duration: 500
@@ -15,7 +15,7 @@ describe('Message', () => {
     expect(document.querySelector('.message')).to.not.exist
   })
 
-  it('manually close', async () => {
+  it('message manually close', async () => {
     Message({
       message: 'Link'
     })
@@ -25,7 +25,7 @@ describe('Message', () => {
     expect(document.querySelector('.message')).to.not.exist
   })
 
-  it('check message type', () => {
+  it('message options type', () => {
     let typeMap = {
       success: 'fa-check-circle',
       warning: 'fa-exclamation-circle',
@@ -40,5 +40,21 @@ describe('Message', () => {
       })
       expect(instancc.typeIcon).to.equal(typeMap[item])
     })
+  })
+
+  it('message options showClose', () => {
+    const instance = Message({
+      showClose: false
+    })
+    expect(instance.showClose).to.equal(false)
+  })
+
+  it('message option html', () => {
+    const instance = Message({
+      html: true,
+      message: '<h1>Link</h1>'
+    })
+    const el = instance.$el.querySelector('h1')
+    expect(el.textContent).to.equal('Link')
   })
 })

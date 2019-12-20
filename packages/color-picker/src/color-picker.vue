@@ -29,7 +29,7 @@
 import { formatCss } from '@/utils/css'
 import { t } from '@/locale/index'
 import draggable from '@packages/color-picker/src/draggable'
-import VeInput from '@packages/input-plain/src/main'
+import VeInput from '@packages/input/src/main'
 import VeButton from '@packages/button/src/main'
 import ColorHue from '@packages/color-picker/src/color-hue'
 

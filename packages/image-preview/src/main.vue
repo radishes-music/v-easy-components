@@ -13,7 +13,7 @@
           </div>
         </ul>
       </div>
-      <button class="next" v-show="isDisabledNext" @click.stop="handlerNext">
+      <button v-show="isDisabledNext" class="next" @click.stop="handlerNext">
         <i class="fa fa-angle-right fa-4x" aria-hidden="true" />
       </button>
     </div>

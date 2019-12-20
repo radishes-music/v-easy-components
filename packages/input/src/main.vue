@@ -42,30 +42,6 @@ import { contain } from '@/utils/array-extend'
 
 export default {
   name: 'VeInput',
-  data() {
-    return {
-      currentVal:
-        this.value === undefined || this.value === null ? '' : this.value,
-      error: false,
-      eventContainer: '',
-      isOnComposition: false,
-      valueBeforeComposition: null
-    }
-  },
-
-  watch: {
-    value(val) {
-      this.setCurrentValue(val)
-
-      this.mergeTarget('modify')
-    },
-    eventContainer(val) {
-      this.mergeMesh(val)
-    },
-    error(val) {
-      this.$emit('status', !val)
-    }
-  },
 
   props: {
     maxWidth: { type: String },
@@ -80,6 +56,17 @@ export default {
     target: { type: [String, Array], default: 'blur' },
     options: [Object, Array],
     value: { default: '' }
+  },
+
+  data() {
+    return {
+      currentVal:
+        this.value === undefined || this.value === null ? '' : this.value,
+      error: false,
+      eventContainer: '',
+      isOnComposition: false,
+      valueBeforeComposition: null
+    }
   },
 
   computed: {
@@ -106,6 +93,20 @@ export default {
     },
     isNumberPrefix() {
       return this.typeInput === 'number'
+    }
+  },
+
+  watch: {
+    value(val) {
+      this.setCurrentValue(val)
+
+      this.mergeTarget('modify')
+    },
+    eventContainer(val) {
+      this.mergeMesh(val)
+    },
+    error(val) {
+      this.$emit('status', !val)
     }
   },
 

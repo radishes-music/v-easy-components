@@ -1,10 +1,11 @@
 const path = require('path')
 const { VueLoaderPlugin } = require('vue-loader')
+const ProgressBarPlugin = require('progress-bar-webpack-plugin')
 const config = require('./config')
 
 const resolve = src => path.resolve(__dirname, '../', src)
 
-module.exports = {
+const webpackConfig = {
   mode: "development",
   entry: {
     index: './src/index.js'
@@ -16,6 +17,7 @@ module.exports = {
   performance: {
     hints: false
   },
+  stats: 'errors-only',
   resolve: {
     extensions: config.extensions,
     alias: config.alias,
@@ -44,7 +46,7 @@ module.exports = {
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        include: [resolve('example'), resolve('src'), resolve('packages')]
+        include: [resolve('src'), resolve('packages')]
       }
     ]
   },
@@ -52,3 +54,11 @@ module.exports = {
     new VueLoaderPlugin()
   ]
 }
+
+if (!process.env.CI_ENV) {
+  webpackConfig.plugins.push(
+    new ProgressBarPlugin()
+  );
+}
+
+module.exports = webpackConfig

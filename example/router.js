@@ -64,7 +64,7 @@ const routes = [
     component: Step
   },
   {
-    path: '/loading-dom',
+    path: '/skeleton',
     name: 'LoadingDom',
     meta: {
       formatter: 'v-loading-preload'

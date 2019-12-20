@@ -39,7 +39,7 @@ export default {
   name: 'VeIp',
   mixins: [merge],
   model: {
-    event: 'changeResult'
+    event: 'change'
   },
 
   props: {

@@ -13,5 +13,10 @@
   ],
   "plugins": [
     "@babel/proposal-optional-chaining"
-  ]
+  ],
+  "env": {
+    "test": {
+      "plugins": ["istanbul"]
+    }
+  }
 }
