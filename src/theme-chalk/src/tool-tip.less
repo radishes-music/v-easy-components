@@ -1,14 +1,5 @@
 @import "./mixins/_color";
 
-@tip-width: 3px;
-.Triangle(@w: left, @a: right, @c: top, @px: 6px, @border-color: @border-color-black) {
-  @t: transparent;
-  @q: transparent;
-  border-@{w}: @px solid @t;
-  border-@{a}: @px solid @q;
-  border-@{c}: @px solid @border-color;
-}
-
 .ve-tip-parent--relative {
   position: relative;
 }
@@ -18,40 +9,130 @@
   border-radius: 4px;
   font-size: 12px;
   padding: 8px 12px;
-  transition: opacity .3s, transform .3s;
+  transition: opacity .3s;
   z-index: 1;
+
   p {
     margin: 0;
   }
-  &::before, &::after {
-    content: '';
+
+  &[x-placement^=bottom] {
+    .popper__arrow {
+      top: -6px;
+      left: 50%;
+      margin-right: 3px;
+      border-top-width: 0;
+      border-bottom-color: @border-color-leave3;
+
+      &::after {
+        top: 1px;
+        margin-left: -6px;
+        border-top-width: 0;
+        border-bottom-color: #fff;
+      }
+    }
+
+    .popper__arrow--dark {
+      border-bottom-color: @border-color-black;
+
+      &::after {
+        border-bottom-color: @border-color-black;
+      }
+    }
+  }
+
+  &[x-placement^=left] {
+    .popper__arrow {
+      left: 100%;
+      top: 50%;
+      margin-bottom: 3px;
+      border-left-color: @border-color-leave3;
+      border-right-width: 0;
+
+      &::after {
+        bottom: -6px;
+        left: -8px;
+        border-left-color: #fff;
+        border-right-width: 0;
+      }
+    }
+
+    .popper__arrow--dark {
+      border-left-color: @border-color-black;
+
+      &::after {
+        border-left-color: @border-color-black;
+      }
+    }
+  }
+
+  &[x-placement^=right] {
+    .popper__arrow {
+      left: -6px;
+      top: 50%;
+      margin-bottom: 3px;
+      border-right-color: @border-color-leave3;
+      border-left-width: 0;
+
+      &::after {
+        bottom: -6px;
+        left: 1px;
+        border-right-color: #fff;
+        border-left-width: 0;
+      }
+    }
+
+    .popper__arrow--dark {
+      border-right-color: @border-color-black;
+
+      &::after {
+        border-right-color: @border-color-black;
+      }
+    }
+  }
+
+  &[x-placement^=top] {
+    .popper__arrow {
+      top: 100%;
+      left: 50%;
+      margin-right: 3px;
+      border-top-color: @border-color-leave3;
+      border-bottom-width: 0;
+
+      &::after {
+        bottom: 1px;
+        margin-left: -6px;
+        border-top-color: #fff;
+        border-bottom-width: 0;
+      }
+    }
+
+    .popper__arrow--dark {
+      border-top-color: @border-color-black;
+
+      &::after {
+        border-top-color: @border-color-black;
+      }
+    }
+  }
+
+  .popper__arrow {
+    border-width: 6px;
+    filter: drop-shadow(0 2px 12px rgba(0, 0, 0, .03));
+
+    &::after {
+      content: '';
+      border-width: 6px;
+    }
+  }
+
+  .popper__arrow, .popper__arrow::after {
     position: absolute;
-    left: 50%;
-    margin-left: -3px - @tip-width;
+    display: block;
     width: 0;
     height: 0;
-  }
-}
-
-.MergeTopBottom(@offsetA: 0, @offsetB: 0, @position: bottom) {
-  &::after {
-    top: @offsetA;
-    border-@{position}-color: white;
-  }
-  &::before {
-    top: calc(@offsetA - @offsetB);
-    border-@{position}-color: @border-color-leave3;
-  }
-}
-
-.MergeLeftRight(@offsetA: 0, @offsetB: 0, @position: left) {
-  &::after {
-    left: @offsetA;
-    border-@{position}-color: white;
-  }
-  &::before {
-    left: @offsetB;
-    border-@{position}-color: @border-color-leave3;
+    border-color: transparent;
+    border-style: solid;
   }
 }
 
@@ -60,54 +141,11 @@
     color: white;
     background-color: @border-color-black;
   }
+
   &--light {
     border: 1px solid @border-color-leave3;
     color: @border-color-black;
     background-color: white;
-  }
-  &--light&-top {
-    .MergeTopBottom(100%, -1px, top)
-  }
-  &--light&-bottom {
-    .MergeTopBottom(-5px, 2px, bottom)
-  }
-  &--light&-left {
-    .MergeLeftRight(calc(100% + 5px), calc(100% + 7px), left)
-  }
-  &--light&-right {
-    .MergeLeftRight(1px, -1px, right)
-  }
-  &-top {
-    transform: translate(-50%, -100%);
-    &::before, &::after {
-      top: 100%;
-      .Triangle(left, right, top);
-    }
-  }
-  &-bottom {
-    transform: translate(-50%, 0);
-    &::before, &::after {
-      top: -6px;
-      .Triangle(left, right, bottom);
-    }
-  }
-  &-left {
-    transform: translate(-100%, -50%);
-    &::before, &::after {
-      left: calc(100% + 5px);
-      top: 50%;
-      transform: translateY(-50%);
-      .Triangle(top, bottom, left, 7px);
-    }
-  }
-  &-right {
-    transform: translate(6px, -50%);
-    &::before, &::after {
-      left: 0;
-      top: 50%;
-      transform: translateY(-50%);
-      .Triangle(bottom, top, right);
-    }
   }
 }
 

@@ -94,6 +94,7 @@
     "less-loader": "^4.1.0",
     "mocha": "^6.2.2",
     "path": "^0.12.7",
+    "popper.js": "^1.16.0",
     "postcss": "^5.2.18",
     "postcss-loader": "^3.0.0",
     "postcss-salad": "^2.0.1",

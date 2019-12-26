@@ -12,6 +12,7 @@
         {{ content }}
       </p>
       <render-node v-else />
+      <div :class="['popper__arrow', 'popper__arrow--' + effect]"></div>
     </div>
   </transition>
 </template>

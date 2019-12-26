@@ -220,3 +220,10 @@ export const removeChildren = function removeChildren(node, option) {
     node.removeChild(el)
   }
 }
+
+export const pageInfo = function pageInfo() {
+  return {
+    width: document.documentElement.clientWidth,
+    height: document.documentElement.clientHeight
+  }
+}

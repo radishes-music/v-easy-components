@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Tip from './main.vue'
+import Popper from 'popper.js'
 import { addClass, getStyle } from '@/utils/dom'
 import { _isEqual } from '@/utils/array-extend'
 
@@ -10,43 +11,11 @@ let tipInstance = []
 
 const toggleTip = (el, binding) => {
   Vue.nextTick(() => {
-    el.originalPosition = getStyle(el, 'position')
-
-    let rectDom = el.getBoundingClientRect(),
-      offset = binding.value.offset || 0
-
-    ;['top', 'left'].forEach(property => {
-      const scroll = property === 'top' ? 'scrollTop' : 'scrollLeft'
-      el.tipStyle[property] =
-        rectDom[property] +
-        document.body[scroll] +
-        document.documentElement[scroll]
-    })
-
-    switch (el.instance.placement) {
-      case 'top':
-        el.tipStyle['top'] -= offset + 6
-        el.tipStyle['left'] += rectDom['width'] / 2
-        break
-      case 'bottom':
-        el.tipStyle['top'] += rectDom['height'] + offset + 6
-        el.tipStyle['left'] += rectDom['width'] / 2
-        break
-      case 'left':
-        el.tipStyle['top'] += rectDom['height'] / 2
-        el.tipStyle['left'] -= 6 + offset // support IE
-        break
-      case 'right':
-        el.tipStyle['top'] += rectDom['height'] / 2
-        el.tipStyle['left'] += rectDom['width'] + offset
-        break
-    }
-
     insertDom(el, binding)
   })
 }
 
-const insertDom = el => {
+const insertDom = (el, binding) => {
   if (
     getStyle(el, 'display') !== 'none' &&
     getStyle(el, 'visibility') !== 'hidden'
@@ -61,6 +30,18 @@ const insertDom = el => {
 
     !el.tip.isConnected && document.body.appendChild(el.tip)
     el._is_instance_remove_ = false
+
+    el.tip.popper = new Popper(el, el.tip, {
+      placement: el.instance.placement,
+      modifiers: {
+        arrow: {
+          element: el.tip.querySelector('.popper__arrow')
+        },
+        offset: {
+          offset: '0,' + ((el.instance.offset || 0) + 6)
+        }
+      }
+    })
   }
 }
 
@@ -83,17 +64,16 @@ const enter = (el, binding, simple, event) => {
     const effect = value.effect || 'dark'
     const data = simple
       ? {
-          ...value,
-          placement: placement,
-          effect: effect,
-          domVisible: true
-        }
+        ...value,
+        placement: placement,
+        effect: effect,
+        domVisible: true
+      }
       : {
-          content: value,
-          placement: placement,
-          effect: effect,
-          domVisible: true
-        }
+        content: value,
+        placement: placement,
+        domVisible: true
+      }
     const tip = new tipDom({
       el: document.createElement('div'),
       data
@@ -148,25 +128,13 @@ export const directive = {
     addEvent(el, binding, typeof binding.value !== 'string')
   },
 
-  update: function(el, binding) {
-    if (!_isEqual(binding.value, binding.oldValue)) {
-      if (el.tip && el.tip.isConnected) {
-        document.body.removeChild(el.tip)
-        el.removeEventListener('mouseenter', enter, false)
-        el.removeEventListener('mouseleave', leave, false)
-        el._is_instance_remove_ = true
-      }
-      enter(el, binding, typeof binding.value !== 'string')
-      addEvent(el, binding, typeof binding.value !== 'string')
-    }
-  },
-
   unbind: function(el) {
     if (el._autoRemoveTip) {
       const id = el._uuid_tip_
       const tipIndex = tipInstance.findIndex(o => o[id])
       if (tipIndex === 0 || tipIndex) {
         const tip = tipInstance.splice(tipIndex, 1)[0][id]
+        tip.popper.destroy()
         document.body.removeChild(tip)
       }
     }
