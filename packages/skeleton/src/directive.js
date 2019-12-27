@@ -52,7 +52,7 @@ const removeLoadingDom = (el, binding) => {
   }
 
   if (binding.value) {
-    removeClass(el, 've-loading-parent--relative')
+    removeClass(el, 'v-easy-loading-parent--relative')
     el.instance.showHide(false)
   } else {
     el.instance.showHide(true)

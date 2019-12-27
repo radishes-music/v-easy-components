@@ -1,6 +1,6 @@
 <template>
   <div
-    class="v-easy-input input input-plain"
+    class="v-easy-input input v-easy-input-plain"
     :style="{ 'max-width': maxWidth + 'px' }"
   >
     <textarea v-if="typeInput === 'textarea'" v-bind="$attrs" />
@@ -12,7 +12,7 @@
         :min="propertyMaxMin ? propertyMaxMin.min : null"
         :step="typeInput === 'number' ? step : null"
         :disabled="disabled"
-        :class="error && 'red'"
+        :class="{'v-easy-input--error': error}"
         :readonly="readonly"
         v-bind="$attrs"
         @compositionstart="handleComposition"

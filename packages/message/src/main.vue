@@ -1,8 +1,8 @@
 <template>
-  <transition name="easy-message-animation" @after-leave="handleAfterLeave">
+  <transition name="v-easy-message-animation" @after-leave="handleAfterLeave">
     <div
       v-show="visible"
-      :class="['easy-message-' + type, 'message']"
+      :class="['v-easy-message-' + type, 'message']"
       :style="positionStyle"
       @mouseenter="clearTimer"
       @mouseleave="startTimer"

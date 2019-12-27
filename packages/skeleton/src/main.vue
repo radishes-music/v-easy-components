@@ -1,16 +1,16 @@
 <template>
-  <div v-show="domVisible" class="ve-loading" data-loading-id="ve-loading-dom">
-    <span v-if="type === 'text'" class="ve-loading-dom-rect">{{
+  <div v-show="domVisible" class="v-easy-loading" data-loading-id="v-easy-loading-dom">
+    <span v-if="type === 'text'" class="v-easy-loading-dom--rect">{{
       content
     }}</span>
     <span
       v-if="type === 'circle'"
-      class="ve-loading-dom ve-loading-dom-circle"
+      class="v-easy-loading-dom v-easy-loading-dom--circle"
       :style="circleStyle"
     />
     <span
       v-if="type === 'rect'"
-      class="ve-loading-dom ve-loading-dom-rect"
+      class="v-easy-loading-dom v-easy-loading-dom--rect"
       :style="circleStyle"
     />
   </div>

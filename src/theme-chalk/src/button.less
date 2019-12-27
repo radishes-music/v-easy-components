@@ -25,97 +25,116 @@ button.v-easy-button {
   font-size: 14px;
   border-radius: 4px;
   overflow: hidden;
-  .button-icon-normal {
-    margin-right: 10px;
+
+  .button {
+    &-icon-normal {
+      margin-right: 10px;
+    }
+
+    &-text {
+      position: relative;
+      z-index: 1;
+    }
+
+    &-mask {
+      position: absolute;
+      left: 0;
+      top: 0;
+      background-color: @info-leave0;
+
+      &:not(.button-mask-default) {
+        width: 0;
+        height: 0;
+        border-radius: 50%;
+      }
+
+      &-text {
+        transition: color .2s;
+      }
+
+      &-default {
+        width: 100%;
+        height: 100%;
+        border-radius: 4px;
+        opacity: .3;
+        transition: left .3s;
+        cursor: pointer;
+      }
+
+      &-primary {
+        background: #0d85ff;
+        border-color: #0d85ff;
+      }
+
+      &-success {
+        background-color: #85ce61;
+        border-color: #85ce61;
+      }
+
+      &-warning {
+        background-color: #ebb563;
+        border-color: #ebb563;
+      }
+
+      &-error {
+        background-color: #f78989;
+        border-color: #f78989;
+      }
+    }
   }
-  .button-text {
-    position: relative;
-    z-index: 1;
-  }
-  .button-mask-text {
-    transition: color .2s;
-  }
-  .button-mask {
-    position: absolute;
-    left: 0;
-    top: 0;
-    background-color: @info-leave0;
-  }
-  .button-mask-default {
-    width: 100%;
-    height: 100%;
-    border-radius: 4px;
-    opacity: .3;
-    transition: left .3s;
-    cursor: pointer;
-  }
-  .button-mask:not(.button-mask-default) {
-    width: 0;
-    height: 0;
-    border-radius: 50%;
-  }
-  span.button-mask-primary {
-    background: #0d85ff;
-    border-color: #0d85ff;
-  }
-  span.button-mask-success {
-    background-color: #85ce61;
-    border-color: #85ce61;
-  }
-  span.button-mask-warning {
-    background-color: #ebb563;
-    border-color: #ebb563;
-  }
-  span.button-mask-error {
-    background-color: #f78989;
-    border-color: #f78989;
-  }
+
   .is-rotate {
     animation: rotate .6s linear infinite;
   }
 }
 
-button.button-is-circle {
-  border-radius: 50%;
-  padding: 12px;
-  i {
-    margin: 0;
-    width: 14px;
-    height: 14px;
-  }
-  .button-mask {
+button.button.button-is {
+  &-circle {
     border-radius: 50%;
+    padding: 12px;
+
+    i {
+      margin: 0;
+      width: 14px;
+      height: 14px;
+    }
+
+    .button-mask {
+      border-radius: 50%;
+    }
   }
-}
 
-button.button-is-disabled {
-  opacity: .4;
-  cursor: not-allowed;
-}
+  &-disabled {
+    opacity: .4;
+    cursor: not-allowed;
+  }
 
-button.button.button-is-plain {
-  background: none;
-  border: 1px solid #eeeeee;
-}
+  &-plain {
+    background: none;
+    border: 1px solid #eeeeee;
 
-button.button.button-is-plain.easy-button-primary {
-  color: @info-leave0;
-  border: 1px solid #eeeeee;
-}
+    .easy-button {
+      &-primary {
+        color: @info-leave0;
+        border: 1px solid #eeeeee;
+      }
 
-button.button.button-is-plain.easy-button-success {
-  color: @success;
-  border: 1px solid #eeeeee;
-}
+      &-success {
+        color: @success;
+        border: 1px solid #eeeeee;
+      }
 
-button.button.button-is-plain.easy-button-warning {
-  color: @warning;
-  border: 1px solid #eeeeee;
-}
+      &-warning {
+        color: @warning;
+        border: 1px solid #eeeeee;
+      }
 
-button.button.button-is-plain.easy-button-error {
-  color: @error;
-  border: 1px solid #eeeeee;
+      &-error {
+        color: @error;
+        border: 1px solid #eeeeee;
+      }
+    }
+  }
 }
 
 button.button.easy-button-primary:hover:not(.button-is-disabled):not(.button-is-mask), button.button.easy-button-primary:not(.button-is-disabled):not(.button-is-mask):focus {
@@ -152,67 +171,68 @@ button.button-is-mask:hover:not(.button-is-disabled) .button-mask-text {
   color: white;
 }
 
-button.button-is-mask-primary {
-  border-color: #3a8ee6;
-}
+button.button-is-mask {
+  &-primary {
+    border-color: @primary;
+  }
 
-button.button-is-mask-success {
-  border-color: @success;
-}
+  &-success {
+    border-color: @success;
+  }
 
-button.button-is-mask-warning {
-  border-color: @warning;
-}
+  &-warning {
+    border-color: @warning;
+  }
 
-button.button-is-mask-error {
-  border-color: @error;
-}
-
-button.easy-button-text {
-  color: @primary;
-  background-color: transparent;
-  border: none;
-  padding: 0;
-  .button-text {
-    transition: color .2s linear;
+  &-error {
+    border-color: @error;
   }
 }
 
-button.easy-button-primary {
-  color: #fff;
-  background-color: #409eff;
-  border-color: #409eff;
-}
+button.easy-button {
+  &-text {
+    color: @primary;
+    background-color: transparent;
+    border: none;
+    padding: 0;
 
-button.easy-button-success {
-  color: #fff;
-  background-color: @success;
-  border-color: @success;
-}
+    .button-text {
+      transition: color .2s linear;
+    }
+  }
 
-button.easy-button-warning {
-  color: #fff;
-  background-color: @warning;
-  border-color: @warning;
-}
+  &-primary {
+    color: #fff;
+    background-color: #409eff;
+    border-color: #409eff;
+  }
 
-button.easy-button-error {
-  color: #fff;
-  background-color: @error;
-  border-color: @error;
-}
+  &-success {
+    color: #fff;
+    background-color: @success;
+    border-color: @success;
+  }
 
-button.easy-button__small {
-  padding: 6px 7px;
-}
+  &-warning {
+    color: #fff;
+    background-color: @warning;
+    border-color: @warning;
+  }
 
-button.easy-button__default {
+  &-error {
+    color: #fff;
+    background-color: @error;
+    border-color: @error;
+  }
 
-}
+  &__small {
+    padding: 6px 7px;
+  }
 
-button.easy-button__large {
-  padding: 11px 15px;
-  font-size: 16px;
+  &__large {
+    padding: 11px 15px;
+    font-size: 16px;
+  }
 }
 
 button.button + button.button {

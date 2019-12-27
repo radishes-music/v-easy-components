@@ -1,11 +1,9 @@
 @color-dom: #e6ecf1;
-.ve-loading-parent--relative {
-  position: relative;
-}
 
-.ve-loading {
+.v-easy-loading {
   display: inline-block;
   font-size: 2em;
+
   span {
     color: @color-dom;
     font-family: Flow-Rounded, sans-serif;
@@ -16,22 +14,27 @@
     animation-iteration-count: infinite;
     animation-timing-function: ease-out;
   }
-  .ve-loading-dom-rect {
-    font-size: 1.3em;
-    line-height: 0.5em;
-    letter-spacing: -2px;
-    font-weight: 700;
-    white-space: pre-wrap;
-    overflow-wrap: break-word;
+
+  &-parent--relative {
+    position: relative;
   }
-  .ve-loading-dom {
+
+  &-dom {
     display: inline-block;
     background-color: @color-dom;
-  }
-  .ve-loading-dom-circle {
-    border-radius: 50%;
-  }
-  .ve-loading-dom-rect {
-    border-radius: 0;
+
+    &--rect {
+      font-size: 1.3em;
+      line-height: 0.5em;
+      letter-spacing: -2px;
+      font-weight: 700;
+      white-space: pre-wrap;
+      overflow-wrap: break-word;
+      border-radius: 0;
+    }
+
+    &--circle {
+      border-radius: 50%;
+    }
   }
 }
