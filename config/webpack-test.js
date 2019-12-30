@@ -37,10 +37,11 @@ const webpackConfig = {
         loader: 'url-loader'
       },
       {
-        test: /\.css$/,
+        test: /\.less$/,
         use: [
           'style-loader',
-          'css-loader'
+          'css-loader',
+          'less-loader'
         ]
       },
       {
