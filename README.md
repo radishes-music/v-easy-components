@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://linkorg.club/logo.png">
+  <img src="https://linkorg.club/logo.png" alt="v-easy-components">
 </p>
 
 # v-easy-components
