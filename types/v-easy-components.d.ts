@@ -14,7 +14,7 @@ export interface InstallationOptions {
 }
 
 /** The version of v-easy-components */
-export const version: string = '0.5.21'
+export const version: string
 
 /**
  * Install all v-easy-components components into Vue.
