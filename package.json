@@ -53,6 +53,7 @@
   "typings": "types/index.d.ts",
   "unpkg": "lib/index.min.js",
   "module": "src/index.js",
+  "jsnext:main": "src/index.js",
   "author": "Link",
   "license": "MIT",
   "devDependencies": {
