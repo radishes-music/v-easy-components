@@ -4,8 +4,9 @@ node_js:
 branches:
   only:
     - master
+    - dev-2020
 install:
-  - npm install
+  - yarn
 script:
   - npm run test
   - npm run build
