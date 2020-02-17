@@ -1,7 +1,7 @@
 {
   "name": "v-easy-components",
   "description": "Vue.js UI Components",
-  "version": "0.9.1",
+  "version": "0.9.2",
   "main": "index.js",
   "files": [
     "lib",
@@ -52,8 +52,6 @@
   "style": "lib/theme-chalk/index.css",
   "typings": "types/index.d.ts",
   "unpkg": "lib/index.min.js",
-  "module": "src/index.js",
-  "jsnext:main": "src/index.js",
   "author": "Link",
   "license": "MIT",
   "devDependencies": {
@@ -95,7 +93,6 @@
     "less-loader": "^4.1.0",
     "mocha": "^6.2.2",
     "path": "^0.12.7",
-    "popper.js": "^1.16.0",
     "postcss": "^5.2.18",
     "postcss-loader": "^3.0.0",
     "postcss-salad": "^2.0.1",
@@ -124,7 +121,8 @@
   "dependencies": {
     "core-js": "2",
     "deepmerge": "^3.1.0",
-    "regenerator-runtime": "^0.13.3"
+    "regenerator-runtime": "^0.13.3",
+    "popper.js": "^1.16.0"
   },
   "peerDependencies": {
     "vue": "^2.6.10"
