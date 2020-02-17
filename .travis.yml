@@ -13,6 +13,7 @@ before_deploy:
   - pwd
 deploy:
   provider: npm
+  edge: true
   skip_cleanup: true
   email: "$NPM_EMAIL"
   api_key: "$NPM_TOKEN"
