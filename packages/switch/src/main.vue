@@ -129,7 +129,7 @@ export default {
     }
   },
   methods: {
-    handleChange(event) {
+    handleChange() {
       this.$emit('input', !this.checked ? this.activeValue : this.inactiveValue)
       this.$emit(
         'change',

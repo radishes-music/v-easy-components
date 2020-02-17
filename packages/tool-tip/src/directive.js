@@ -2,7 +2,6 @@ import Vue from 'vue'
 import Tip from './main.vue'
 import Popper from 'popper.js'
 import { addClass, getStyle } from '@/utils/dom'
-import { _isEqual } from '@/utils/array-extend'
 
 const tipDom = Vue.extend(Tip)
 const tipDirective = {}
@@ -15,7 +14,7 @@ const toggleTip = (el, binding) => {
   })
 }
 
-const insertDom = (el, binding) => {
+const insertDom = (el) => {
   if (
     getStyle(el, 'display') !== 'none' &&
     getStyle(el, 'visibility') !== 'hidden'
