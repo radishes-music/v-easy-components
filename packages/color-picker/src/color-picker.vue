@@ -98,7 +98,7 @@ export default {
   },
   methods: {
     noop() {},
-    handleChange(value) {
+    handleChange() {
       this.color.fromString(this.formatString)
       this.tickUpdate()
       this.handleConfirm()

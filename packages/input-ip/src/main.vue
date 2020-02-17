@@ -140,7 +140,7 @@ export default {
       return regexp.test(ip)
     },
 
-    isIpv6(index, $event) {
+    isIpv6(index) {
       let regexp = /^[0-9a-fA-F]{0,}$/g
       if (!regexp.test(this.result[index])) {
         this.result[index] =
@@ -178,13 +178,11 @@ export default {
           this.result[this.currentIndex].length === 0)
       ) {
         this.$refs.box
-          .getElementsByTagName('input')
-          [this.currentIndex - 1].focus()
+          .getElementsByTagName('input')[this.currentIndex - 1].focus()
       }
       if ($event.keyCode === 110 && index !== 3 && $event.target.value !== '') {
         this.$refs.box
-          .getElementsByTagName('input')
-          [this.currentIndex + 1].focus()
+          .getElementsByTagName('input')[this.currentIndex + 1].focus()
       }
       let obj = this.$refs.box.getElementsByTagName('input'),
         current = this.getCursortPosition(obj[index]),

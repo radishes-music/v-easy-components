@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 import Icon from '@packages/icon/index'
 
 describe('Icon', () => {

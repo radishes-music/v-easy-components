@@ -1,3 +1,5 @@
+// no-unused-vars=0
+// eslint-disable-next-line no-unused-vars
 import ColorPicker from '@packages/color-picker/index'
 
 describe('ColorPicker', () => {

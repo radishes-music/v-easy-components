@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 import Input from '@packages/input/index'
 
 describe('Input', () => {

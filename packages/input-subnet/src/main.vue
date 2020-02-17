@@ -135,13 +135,11 @@ export default {
           this.result[this.currentIndex].length === 0)
       ) {
         this.$refs.box
-          .getElementsByTagName('input')
-          [this.currentIndex - 1].focus()
+          .getElementsByTagName('input')[this.currentIndex - 1].focus()
       }
       if ($event.keyCode === 110 && index !== 3 && $event.target.value !== '') {
         this.$refs.box
-          .getElementsByTagName('input')
-          [this.currentIndex + 1].focus()
+          .getElementsByTagName('input')[this.currentIndex + 1].focus()
       }
       let obj = this.$refs.box.getElementsByTagName('input'),
         current = this.getCursortPosition(obj[index]),

@@ -102,7 +102,7 @@ export default {
         this.display = false
       }
     },
-    handleDocument(event) {
+    handleDocument() {
       if (this.display) {
         this.display = false
       }

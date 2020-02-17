@@ -57,8 +57,7 @@ export default {
       event.stopPropagation()
     },
     handleMouseLeave() {
-      if (this.target === 'click') {
-      } else {
+      if (this.target !== 'click') {
         this.leave()
       }
     },
