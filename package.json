@@ -27,7 +27,7 @@
     "build:cm": "webpack --config config/webpack-build-components.js",
     "build:common": "webpack --config config/webpack-build-common.js",
     "build:theme": "rimraf src/theme-chalk/lib && gulp build --gulpfile src/theme-chalk/gulpfile.js && rimraf src/theme-chalk/lib/_font.css && cp-cli src/theme-chalk/lib lib/theme-chalk && rimraf lib/theme-chalk/lib",
-    "lint": "eslint config/*.js packages/**/* src/**/*.js test/**/*.js  --quiet",
+    "lint": "eslint \"config/*.js\" \"packages/**/*\" \"src/**/*.js\" \"test/**/*.js\"  --quiet",
     "test": "npm run lint && cross-env CI_ENV=/dev/ BABEL_ENV=test karma start test/karma.conf.js --single-run",
     "test:watch": "npm run lint && cross-env BABEL_ENV=test karma start test/karma.conf.js",
     "clean": "rimraf lib",
