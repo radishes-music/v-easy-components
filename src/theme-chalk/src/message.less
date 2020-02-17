@@ -38,41 +38,40 @@
   }
 }
 
-.easy-message-info {
-  color: @info-leave1;
-  .message-type, p {
+.v-easy-message {
+  &-info {
     color: @info-leave1;
+    .message-type, p {
+      color: @info-leave1;
+    }
   }
-}
-
-.easy-message-success {
-  background-color: #f0f9eb;
-  border-color: #e1f3d8;
-  color: @success;
-  .message-type, p {
+  &-success {
+    background-color: #f0f9eb;
+    border-color: #e1f3d8;
     color: @success;
+    .message-type, p {
+      color: @success;
+    }
   }
-}
-
-.easy-message-warning {
-  background-color: #fdf6ec;
-  border-color: #faecd8;
-  color: @warning;
-  .message-type, p {
+  &-warning {
+    background-color: #fdf6ec;
+    border-color: #faecd8;
     color: @warning;
+    .message-type, p {
+      color: @warning;
+    }
   }
-}
-
-.easy-message-error {
-  background-color: #fef0f0;
-  border-color: #fde2e2;
-  color: @error;
-  .message-type, p {
+  &-error {
+    background-color: #fef0f0;
+    border-color: #fde2e2;
     color: @error;
+    .message-type, p {
+      color: @error;
+    }
   }
 }
 
-.easy-message-animation-enter, .easy-message-animation-leave-to {
+.v-easy-message-animation-enter, .v-easy-message-animation-leave-to {
   transform: translate(-50%, -100%);
   opacity: 0;
 }

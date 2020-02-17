@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://linkorg.club/logo.png">
+  <img src="https://linkorg.club/logo.png" alt="v-easy-components">
 </p>
 
 # v-easy-components
@@ -40,7 +40,7 @@ Modern browsers and Internet Explorer 10+.
 
 ### Changelog
 
-Detailed changes for each release are documented in the [release notes](./ChangeLog.md).
+Detailed changes for each release are documented in the [release notes](change-log.md).
 
 ### LICENSE
 

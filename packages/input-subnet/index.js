@@ -1,7 +1,7 @@
-import VESubnet from './src/main.vue';
+import VESubnet from './src/main.vue'
 
-VESubnet.install = function (Vue) {
-  Vue.component(VESubnet.name, VESubnet);
-};
+VESubnet.install = function(Vue) {
+  Vue.component(VESubnet.name, VESubnet)
+}
 
-export default VESubnet;
+export default VESubnet

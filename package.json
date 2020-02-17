@@ -1,7 +1,7 @@
 {
   "name": "v-easy-components",
   "description": "Vue.js UI Components",
-  "version": "0.8.1",
+  "version": "0.9.1",
   "main": "index.js",
   "files": [
     "lib",
@@ -27,16 +27,23 @@
     "build:cm": "webpack --config config/webpack-build-components.js",
     "build:common": "webpack --config config/webpack-build-common.js",
     "build:theme": "rimraf src/theme-chalk/lib && gulp build --gulpfile src/theme-chalk/gulpfile.js && rimraf src/theme-chalk/lib/_font.css && cp-cli src/theme-chalk/lib lib/theme-chalk && rimraf lib/theme-chalk/lib",
-    "test": "eslint",
+    "lint": "eslint config/* packages/**/* src/**/*.js test/**/*.js  --quiet",
+    "test": "npm run lint && cross-env CI_ENV=/dev/ BABEL_ENV=test karma start test/karma.conf.js --single-run",
+    "test:watch": "npm run lint && cross-env BABEL_ENV=test karma start test/karma.conf.js",
     "clean": "rimraf lib",
-    "test:commit": "validate-commit-msg",
-    "change:log": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0"
+    "validate:commit": "validate-commit-msg",
+    "change:log": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
+    "prettier": "prettier --write packages/**/*.vue packages/**/*.js"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run test:commit",
-      "pre-push": "echo 'No specification'"
+      "pre-commit": "npm run validate:commit && npm run lint"
     }
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true,
+    "printWidth": 80
   },
   "homepage": "https://linkorg.club",
   "bugs": {
@@ -45,6 +52,8 @@
   "style": "lib/theme-chalk/index.css",
   "typings": "types/index.d.ts",
   "unpkg": "lib/index.min.js",
+  "module": "src/index.js",
+  "jsnext:main": "src/index.js",
   "author": "Link",
   "license": "MIT",
   "devDependencies": {
@@ -56,9 +65,12 @@
     "autoprefixer": "^9.6.1",
     "babel-eslint": "^10.0.3",
     "babel-loader": "^8.0.6",
+    "babel-plugin-istanbul": "^5.2.0",
+    "babel-regenerator-runtime": "^6.5.0",
+    "chai": "^4.2.0",
     "conventional-changelog-cli": "^2.0.25",
     "cp-cli": "^2.0.0",
-    "cross-env": "^5.0.5",
+    "cross-env": "^6.0.3",
     "css-loader": "^3.2.0",
     "eslint": "^6.7.2",
     "eslint-loader": "^3.0.2",
@@ -72,14 +84,26 @@
     "html-webpack-plugin": "^3.2.0",
     "husky": "^3.0.9",
     "jest": "^24.9.0",
+    "karma": "^4.4.1",
+    "karma-chrome-launcher": "^3.1.0",
+    "karma-coverage": "^2.0.1",
+    "karma-mocha": "^1.3.0",
+    "karma-sinon-chai": "^2.0.2",
+    "karma-spec-reporter": "^0.0.32",
+    "karma-webpack": "^4.0.2",
     "less": "^3.8.1",
     "less-loader": "^4.1.0",
+    "mocha": "^6.2.2",
     "path": "^0.12.7",
+    "popper.js": "^1.16.0",
     "postcss": "^5.2.18",
     "postcss-loader": "^3.0.0",
     "postcss-salad": "^2.0.1",
+    "prettier": "^1.19.1",
     "progress-bar-webpack-plugin": "^1.12.1",
     "rimraf": "^3.0.0",
+    "sinon": "^7.5.0",
+    "sinon-chai": "^3.3.0",
     "style-loader": "^0.23.1",
     "terser-webpack-plugin": "2.2.2",
     "ts-loader": "^6.0.3",
@@ -92,7 +116,6 @@
     "vue-router": "^3.1.3",
     "vue-template-compiler": "^2.6.10",
     "webpack": "^4.34.0",
-    "webpack-bundle-analyzer": ">=3.3.2",
     "webpack-cli": "^3.3.5",
     "webpack-dev-server": "^3.3.1",
     "webpack-merge": "^4.1.0",

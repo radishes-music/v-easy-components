@@ -1,4 +1,4 @@
-## [0.8.1](https://github.com/Linkontoask/v-easy-components/compare/0.5.10...0.8.1) (2019-12-12)
+## [0.9.1-beta.1](https://github.com/Linkontoask/v-easy-components/compare/0.5.10...0.9.1-beta.1) (2019-12-20)
 
 
 ### Bug Fixes
@@ -6,6 +6,7 @@
 * [#27](https://github.com/Linkontoask/v-easy-components/issues/27) ([1440dfc](https://github.com/Linkontoask/v-easy-components/commit/1440dfcd3c41840cbdcfe00113106a38205c0b3f))
 * Button circle styles ([07228c6](https://github.com/Linkontoask/v-easy-components/commit/07228c6b962c34a5d41469a0837e6c2e91607785))
 * color-picker not available ([26e6d14](https://github.com/Linkontoask/v-easy-components/commit/26e6d14fdeef2fc3ce0aa626e51772563705f213))
+* components.json directory change ([b741f14](https://github.com/Linkontoask/v-easy-components/commit/b741f146b85d02fb8998e2e80a70a16593076138))
 * core-js@3 to core-js@2 [#8](https://github.com/Linkontoask/v-easy-components/issues/8) ([d09dac7](https://github.com/Linkontoask/v-easy-components/commit/d09dac763f7e13d166b9b5c5e3dec856c2dc678a))
 * core-js@3 to core-js@2 and useBuiltIns: "entry" ([25cc285](https://github.com/Linkontoask/v-easy-components/commit/25cc28543972c5c1e3147ba286bdfd1fc51ddbd2))
 * directive loading-preload unbind hook: "NotFoundError: Failed to execute 'removeChild' on 'Node' ([f7b0ef2](https://github.com/Linkontoask/v-easy-components/commit/f7b0ef2c5e1409f8418ddb80f78a4057b996c8fb))
@@ -39,6 +40,7 @@
 * steps supports normal active ([f0259b5](https://github.com/Linkontoask/v-easy-components/commit/f0259b5f287c0f6a2642516996ec2df4015cb4fc))
 * steps supports placement top ([ec390b6](https://github.com/Linkontoask/v-easy-components/commit/ec390b6c608712cbc93f0706952149637dcf85aa))
 * Submit log automation and remove node-notifier ([8df5303](https://github.com/Linkontoask/v-easy-components/commit/8df5303926b3e8bf5f19783b18715fbd42c9ce89))
+* support ESModule ([89da4fd](https://github.com/Linkontoask/v-easy-components/commit/89da4fdbcaeb2dfd761b58150163e66ad10ba161))
 * support icon other css ([3605b4e](https://github.com/Linkontoask/v-easy-components/commit/3605b4ee7a63e4ee8138a4500a9b606a8b9dd4f3))
 * Support v-image upload value in img tag ([1eb1355](https://github.com/Linkontoask/v-easy-components/commit/1eb1355f23ecd05644b354d0ebc2d7653441388b))
 * supports button size ([a780550](https://github.com/Linkontoask/v-easy-components/commit/a78055047fc852ae2584a1ca13556098e75ead55))

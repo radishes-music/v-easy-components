@@ -5,9 +5,9 @@ const ProgressBarPlugin = require('progress-bar-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
 const config = require('./config')
 
-const resolve = (dir) => {
+const resolve = dir => {
   return path.join(__dirname, '..', dir)
-};
+}
 
 module.exports = {
   mode: 'production',
@@ -20,7 +20,7 @@ module.exports = {
     publicPath: './',
     filename: '[name].js',
     libraryTarget: 'commonjs2',
-    libraryExport: 'default',
+    libraryExport: 'default'
   },
   resolve: {
     extensions: config.extensions,
@@ -37,8 +37,8 @@ module.exports = {
             comments: false
           }
         }
-      }),
-    ],
+      })
+    ]
   },
   externals: config.externals,
   module: {
@@ -52,11 +52,7 @@ module.exports = {
       },
       {
         test: /\.otf|ttf|woff2?|eot(\?\S*)?$/,
-        loader: 'url-loader',
-        query: {
-          limit: 10000,
-          name: path.posix.join('static', '[name].[hash:7].[ext]')
-        }
+        loader: 'url-loader'
       },
       {
         test: /\.ts$/,
@@ -65,12 +61,9 @@ module.exports = {
       },
       {
         test: /\.js$/,
-        loader: [
-          'babel-loader',
-          'eslint-loader'
-        ],
+        loader: ['babel-loader', 'eslint-loader'],
         include: [resolve('src'), resolve('packages')]
-      },
+      }
     ]
   },
   plugins: [
@@ -80,4 +73,4 @@ module.exports = {
       'process.env.NODE_ENV': JSON.stringify('production')
     })
   ]
-};
+}

@@ -12,3 +12,5 @@
 /src/theme-chalk/lib
 /src/style
 /lib
+/test/coverage/
+/.vscode/
