@@ -1,16 +1,16 @@
 language: node_js
 node_js:
-- node
+  - node
 branches:
   only:
-  - master
+    - master
 install:
-- npm install
+  - npm install
 script:
-- npm run build
-- npm run test
+  - npm run test
+  - npm run build
 before_deploy:
-- pwd
+  - pwd
 deploy:
   provider: npm
   skip_cleanup: true
