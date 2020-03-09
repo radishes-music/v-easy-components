@@ -1,9 +1,15 @@
 <template>
   <div>
     <div>
-      <ve-button mask="true" mask-type="success">circle</ve-button>
-      <ve-button mask="true" mask-type="warning">circle</ve-button>
-      <ve-button mask="true" mask-type="error">circle</ve-button>
+      <ve-button plain>Success button</ve-button>
+      <ve-button plain type="success">Success button</ve-button>
+      <ve-button plain type="primary">Main button</ve-button>
+      <ve-button plain type="warning">Warning button</ve-button>
+      <ve-button plain type="error">Danger button</ve-button>
+      <ve-button type="primary">Main button</ve-button>
+      <ve-button mask mask-type="success">circle</ve-button>
+      <ve-button mask mask-type="warning">circle</ve-button>
+      <ve-button mask mask-type="error">circle</ve-button>
       <ve-button type="primary" :loading="loading">circle</ve-button>
       <ve-button @click="loading = !loading">加载完成</ve-button>
     </div>
