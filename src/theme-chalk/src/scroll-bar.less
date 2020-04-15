@@ -1,0 +1,49 @@
+@import "mixins/_color";
+
+.v-easy-scroll {
+  position: relative;
+  overflow: hidden;
+  &:hover &-bar--thumb {
+    opacity: 1;
+  }
+  &-wrap {
+    overflow: scroll;
+    margin-right: -17px;
+    margin-bottom: -17px;
+    &--view {
+
+    }
+  }
+  &-bar {
+    &--thumb {
+      width: 0;
+      height: 0;
+      opacity: 0;
+      transition: opacity .3s;
+      border-radius: 2px;
+      background-color: @bg-color;
+      cursor: pointer;
+      &__always {
+        opacity: 1;
+      }
+      &__show {
+        opacity: 1;
+      }
+    }
+  }
+  .is {
+    &-horizontal {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 6px;
+      width: 100%;
+    }
+    &-vertical {
+      position: absolute;
+      right: 0;
+      top: 0;
+      height: 100%;
+    }
+  }
+}

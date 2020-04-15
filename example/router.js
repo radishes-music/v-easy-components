@@ -11,6 +11,7 @@ import Message from './fun-case/message'
 import Step from './fun-case/step'
 import Icon from './fun-case/icon'
 import ColorPicker from './fun-case/color-picker'
+import ScrollBar from './fun-case/scroll-bar'
 
 Vue.use(VueRouter)
 
@@ -94,6 +95,14 @@ const routes = [
       formatter: 've-color-picker'
     },
     component: ColorPicker
+  },
+  {
+    path: '/scroll-bar',
+    name: 'ScrollBar',
+    meta: {
+      formatter: 've-scroll'
+    },
+    component: ScrollBar
   },
 ]
 
