@@ -1,4 +1,4 @@
-## [0.9.3](https://github.com/Linkontoask/v-easy-components/compare/0.5.10...0.9.3) (2020-03-09)
+# [1.0.0-alpha](https://github.com/Linkontoask/v-easy-components/compare/0.5.10...1.0.0-alpha) (2020-04-15)
 
 
 ### Bug Fixes
@@ -33,6 +33,7 @@
 
 * add base color-picker component ([40be4a7](https://github.com/Linkontoask/v-easy-components/commit/40be4a7a55652da2e36012e8b797751a88b694e6))
 * Add ESLint function ([0e49e9c](https://github.com/Linkontoask/v-easy-components/commit/0e49e9cdfdb6724b7531386cbbdc06806240266e))
+* add scroll-bar components ([22e7d37](https://github.com/Linkontoask/v-easy-components/commit/22e7d379cb48583266a582b42b1826e64b0e2fb2))
 * add steps and add button loading status ([64a806a](https://github.com/Linkontoask/v-easy-components/commit/64a806a69c92e52684117889e28a7f7f4479afb5))
 * add ve-icon component ([720d878](https://github.com/Linkontoask/v-easy-components/commit/720d878311403a0f057a4d95b35444b89afcfa92))
 * color-picker 30% ([4ce2704](https://github.com/Linkontoask/v-easy-components/commit/4ce270458c23185ccbab79e6a073f44baf593e78))
