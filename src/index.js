@@ -10,6 +10,7 @@ import ToolTip from '@packages/tool-tip/index'
 import Skeleton from '@packages/skeleton/index'
 import ImagePreview from '@packages/image-preview/index'
 import ColorPicker from '@packages/color-picker/index'
+import ScrollBar from '@packages/scroll-bar/index'
 import locale from '@/locale/index'
 import Package from '../package'
 
@@ -22,7 +23,8 @@ const components = [
   Switch,
   Steps,
   Step,
-  ColorPicker
+  ColorPicker,
+  ScrollBar,
 ]
 
 const install = function(Vue, opts = {}) {
@@ -66,7 +68,8 @@ export const main = {
   Skeleton,
   ImagePreview,
   ToolTip,
-  ColorPicker
+  ColorPicker,
+  ScrollBar,
 }
 
 export default main

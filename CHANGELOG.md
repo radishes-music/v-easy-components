@@ -1,15 +1,17 @@
-## [0.9.1-beta.1](https://github.com/Linkontoask/v-easy-components/compare/0.5.10...0.9.1-beta.1) (2019-12-20)
+# [1.0.0-alpha](https://github.com/Linkontoask/v-easy-components/compare/0.5.10...1.0.0-alpha) (2020-04-15)
 
 
 ### Bug Fixes
 
 * [#27](https://github.com/Linkontoask/v-easy-components/issues/27) ([1440dfc](https://github.com/Linkontoask/v-easy-components/commit/1440dfcd3c41840cbdcfe00113106a38205c0b3f))
+* [#33](https://github.com/Linkontoask/v-easy-components/issues/33) ([f3f3151](https://github.com/Linkontoask/v-easy-components/commit/f3f31517ba52e303f8bb2d3933d3216abcf9188f))
 * Button circle styles ([07228c6](https://github.com/Linkontoask/v-easy-components/commit/07228c6b962c34a5d41469a0837e6c2e91607785))
 * color-picker not available ([26e6d14](https://github.com/Linkontoask/v-easy-components/commit/26e6d14fdeef2fc3ce0aa626e51772563705f213))
 * components.json directory change ([b741f14](https://github.com/Linkontoask/v-easy-components/commit/b741f146b85d02fb8998e2e80a70a16593076138))
 * core-js@3 to core-js@2 [#8](https://github.com/Linkontoask/v-easy-components/issues/8) ([d09dac7](https://github.com/Linkontoask/v-easy-components/commit/d09dac763f7e13d166b9b5c5e3dec856c2dc678a))
 * core-js@3 to core-js@2 and useBuiltIns: "entry" ([25cc285](https://github.com/Linkontoask/v-easy-components/commit/25cc28543972c5c1e3147ba286bdfd1fc51ddbd2))
 * directive loading-preload unbind hook: "NotFoundError: Failed to execute 'removeChild' on 'Node' ([f7b0ef2](https://github.com/Linkontoask/v-easy-components/commit/f7b0ef2c5e1409f8418ddb80f78a4057b996c8fb))
+* fix button plain white color ([b499d5b](https://github.com/Linkontoask/v-easy-components/commit/b499d5b9e11f153cdaee75cb374334452022c52c))
 * fix server document is not defined ([3cf93ab](https://github.com/Linkontoask/v-easy-components/commit/3cf93aba20d3e07aed8848e8f5a85ae14872eb4b))
 * Font icon is separated, fix the style after component is not found xxx.css ([b9816fd](https://github.com/Linkontoask/v-easy-components/commit/b9816fd80273d072c0aeed09486e4f5b3ac2ace8))
 * import add Message ([9e2bdab](https://github.com/Linkontoask/v-easy-components/commit/9e2bdabc57fcf1ebc1eb78b652560dac875d4388))
@@ -31,6 +33,7 @@
 
 * add base color-picker component ([40be4a7](https://github.com/Linkontoask/v-easy-components/commit/40be4a7a55652da2e36012e8b797751a88b694e6))
 * Add ESLint function ([0e49e9c](https://github.com/Linkontoask/v-easy-components/commit/0e49e9cdfdb6724b7531386cbbdc06806240266e))
+* add scroll-bar components ([22e7d37](https://github.com/Linkontoask/v-easy-components/commit/22e7d379cb48583266a582b42b1826e64b0e2fb2))
 * add steps and add button loading status ([64a806a](https://github.com/Linkontoask/v-easy-components/commit/64a806a69c92e52684117889e28a7f7f4479afb5))
 * add ve-icon component ([720d878](https://github.com/Linkontoask/v-easy-components/commit/720d878311403a0f057a4d95b35444b89afcfa92))
 * color-picker 30% ([4ce2704](https://github.com/Linkontoask/v-easy-components/commit/4ce270458c23185ccbab79e6a073f44baf593e78))
@@ -42,6 +45,7 @@
 * Submit log automation and remove node-notifier ([8df5303](https://github.com/Linkontoask/v-easy-components/commit/8df5303926b3e8bf5f19783b18715fbd42c9ce89))
 * support ESModule ([89da4fd](https://github.com/Linkontoask/v-easy-components/commit/89da4fdbcaeb2dfd761b58150163e66ad10ba161))
 * support icon other css ([3605b4e](https://github.com/Linkontoask/v-easy-components/commit/3605b4ee7a63e4ee8138a4500a9b606a8b9dd4f3))
+* support jsnext:main key ([a6e64b7](https://github.com/Linkontoask/v-easy-components/commit/a6e64b75f980e356b2df9e3867175ba9c5afec49))
 * Support v-image upload value in img tag ([1eb1355](https://github.com/Linkontoask/v-easy-components/commit/1eb1355f23ecd05644b354d0ebc2d7653441388b))
 * supports button size ([a780550](https://github.com/Linkontoask/v-easy-components/commit/a78055047fc852ae2584a1ca13556098e75ead55))
 * tip support effect property ([25de52c](https://github.com/Linkontoask/v-easy-components/commit/25de52c4131481df494e9aa9b48a6d5a71f4ed40))
