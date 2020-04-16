@@ -1,7 +1,7 @@
 {
   "name": "v-easy-components",
   "description": "Vue.js UI Components",
-  "version": "1.0.0-alpha",
+  "version": "1.0.0",
   "main": "index.js",
   "files": [
     "lib",
@@ -121,8 +121,8 @@
   "dependencies": {
     "core-js": "2",
     "deepmerge": "^3.1.0",
-    "regenerator-runtime": "^0.13.3",
-    "popper.js": "^1.16.0"
+    "popper.js": "^1.16.0",
+    "regenerator-runtime": "^0.13.3"
   },
   "peerDependencies": {
     "vue": "^2.6.10"
