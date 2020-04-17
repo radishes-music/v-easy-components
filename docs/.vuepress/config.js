@@ -36,7 +36,7 @@ module.exports = {
   themeConfig: {
     // logo: '/logo-origin.svg',
     repo: 'Linkontoask/v-easy-components',
-    docsRepo: 'Linkontoask/linkorg.club',
+    docsRepo: 'Linkontoask/v-easy-components',
     docsDir: 'docs',
     editLinks: true,
     editLinkText: '帮助我们改善此页面！',
