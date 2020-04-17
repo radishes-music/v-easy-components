@@ -1,0 +1,93 @@
+@keyframes logoAnimation
+  100%
+    stroke-dashoffset: 0
+.logo
+  overflow: hidden
+  margin-left: -48px
+  width: 210px
+  transition: all .4s
+  path
+    animation: logoAnimation .6s ease-in-out 1s alternate forwards
+  .v
+    stroke-dasharray: 153
+    stroke-dashoffset: 153px
+    animation-timing-function: cubic-bezier(0.82, 0.07, 0.16, 0.72)
+  .e
+    stroke-dasharray: 146
+    stroke-dashoffset: 146px
+    animation-delay: 1.8s
+    animation-duration: .5s
+  .a
+    stroke-dasharray: 185
+    stroke-dashoffset: 185px
+    animation-delay: 2.3s
+    animation-timing-function: linear
+  .s
+    stroke-dasharray: 136
+    stroke-dashoffset: 136px
+    animation-delay: 2.9s
+    animation-timing-function: linear
+  .y
+    stroke-dasharray: 155
+    stroke-dashoffset: 155px
+    animation-delay: 3.5s
+    animation-timing-function: cubic-bezier(0.57, 0.07, 0.81, 0.88)
+.tip.copy-success
+  background-color: #67c23a
+  &::before
+    border-top-color: #67c23a
+.v-easy-box
+  margin: 0.5em 0
+.theme-default-content:not(.custom)
+  max-width 860px
+  p
+    font-size 14px
+    color #5e6d82
+    line-height 1.5em
+  > h1, > h2, > h3, > h4, > h5, > h6
+    padding-top 3.6em
+.theme-default-content
+  th, td
+    border none
+    padding 1em
+    max-width 120px
+  tr:last-child
+    border-bottom 1px solid #dfe2e5
+  table
+    display table
+    width 100%
+::placeholder {
+  color #c0c4cc
+}
+.v-easy-input
+  display inline-block
+  vertical-align top
+  height auto
+  & + &
+    margin-left 10px
+.animation-top-enter-active, .animation-top-leave-active
+  transition transform .2s cubic-bezier(0.73, 0.21, 0.68, 0.76), opacity .2s !important
+  z-index 9
+.animation-top-enter, .animation-top-leave-to
+  transform translate(-50%, -24px) !important
+  opacity 0
+.fade1-enter-active, .fade1-leave-active
+  transition transform .2s, opacity .2s
+.fade1-enter, .fade1-leave-to
+  transform translateY(24px)
+  opacity 0
+.badge
+  margin 0 10px
+.step-box
+  height 160px
+.icon-box
+  display flex
+  align-items center
+  justify-content flex-start
+  flex-wrap wrap
+  margin-left -10px
+.custom-icon-class
+  .theme-default-content:not(.custom)
+    max-width 100%
+  .page-edit, .page-nav
+    max-width 88%

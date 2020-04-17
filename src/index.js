@@ -73,3 +73,5 @@ export const main = {
 }
 
 export default main
+
+export const version = Package.version
