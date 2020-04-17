@@ -11,8 +11,6 @@ script:
   - npm run test
   - npm run build
   - npm run build:docs
-after_success:
-  - sh build/docs.sh
 deploy:
   provider: npm
   edge: true
@@ -23,3 +21,5 @@ deploy:
     tags: false
     branch: master
     repo: Linkontoask/v-easy-components
+after_deploy:
+  - sh build/docs.sh
