@@ -22,11 +22,13 @@
   "scripts": {
     "bootstrap": "yarn || npm i",
     "dev": "webpack-dev-server --config config/webpack-dev-config.js",
+    "dev:docs": "vuepress dev docs",
     "build": "npm run clean && npm run build:main && npm run build:cm && npm run build:common && npm run build:theme",
     "build:main": "webpack --config config/webpack-build-config.js",
     "build:cm": "webpack --config config/webpack-build-components.js",
     "build:common": "webpack --config config/webpack-build-common.js",
     "build:theme": "rimraf src/theme-chalk/lib && gulp build --gulpfile src/theme-chalk/gulpfile.js && rimraf src/theme-chalk/lib/_font.css && cp-cli src/theme-chalk/lib lib/theme-chalk && rimraf lib/theme-chalk/lib",
+    "build:docs": "vuepress build docs",
     "lint": "eslint \"config/*.js\" \"packages/**/*\" \"src/**/*.js\" \"test/**/*.js\"  --quiet",
     "test": "npm run lint && cross-env CI_ENV=/dev/ BABEL_ENV=test karma start test/karma.conf.js --single-run",
     "test:watch": "npm run lint && cross-env BABEL_ENV=test karma start test/karma.conf.js",
@@ -116,7 +118,13 @@
     "webpack-cli": "^3.3.5",
     "webpack-dev-server": "^3.3.1",
     "webpack-merge": "^4.1.0",
-    "webpack-node-externals": "^1.7.2"
+    "webpack-node-externals": "^1.7.2",
+    "vuepress": "1.2.0",
+    "@vuepress/plugin-back-to-top": "^1.2.0",
+    "@vuepress/plugin-google-analytics": "^1.2.0",
+    "@vuepress/plugin-pwa": "^1.2.0",
+    "node-sass": "^4.12.0",
+    "sass-loader": "^7.2.0"
   },
   "dependencies": {
     "core-js": "2",
