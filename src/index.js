@@ -11,6 +11,8 @@ import Skeleton from '@packages/skeleton/index'
 import ImagePreview from '@packages/image-preview/index'
 import ColorPicker from '@packages/color-picker/index'
 import ScrollBar from '@packages/scroll-bar/index'
+import RouteIndicator from '@packages/route-indicator/index'
+import Collapse from '@packages/collapse/index'
 import locale from '@/locale/index'
 import Package from '../package'
 
@@ -25,6 +27,8 @@ const components = [
   Step,
   ColorPicker,
   ScrollBar,
+  RouteIndicator,
+  Collapse,
 ]
 
 const install = function(Vue, opts = {}) {
@@ -70,6 +74,8 @@ export const main = {
   ToolTip,
   ColorPicker,
   ScrollBar,
+  RouteIndicator,
+  Collapse,
 }
 
 export default main

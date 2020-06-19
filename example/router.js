@@ -12,6 +12,7 @@ import Step from './fun-case/step'
 import Icon from './fun-case/icon'
 import ColorPicker from './fun-case/color-picker'
 import ScrollBar from './fun-case/scroll-bar'
+import RouteIndicator from './fun-case/route-Indicator'
 
 Vue.use(VueRouter)
 
@@ -103,6 +104,14 @@ const routes = [
       formatter: 've-scroll'
     },
     component: ScrollBar
+  },
+  {
+    path: '/route-indicator',
+    name: 'RouteIndicator',
+    meta: {
+      formatter: 've-route-indicator'
+    },
+    component: RouteIndicator
   },
 ]
 
