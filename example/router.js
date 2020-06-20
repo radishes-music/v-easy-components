@@ -112,17 +112,17 @@ const routes = [
       formatter: 've-route-indicator'
     },
     component: RouteIndicator
-  },
+  }
 ]
 
-export {
-  routes
-};
+export { routes }
 
 export default new VueRouter({
   mode: 'history',
-  routes: [{
-    path: '/',
-    redirect: '/image-preview'
-  }].concat(routes),
+  routes: [
+    {
+      path: '/',
+      redirect: '/image-preview'
+    }
+  ].concat(routes)
 })

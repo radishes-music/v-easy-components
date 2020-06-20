@@ -23,6 +23,7 @@ module.exports = {
   performance: {
     hints: false
   },
+  devtool: 'eval-cheap-module-source-map',
   devServer: {
     quiet: true,
     host: HOST || configDev.dev.host,
