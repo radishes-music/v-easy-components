@@ -16,7 +16,7 @@
 import draggable from '@packages/color-picker/src/draggable'
 
 export default {
-  name: 'color-hue',
+  name: 'ColorHue',
   props: {
     color: {
       required: true

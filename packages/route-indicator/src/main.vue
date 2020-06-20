@@ -17,3 +17,9 @@
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  name: 'VeRouteIndicator'
+}
+</script>
