@@ -11,7 +11,9 @@
             've-steps-error': errorStatus.includes(index)
           }"
         >
-          <i v-if="item.icon" :class="[item.iconClass, 'fa-' + item.icon]" />{{ item.title }}
+          <i v-if="item.icon" :class="[item.iconClass, 'fa-' + item.icon]" />{{
+            item.title
+          }}
         </li>
       </ul>
     </div>
@@ -48,18 +50,18 @@ export default {
     }
   },
 
-  computed: {
-    successStatus() {
-      /* Documenting steps completed */
-      return Object.keys(Array.from({ length: this.active })).map(i => +i)
-    }
-  },
-
   data() {
     return {
       steps: [],
       errorStatus: [],
       oldActive: 0
+    }
+  },
+
+  computed: {
+    successStatus() {
+      /* Documenting steps completed */
+      return Object.keys(Array.from({ length: this.active })).map(i => +i)
     }
   },
 

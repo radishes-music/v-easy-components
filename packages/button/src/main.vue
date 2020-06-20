@@ -1,8 +1,9 @@
 <template>
   <button
     ref="ButtonBox"
-    class="v-easy-button button"
     :class="[
+      'v-easy-button',
+      'button',
       type ? 'easy-button-' + type : '',
       'easy-button__' + size,
       {
@@ -18,10 +19,7 @@
     @mouseenter="enter"
     @click="handleClick"
   >
-    <i
-      v-if="loading"
-      class="fa fa-spinner fa-spin fa-pulse"
-    />
+    <i v-if="loading" class="fa fa-spinner fa-spin fa-pulse" />
     <i
       v-else-if="icon"
       :class="[

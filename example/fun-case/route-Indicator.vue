@@ -8,7 +8,7 @@
         <template slot="control">
           <h4>控制器</h4>
         </template>
-        <template v-slot:item="{item}">
+        <template v-slot:item="{ item }">
           <h4 class="text">{{ item.a }} + {{ item.b }}</h4>
         </template>
       </ve-collapse>
@@ -16,30 +16,31 @@
     <template slot="last-stop">
       <h2>最后一站</h2>
     </template>
-    <template slot="tag"></template>
+    <template slot="tag" />
   </ve-route-indicator>
 </template>
 
 <script>
-  export default {
-    name: 'RouteIndicator',
-    data() {
-      return {
-        list: [
-          { a: 1, b: 2 },
-          { a: 1, b: 2 },
-          { a: 1, b: 2 }
-        ]
-      }
+export default {
+  name: 'RouteIndicator',
+  data() {
+    return {
+      list: [
+        { a: 1, b: 2 },
+        { a: 1, b: 2 },
+        { a: 1, b: 2 }
+      ]
     }
   }
+}
 </script>
 
 <style scoped lang="less">
-  h2 {
-    margin: 0;
-  }
-  .text {
-    text-indent: 50px;
-  }
+h2 {
+  margin: 0;
+}
+
+.text {
+  text-indent: 50px;
+}
 </style>

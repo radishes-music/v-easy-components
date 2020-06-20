@@ -25,7 +25,7 @@
       </li>
     </ul>
     <transition name="v-easy-error">
-      <div class="error inspection" v-show="conformity">{{ msg }}</div>
+      <div v-show="conformity" class="error inspection">{{ msg }}</div>
     </transition>
   </div>
 </template>
@@ -178,11 +178,13 @@ export default {
           this.result[this.currentIndex].length === 0)
       ) {
         this.$refs.box
-          .getElementsByTagName('input')[this.currentIndex - 1].focus()
+          .getElementsByTagName('input')
+          [this.currentIndex - 1].focus()
       }
       if ($event.keyCode === 110 && index !== 3 && $event.target.value !== '') {
         this.$refs.box
-          .getElementsByTagName('input')[this.currentIndex + 1].focus()
+          .getElementsByTagName('input')
+          [this.currentIndex + 1].focus()
       }
       let obj = this.$refs.box.getElementsByTagName('input'),
         current = this.getCursortPosition(obj[index]),

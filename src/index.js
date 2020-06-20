@@ -28,7 +28,7 @@ const components = [
   ColorPicker,
   ScrollBar,
   RouteIndicator,
-  Collapse,
+  Collapse
 ]
 
 const install = function(Vue, opts = {}) {
@@ -75,7 +75,7 @@ export const main = {
   ColorPicker,
   ScrollBar,
   RouteIndicator,
-  Collapse,
+  Collapse
 }
 
 export default main

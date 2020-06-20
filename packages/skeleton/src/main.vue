@@ -1,5 +1,9 @@
 <template>
-  <div v-show="domVisible" class="v-easy-loading" data-loading-id="v-easy-loading-dom">
+  <div
+    v-show="domVisible"
+    class="v-easy-loading"
+    data-loading-id="v-easy-loading-dom"
+  >
     <span v-if="type === 'text'" class="v-easy-loading-dom--rect">{{
       content
     }}</span>
@@ -125,7 +129,7 @@ const map = [
 ]
 
 export default {
-  name: 'v-loading-preload-style',
+  name: 'VLoadingPreloadStyle',
   data() {
     return {
       width: 0,
