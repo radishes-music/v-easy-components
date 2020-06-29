@@ -8,23 +8,21 @@
 </template>
 
 <script>
-  export default {
-    name: "message",
-    data() {
-      return {}
-    },
-    methods: {
-      m(type) {
-        this.$msg({
-          type: type || 'warning',
-          duration: 0,
-          message: '<h1>Hello Word</h1>'
-        })
-      }
+export default {
+  name: 'message',
+  data() {
+    return {}
+  },
+  methods: {
+    m(type) {
+      this.$msg({
+        type: type || 'warning',
+        duration: 0,
+        message: '<h1>Hello Word</h1>'
+      })
     }
   }
+}
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

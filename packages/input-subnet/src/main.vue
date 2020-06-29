@@ -26,7 +26,7 @@
       </li>
     </ul>
     <transition name="v-easy-error">
-      <div class="error inspection" v-show="conformity">{{ msg }}</div>
+      <div v-show="conformity" class="error inspection">{{ msg }}</div>
     </transition>
   </div>
 </template>
@@ -36,11 +36,17 @@ import { t } from '@/locale/index'
 import merge from '@/mixins/merge'
 
 export default {
+  name: 'VeSubnet',
+  mixins: [merge],
   model: {
     event: 'change'
   },
-  name: 'VeSubnet',
-  mixins: [merge],
+
+  computed: {
+    msg() {
+      return this.message || t('subnet.err')
+    }
+  },
 
   watch: {
     result(val) {
@@ -56,12 +62,6 @@ export default {
       }
       if (statusSuccess && val.length > 3)
         this.$emit('status', this.checkSub(val.join('.')))
-    }
-  },
-
-  computed: {
-    msg() {
-      return this.message || t('subnet.err')
     }
   },
 
@@ -135,11 +135,13 @@ export default {
           this.result[this.currentIndex].length === 0)
       ) {
         this.$refs.box
-          .getElementsByTagName('input')[this.currentIndex - 1].focus()
+          .getElementsByTagName('input')
+          [this.currentIndex - 1].focus()
       }
       if ($event.keyCode === 110 && index !== 3 && $event.target.value !== '') {
         this.$refs.box
-          .getElementsByTagName('input')[this.currentIndex + 1].focus()
+          .getElementsByTagName('input')
+          [this.currentIndex + 1].focus()
       }
       let obj = this.$refs.box.getElementsByTagName('input'),
         current = this.getCursortPosition(obj[index]),

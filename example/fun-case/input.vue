@@ -9,16 +9,14 @@
 </template>
 
 <script>
-  export default {
-    name: "test-input",
-    data() {
-      return {
-        value: '123'
-      }
-    },
+export default {
+  name: 'test-input',
+  data() {
+    return {
+      value: '123'
+    }
   }
+}
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

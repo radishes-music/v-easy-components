@@ -5,16 +5,14 @@
 </template>
 
 <script>
-  export default {
-    name: "test-ip",
-    data() {
-      return {
-        c: []
-      }
-    },
+export default {
+  name: 'test-ip',
+  data() {
+    return {
+      c: []
+    }
   }
+}
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
