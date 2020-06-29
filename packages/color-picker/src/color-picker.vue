@@ -34,7 +34,7 @@ import VeButton from '@packages/button/src/main'
 import ColorHue from '@packages/color-picker/src/color-hue'
 
 export default {
-  name: 'color-picker',
+  name: 'ColorPicker',
   components: {
     VeInput,
     ColorHue,

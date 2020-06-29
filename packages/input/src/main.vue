@@ -12,7 +12,7 @@
         :min="propertyMaxMin ? propertyMaxMin.min : null"
         :step="typeInput === 'number' ? step : null"
         :disabled="disabled"
-        :class="{'v-easy-input--error': error}"
+        :class="{ 'v-easy-input--error': error }"
         :readonly="readonly"
         v-bind="$attrs"
         @compositionstart="handleComposition"
@@ -23,7 +23,7 @@
         @focus="handleFocus"
         @change="handleChange"
       />
-      <div class="input-inner-spin" v-if="isNumberPrefix">
+      <div v-if="isNumberPrefix" class="input-inner-spin">
         <i class="fa fa-chevron-up" @click="handleIncrease" />
         <i class="fa fa-chevron-down" @click="handleDecrease" />
       </div>

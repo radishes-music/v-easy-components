@@ -14,7 +14,7 @@ const toggleTip = (el, binding) => {
   })
 }
 
-const insertDom = (el) => {
+const insertDom = el => {
   if (
     getStyle(el, 'display') !== 'none' &&
     getStyle(el, 'visibility') !== 'hidden'
@@ -63,16 +63,16 @@ const enter = (el, binding, simple, event) => {
     const effect = value.effect || 'dark'
     const data = simple
       ? {
-        ...value,
-        placement: placement,
-        effect: effect,
-        domVisible: true
-      }
+          ...value,
+          placement: placement,
+          effect: effect,
+          domVisible: true
+        }
       : {
-        content: value,
-        placement: placement,
-        domVisible: true
-      }
+          content: value,
+          placement: placement,
+          domVisible: true
+        }
     const tip = new tipDom({
       el: document.createElement('div'),
       data

@@ -1,10 +1,6 @@
 <template>
   <div class="v-color-picker">
-    <div
-      v-if="!simple"
-      class="v-color-simple-placeholder"
-      :style="sizeStyle"
-    >
+    <div v-if="!simple" class="v-color-simple-placeholder" :style="sizeStyle">
       <div
         class="simple-placeholder"
         :style="{
@@ -64,15 +60,6 @@ export default {
       default: 'hex'
     }
   },
-  computed: {
-    sizeStyle() {
-      const size = formatCss(this.size)
-      return {
-        width: size,
-        height: size
-      }
-    }
-  },
   data() {
     const color = new Color({
       format: this.colorFormat
@@ -84,27 +71,20 @@ export default {
       currentColor: this.value
     }
   },
+  computed: {
+    sizeStyle() {
+      const size = formatCss(this.size)
+      return {
+        width: size,
+        height: size
+      }
+    }
+  },
   watch: {
     value(val) {
       if (val && val !== this.color.value) {
         this.color.fromString(val)
         this.currentColor = this.color.value
-      }
-    }
-  },
-  methods: {
-    handleConfirm() {
-      const { value } = this.color
-      this.currentColor = value
-      this.$emit('input', value)
-      this.$emit('change', value)
-      if (!this.simple) {
-        this.display = false
-      }
-    },
-    handleDocument() {
-      if (this.display) {
-        this.display = false
       }
     }
   },
@@ -121,6 +101,22 @@ export default {
   },
   beforeDestroy() {
     document.documentElement.removeEventListener('click', this.handleDocument)
+  },
+  methods: {
+    handleConfirm() {
+      const { value } = this.color
+      this.currentColor = value
+      this.$emit('input', value)
+      this.$emit('change', value)
+      if (!this.simple) {
+        this.display = false
+      }
+    },
+    handleDocument() {
+      if (this.display) {
+        this.display = false
+      }
+    }
   }
 }
 </script>
