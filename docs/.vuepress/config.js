@@ -61,11 +61,13 @@ module.exports = {
         nav: [
           { text: 'Guide', link: '/' },
           { text: 'Component', link: '/guide/' },
+          { text: 'Business', link: '/business/' },
           { text: 'Icon', link: '/icon/' },
         ],
         sidebar: {
           '/guide/': getGuideSidebar('Guide', 'Components', 'Instruction'),
-          '/icon/': getIconSidebar('Guide', 'Icon')
+          '/icon/': getIconSidebar('Guide', 'Icon'),
+          '/business/': getBusinessSidebar('Guide', 'Mobile'),
         }
       },
       '/zh/': {
@@ -82,11 +84,13 @@ module.exports = {
         nav: [
           { text: '指南', link: '/zh/' },
           { text: '组件', link: '/zh/guide/' },
+          { text: '业务组件', link: '/zh/business/' },
           { text: '图标', link: '/zh/icon/' },
         ],
         sidebar:{
           '/zh/guide/': getGuideSidebar('指南', '组件', '指令'),
-          '/zh/icon/': getIconSidebar('指南', '图标')
+          '/zh/icon/': getIconSidebar('指南', '图标'),
+          '/zh/business/': getBusinessSidebar('指南', '移动端'),
         }
       }
     },
@@ -100,6 +104,25 @@ module.exports = {
       }
     }
   }
+}
+
+function getBusinessSidebar (groupA, groupB) {
+  return [
+    {
+      title: groupA,
+      collapsable: false,
+      children: [
+        '',
+      ]
+    },
+    {
+      title: groupB,
+      collapsable: false,
+      children: [
+        'route-indicator',
+      ]
+    }
+  ]
 }
 
 function getIconSidebar (groupA, groupB) {
