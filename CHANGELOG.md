@@ -1,4 +1,4 @@
-# [1.0.0-alpha](https://github.com/Linkontoask/v-easy-components/compare/0.5.10...1.0.0-alpha) (2020-04-15)
+## [1.1.1](https://github.com/Linkontoask/v-easy-components/compare/0.5.10...1.1.1) (2020-07-06)
 
 
 ### Bug Fixes
@@ -11,6 +11,7 @@
 * core-js@3 to core-js@2 [#8](https://github.com/Linkontoask/v-easy-components/issues/8) ([d09dac7](https://github.com/Linkontoask/v-easy-components/commit/d09dac763f7e13d166b9b5c5e3dec856c2dc678a))
 * core-js@3 to core-js@2 and useBuiltIns: "entry" ([25cc285](https://github.com/Linkontoask/v-easy-components/commit/25cc28543972c5c1e3147ba286bdfd1fc51ddbd2))
 * directive loading-preload unbind hook: "NotFoundError: Failed to execute 'removeChild' on 'Node' ([f7b0ef2](https://github.com/Linkontoask/v-easy-components/commit/f7b0ef2c5e1409f8418ddb80f78a4057b996c8fb))
+* edit page repo linkorg.club -> v-easy-components ([8064563](https://github.com/Linkontoask/v-easy-components/commit/806456339f776ab50858f330a460862daed530bb))
 * fix button plain white color ([b499d5b](https://github.com/Linkontoask/v-easy-components/commit/b499d5b9e11f153cdaee75cb374334452022c52c))
 * fix server document is not defined ([3cf93ab](https://github.com/Linkontoask/v-easy-components/commit/3cf93aba20d3e07aed8848e8f5a85ae14872eb4b))
 * Font icon is separated, fix the style after component is not found xxx.css ([b9816fd](https://github.com/Linkontoask/v-easy-components/commit/b9816fd80273d072c0aeed09486e4f5b3ac2ace8))
@@ -18,8 +19,11 @@
 * libraryExport: 'default' config ([ac5b3ab](https://github.com/Linkontoask/v-easy-components/commit/ac5b3ab3f796914d460a312f9e55bd84606a22c5))
 * Manual input pointer position is not updated and Rename file ([287cfd6](https://github.com/Linkontoask/v-easy-components/commit/287cfd674dae6dcf45828880247a2fea282291fa))
 * Optimize automatic deletion of tip instances and increase test code ([f228354](https://github.com/Linkontoask/v-easy-components/commit/f22835437d52e7173f5469ae9848341bd812eec4))
+* post-css warning start value has mixed support, consider using flex-start instead ([08127e8](https://github.com/Linkontoask/v-easy-components/commit/08127e8cb92e002ea4aae7ef474224c3b751b877))
 * push error ([43060db](https://github.com/Linkontoask/v-easy-components/commit/43060db205733c4feb5afad3044f1ec11368f2b5))
 * release 0.6.1 ([a5c1961](https://github.com/Linkontoask/v-easy-components/commit/a5c1961acf425aa8bc6cb8a784c321a60f54818c))
+* route-indicator name component ([a94412e](https://github.com/Linkontoask/v-easy-components/commit/a94412eb83900b354bd0fb8f9d9d6d84dc4f8924))
+* scroll-bar is-horizontal remove height css ([06c9122](https://github.com/Linkontoask/v-easy-components/commit/06c91227e380b43a606ffdd21e396f354244a25f))
 * steps placement border direction ([f6d86eb](https://github.com/Linkontoask/v-easy-components/commit/f6d86ebf8f3d98ab5f916714b334633ef0b4a1ed))
 * supports split icon component ([ea62b3a](https://github.com/Linkontoask/v-easy-components/commit/ea62b3aff381267f92426f140720b710a2f9b3f5))
 * target: click No content displayed when moving in again ([c0f50cb](https://github.com/Linkontoask/v-easy-components/commit/c0f50cbd38910d947a63ba76c20aa12279666d70))
@@ -33,9 +37,11 @@
 
 * add base color-picker component ([40be4a7](https://github.com/Linkontoask/v-easy-components/commit/40be4a7a55652da2e36012e8b797751a88b694e6))
 * Add ESLint function ([0e49e9c](https://github.com/Linkontoask/v-easy-components/commit/0e49e9cdfdb6724b7531386cbbdc06806240266e))
+* add route-indicator component ([bc23211](https://github.com/Linkontoask/v-easy-components/commit/bc23211359703a740d2de516bcb9f107eaaf3387))
 * add scroll-bar components ([22e7d37](https://github.com/Linkontoask/v-easy-components/commit/22e7d379cb48583266a582b42b1826e64b0e2fb2))
 * add steps and add button loading status ([64a806a](https://github.com/Linkontoask/v-easy-components/commit/64a806a69c92e52684117889e28a7f7f4479afb5))
 * add ve-icon component ([720d878](https://github.com/Linkontoask/v-easy-components/commit/720d878311403a0f057a4d95b35444b89afcfa92))
+* business route-indicator docs ([0e2e8e1](https://github.com/Linkontoask/v-easy-components/commit/0e2e8e1ddbe9e66ed1822ccae814f0323b4acf62))
 * color-picker 30% ([4ce2704](https://github.com/Linkontoask/v-easy-components/commit/4ce270458c23185ccbab79e6a073f44baf593e78))
 * color-picker support tip command ([8282fc9](https://github.com/Linkontoask/v-easy-components/commit/8282fc9553a0c1492332c4fcf18202c427a1d555))
 * commit check ([045a59a](https://github.com/Linkontoask/v-easy-components/commit/045a59a05fd02f97228be83589bb0d7b80217b62))
@@ -50,6 +56,7 @@
 * supports button size ([a780550](https://github.com/Linkontoask/v-easy-components/commit/a78055047fc852ae2584a1ca13556098e75ead55))
 * tip support effect property ([25de52c](https://github.com/Linkontoask/v-easy-components/commit/25de52c4131481df494e9aa9b48a6d5a71f4ed40))
 * Tool-tip Add autoRemoveTip attribute ([8131d45](https://github.com/Linkontoask/v-easy-components/commit/8131d45d09ef8dcb6041c1fb18321bf56093780d))
+* update components.json ([1e999ae](https://github.com/Linkontoask/v-easy-components/commit/1e999aeeceb0700363a380611a6f0c078ff73d1a))
 * v-image non-img element supports destroying elements when unbinding ([fe9f032](https://github.com/Linkontoask/v-easy-components/commit/fe9f032c061a5c486267198a02b58bc205992617))
 * v-loading-preload support Modifier ([4233d24](https://github.com/Linkontoask/v-easy-components/commit/4233d24c62ec78d6742e98a4decf902d668420b3))
 * ve-input support type of number ([96109d3](https://github.com/Linkontoask/v-easy-components/commit/96109d344e072468fbc13d033c72b505592c9dc4))
