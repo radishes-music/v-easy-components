@@ -12,9 +12,9 @@ export const contain = (arr, ...target) => {
 
 /**
  * 初始化数组并赋值
- * @param len
+ * @param length
  * @param normal
- * @returns {any[]}
+ * @returns {string[]}
  * @private
  */
 export const _initArray = (length, normal = '') => {

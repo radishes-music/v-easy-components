@@ -1,3 +1,18 @@
+## [1.2.1](https://github.com/Linkontoask/v-easy-components/compare/1.1.1...1.2.1) (2020-07-12)
+
+
+### Bug Fixes
+
+* error-class remove 'none' class name ([810b601](https://github.com/Linkontoask/v-easy-components/commit/810b60150d607946f9189fdc6b46db9ba8e708cd))
+* scroll-bar auto warp size in the mounted ([a1b852a](https://github.com/Linkontoask/v-easy-components/commit/a1b852adc4310ed422a80ccc8805115a947018a9))
+
+
+### Features
+
+* The IP input box and subnet mask input box support paste, and fix the problem of cursor movement and flashing ([67a3040](https://github.com/Linkontoask/v-easy-components/commit/67a3040182a8aaa5c7b967fc699a0a387c3d183e))
+
+
+
 ## [1.1.1](https://github.com/Linkontoask/v-easy-components/compare/0.5.10...1.1.1) (2020-07-06)
 
 
