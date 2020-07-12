@@ -8,19 +8,22 @@
   >
     <ul ref="box" :class="disabled ? 'disabled' : ''">
       <li v-for="(item, index) in VHtml" :key="index" :class="format">
-        <input
-          type="text"
-          :maxLength="maxLength[index]"
-          :value="result[index]"
-          :readonly="readonly"
-          :class="errorClass[index]"
-          :disabled="disabled"
-          v-bind="$attrs"
-          @keydown="keyDown(index, $event)"
-          @input="handleInput(index, $event)"
-          @focus="handleFocus(index, $event)"
-          @blur="handelBlur(index, $event)"
-        />
+        <label>
+          <input
+            type="text"
+            :maxLength="item"
+            :value="result[index]"
+            :readonly="readonly"
+            :class="errorClass[index]"
+            :disabled="disabled"
+            v-bind="$attrs"
+            @keydown="handleKeyDown(index, $event)"
+            @input="handleInput(index, $event)"
+            @focus="handleFocus(index, $event)"
+            @blur="handelBlur(index, $event)"
+            @paste="handlePaste(index, $event)"
+          />
+        </label>
         <span v-if="index !== VHtml.length - 1">{{ splitChar }}</span>
       </li>
     </ul>
@@ -57,17 +60,14 @@ export default {
       return this.format === 'ipv4' ? '.' : ':'
     },
     VHtml() {
-      let len = []
       if (this.format === 'ipv4') {
         // eslint-disable-next-line vue/no-side-effects-in-computed-properties
         this.maxLength = _initArray(4, '3')
-        len = _initArray(4)
       } else if (this.format === 'ipv6') {
         // eslint-disable-next-line vue/no-side-effects-in-computed-properties
         this.maxLength = _initArray(8, '4')
-        len = _initArray(8)
       }
-      return len
+      return this.maxLength
     }
   },
 
@@ -89,6 +89,14 @@ export default {
   },
 
   methods: {
+    handlePaste(index, $event) {
+      $event.preventDefault()
+      let paste = ($event.clipboardData || window.clipboardData).getData('text')
+      if (this.isIpv4Reg(paste)) {
+        this.$emit('change', paste.split('.'))
+      }
+    },
+
     handleInput(index, $event) {
       this.setCurrentValue($event.target.value, index)
 
@@ -135,20 +143,6 @@ export default {
       }
     },
 
-    isIpv4Reg(ip) {
-      let regexp = /^(?:(?:2[0-4][0-9]\.)|(?:25[0-5]\.)|(?:1[0-9][0-9]\.)|(?:[1-9][0-9]\.)|(?:[0-9]\.)){3}(?:(?:2[0-4][0-9])|(?:25[0-5])|(?:1[0-9][0-9])|(?:[1-9][0-9])|(?:[0-9]))$/
-      return regexp.test(ip)
-    },
-
-    isIpv6(index) {
-      let regexp = /^[0-9a-fA-F]{0,}$/g
-      if (!regexp.test(this.result[index])) {
-        this.result[index] =
-          this.result[index] &&
-          this.result[index].substring(0, this.result[index].length - 1)
-      }
-    },
-
     handelBlur(index, $event) {
       if (this.readonly) return false
       if (index === 7 && this.format === 'ipv6') {
@@ -168,45 +162,6 @@ export default {
         }
       }
       this.$emit('blur', { $event, index })
-    },
-
-    keyDown(index, $event) {
-      if (
-        $event.keyCode === 8 &&
-        this.currentIndex !== 0 &&
-        (!this.result[this.currentIndex] ||
-          this.result[this.currentIndex].length === 0)
-      ) {
-        this.$refs.box
-          .getElementsByTagName('input')
-          [this.currentIndex - 1].focus()
-      }
-      if ($event.keyCode === 110 && index !== 3 && $event.target.value !== '') {
-        this.$refs.box
-          .getElementsByTagName('input')
-          [this.currentIndex + 1].focus()
-      }
-      let obj = this.$refs.box.getElementsByTagName('input'),
-        current = this.getCursortPosition(obj[index]),
-        len = $event.target.value.length
-      if ($event.keyCode === 39 && current >= len && index !== 3) {
-        // 往后
-        obj[index + 1].focus()
-        setTimeout(() => {
-          this.setCaretPosition(obj[index + 1], 0)
-        }, 0)
-      }
-      if ($event.keyCode === 37 && current === 0 && index !== 0) {
-        // 往前
-        this.$refs.box.getElementsByTagName('input')[index - 1].focus()
-        setTimeout(() => {
-          this.setCaretPosition(
-            obj[index - 1],
-            this.result[index - 1] ? this.result[index - 1].length : 0
-          )
-        }, 0)
-      }
-      this.$emit('keyDown', { $event, index })
     }
   }
 }

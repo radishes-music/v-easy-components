@@ -8,20 +8,23 @@
   >
     <ul ref="box" :class="disabled ? 'disabled' : ''">
       <li v-for="(val, index) in maxLength" :key="index">
-        <input
-          type="text"
-          :value="result[index]"
-          :readonly="readonly"
-          :class="errorClass[index]"
-          :maxlength="maxLength[index]"
-          :disabled="disabled"
-          v-bind="$attrs"
-          @keydown="handleKeyDown(index, $event)"
-          @keyup="handleKeyUp(index, $event)"
-          @focus="handleFocus(index, $event)"
-          @input="handleInput(index, $event)"
-          @blur="handleBlur(index, $event)"
-        />
+        <label>
+          <input
+            type="text"
+            :value="result[index]"
+            :readonly="readonly"
+            :class="errorClass[index]"
+            :maxlength="val"
+            :disabled="disabled"
+            v-bind="$attrs"
+            @keydown="handleKeyDown(index, $event)"
+            @keyup="handleKeyUp(index, $event)"
+            @focus="handleFocus(index, $event)"
+            @input="handleInput(index, $event)"
+            @blur="handleBlur(index, $event)"
+            @paste="handlePaste(index, $event)"
+          />
+        </label>
         <span v-if="index !== maxLength.length - 1">{{ spliceChar }}</span>
       </li>
     </ul>
@@ -66,6 +69,14 @@ export default {
   },
 
   methods: {
+    handlePaste(index, $event) {
+      $event.preventDefault()
+      let paste = ($event.clipboardData || window.clipboardData).getData('text')
+      if (this.checkSub(paste)) {
+        this.$emit('change', paste.split('.'))
+      }
+    },
+
     handleInput(index, $event) {
       this.setCurrentValue($event.target.value, index)
 
@@ -120,50 +131,6 @@ export default {
         this.conformity = true
       }
       this.$emit('blur', { $event, index })
-    },
-
-    checkSub(mask) {
-      let regexp = /^(((255\.){3}(255|254|252|248|240|224|192|128|0+))|((255\.){2}(255|254|252|248|240|224|192|128|0+)\.0)|((255\.)(255|254|252|248|240|224|192|128|0+)(\.0+){2})|((255|254|252|248|240|224|192|128|0+)(\.0+){3}))$/
-      return regexp.test(mask)
-    },
-
-    handleKeyDown(index, $event) {
-      if (
-        $event.keyCode === 8 &&
-        this.currentIndex !== 0 &&
-        (!this.result[this.currentIndex] ||
-          this.result[this.currentIndex].length === 0)
-      ) {
-        this.$refs.box
-          .getElementsByTagName('input')
-          [this.currentIndex - 1].focus()
-      }
-      if ($event.keyCode === 110 && index !== 3 && $event.target.value !== '') {
-        this.$refs.box
-          .getElementsByTagName('input')
-          [this.currentIndex + 1].focus()
-      }
-      let obj = this.$refs.box.getElementsByTagName('input'),
-        current = this.getCursortPosition(obj[index]),
-        len = $event.target.value.length
-      if ($event.keyCode === 39 && current >= len && index !== 3) {
-        // 往后
-        obj[index + 1].focus()
-        setTimeout(() => {
-          this.setCaretPosition(obj[index + 1], 0)
-        }, 0)
-      }
-      if ($event.keyCode === 37 && current === 0 && index !== 0) {
-        // 往前
-        this.$refs.box.getElementsByTagName('input')[index - 1].focus()
-        setTimeout(() => {
-          this.setCaretPosition(
-            obj[index - 1],
-            this.result[index - 1] ? this.result[index - 1].length : 0
-          )
-        }, 0)
-      }
-      this.$emit('keyDown', { $event, index })
     }
   }
 }
