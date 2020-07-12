@@ -50,20 +50,23 @@ export default {
   },
   watch: {},
   mounted() {
-    const wrap = this.wrap
-    if (wrap) {
-      const sizeHeight = (wrap.clientHeight * 100) / wrap.scrollHeight
-      const sizeWidth = (wrap.clientWidth * 100) / wrap.scrollWidth
-      if (sizeHeight < 100) {
-        this.$set(this.vertical, 'height', sizeHeight + '%')
-      }
-      if (sizeWidth < 100) {
-        this.$set(this.horizontal, 'width', sizeWidth + '%')
-      }
-      wrap.addEventListener('scroll', this.scroll)
-    }
+    this.$nextTick(this.update)
   },
   methods: {
+    update() {
+      const wrap = this.wrap
+      if (wrap) {
+        const sizeHeight = (wrap.clientHeight * 100) / wrap.scrollHeight
+        const sizeWidth = (wrap.clientWidth * 100) / wrap.scrollWidth
+        if (sizeHeight < 100) {
+          this.$set(this.vertical, 'height', sizeHeight + '%')
+        }
+        if (sizeWidth < 100) {
+          this.$set(this.horizontal, 'width', sizeWidth + '%')
+        }
+        wrap.addEventListener('scroll', this.scroll)
+      }
+    },
     scroll() {
       Promise.resolve().then(() => {
         const wrap = this.wrap

@@ -41,12 +41,48 @@ export default {
       this.currentIndex = index
       this.$emit('focus', { $event, index })
     },
+    handleKeyDown(index, $event) {
+      const input = this.$refs.box.getElementsByTagName('input')
+      if (
+        $event.keyCode === 8 &&
+        this.currentIndex !== 0 &&
+        (!this.result[this.currentIndex] ||
+          this.result[this.currentIndex].length === 0)
+      ) {
+        $event.preventDefault()
+        input[this.currentIndex - 1].focus()
+      }
+      if (
+        ($event.keyCode === 110 || $event.keyCode === 190) &&
+        index !== 3 &&
+        $event.target.value !== ''
+      ) {
+        $event.preventDefault()
+        input[this.currentIndex + 1].focus()
+      }
+      let current = this.getCursorPosition(input[index]),
+        len = $event.target.value.length
+      if ($event.keyCode === 39 && current >= len && index !== 3) {
+        $event.preventDefault()
+        input[index + 1].focus()
+        this.setCaretPosition(input[index + 1], 0)
+      }
+      if ($event.keyCode === 37 && current === 0 && index !== 0) {
+        $event.preventDefault()
+        input[index - 1].focus()
+        this.setCaretPosition(
+          input[index - 1],
+          this.result[index - 1] ? this.result[index - 1].length : 0
+        )
+      }
+      this.$emit('keyDown', { $event, index })
+    },
     setCurrentValue(value, index) {
       if (value.toString() === this.result.join('.')) return
       this.$set(this.result, index, value.replace(/\D/g, ''))
       this.$emit('change', this.result)
     },
-    getCursortPosition(el) {
+    getCursorPosition(el) {
       let cursorPos = 0
       if (document.selection) {
         var selectRange = document.selection.createRange()
@@ -64,12 +100,28 @@ export default {
         el.setSelectionRange(pos, pos)
       } else if (el.createTextRange) {
         // Firefox support
-        var range = el.createTextRange()
+        const range = el.createTextRange()
         range.collapse(true)
         range.moveEnd('character', pos)
         range.moveStart('character', pos)
         range.select()
       }
+    },
+    isIpv4Reg(ip) {
+      let regexp = /^(?:(?:2[0-4][0-9]\.)|(?:25[0-5]\.)|(?:1[0-9][0-9]\.)|(?:[1-9][0-9]\.)|(?:[0-9]\.)){3}(?:(?:2[0-4][0-9])|(?:25[0-5])|(?:1[0-9][0-9])|(?:[1-9][0-9])|(?:[0-9]))$/
+      return regexp.test(ip)
+    },
+    isIpv6(index) {
+      let regexp = /^[0-9a-fA-F]*$/g
+      if (!regexp.test(this.result[index])) {
+        this.result[index] =
+          this.result[index] &&
+          this.result[index].substring(0, this.result[index].length - 1)
+      }
+    },
+    checkSub(mask) {
+      let regexp = /^(((255\.){3}(255|254|252|248|240|224|192|128|0+))|((255\.){2}(255|254|252|248|240|224|192|128|0+)\.0)|((255\.)(255|254|252|248|240|224|192|128|0+)(\.0+){2})|((255|254|252|248|240|224|192|128|0+)(\.0+){3}))$/
+      return regexp.test(mask)
     }
   }
 }
