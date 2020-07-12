@@ -133,7 +133,7 @@ export default {
         this.conformity = true
         this.$emit('error', this.result)
       } else {
-        this.errorClass[index] = 'none'
+        this.errorClass[index] = ''
         this.conformity = false
         this.errorClass.forEach(item => {
           if (item === 'red') {

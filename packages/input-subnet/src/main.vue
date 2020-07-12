@@ -91,7 +91,7 @@ export default {
           this.conformity = true
         } else {
           this.conformity = false
-          this.errorClass[index] = 'none'
+          this.errorClass[index] = ''
         }
       } else {
         for (let i = index; i < this.maxLength.length; i++) {
@@ -106,7 +106,7 @@ export default {
           this.conformity = true
         } else {
           this.conformity = false
-          this.errorClass[index] = 'none'
+          this.errorClass[index] = ''
         }
       }
       if (
