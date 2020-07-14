@@ -52,11 +52,15 @@ export default {
       const input = this.$refs.box.getElementsByTagName('input')
       if (
         $event.keyCode === 8 &&
-        this.currentIndex !== 0 &&
+        index !== 0 &&
         (!$event.target.value || $event.target.value.length === 0)
       ) {
         $event.preventDefault()
-        input[this.currentIndex - 1].focus()
+        input[index - 1].focus()
+        this.setCaretPosition(
+          input[index - 1],
+          this.result[index - 1] + '' ? (this.result[index - 1] + '').length : 0
+        )
       }
       if (
         ($event.keyCode === 110 || $event.keyCode === 190) &&
@@ -64,7 +68,7 @@ export default {
         $event.target.value !== ''
       ) {
         $event.preventDefault()
-        input[this.currentIndex + 1].focus()
+        input[index + 1].focus()
       }
       let current = this.getCursorPosition(input[index]),
         len = $event.target.value.length
