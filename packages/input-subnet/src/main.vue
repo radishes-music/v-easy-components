@@ -82,8 +82,6 @@ export default {
 
     handleInput(index, $event) {
       this.setCurrentValue($event.target.value, index)
-      // eslint-disable-next-line no-console
-      console.log(this.result, index)
       let first = this.result[index - 1] !== 255
       if (index === 0) first = false
       if (first) {
@@ -116,8 +114,8 @@ export default {
       if (
         !this.conformity &&
         index !== 3 &&
-        this.result[index] !== '' &&
-        (this.result[index] + '').length >= this.maxLength[index]
+        $event.target.value &&
+        $event.target.value.length >= this.maxLength[index]
       ) {
         this.$refs.box.getElementsByTagName('input')[index + 1].focus()
       }
