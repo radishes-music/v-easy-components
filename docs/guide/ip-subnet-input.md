@@ -208,6 +208,43 @@ IP Format State Switching Triggers Callback
 ```
 :::
 
+## IP 输入框端口的支持
+
+Usually we need to specify the port when configuring some device IP.
+Here only need to specify `port` to complete the port configuration
+
+<div>
+  <preview-code _id="4">
+    <template #default>
+      <ve-ip port v-model="value5"></ve-ip>
+      <ve-ip port v-model="value6"></ve-ip>
+    </template>
+    <template #txt>
+      <div>The IP component supports two different types worth binding, one is the <em>string</em> type, and the other is the <em>array</em> type. It should be noted that when using the <em>string</em> type, you can refer to <em>xxx.xxx.xxx.xxx:ooooo</em>, if it is an array type, the last value represents the port</div>
+    </template>
+  </preview-code>
+</div>
+
+::: slot code4
+```vue
+<template>
+  <ve-ip port v-model="value5"></ve-ip>
+  <ve-ip port v-model="value6"></ve-ip>
+</template>
+
+<script>
+  export default {
+    data() {
+      return {
+        value5: [],
+        value6: '172.0.0.1:10000',
+      }
+    }
+  }
+</script>
+```
+:::
+
 <script>
   export default {
     data() {
@@ -217,6 +254,8 @@ IP Format State Switching Triggers Callback
         value2: [255, 255, 255, 255],
         value3: [],
         value4: [],
+        value5: [],
+        value6: '172.0.0.1:10000',
         subnet: [],
       }
     },

@@ -208,6 +208,43 @@ IP Format State Switching Triggers Callback
 ```
 :::
 
+## IP 输入框端口的支持
+
+通常我们在配置某些设备IP的时候需要指定端口。  
+这里只需要指定`port` 即可完成端口的配置
+
+<div>
+  <preview-code _id="4">
+    <template #default>
+      <ve-ip port v-model="value5"></ve-ip>
+      <ve-ip port v-model="value6"></ve-ip>
+    </template>
+    <template #txt>
+      <div>IP组件支持两种不同类型值得绑定，一种为 <em>string</em> 类型，还有一种是 <em>array</em> 类型。需要注意的是，使用 <em>string</em> 类型时可以参考 <em>xxx.xxx.xxx.xxx:ooooo</em>，如果是array类型，那最后一个值代表端口</div>
+    </template>
+  </preview-code>
+</div>
+
+::: slot code4
+```vue
+<template>
+  <ve-ip port v-model="value5"></ve-ip>
+  <ve-ip port v-model="value6"></ve-ip>
+</template>
+
+<script>
+  export default {
+    data() {
+      return {
+        value5: [],
+        value6: '172.0.0.1:10000',
+      }
+    }
+  }
+</script>
+```
+:::
+
 <script>
   export default {
     data() {
@@ -217,6 +254,8 @@ IP Format State Switching Triggers Callback
         value2: [255, 255, 255, 255],
         value3: [],
         value4: [],
+        value5: [],
+        value6: '172.0.0.1:10000',
         subnet: [],
       }
     },
