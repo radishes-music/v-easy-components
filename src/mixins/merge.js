@@ -24,11 +24,18 @@ export default {
   },
   computed: {
     result() {
+      let { value } = this
       let data = []
-      data = this.value === undefined || this.value === null ? [] : this.value
-      if (!Array.isArray(this.value)) {
-        data = data.split('.')
-        data = data[0] === '' ? [] : data
+      data = value === undefined || value === null || value === '' ? [] : value
+      if (!Array.isArray(value)) {
+        const port = value.split(':')
+        if (port[0]) {
+          data = port[0].split('.')
+          data = data[0] === '' ? [] : data
+        }
+        if (port[1]) {
+          data.push(port[1])
+        }
       }
       return data
     }
@@ -45,12 +52,15 @@ export default {
       const input = this.$refs.box.getElementsByTagName('input')
       if (
         $event.keyCode === 8 &&
-        this.currentIndex !== 0 &&
-        (!this.result[this.currentIndex] ||
-          this.result[this.currentIndex].length === 0)
+        index !== 0 &&
+        (!$event.target.value || $event.target.value.length === 0)
       ) {
         $event.preventDefault()
-        input[this.currentIndex - 1].focus()
+        input[index - 1].focus()
+        this.setCaretPosition(
+          input[index - 1],
+          this.result[index - 1] + '' ? (this.result[index - 1] + '').length : 0
+        )
       }
       if (
         ($event.keyCode === 110 || $event.keyCode === 190) &&
@@ -58,7 +68,7 @@ export default {
         $event.target.value !== ''
       ) {
         $event.preventDefault()
-        input[this.currentIndex + 1].focus()
+        input[index + 1].focus()
       }
       let current = this.getCursorPosition(input[index]),
         len = $event.target.value.length
@@ -72,15 +82,18 @@ export default {
         input[index - 1].focus()
         this.setCaretPosition(
           input[index - 1],
-          this.result[index - 1] ? this.result[index - 1].length : 0
+          this.result[index - 1] + '' ? (this.result[index - 1] + '').length : 0
         )
       }
       this.$emit('keyDown', { $event, index })
     },
     setCurrentValue(value, index) {
-      if (value.toString() === this.result.join('.')) return
-      this.$set(this.result, index, value.replace(/\D/g, ''))
-      this.$emit('change', this.result)
+      let { result } = this
+      if (value.toString() === result.join('.')) return
+      const _v = value.replace(/\D/g, '')
+      this.$set(result, index, _v ? Number(_v) : '')
+      result = result.map(n => (n ? Number(n) : n))
+      this.$emit('change', result)
     },
     getCursorPosition(el) {
       let cursorPos = 0

@@ -73,20 +73,22 @@ export default {
       $event.preventDefault()
       let paste = ($event.clipboardData || window.clipboardData).getData('text')
       if (this.checkSub(paste)) {
-        this.$emit('change', paste.split('.'))
+        this.$emit(
+          'change',
+          paste.split('.').map(n => +n)
+        )
       }
     },
 
     handleInput(index, $event) {
       this.setCurrentValue($event.target.value, index)
-
-      let first = this.result[index - 1] !== '255'
+      let first = this.result[index - 1] !== 255
       if (index === 0) first = false
       if (first) {
         for (let i = index; i < this.maxLength.length; i++) {
           this.maxLength[i] = '1'
         }
-        if (this.result[index] !== '0') {
+        if (this.result[index] !== 0) {
           this.errorClass[index] = 'red'
           this.conformity = true
         } else {
@@ -112,8 +114,8 @@ export default {
       if (
         !this.conformity &&
         index !== 3 &&
-        this.result[index] &&
-        this.result[index].length >= this.maxLength[index]
+        $event.target.value &&
+        $event.target.value.length >= this.maxLength[index]
       ) {
         this.$refs.box.getElementsByTagName('input')[index + 1].focus()
       }
