@@ -75,7 +75,7 @@ export default {
       if (this.checkSub(paste)) {
         this.$emit(
           'change',
-          paste.split('.').map(n => +n)
+          paste.split('.').map(n => (n ? Number(n) : n))
         )
       }
     },

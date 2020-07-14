@@ -245,6 +245,46 @@ IP Format State Switching Triggers Callback
 ```
 :::
 
+## IP / SubNet 输入框的用户体验
+
+为了方便我们输入IP地址，以及方便我们进行修改，参考windows平台的输入框，监听了用户的左右键、粘贴键、BackSpace、小数点。
+
+<div>
+  <preview-code _id="5">
+    <template #default>
+      <p>172.16.1.1</p>
+      <p>172.16.1.1:10000</p>
+      <ve-ip v-model="value7"></ve-ip>
+      <ve-ip port v-model="value8"></ve-ip>
+    </template>
+    <template #txt>
+      <div>你可以尝试复制粘贴后，然后使用BackSpace删除，最后在手动输入时使用小数点进行光标位移，也可以使用键盘的左右键进行位移</div>
+    </template>
+  </preview-code>
+</div>
+
+::: slot code5
+```vue
+<template>
+  <p>172.16.1.1</p>
+  <p>172.16.1.1:10000</p>
+  <ve-ip v-model="value7"></ve-ip>
+  <ve-ip port v-model="value8"></ve-ip>
+</template>
+
+<script>
+  export default {
+    data() {
+      return {
+        value7: [],
+        value8: [],
+      }
+    }
+  }
+</script>
+```
+:::
+
 <script>
   export default {
     data() {
@@ -256,6 +296,8 @@ IP Format State Switching Triggers Callback
         value4: [],
         value5: [],
         value6: '172.0.0.1:10000',
+        value7: [],
+        value8: [],
         subnet: [],
       }
     },

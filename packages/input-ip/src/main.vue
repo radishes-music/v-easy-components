@@ -141,8 +141,15 @@ export default {
     handlePaste(index, $event) {
       $event.preventDefault()
       let paste = ($event.clipboardData || window.clipboardData).getData('text')
-      if (this.isIpv4Reg(paste)) {
-        this.$emit('change', paste.split('.'))
+      let _r = paste.split(':')
+      let _v = _r[0]
+      if (this.isIpv4Reg(_v)) {
+        _v = _v.split('.').map(n => (n ? Number(n) : n))
+        if (_r[1] && this.port) {
+          _v.push(+_r[1])
+          this.portValue = _r[1]
+        }
+        this.$emit('change', _v)
       }
     },
 
