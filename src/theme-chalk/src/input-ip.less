@@ -1,7 +1,35 @@
 @import "./mixins/_input";
+@import "./mixins/_color";
 
 .input-ip {
   .-input-children()
+}
+
+.v-easy-input {
+
+  &--box {
+    display: flex;
+    align-content: center;
+    border: 1px solid #c0c4cc;
+    border-radius: 4px;
+
+    .ipv4-port {
+      display: flex;
+      align-items: center;
+
+      input {
+        color: @inputColor;
+        text-align: center;
+        border: none;
+        outline: none;
+      }
+
+      input[type=number]::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+      }
+    }
+  }
+
 }
 
 .v-easy-error-enter, .v-easy-error-leave-to {

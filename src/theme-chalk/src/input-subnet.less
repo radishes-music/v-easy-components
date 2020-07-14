@@ -1,7 +1,12 @@
 @import "./mixins/_input";
 
 .input-subnet {
-  .-input-children()
+  .-input-children();
+
+  ul {
+    border: 1px solid #c0c4cc;
+    border-radius: 4px;
+  }
 }
 
 .v-easy-error-enter, .v-easy-error-leave-to {

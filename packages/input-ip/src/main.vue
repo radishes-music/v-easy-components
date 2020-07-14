@@ -6,27 +6,41 @@
       width: width + 'px'
     }"
   >
-    <ul ref="box" :class="disabled ? 'disabled' : ''">
-      <li v-for="(item, index) in VHtml" :key="index" :class="format">
+    <div class="v-easy-input--box">
+      <ul ref="box" :class="disabled ? 'disabled' : ''">
+        <li v-for="(item, index) in VHtml" :key="index" :class="format">
+          <label>
+            <input
+              type="text"
+              :maxLength="item"
+              :value="result[index]"
+              :readonly="readonly"
+              :class="errorClass[index]"
+              :disabled="disabled"
+              v-bind="$attrs"
+              @keydown="handleKeyDown(index, $event)"
+              @input="handleInput(index, $event)"
+              @focus="handleFocus(index, $event)"
+              @blur="handelBlur(index, $event)"
+              @paste="handlePaste(index, $event)"
+            />
+          </label>
+          <span v-if="index !== VHtml.length - 1">{{ splitChar }}</span>
+        </li>
+      </ul>
+      <div v-if="port" class="ipv4-port">
+        <span>:</span>
         <label>
           <input
-            type="text"
-            :maxLength="item"
-            :value="result[index]"
-            :readonly="readonly"
-            :class="errorClass[index]"
-            :disabled="disabled"
-            v-bind="$attrs"
-            @keydown="handleKeyDown(index, $event)"
-            @input="handleInput(index, $event)"
-            @focus="handleFocus(index, $event)"
-            @blur="handelBlur(index, $event)"
-            @paste="handlePaste(index, $event)"
+            type="number"
+            max="65536"
+            min="0"
+            :value="portValue"
+            @input="handlePortInput($event)"
           />
         </label>
-        <span v-if="index !== VHtml.length - 1">{{ splitChar }}</span>
-      </li>
-    </ul>
+      </div>
+    </div>
     <transition name="v-easy-error">
       <div v-show="conformity" class="error inspection">{{ msg }}</div>
     </transition>
@@ -46,7 +60,14 @@ export default {
   },
 
   props: {
-    format: { type: String, default: 'ipv4' }
+    format: { type: String, default: 'ipv4' },
+    port: { type: Boolean, default: false }
+  },
+
+  data() {
+    return {
+      portValue: ''
+    }
   },
 
   computed: {
@@ -83,12 +104,40 @@ export default {
         this.conformity = false
         this.errorClass = [] // 如果数据全部为空，那么对错误信息进行隐藏
       }
-      if (statusSuccess && val.length > 3)
-        this.$emit('status', this.isIpv4Reg(val.join('.')))
+      if (statusSuccess && val.length > 3) {
+        val = val.slice(0, 4)
+        this.conformity = !this.isIpv4Reg(val.join('.'))
+        this.$emit('status', this.conformity)
+      }
+    }
+  },
+
+  created() {
+    const { port } = this
+    if (port) {
+      this.portValue = this.result[4]
     }
   },
 
   methods: {
+    handlePortInput($event) {
+      $event.preventDefault()
+      let { result } = this
+      let _v = $event.target.value.replace(/-/g, '')
+      this.portValue = _v
+      if (_v > 65536) {
+        this.portValue = 65536
+        this.$set(this.result, 4, 65536)
+      }
+      if (_v < 0) {
+        this.portValue = 0
+        this.$set(this.result, 4, 0)
+      }
+      result[4] = this.portValue
+      result = result.map(n => (n ? Number(n) : n))
+      this.$emit('change', result)
+    },
+
     handlePaste(index, $event) {
       $event.preventDefault()
       let paste = ($event.clipboardData || window.clipboardData).getData('text')
@@ -102,7 +151,7 @@ export default {
 
       this.format === 'ipv4' ? this.isIpv4(index) : this.isIpv6(index, $event)
 
-      if ($event.target.value === 0) {
+      if ($event.target.value === '0') {
         this.maxLength[index] = '1'
       } else {
         this.maxLength[index] = this.format === 'ipv4' ? '3' : '4'
@@ -111,8 +160,8 @@ export default {
       // 自动对焦
       if (
         !this.conformity &&
-        this.result[index] &&
-        this.result[index].length === Number(this.maxLength[index]) &&
+        this.result[index] !== '' &&
+        (this.result[index] + '').length === Number(this.maxLength[index]) &&
         index < this.VHtml.length - 1
       ) {
         this.$refs.box.getElementsByTagName('input')[index + 1].focus()
@@ -144,20 +193,21 @@ export default {
     },
 
     handelBlur(index, $event) {
-      if (this.readonly) return false
-      if (index === 7 && this.format === 'ipv6') {
+      const { readonly, result, format } = this
+      if (readonly) return false
+      if (index === 7 && format === 'ipv6') {
         let regexp = /^\s*((([0-9A-Fa-f]{1,4}:){7}([0-9A-Fa-f]{1,4}|:))|(([0-9A-Fa-f]{1,4}:){6}(:[0-9A-Fa-f]{1,4}|((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){5}(((:[0-9A-Fa-f]{1,4}){1,2})|:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){4}(((:[0-9A-Fa-f]{1,4}){1,3})|((:[0-9A-Fa-f]{1,4})?:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){3}(((:[0-9A-Fa-f]{1,4}){1,4})|((:[0-9A-Fa-f]{1,4}){0,2}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){2}(((:[0-9A-Fa-f]{1,4}){1,5})|((:[0-9A-Fa-f]{1,4}){0,3}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){1}(((:[0-9A-Fa-f]{1,4}){1,6})|((:[0-9A-Fa-f]{1,4}){0,4}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(:(((:[0-9A-Fa-f]{1,4}){1,7})|((:[0-9A-Fa-f]{1,4}){0,5}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:)))(%.+)?\s*$/
-        if (regexp.test(this.result.join(':'))) {
+        if (regexp.test(result.join(':'))) {
           this.conformity = false
         } else {
           this.conformity = true
-          this.$emit('error', this.result)
+          this.$emit('error', result)
         }
       }
-      if (this.format === 'ipv4' && index === 3) {
-        let isCheck =
-          this.result.length > 3 && this.result.every(item => item !== '')
-        if (isCheck && !this.isIpv4Reg(this.result.join('.'))) {
+      if (format === 'ipv4' && index === 3) {
+        const _r = result.slice(0, 4)
+        let isCheck = _r.length > 3 && _r.every(item => item !== '')
+        if (isCheck && !this.isIpv4Reg(_r.join('.'))) {
           this.conformity = true
         }
       }

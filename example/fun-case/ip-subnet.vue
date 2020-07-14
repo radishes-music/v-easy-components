@@ -1,22 +1,29 @@
 <template>
   <div>
     <li>ip:{{ ip }}
-      <ve-ip v-model="ip"></ve-ip></li>
+      <ve-ip port v-model="ip"></ve-ip>
+      {{ ip1 }}
+      <ve-ip v-model="ip1"></ve-ip>
+    </li>
     <li>subnet:{{ subnet }}
-      <ve-subnet v-model="subnet"></ve-subnet></li>
+      <ve-subnet v-model="subnet"></ve-subnet>
+      <ve-subnet v-model="subnet1"></ve-subnet>
+    </li>
   </div>
 </template>
 
 <script>
-export default {
-  name: 'test-ip',
-  data() {
-    return {
-      ip: [],
-      subnet: []
+  export default {
+    name: 'test-ip',
+    data() {
+      return {
+        ip: '172.1',
+        ip1: [172, 15, 1],
+        subnet: '252.0.0.0',
+        subnet1: [],
+      }
     }
   }
-}
 </script>
 
 <style scoped lang="less">
