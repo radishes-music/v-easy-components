@@ -26,7 +26,7 @@ export default {
     result() {
       let { value } = this
       let data = []
-      data = value === undefined || value === null ? [] : value
+      data = value === undefined || value === null || value === '' ? [] : value
       if (!Array.isArray(value)) {
         const port = value.split(':')
         if (port[0]) {
