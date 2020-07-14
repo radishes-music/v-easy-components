@@ -7,6 +7,7 @@
     </li>
     <li>subnet:{{ subnet }}
       <ve-subnet v-model="subnet"></ve-subnet>
+      <ve-subnet v-model="subnet1"></ve-subnet>
     </li>
   </div>
 </template>
@@ -18,7 +19,8 @@
       return {
         ip: '172.15.1.1:10001',
         ip1: [172, 15, 1, 1, 10001],
-        subnet: []
+        subnet: '252.0.0.0',
+        subnet1: [],
       }
     }
   }
