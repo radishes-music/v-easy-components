@@ -247,8 +247,9 @@ IP Format State Switching Triggers Callback
 | width |	The width of the Component	| string | - | - |
 | disabled | Whether to disable the component, if it is disabled, you can not write data | boolean / string	true / false | false |
 | readonly | Read-only component, users cannot directly change |	boolean / string	true / false | false |
-| spliceChar | Delimiter, specifying the incoming IP string to use for splitting | string | - | . |
+| splice-char | Delimiter, specifying the incoming IP string to use for splitting | string | - | . |
 | message	| Error message, used in the wrong situation	| string | - | Please enter the correct IP address |
+| port	| Whether to support port input | boolean | false / true | false |
 | format | Specify input box type | string | ipv4 / ipv6 | ipv4 |
 :::
 
@@ -261,3 +262,4 @@ IP Format State Switching Triggers Callback
 | focus | Triggered when a component gains focus | {$event: Event, index: Number} |
 | keyUp | Triggered when the button is raised | {$event: Event, index: Number} |
 | keyDown | Triggered when the button is pressed | {$event: Event, index: Number} |
+| status | Monitor whether the value entered at this time is correct | status: Boolean |
