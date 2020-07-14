@@ -1,7 +1,7 @@
 <template>
   <div>
     <li>ip:{{ ip }}
-      <ve-ip v-model="ip"></ve-ip></li>
+      <ve-ip port v-model="ip"></ve-ip></li>
     <li>subnet:{{ subnet }}
       <ve-subnet v-model="subnet"></ve-subnet></li>
   </div>
@@ -12,7 +12,7 @@ export default {
   name: 'test-ip',
   data() {
     return {
-      ip: [],
+      ip: [172, 15, 1, 1],
       subnet: []
     }
   }

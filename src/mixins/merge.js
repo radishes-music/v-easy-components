@@ -46,14 +46,16 @@ export default {
       if (
         $event.keyCode === 8 &&
         this.currentIndex !== 0 &&
-        (!this.result[this.currentIndex] ||
-          this.result[this.currentIndex].length === 0)
+        (!(this.result[this.currentIndex] + '') ||
+          (this.result[this.currentIndex] + '').length === 0)
       ) {
         $event.preventDefault()
         input[this.currentIndex - 1].focus()
       }
       if (
-        ($event.keyCode === 110 || $event.keyCode === 190) &&
+        ($event.keyCode === 110 ||
+          $event.keyCode === 190 ||
+          $event.keyCode === 229) &&
         index !== 3 &&
         $event.target.value !== ''
       ) {
@@ -72,14 +74,15 @@ export default {
         input[index - 1].focus()
         this.setCaretPosition(
           input[index - 1],
-          this.result[index - 1] ? this.result[index - 1].length : 0
+          this.result[index - 1] ? (this.result[index - 1] + '').length : 0
         )
       }
       this.$emit('keyDown', { $event, index })
     },
     setCurrentValue(value, index) {
       if (value.toString() === this.result.join('.')) return
-      this.$set(this.result, index, value.replace(/\D/g, ''))
+      const _v = value.replace(/\D/g, '')
+      this.$set(this.result, index, _v ? Number(_v) : '')
       this.$emit('change', this.result)
     },
     getCursorPosition(el) {

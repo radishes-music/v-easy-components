@@ -6,27 +6,35 @@
       width: width + 'px'
     }"
   >
-    <ul ref="box" :class="disabled ? 'disabled' : ''">
-      <li v-for="(item, index) in VHtml" :key="index" :class="format">
+    <div class="v-easy-input--box">
+      <ul ref="box" :class="disabled ? 'disabled' : ''">
+        <li v-for="(item, index) in VHtml" :key="index" :class="format">
+          <label>
+            <input
+              type="text"
+              :maxLength="item"
+              :value="result[index]"
+              :readonly="readonly"
+              :class="errorClass[index]"
+              :disabled="disabled"
+              v-bind="$attrs"
+              @keydown="handleKeyDown(index, $event)"
+              @input="handleInput(index, $event)"
+              @focus="handleFocus(index, $event)"
+              @blur="handelBlur(index, $event)"
+              @paste="handlePaste(index, $event)"
+            />
+          </label>
+          <span v-if="index !== VHtml.length - 1">{{ splitChar }}</span>
+        </li>
+      </ul>
+      <div v-if="port" class="ipv4-port">
+        <span>:</span>
         <label>
-          <input
-            type="text"
-            :maxLength="item"
-            :value="result[index]"
-            :readonly="readonly"
-            :class="errorClass[index]"
-            :disabled="disabled"
-            v-bind="$attrs"
-            @keydown="handleKeyDown(index, $event)"
-            @input="handleInput(index, $event)"
-            @focus="handleFocus(index, $event)"
-            @blur="handelBlur(index, $event)"
-            @paste="handlePaste(index, $event)"
-          />
+          <input type="number" max="65536" min="0" />
         </label>
-        <span v-if="index !== VHtml.length - 1">{{ splitChar }}</span>
-      </li>
-    </ul>
+      </div>
+    </div>
     <transition name="v-easy-error">
       <div v-show="conformity" class="error inspection">{{ msg }}</div>
     </transition>
@@ -46,7 +54,8 @@ export default {
   },
 
   props: {
-    format: { type: String, default: 'ipv4' }
+    format: { type: String, default: 'ipv4' },
+    port: { type: Boolean, default: false }
   },
 
   computed: {
