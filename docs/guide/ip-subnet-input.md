@@ -208,7 +208,7 @@ IP Format State Switching Triggers Callback
 ```
 :::
 
-## IP 输入框端口的支持
+## IP input box port support
 
 Usually we need to specify the port when configuring some device IP.
 Here only need to specify `port` to complete the port configuration
@@ -245,6 +245,46 @@ Here only need to specify `port` to complete the port configuration
 ```
 :::
 
+## User experience of IP / SubNet input box
+
+In order to facilitate us to enter the IP address, as well as to facilitate our modification, refer to the input box of the windows platform, monitor the user's left and right keys, paste keys, BackSpace, decimal point.
+
+<div>
+  <preview-code _id="5">
+    <template #default>
+      <p>172.16.1.1</p>
+      <p>172.16.1.1:10000</p>
+      <ve-ip v-model="value7"></ve-ip>
+      <ve-ip port v-model="value8"></ve-ip>
+    </template>
+    <template #txt>
+      <div>You can try to copy and paste, then use BackSpace to delete, and finally use the decimal point to move the cursor during manual input, or use the left and right keys of the keyboard to move</div>
+    </template>
+  </preview-code>
+</div>
+
+::: slot code5
+```vue
+<template>
+  <p>172.16.1.1</p>
+  <p>172.16.1.1:10000</p>
+  <ve-ip v-model="value7"></ve-ip>
+  <ve-ip port v-model="value8"></ve-ip>
+</template>
+
+<script>
+  export default {
+    data() {
+      return {
+        value7: [],
+        value8: [],
+      }
+    }
+  }
+</script>
+```
+:::
+
 <script>
   export default {
     data() {
@@ -256,6 +296,8 @@ Here only need to specify `port` to complete the port configuration
         value4: [],
         value5: [],
         value6: '172.0.0.1:10000',
+        value7: [],
+        value8: [],
         subnet: [],
       }
     },
