@@ -1,14 +1,21 @@
-## [1.2.1](https://github.com/Linkontoask/v-easy-components/compare/1.1.1...1.2.1) (2020-07-12)
+## [1.2.3](https://github.com/Linkontoask/v-easy-components/compare/1.1.1...1.2.3) (2020-07-14)
 
 
 ### Bug Fixes
 
 * error-class remove 'none' class name ([810b601](https://github.com/Linkontoask/v-easy-components/commit/810b60150d607946f9189fdc6b46db9ba8e708cd))
+* ip bind string data ([1d77968](https://github.com/Linkontoask/v-easy-components/commit/1d77968579286c69dcd185c546f476c2ca50db2c))
+* ip port bug ([baecc56](https://github.com/Linkontoask/v-easy-components/commit/baecc563da4b78c915ae94012dc13f43e764f1b2))
+* ip-subnet last input overflow ([cd56824](https://github.com/Linkontoask/v-easy-components/commit/cd568243ba18d530eaf2d7d144196d1c0f7dd5bf))
 * scroll-bar auto warp size in the mounted ([a1b852a](https://github.com/Linkontoask/v-easy-components/commit/a1b852adc4310ed422a80ccc8805115a947018a9))
+* subnet '<' and '>' zero bug ([faf335d](https://github.com/Linkontoask/v-easy-components/commit/faf335d5009f1aefd442985cd2bbb92aacdfd3b7))
+* subnet backspace o bug ([54bcb81](https://github.com/Linkontoask/v-easy-components/commit/54bcb81011db32f78cc6dcb0e0ec7f996d8b5b52))
 
 
 ### Features
 
+* [#48](https://github.com/Linkontoask/v-easy-components/issues/48) ve-ip support port ([c50861b](https://github.com/Linkontoask/v-easy-components/commit/c50861bb16a09180c58c38d59ebf7ce61b74dc07))
+* ip-input support port, modified binding worth type ([5783209](https://github.com/Linkontoask/v-easy-components/commit/578320918a8da9e0eb87faef679a72bb29bb8feb))
 * The IP input box and subnet mask input box support paste, and fix the problem of cursor movement and flashing ([67a3040](https://github.com/Linkontoask/v-easy-components/commit/67a3040182a8aaa5c7b967fc699a0a387c3d183e))
 
 
