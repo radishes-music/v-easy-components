@@ -3,7 +3,7 @@ import Vue from 'vue'
 let id = 0
 
 export const sleep = function(ms) {
-  return new Promise((reslove) => {
+  return new Promise(reslove => {
     setTimeout(() => reslove(), ms)
   })
 }
@@ -11,8 +11,8 @@ export const sleep = function(ms) {
 export const createDiv = function() {
   const dom = document.createElement('div')
 
-  dom.id = 'app' + ++id;
-  document.body.appendChild(dom);
+  dom.id = 'app' + ++id
+  document.body.appendChild(dom)
 
   return dom
 }
