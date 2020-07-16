@@ -32,10 +32,10 @@
     stroke-dashoffset: 155px
     animation-delay: 3.5s
     animation-timing-function: cubic-bezier(0.57, 0.07, 0.81, 0.88)
-.tip.copy-success
+.copy-success
   background-color: #67c23a
-  &::before
-    border-top-color: #67c23a
+.copy-error
+  background-color: #f56c6c
 .v-easy-box
   margin: 0.5em 0
 .theme-default-content:not(.custom)
@@ -66,10 +66,10 @@
   & + &
     margin-left 10px
 .animation-top-enter-active, .animation-top-leave-active
-  transition transform .2s cubic-bezier(0.73, 0.21, 0.68, 0.76), opacity .2s !important
+  transition top .2s, opacity .2s !important
   z-index 9
 .animation-top-enter, .animation-top-leave-to
-  transform translate(-50%, -24px) !important
+  top -12px !important
   opacity 0
 .fade1-enter-active, .fade1-leave-active
   transition transform .2s, opacity .2s
