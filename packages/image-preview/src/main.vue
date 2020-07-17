@@ -1,7 +1,7 @@
 <template>
   <transition name="fade">
     <div v-show="visible" class="image-read-box" @click.stop="handlerClose">
-      <button class="prev" v-show="isDisabledPrev" @click.stop="handlerPrev">
+      <button v-show="isDisabledPrev" class="prev" @click.stop="handlerPrev">
         <i class="fa fa-angle-left fa-4x" aria-hidden="true" />
       </button>
       <div class="box">

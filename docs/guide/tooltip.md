@@ -149,10 +149,10 @@ use `transition:` to define the info box to pop and hide the animation
 
 <style lang="sass">
   .animation-top-enter-active, .animation-top-leave-active
-    transition: transform .2s cubic-bezier(0.73, 0.21, 0.68, 0.76), opacity .2s !important
+    transition: top .2s, opacity .2s !important
     z-index: 9
   .animation-top-enter, .animation-top-leave-to
-    transform: translate(-50%, -24px) !important
+    top: -12px !important
     opacity: 0
 </style>
 ```
