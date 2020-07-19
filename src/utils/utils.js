@@ -17,11 +17,21 @@ function debounce(fn, delay) {
   }
 }
 
-const utils = {
-  throttle,
-  debounce
+function stopEvent(e) {
+  e.preventDefault()
 }
 
-export { throttle, debounce }
+function type(target) {
+  return Object.prototype.toString.call(target)
+}
+
+const utils = {
+  throttle,
+  debounce,
+  stopEvent,
+  type
+}
+
+export { throttle, debounce, stopEvent, type }
 
 export default utils

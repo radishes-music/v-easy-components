@@ -22,6 +22,15 @@
       src="../assets/CSS-min.jpg"
       alt="CSS"
     />
+    <img
+      v-image="{
+        src: require('../assets/CSS.jpg'),
+        fullScreen: true,
+        stop: true
+      }"
+      src="../assets/CSS-min.jpg"
+      alt="CSS"
+    />
     <div v-image>
       <img
         src="../assets/1-min.png"

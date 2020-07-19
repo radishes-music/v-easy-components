@@ -23,3 +23,8 @@ deploy:
     tags: false
     branch: master
     repo: Linkontoask/v-easy-components
+notifications:
+  slack:
+    if: branch = docs
+  email:
+    - linkorgs@163.com
