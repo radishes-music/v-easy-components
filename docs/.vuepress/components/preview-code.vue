@@ -14,7 +14,7 @@
       <ve-button style="flex: 1" type="text" icon="code" @click="changeShow">{{ showCode ? language.hide : language.show }}{{language.code}}</ve-button>
       <div class="control">
         <ClientOnly>
-          <ve-button type="text" icon="copy" @click="copyCode" @mouseenter.native="isCopy = false" v-tip="{content: language.copy + (isCopy ? (copyStatus ? language.success : language.error) : language.code), Class: isCopy ? (copyStatus ? 'copy-success' : 'copy-error') : '', offset: 12}"></ve-button>
+          <ve-button type="text" icon="copy" @click="copyCode" @mouseenter.native="isCopy = false" v-tip="{VNode: renderTip, Class: tip.class, offset: 12}"></ve-button>
           <ve-button v-if="$page.frontmatter.tags === 'skeleton'" type="text" icon="sync" @click="retry" v-tip="{content: language.retry, offset: 12}"></ve-button>
         </ClientOnly>
       </div>
@@ -59,6 +59,13 @@
     computed: {
       language() {
         return language[this.$lang]
+      },
+      tip() {
+        const { language, isCopy, copyStatus } = this
+        return {
+          content: language.copy + (isCopy ? (copyStatus ? language.success : language.fail) : language.code),
+          class: isCopy ? (copyStatus ? 'copy-success' : 'copy-error') : ''
+        }
       }
     },
     props: {
@@ -71,6 +78,16 @@
       }
     },
     methods: {
+      renderTip() {
+        const { tip, $createElement } = this
+        return $createElement('div', {
+          class: {
+            [tip.class]: true
+          }
+        }, [
+          tip.content
+        ])
+      },
       retry() {
         typeof this.$parent.task === 'function' && this.$parent.task((+this._id) * 2, +this._id)
       },
