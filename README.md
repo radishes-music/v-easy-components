@@ -5,10 +5,10 @@
 # v-easy-components
 
 [![Build Status](https://travis-ci.com/Linkontoask/v-easy-components.svg?token=DxCbMdsVpziN8id5YUJs&branch=master)](https://travis-ci.com/Linkontoask/v-easy-components)
-<a href="https://github.com/Linkontoask/v-easy"><img src="https://img.shields.io/badge/dev-v1.0.0-blue.svg" alt=""></a>
-<a href="https://github.com/Linkontoask/v-easy"><img src="https://img.shields.io/badge/size-151kb-green.svg" alt=""></a>
-<a href="https://github.com/Linkontoask/v-easy"><img src="https://img.shields.io/badge/vue-2.x-orange.svg" alt=""></a>
-<a href="https://github.com/Linkontoask/v-easy"><img src="https://img.shields.io/badge/license-MIT-red.svg" alt=""></a>
+<a href="https://github.com/Linkontoask/v-easy-components"><img src="https://img.shields.io/badge/dev-v1.2.4-blue.svg" alt=""></a>
+<a href="https://github.com/Linkontoask/v-easy-components"><img src="https://img.shields.io/badge/size-151kb-green.svg" alt=""></a>
+<a href="https://github.com/Linkontoask/v-easy-components"><img src="https://img.shields.io/badge/vue-2.x-orange.svg" alt=""></a>
+<a href="https://github.com/Linkontoask/v-easy-components"><img src="https://img.shields.io/badge/license-MIT-red.svg" alt=""></a>
 
 ### Document
 
