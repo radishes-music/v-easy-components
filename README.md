@@ -34,6 +34,30 @@ import VEasy from 'v-easy-components'
 Vue.use(VEasy);
 ```
 
+### Browser Start
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>v-easy-components</title>
+    <script src="https://unpkg.com/vue@2.6.10/dist/vue.js"></script>
+    <script src="https://unpkg.com/v-easy-components@1.2.4/lib/index.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/v-easy-components@1.2.4/lib/theme-chalk/index.css">
+  </head>
+  <body>
+    <div id="root">
+      <ve-button @click="$msg('Test')">Click</ve-button>
+    </div>
+  </body>
+  <script>
+    new Vue({
+      el: '#root'
+    })
+  </script>
+</html>
+```
+
 ### Browser Support
 
 Modern browsers and Internet Explorer 10+.
