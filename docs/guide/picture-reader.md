@@ -84,6 +84,8 @@ If there are multiple images in the article and it takes a lot of bandwidth to l
 | :--- | :--- | :--- | :--- |
 | el | Specify the elements in the article that need to be replaced | String | image |
 | rule | Resource loading rules, you need to return the resource path to be loaded | Function | - |
+| fullScreen | The width of the picture is adaptive to the screen | Boolean | False |
+| stop | Same as `e.preventDefault()` | Boolean | False |
 :::
 
 <script>

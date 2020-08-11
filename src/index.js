@@ -50,7 +50,6 @@ const install = function(Vue, opts = {}) {
   Vue.prototype.$msg = Message
 }
 
-// 静态资源加载
 if (typeof window !== 'undefined' && window.Vue) {
   install(window.Vue)
 }

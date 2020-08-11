@@ -16,9 +16,9 @@ after_success:
 deploy:
   provider: npm
   edge: true
-  skip_cleanup: true
+  cleanup: true
   email: "$NPM_EMAIL"
-  api_key: "$NPM_TOKEN"
+  api_token: "$NPM_TOKEN"
   on:
     tags: false
     branch: master
@@ -27,4 +27,6 @@ notifications:
   slack:
     if: branch = docs
   email:
-    - linkorgs@163.com
+    on_success: always
+    recipients:
+      - linkorgs@163.com
