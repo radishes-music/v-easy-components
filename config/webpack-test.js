@@ -18,32 +18,22 @@ const webpackConfig = {
     hints: false
   },
   stats: 'errors-only',
-  resolve: {
-    extensions: config.extensions,
-    alias: config.alias,
-    modules: config.modules
-  },
+  resolve: config.resolve,
   module: {
     rules: [
-      {
-        test: /\.vue$/,
-        loader: 'vue-loader',
-        options: {
-          preserveWhitespace: false
-        }
-      },
-      {
-        test: /\.otf|ttf|woff2?|eot(\?\S*)?$/,
-        loader: 'url-loader'
-      },
+      ...config.rules,
       {
         test: /\.less$/,
-        use: ['style-loader', 'css-loader', 'less-loader']
-      },
-      {
-        test: /\.js$/,
-        loader: 'babel-loader',
-        include: [resolve('src'), resolve('packages')]
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 1
+            }
+          },
+          'less-loader'
+        ]
       }
     ]
   },
