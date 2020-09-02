@@ -45,7 +45,7 @@ const install = function(App, opts: Opts = {}) {
 
   App.use(ToolTip.directive)
   App.use(Skeleton.directive)
-  App.use(ImagePreview.Image)
+  App.use(ImagePreview.directive)
   App.mixin({
     data() {
       return {

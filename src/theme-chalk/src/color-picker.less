@@ -1,4 +1,4 @@
-@import "mixins/_color";
+@import 'mixins/_color';
 
 .color-placeholder() {
   background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAIAAADZF8uwAAAAGUlEQVQYV2M4gwH+YwCGIasIUwhT25BVBADtzYNYrHvv4gAAAABJRU5ErkJggg==);
@@ -42,7 +42,6 @@
 }
 
 .v-color {
-
   &-main {
     margin-top: 6px;
     padding: 6px;
@@ -85,7 +84,16 @@
     margin-left: 6px;
     align-items: stretch;
     &__bar {
-      background: linear-gradient(180deg,red 0,#ff0 17%,#0f0 33%,#0ff 50%,#00f 67%,#f0f 83%,red);
+      background: linear-gradient(
+        180deg,
+        red 0,
+        #ff0 17%,
+        #0f0 33%,
+        #0ff 50%,
+        #00f 67%,
+        #f0f 83%,
+        red
+      );
       height: 100%;
     }
     &__thumb {
@@ -99,7 +107,7 @@
       border-radius: 1px;
       background: #fff;
       border: 1px solid #f0f0f0;
-      box-shadow: 0 0 2px rgba(0,0,0,.6);
+      box-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
       z-index: 1;
     }
   }
@@ -121,7 +129,7 @@
 }
 
 .v-stretch-active {
-  transition: transform .2s ease, opacity .2s ease;
+  transition: transform 0.2s ease, opacity 0.2s ease;
   transform-origin: top;
 }
 

@@ -8,7 +8,7 @@ const resolve = src => path.resolve(__dirname, '../', src)
 const webpackConfig = {
   mode: 'development',
   entry: {
-    index: './src/index.js'
+    index: './src/index.ts'
   },
   output: {
     filename: '[name].js',

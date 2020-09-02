@@ -9,13 +9,13 @@ function compile() {
     .pipe(less())
     .pipe(postcss([autoprefixer()]))
     .pipe(cssmin())
-    .pipe(dest('./lib'))
+    .pipe(dest('./dist'))
 }
 
 function copyfont() {
   return src('./src/fonts/**')
     .pipe(cssmin())
-    .pipe(dest('./lib/fonts'))
+    .pipe(dest('./dist/fonts'))
 }
 
 exports.build = series(compile, copyfont)

@@ -2,7 +2,7 @@ const path = require('path')
 const configDev = require('./dev-server-config')
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const { VueLoaderPlugin } = require('vue-loader')
+
 const notifier = require('node-notifier')
 const config = require('./config')
 
@@ -29,33 +29,10 @@ module.exports = {
     port: PORT || configDev.dev.port,
     historyApiFallback: true
   },
-  resolve: {
-    extensions: config.extensions,
-    alias: config.alias,
-    modules: config.modules
-  },
+  resolve: config.resolve,
   module: {
     rules: [
-      {
-        test: /\.vue$/,
-        loader: 'vue-loader',
-        options: {
-          preserveWhitespace: false
-        }
-      },
-      {
-        test: /\.otf|ttf|woff2?|eot(\?\S*)?$/,
-        loader: 'url-loader'
-      },
-      {
-        test: /\.(png|jpg|JPG|gif)$/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {}
-          }
-        ]
-      },
+      ...config.rules,
       {
         test: /\.less$/,
         use: [
@@ -68,21 +45,11 @@ module.exports = {
           },
           'less-loader'
         ]
-      },
-      {
-        test: /\.tsx?$/,
-        exclude: /(node_modules)/,
-        use: 'ts-loader'
-      },
-      {
-        test: /\.js$/,
-        loader: ['babel-loader', 'eslint-loader'],
-        include: [resolve('example'), resolve('src'), resolve('packages')]
       }
     ]
   },
   plugins: [
-    new VueLoaderPlugin(),
+    ...config.plugins,
     new HtmlWebpackPlugin({
       template: './example/index.html'
     }),

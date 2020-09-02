@@ -1,4 +1,4 @@
-@import "./mixins/_color.less";
+@import './mixins/_color.less';
 
 @keyframes rotate {
   100% {
@@ -49,15 +49,15 @@ button.v-easy-button {
       }
 
       &-text {
-        transition: color .2s;
+        transition: color 0.2s;
       }
 
       &-default {
         width: 100%;
         height: 100%;
         border-radius: 4px;
-        opacity: .3;
-        transition: left .3s;
+        opacity: 0.3;
+        transition: left 0.3s;
         cursor: pointer;
       }
 
@@ -84,7 +84,7 @@ button.v-easy-button {
   }
 
   .is-rotate {
-    animation: rotate .6s linear infinite;
+    animation: rotate 0.6s linear infinite;
   }
 }
 
@@ -105,7 +105,7 @@ button.button.button-is {
   }
 
   &-disabled {
-    opacity: .4;
+    opacity: 0.4;
     cursor: not-allowed;
   }
 
@@ -137,32 +137,37 @@ button.button.button-is {
   }
 }
 
-button.button.easy-button-primary:hover:not(.button-is-disabled):not(.button-is-mask), button.button.easy-button-primary:not(.button-is-disabled):not(.button-is-mask):focus {
+button.button.easy-button-primary:hover:not(.button-is-disabled):not(.button-is-mask),
+button.button.easy-button-primary:not(.button-is-disabled):not(.button-is-mask):focus {
   color: #fff;
   background: @primary;
   border-color: @primary;
 }
 
-button.button.easy-button-success:hover:not(.button-is-disabled):not(.button-is-mask), button.button.easy-button-success:not(.button-is-disabled):not(.button-is-mask):focus {
+button.button.easy-button-success:hover:not(.button-is-disabled):not(.button-is-mask),
+button.button.easy-button-success:not(.button-is-disabled):not(.button-is-mask):focus {
   color: #fff;
   background-color: #85ce61;
   border-color: #85ce61;
 }
 
-button.button.easy-button-warning:hover:not(.button-is-disabled):not(.button-is-mask), button.button.easy-button-warning:not(.button-is-disabled):not(.button-is-mask):focus {
+button.button.easy-button-warning:hover:not(.button-is-disabled):not(.button-is-mask),
+button.button.easy-button-warning:not(.button-is-disabled):not(.button-is-mask):focus {
   color: #fff;
   background-color: #ebb563;
   border-color: #ebb563;
 }
 
-button.button.easy-button-error:hover:not(.button-is-disabled):not(.button-is-mask), button.button.easy-button-error:not(.button-is-disabled):not(.button-is-mask):focus {
+button.button.easy-button-error:hover:not(.button-is-disabled):not(.button-is-mask),
+button.button.easy-button-error:not(.button-is-disabled):not(.button-is-mask):focus {
   color: #fff;
   background-color: #f78989;
   border-color: #f78989;
 }
 
-button.button.easy-button-default:not(.button-is-disabled):not(.button-is-mask):not(.easy-button-text):focus, button.button.easy-button-default:hover:not(.button-is-disabled):not(.button-is-mask):not(.easy-button-text) {
-  color: #409EFF;
+button.button.easy-button-default:not(.button-is-disabled):not(.button-is-mask):not(.easy-button-text):focus,
+button.button.easy-button-default:hover:not(.button-is-disabled):not(.button-is-mask):not(.easy-button-text) {
+  color: #409eff;
   border-color: #c6e2ff;
   background-color: #ecf5ff;
 }
@@ -197,7 +202,7 @@ button.easy-button {
     padding: 0;
 
     .button-text {
-      transition: color .2s linear;
+      transition: color 0.2s linear;
     }
   }
 
@@ -245,10 +250,13 @@ button.button:not(.button-is-disabled):not(.button-is-mask):active {
   outline: 0;
 }
 
-button.button [class*=el-icon-] + span {
+button.button [class*='el-icon-'] + span {
   margin-left: 5px;
 }
 
-button, html [type="button"], [type="reset"], [type="submit"] {
+button,
+html [type='button'],
+[type='reset'],
+[type='submit'] {
   -webkit-appearance: button;
 }

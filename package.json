@@ -1,10 +1,10 @@
 {
   "name": "v-easy-components",
   "description": "Vue.js UI Components",
-  "version": "1.2.4",
+  "version": "2.0.0-beta.1",
   "main": "index.js",
   "files": [
-    "lib",
+    "dist",
     "src",
     "types",
     "packages"
@@ -22,16 +22,16 @@
     "bootstrap": "yarn || npm i",
     "dev": "webpack-dev-server --config config/webpack-dev-config.js",
     "dev:docs": "vuepress dev docs",
-    "build": "npm run clean && npm run lint && npm run build:main && npm run build:cm && npm run build:common && npm run build:theme",
+    "build": "npm run clean && npm run lint && npm run build:main && npm run build:cm && npm run build:common && npm run build:theme && rimraf dist/index.min.js.LICENSE",
     "build:main": "webpack --config config/webpack-build-config.js",
     "build:cm": "webpack --config config/webpack-build-components.js",
     "build:common": "webpack --config config/webpack-build-common.js",
-    "build:theme": "rimraf src/theme-chalk/lib && gulp build --gulpfile src/theme-chalk/gulpfile.js && rimraf src/theme-chalk/lib/_font.css && cp-cli src/theme-chalk/lib lib/theme-chalk && rimraf lib/theme-chalk/lib",
+    "build:theme": "rimraf src/theme-chalk/dist && gulp build --gulpfile src/theme-chalk/gulpfile.js && rimraf src/theme-chalk/dist/_font.css && cp-cli src/theme-chalk/dist dist/theme-chalk && rimraf dist/theme-chalk/dist",
     "build:docs": "vuepress build docs",
     "lint": "eslint \"packages/**/*\" \"src/**/*.js\" --quiet",
     "test": "npm run lint && cross-env CI_ENV=/dev/ BABEL_ENV=test karma start test/karma.conf.js --single-run",
     "test:watch": "npm run lint && cross-env BABEL_ENV=test karma start test/karma.conf.js",
-    "clean": "rimraf lib",
+    "clean": "rimraf dist",
     "validate:commit": "validate-commit-msg",
     "change:log": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
     "prettier": "prettier --write packages/**/*.vue packages/**/*.js example/**"
@@ -45,9 +45,9 @@
   "bugs": {
     "url": "https://github.com/Linkontoask/v-easy-components/issues"
   },
-  "style": "lib/theme-chalk/index.css",
+  "style": "dist/theme-chalk/index.css",
   "typings": "types/index.d.ts",
-  "unpkg": "lib/index.min.js",
+  "unpkg": "dist/index.min.js",
   "author": "Link",
   "license": "MIT",
   "devDependencies": {

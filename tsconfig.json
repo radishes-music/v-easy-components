@@ -5,6 +5,7 @@
     "target": "es2019",
     "sourceMap": false,
     "allowJs": true,
+    "jsx": "preserve",
     "moduleResolution": "node",
     "noUnusedLocals": true,
     "experimentalDecorators": true,
@@ -21,6 +22,6 @@
     }
   },
   "files": ["./types/index.d.ts"],
-  "include": ["./packages/**/*", "./src/**/*", "./types/**/*"],
+  "include": ["./packages/**/*", "./src/**/*", "./types/*"],
   "exclude": ["node_modules"]
 }
