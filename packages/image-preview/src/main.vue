@@ -31,7 +31,9 @@
 </template>
 
 <script>
-export default {
+import { defineComponent } from 'vue'
+
+export default defineComponent({
   name: 'ImageBox',
   data() {
     return {
@@ -79,5 +81,5 @@ export default {
       this.current++
     }
   }
-}
+})
 </script>

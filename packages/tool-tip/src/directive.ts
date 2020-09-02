@@ -1,16 +1,16 @@
-import Vue from 'vue'
+import { createApp, nextTick, ComponentPublicInstance } from 'vue'
 import Tip from './main.vue'
 import Popper from 'popper.js'
 import { addClass, getStyle } from '@/utils/dom'
+import { TipDirectiveType } from '../type'
 
-const tipDom = Vue.extend(Tip)
-const tipDirective = {}
+const tipDirective: TipDirectiveType = {}
 let index = 1
 let tipInstance = []
 
-const toggleTip = (el, binding) => {
-  Vue.nextTick(() => {
-    insertDom(el, binding)
+const toggleTip = el => {
+  nextTick().then(() => {
+    insertDom(el)
   })
 }
 
@@ -73,10 +73,14 @@ const enter = (el, binding, simple, event) => {
           placement: placement,
           domVisible: true
         }
-    const tip = new tipDom({
-      el: document.createElement('div'),
+
+    interface TipType extends ComponentPublicInstance {
+      _uuid_tip_?: number
+    }
+    const tip: TipType = createApp(Tip, {
       data
-    })
+    }).mount(document.createElement('div'))
+
     tip._uuid_tip_ = index
     // Whether to automatically remove the tip
     el._autoRemoveTip = typeof value.autoRemoveTip === 'undefined'
@@ -97,7 +101,7 @@ const enter = (el, binding, simple, event) => {
     })
   }
 
-  binding.value && toggleTip(el, binding)
+  binding.value && toggleTip(el)
 }
 
 const leave = el => {
@@ -105,7 +109,7 @@ const leave = el => {
 }
 
 const addEvent = (el, binding, simple) => {
-  Vue.nextTick(() => {
+  nextTick(() => {
     if (binding.value.target === 'click') {
       el.addEventListener('click', e => enter(el, binding, simple, e), false)
     } else {
@@ -119,15 +123,15 @@ const addEvent = (el, binding, simple) => {
   })
 }
 
-export const directive = {
-  bind: function(el, binding) {
+export const tip = {
+  mount: function(el, binding) {
     el._uuid_tip_ = 0
     el._is_instance_remove_ = false
 
     addEvent(el, binding, typeof binding.value !== 'string')
   },
 
-  unbind: function(el) {
+  unmounted: function(el) {
     if (el._autoRemoveTip) {
       const id = el._uuid_tip_
       const tipIndex = tipInstance.findIndex(o => o[id])
@@ -140,8 +144,8 @@ export const directive = {
   }
 }
 
-tipDirective.install = Vue => {
-  Vue.directive('tip', directive)
+tipDirective.install = App => {
+  App.directive('tip', tip)
 }
 
 export default tipDirective

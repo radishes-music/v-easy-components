@@ -8,6 +8,8 @@
 </template>
 
 <script>
+import Message from '@packages/message/index'
+
 export default {
   name: 'message',
   data() {
@@ -15,7 +17,8 @@ export default {
   },
   methods: {
     m(type) {
-      this.$msg({
+      console.log(this)
+      Message({
         type: type || 'warning',
         duration: 0,
         message: '<h1>Hello Word</h1>'

@@ -1,11 +1,12 @@
 /* istanbul ignore next */
+import { Dc } from '../mixins/merge'
 
-import Vue from 'vue'
+export const dc: Dc = document
 
-const isServer = Vue.prototype.$isServer
+const isServer = false
 const SPECIAL_CHARS_REGEXP = /([\:\-\_]+(.))/g
 const MOZ_HACK_REGEXP = /^moz([A-Z])/
-const ieVersion = isServer ? 0 : Number(document.documentMode)
+const ieVersion = isServer ? 0 : Number(dc.documentMode)
 
 /* istanbul ignore next */
 const trim = function(string) {

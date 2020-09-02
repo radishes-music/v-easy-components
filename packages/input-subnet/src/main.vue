@@ -37,8 +37,9 @@
 <script>
 import { t } from '@/locale/index'
 import merge from '@/mixins/merge'
+import { defineComponent } from 'vue'
 
-export default {
+export default defineComponent({
   name: 'VeSubnet',
   mixins: [merge],
   model: {
@@ -135,5 +136,5 @@ export default {
       this.$emit('blur', { $event, index })
     }
   }
-}
+})
 </script>

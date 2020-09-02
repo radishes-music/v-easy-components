@@ -1,12 +1,21 @@
 import VEasy from '@/index'
 import '@/theme-chalk/src/index.less'
-import Vue from 'vue'
+import { createApp, h } from 'vue'
 import APP from './APP.vue'
 import router from './router'
+import Message from '@packages/message/index'
 
-Vue.use(VEasy)
+const app = createApp({
+  render: () => h(APP)
+})
 
-new Vue({
-  router,
-  render: h => h(APP)
-}).$mount('#app')
+app.use(router)
+app.use(VEasy)
+app.mixin({
+  setup() {
+    return {
+      $msg: Message
+    }
+  }
+})
+app.mount('#app')

@@ -13,8 +13,9 @@
 <script>
 import { BAR_MAP } from './bar-type'
 import { on, off } from '@/utils/dom'
+import { defineComponent } from 'vue'
 
-export default {
+export default defineComponent({
   name: 'Bar',
   props: {
     horizontal: Boolean,
@@ -67,5 +68,5 @@ export default {
       document.onselectstart = null
     }
   }
-}
+})
 </script>

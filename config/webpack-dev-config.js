@@ -25,10 +25,8 @@ module.exports = {
   },
   devtool: 'eval-source-map',
   devServer: {
-    quiet: true,
     host: HOST || configDev.dev.host,
     port: PORT || configDev.dev.port,
-    clientLogLevel: 'none',
     historyApiFallback: true
   },
   resolve: {
@@ -72,7 +70,7 @@ module.exports = {
         ]
       },
       {
-        test: /\.ts$/,
+        test: /\.tsx?$/,
         exclude: /(node_modules)/,
         use: 'ts-loader'
       },

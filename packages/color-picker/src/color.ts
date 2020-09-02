@@ -17,15 +17,15 @@ const isPercentage = function(n) {
 }
 
 // Take input from [0, n] and return it as [0, 1]
-const bound01 = function(value, max) {
+const bound01 = function(value: number | string, max: number) {
   if (isOnePointZero(value)) value = '100%'
 
   const processPercent = isPercentage(value)
-  value = Math.min(max, Math.max(0, parseFloat(value)))
+  value = Math.min(max, Math.max(0, parseFloat(value as string)))
 
   // Automatically convert percentage into number
   if (processPercent) {
-    value = parseInt(value * max, 10) / 100
+    value = parseInt(((value * max) as unknown) as string, 10) / 100
   }
 
   // Handle floating point rounding errors
@@ -34,7 +34,7 @@ const bound01 = function(value, max) {
   }
 
   // Convert into [0, 1] range if it isn't already
-  return (value % max) / parseFloat(max)
+  return (value % max) / parseFloat((max as unknown) as string)
 }
 
 const INT_HEX_MAP = { 10: 'A', 11: 'B', 12: 'C', 13: 'D', 14: 'E', 15: 'F' }
@@ -150,6 +150,13 @@ const hsv2rgb = function(h, s, v) {
 }
 
 export default class Color {
+  _hue = 0
+  _saturation = 0
+  _value = 0
+  _alpha = 0
+  enableAlpha = false
+  format = 'hex'
+  value = ''
   constructor(options) {
     this._hue = 0
     this._saturation = 100

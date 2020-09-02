@@ -1,19 +1,19 @@
 import defaultLang from './zh'
-import Vue from 'vue'
 import deepmerge from 'deepmerge'
 import Format from './format'
 
-const format = Format(Vue)
+const format = Format()
 let lang = defaultLang
 let merged = false
+
 let i18nHandler = function() {
-  const vuei18n = Object.getPrototypeOf(this || Vue).$t
-  if (typeof vuei18n === 'function' && !!Vue.locale) {
+  const vuei18n = Object.getPrototypeOf(this).$t
+  if (typeof vuei18n === 'function' && !!this.locale) {
     if (!merged) {
       merged = true
-      Vue.locale(
-        Vue.config.lang,
-        deepmerge(lang, Vue.locale(Vue.config.lang) || {}, { clone: true })
+      this.locale(
+        this.config.lang,
+        deepmerge(lang, this.locale(this.config.lang) || {}, { clone: true })
       )
     }
     return vuei18n.apply(this, arguments)

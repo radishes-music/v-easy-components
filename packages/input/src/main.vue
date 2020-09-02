@@ -39,8 +39,9 @@
 <script>
 import { t } from '@/locale/index'
 import { contain } from '@/utils/array-extend'
+import { defineComponent } from 'vue'
 
-export default {
+export default defineComponent({
   name: 'VeInput',
 
   props: {
@@ -194,5 +195,5 @@ export default {
       this.$emit('input', this.currentVal)
     }
   }
-}
+})
 </script>

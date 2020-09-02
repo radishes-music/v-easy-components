@@ -18,7 +18,9 @@
 </template>
 
 <script>
-export default {
+import { defineComponent } from 'vue'
+
+export default defineComponent({
   name: 'VTip',
   components: {
     renderNode: {
@@ -77,5 +79,5 @@ export default {
       }
     }
   }
-}
+})
 </script>

@@ -1,11 +1,11 @@
 import ImageBox from './main.vue'
-import _Vue from 'vue'
+import { createApp } from 'vue'
 import { type } from '@/utils/utils'
+import { TipDirectiveType } from '../type'
 
-const imageDirective = {}
+const imageDirective: TipDirectiveType = {}
 
 let NodeID = 0
-
 let ImageBoxParents = []
 let handlerIndicator = new WeakMap()
 
@@ -39,7 +39,7 @@ function targetImage(el, binding) {
   if (_type === '[object String]') {
     src = binding.value
   } else if (_type === '[object Undefined]') {
-    src = el.dataset?.previewSrc || el.src
+    src = el?.dataset?.previewSrc || el.src
   } else if (_type === '[object Object]') {
     src = binding.value.src
     fullScreen = binding.value.fullScreen
@@ -51,17 +51,17 @@ function targetImage(el, binding) {
     )
   }
   /* fix isServer */
-  const ImageBoxInstance = new (_Vue.extend(ImageBox))({
-    el: document.createElement('div'),
+
+  const ImageBoxInstance = createApp(ImageBox, {
     data: {
       fullScreen: fullScreen,
       stop: stop
     }
-  })
+  }).mount(document.createElement('div'))
   el.addEventListener('click', handlerControl.bind(null, src, ImageBoxInstance))
 }
 
-function targetParent(el, binding, _NodeID) {
+function targetParent(el, binding, _NodeID?: number) {
   let ImageBoxParent
   const targetNode = binding?.value?.el || 'img'
 
@@ -71,9 +71,7 @@ function targetParent(el, binding, _NodeID) {
     ImageBoxParent = ImageBoxParents[_NodeID]
   } else {
     el._NodeID = ++NodeID // 标记父容器
-    ImageBoxParent = new (_Vue.extend(ImageBox))({
-      el: document.createElement('div')
-    })
+    ImageBoxParent = createApp(ImageBox).mount(document.createElement('div'))
     el.$instace = ImageBoxParent
     ImageBoxParent._NodeID = el._NodeID
     ImageBoxParents[el._NodeID] = ImageBoxParent
@@ -100,9 +98,9 @@ function targetParent(el, binding, _NodeID) {
   })
 }
 
-imageDirective.install = function(Vue) {
-  Vue.directive('image', {
-    bind: function(el, binding) {
+imageDirective.install = App => {
+  App.directive('image', {
+    mounted: function(el, binding) {
       if (el.tagName === 'IMG' || el.dataset?.previewSrc) {
         targetImage(el, binding)
       } else {
@@ -110,13 +108,13 @@ imageDirective.install = function(Vue) {
       }
     },
 
-    componentUpdated: function(el, binding) {
+    updated: function(el, binding) {
       if (el._NodeID) {
         targetParent(el, binding, el._NodeID)
       }
     },
 
-    unbind: function(el) {
+    unmounted: function(el) {
       if (el._NodeID) {
         const needRemoveElement = el.$instace
         if (
@@ -125,11 +123,7 @@ imageDirective.install = function(Vue) {
         ) {
           document.body.removeChild(needRemoveElement.$el)
         }
-      } /*else {
-        if (document.body.contains(ImageBoxInstance.$el)) {
-          document.body.removeChild(ImageBoxInstance.$el)
-        }
-      }*/
+      }
     }
   })
 }

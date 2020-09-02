@@ -14,8 +14,9 @@
 
 <script>
 import draggable from '@packages/color-picker/src/draggable'
+import { defineComponent } from 'vue'
 
-export default {
+export default defineComponent({
   name: 'ColorHue',
   props: {
     color: {
@@ -125,7 +126,5 @@ export default {
     draggable(thumb, dragConfig)
     this.update()
   }
-}
+})
 </script>
-
-<style scoped></style>

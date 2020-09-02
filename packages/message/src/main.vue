@@ -22,13 +22,15 @@
 </template>
 
 <script>
+import { defineComponent } from 'vue'
+
 let typeMap = {
   success: 'fa-check-circle',
   warning: 'fa-exclamation-circle',
   info: 'fa-info-circle',
   error: 'fa-times-circle'
 }
-export default {
+export default defineComponent({
   name: 'Message',
   data: function() {
     return {
@@ -86,5 +88,5 @@ export default {
   mounted() {
     this.startTimer()
   }
-}
+})
 </script>

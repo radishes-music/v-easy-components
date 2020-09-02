@@ -5,7 +5,7 @@
         <li
           v-for="item in aside"
           :key="item.name"
-          :class="{ active: $route.name === item.name }"
+          :class="{ active: router.currentRoute.name === item.name }"
           @click="handlerChange(item.name)"
         >
           {{ item.meta.formatter }}
@@ -19,18 +19,22 @@
 </template>
 
 <script>
-import { routes } from './router'
+import router, { routes } from './router'
 
 export default {
   data() {
     return {
-      aside: routes
+      aside: routes,
+      router: router
     }
   },
-  mounted() {},
+  mounted() {
+    console.log(router)
+  },
   methods: {
     handlerChange(name) {
-      this.$router.push({
+      console.log(name)
+      router.push({
         name
       })
     }
@@ -39,7 +43,7 @@ export default {
 </script>
 
 <style scoped lang="less">
-/deep/ * {
+::v-deep(*) {
   box-sizing: border-box;
 }
 .aside {

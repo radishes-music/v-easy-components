@@ -54,6 +54,11 @@ const webpackConfig = {
         test: /\.js$/,
         include: [resolve('src'), resolve('packages')],
         loader: ['babel-loader', 'eslint-loader']
+      },
+      {
+        test: /\.tsx$/,
+        exclude: /(node_modules)/,
+        use: 'ts-loader'
       }
     ]
   },

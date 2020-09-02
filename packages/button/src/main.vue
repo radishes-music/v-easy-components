@@ -44,10 +44,11 @@
   </button>
 </template>
 
-<script>
+<script lang="ts">
+import { defineComponent } from 'vue'
 import { computedIconStyle } from '@/utils/icon-style'
 
-export default {
+export default defineComponent({
   name: 'VeButton',
 
   props: {
@@ -70,6 +71,7 @@ export default {
       style: {},
       maskPosition: {},
       rect: 0,
+      isLeave: false,
       iconS: {
         brands: 'fab',
         regular: 'far',
@@ -108,6 +110,7 @@ export default {
     leave(e) {
       if (this.maskType === 'default') return false
 
+      this.isLeave = true
       this.style = {
         left: e.offsetX + 'px',
         top: e.offsetY + 'px',
@@ -128,6 +131,7 @@ export default {
 
       // Last position offset problem
       setTimeout(() => {
+        if (this.isLeave) return
         this.style = {
           ...this.maskPosition,
           transition: 'all .2s linear'
@@ -139,5 +143,5 @@ export default {
       this.$emit('click', evt)
     }
   }
-}
+})
 </script>

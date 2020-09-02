@@ -32,8 +32,9 @@ import draggable from '@packages/color-picker/src/draggable'
 import VeInput from '@packages/input/src/main'
 import VeButton from '@packages/button/src/main'
 import ColorHue from '@packages/color-picker/src/color-hue'
+import { defineComponent } from 'vue'
 
-export default {
+export default defineComponent({
   name: 'ColorPicker',
   components: {
     VeInput,
@@ -167,5 +168,5 @@ export default {
       this.update()
     }
   }
-}
+})
 </script>

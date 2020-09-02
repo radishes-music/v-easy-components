@@ -1,4 +1,4 @@
-import Vue from 'vue'
+import { createApp } from 'vue'
 import Message from './main.vue'
 
 const hasOwnProperty = Object.prototype.hasOwnProperty
@@ -17,14 +17,13 @@ export function isVNode(node) {
   )
 }
 
-let MessageConstructor = Vue.extend(Message)
-
 let instance
 let instances = []
 let seed = 1
 
 const MessageFn = function(options) {
-  if (Vue.prototype.$isServer) return
+  // TODO
+  // if (Vue.prototype.$isServer) return
   options = options || {}
   if (typeof options === 'string') {
     options = {
@@ -37,9 +36,11 @@ const MessageFn = function(options) {
   options.onClose = function() {
     MessageFn.close(id, userOnClose)
   }
-  instance = new MessageConstructor({
+
+  instance = createApp(Message, {
     data: options
-  })
+  }).mount(document.createElement('div'))
+
   instance.id = id
   if (isVNode(instance.message)) {
     instance.$slots.default = [instance.message]

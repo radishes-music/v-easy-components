@@ -1,4 +1,15 @@
 import { _initArray } from '../utils/array-extend'
+interface Range {
+  createRange: () => {
+    moveStart: (v: string, l: number) => void
+    text: string
+  }
+}
+export interface Dc extends Document {
+  selection?: Range
+  documentMode?: string
+}
+
 export default {
   data() {
     return {
@@ -96,9 +107,10 @@ export default {
       this.$emit('change', result)
     },
     getCursorPosition(el) {
-      let cursorPos = 0
-      if (document.selection) {
-        var selectRange = document.selection.createRange()
+      let cursorPos = 0,
+        dc: Dc = document
+      if (dc.selection) {
+        var selectRange = dc.selection.createRange()
         selectRange.moveStart('character', -el.value.length)
         cursorPos = selectRange.text.length
       } else {

@@ -15,7 +15,7 @@ export default function() {
    * @return {String}
    */
 
-  function template(string, ...args) {
+  function template(string, ...args: any) {
     if (args.length === 1 && typeof args[0] === 'object') {
       args = args[0]
     }

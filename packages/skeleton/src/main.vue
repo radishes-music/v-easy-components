@@ -22,6 +22,7 @@
 
 <script>
 import { _initArray } from '@/utils/array-extend'
+import { defineComponent } from 'vue'
 
 const char = '—'
 const map = [
@@ -128,7 +129,7 @@ const map = [
   4
 ]
 
-export default {
+export default defineComponent({
   name: 'VLoadingPreloadStyle',
   data() {
     return {
@@ -173,5 +174,5 @@ export default {
       this.domVisible = visible
     }
   }
-}
+})
 </script>

@@ -51,8 +51,9 @@
 import { t } from '@/locale/index'
 import { _initArray } from '@/utils/array-extend'
 import merge from '@/mixins/merge'
+import { defineComponent } from 'vue'
 
-export default {
+export default defineComponent({
   name: 'VeIp',
   mixins: [merge],
   model: {
@@ -221,5 +222,5 @@ export default {
       this.$emit('blur', { $event, index })
     }
   }
-}
+})
 </script>

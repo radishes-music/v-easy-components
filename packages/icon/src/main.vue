@@ -7,8 +7,9 @@
 
 <script>
 import { computedIconStyle } from '@/utils/icon-style'
+import { defineComponent } from 'vue'
 
-export default {
+export default defineComponent({
   name: 'VeIcon',
   props: {
     name: String,
@@ -23,5 +24,5 @@ export default {
       return computedIconStyle(this.iconStyle)
     }
   }
-}
+})
 </script>

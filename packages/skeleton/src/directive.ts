@@ -1,17 +1,16 @@
-import Vue from 'vue'
-import loading from './main.vue'
+import { createApp } from 'vue'
+import Loading from './main.vue'
 import { addClass, removeClass } from '@/utils/dom'
+import { TipDirectiveType } from '../type'
 
-const loadingDom = Vue.extend(loading)
-
-const loadingDirective = {}
+const loadingDirective: TipDirectiveType = {}
 
 const insertDom = (el, binding) => {
   const modifiers = Object.keys(binding.modifiers)
   let nodeNum = 0
   if (modifiers.length) {
     nodeNum = Number(modifiers[0])
-    if (!/^\d+$/.test(nodeNum)) {
+    if (!/^\d+$/.test('' + nodeNum)) {
       /*eslint no-console:0*/
       console.error(
         `v-loading-preload only accepts numeric modifiers and only supports one numeric modifier. \n key: ${modifiers[0]}`
@@ -35,10 +34,10 @@ const insertDom = (el, binding) => {
     }
   }
 
-  const loading = new loadingDom({
+  const loading = createApp(Loading, {
     el: el,
     data
-  })
+  }).mount(document.createElement('div'))
 
   el.instance = loading
   el.$loading = loading.$el
@@ -61,13 +60,13 @@ const removeLoadingDom = (el, binding) => {
 
 loadingDirective.install = Vue => {
   Vue.directive('loading-preload', {
-    bind: function(el, binding) {
+    mounted: function(el, binding) {
       addClass(el, 've-loading-parent--relative')
 
       insertDom(el, binding)
     },
 
-    componentUpdated: function(el, binding) {
+    updated: function(el, binding) {
       removeLoadingDom(el, binding)
     }
   })

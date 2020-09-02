@@ -1,4 +1,4 @@
-import Vue from 'vue'
+import { dc } from '@/utils/dom'
 
 const hasOwnProperty = Object.prototype.hasOwnProperty
 
@@ -115,9 +115,9 @@ export const coerceTruthyValueToArray = function(val) {
 }
 
 export const isIE = function() {
-  return !Vue.prototype.$isServer && !isNaN(Number(document.documentMode))
+  return !isNaN(Number(dc.documentMode))
 }
 
 export const isEdge = function() {
-  return !Vue.prototype.$isServer && navigator.userAgent.indexOf('Edge') > -1
+  return navigator.userAgent.indexOf('Edge') > -1
 }

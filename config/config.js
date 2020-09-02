@@ -29,10 +29,11 @@ exports.externals = externals
 exports.alias = {
   '@': resolve('src'),
   '@packages': resolve('packages'),
-  lib: resolve('lib')
+  lib: resolve('lib'),
+  vue: '@vue/runtime-dom'
 }
 
-exports.extensions = ['.js', '.vue', '.json']
+exports.extensions = ['.ts', '.js', '.vue', '.json']
 
 exports.modules = [resolve('node_modules')]
 

@@ -16,8 +16,9 @@
 
 <script>
 import Bar from './bar'
+import { defineComponent } from 'vue'
 
-export default {
+export default defineComponent({
   name: 'VeScroll',
   components: {
     Bar
@@ -77,5 +78,5 @@ export default {
       })
     }
   }
-}
+})
 </script>

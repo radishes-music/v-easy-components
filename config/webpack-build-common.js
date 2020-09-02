@@ -55,7 +55,7 @@ module.exports = {
         loader: 'url-loader'
       },
       {
-        test: /\.ts$/,
+        test: /\.tsx$/,
         exclude: /(node_modules)/,
         use: 'ts-loader'
       },

@@ -16,7 +16,9 @@
 </template>
 
 <script>
-export default {
+import { defineComponent } from 'vue'
+
+export default defineComponent({
   name: 'VeCollapse',
   props: {
     list: {
@@ -30,5 +32,5 @@ export default {
       open: false
     }
   }
-}
+})
 </script>
