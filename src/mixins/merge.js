@@ -89,7 +89,6 @@ export default {
     },
     setCurrentValue(value, index) {
       let { result } = this
-      if (value.toString() === result.join('.')) return
       const _v = value.replace(/\D/g, '')
       this.$set(result, index, _v ? Number(_v) : '')
       result = result.map(n => (n ? Number(n) : n))
