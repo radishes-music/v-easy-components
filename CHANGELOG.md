@@ -1,8 +1,9 @@
-## [1.2.4](https://github.com/Linkontoask/v-easy-components/compare/1.1.1...1.2.4) (2020-07-21)
+## [1.2.5](https://github.com/Linkontoask/v-easy-components/compare/1.1.1...1.2.5) (2020-09-03)
 
 
 ### Bug Fixes
 
+* [#66](https://github.com/Linkontoask/v-easy-components/issues/66) Fix the IP input box cannot enter the same number ([b12fa1f](https://github.com/Linkontoask/v-easy-components/commit/b12fa1f216ebcba956be29db487a55d2692cd203))
 * error-class remove 'none' class name ([810b601](https://github.com/Linkontoask/v-easy-components/commit/810b60150d607946f9189fdc6b46db9ba8e708cd))
 * ip bind string data ([1d77968](https://github.com/Linkontoask/v-easy-components/commit/1d77968579286c69dcd185c546f476c2ca50db2c))
 * ip port bug ([baecc56](https://github.com/Linkontoask/v-easy-components/commit/baecc563da4b78c915ae94012dc13f43e764f1b2))
