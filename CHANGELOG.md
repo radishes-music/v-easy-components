@@ -1,8 +1,9 @@
-## [1.2.3](https://github.com/Linkontoask/v-easy-components/compare/1.1.1...1.2.3) (2020-07-14)
+## [1.2.5](https://github.com/Linkontoask/v-easy-components/compare/1.1.1...1.2.5) (2020-09-03)
 
 
 ### Bug Fixes
 
+* [#66](https://github.com/Linkontoask/v-easy-components/issues/66) Fix the IP input box cannot enter the same number ([b12fa1f](https://github.com/Linkontoask/v-easy-components/commit/b12fa1f216ebcba956be29db487a55d2692cd203))
 * error-class remove 'none' class name ([810b601](https://github.com/Linkontoask/v-easy-components/commit/810b60150d607946f9189fdc6b46db9ba8e708cd))
 * ip bind string data ([1d77968](https://github.com/Linkontoask/v-easy-components/commit/1d77968579286c69dcd185c546f476c2ca50db2c))
 * ip port bug ([baecc56](https://github.com/Linkontoask/v-easy-components/commit/baecc563da4b78c915ae94012dc13f43e764f1b2))
@@ -17,6 +18,7 @@
 * [#48](https://github.com/Linkontoask/v-easy-components/issues/48) ve-ip support port ([c50861b](https://github.com/Linkontoask/v-easy-components/commit/c50861bb16a09180c58c38d59ebf7ce61b74dc07))
 * ip-input support port, modified binding worth type ([5783209](https://github.com/Linkontoask/v-easy-components/commit/578320918a8da9e0eb87faef679a72bb29bb8feb))
 * The IP input box and subnet mask input box support paste, and fix the problem of cursor movement and flashing ([67a3040](https://github.com/Linkontoask/v-easy-components/commit/67a3040182a8aaa5c7b967fc699a0a387c3d183e))
+* v-image support fullscreen and stop e ([451a8c1](https://github.com/Linkontoask/v-easy-components/commit/451a8c1456a5692a83837ec2f4cf2f37410be6fe))
 
 
 
