@@ -71,10 +71,11 @@ export default defineComponent({
     active: {
       handler: async function(index) {
         await this.$nextTick()
-        const steps = this.$slots.default.filter(o => o.componentInstance)
+        const steps = this.steps.filter(o => o.self._.isMounted)
+
         if (steps.length) {
-          const oldComponentInstance = steps[this.oldActive].componentInstance
-          const componentInstance = steps[index].componentInstance
+          const oldComponentInstance = steps[this.oldActive].self
+          const componentInstance = steps[index].self
           oldComponentInstance.updateStatus(false)
           componentInstance.updateStatus(true)
 
