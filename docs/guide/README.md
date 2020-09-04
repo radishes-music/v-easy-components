@@ -58,9 +58,9 @@ If you want to get a stable version, please bring the version number
 ```html
 <script src="//unpkg.com/vue@2.6.10/dist/vue.js"></script>
 <!-- Introducing component library -->
-<script src="//unpkg.com/v-easy-components@1.2.5/lib/index.js"></script>
+<script src="//unpkg.com/v-easy-components@1.3.0/lib/index.js"></script>
 <!-- Introducing style -->
-<link rel="stylesheet" href="//unpkg.com/v-easy-components@1.2.5/lib/theme-chalk/index.css">
+<link rel="stylesheet" href="//unpkg.com/v-easy-components@1.3.0/lib/theme-chalk/index.css">
 ```
 
 ## Hello world
