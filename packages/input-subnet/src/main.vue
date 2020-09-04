@@ -35,20 +35,27 @@
 </template>
 
 <script>
-import { t } from '@/locale/index'
+// import { t } from '@/locale/index'
 import merge from '@/mixins/merge'
 import { defineComponent } from 'vue'
 
 export default defineComponent({
   name: 'VeSubnet',
   mixins: [merge],
-  model: {
-    event: 'change'
-  },
+
+  emits: [
+    'status',
+    'update:modelValue',
+    'input',
+    'blur',
+    'keyDown',
+    'keyUp',
+    'focus'
+  ],
 
   computed: {
     msg() {
-      return this.message || t('subnet.err')
+      return this.message
     }
   },
 
@@ -75,7 +82,7 @@ export default defineComponent({
       let paste = ($event.clipboardData || window.clipboardData).getData('text')
       if (this.checkSub(paste)) {
         this.$emit(
-          'change',
+          'update:modelValue',
           paste.split('.').map(n => (n ? Number(n) : n))
         )
       }

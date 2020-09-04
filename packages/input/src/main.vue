@@ -44,6 +44,8 @@ import { defineComponent } from 'vue'
 export default defineComponent({
   name: 'VeInput',
 
+  emits: ['status', 'input', 'blur', 'focus', 'change'],
+
   props: {
     maxWidth: { type: String },
     errorOptions: { type: Object },

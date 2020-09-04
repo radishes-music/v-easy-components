@@ -48,7 +48,7 @@
 </template>
 
 <script>
-import { t } from '@/locale/index'
+// import { t } from '@/locale/index'
 import { _initArray } from '@/utils/array-extend'
 import merge from '@/mixins/merge'
 import { defineComponent } from 'vue'
@@ -56,9 +56,17 @@ import { defineComponent } from 'vue'
 export default defineComponent({
   name: 'VeIp',
   mixins: [merge],
-  model: {
-    event: 'change'
-  },
+
+  emits: [
+    'status',
+    'update:modelValue',
+    'error',
+    'input',
+    'blur',
+    'focus',
+    'keyDown',
+    'keyUp'
+  ],
 
   props: {
     format: { type: String, default: 'ipv4' },
@@ -73,7 +81,7 @@ export default defineComponent({
 
   computed: {
     msg() {
-      return this.message || t('ip.err')
+      return this.message
     },
     splitChar() {
       if (this.spliceChar !== '.') {
@@ -128,15 +136,15 @@ export default defineComponent({
       this.portValue = _v
       if (_v > 65536) {
         this.portValue = 65536
-        this.$set(this.result, 4, 65536)
+        this.result[4] = 65536
       }
       if (_v < 0) {
         this.portValue = 0
-        this.$set(this.result, 4, 0)
+        this.result[4] = 0
       }
       result[4] = this.portValue
       result = result.map(n => (n ? Number(n) : n))
-      this.$emit('change', result)
+      this.$emit('update:modelValue', result)
     },
 
     handlePaste(index, $event) {
@@ -150,7 +158,7 @@ export default defineComponent({
           _v.push(+_r[1])
           this.portValue = _r[1]
         }
-        this.$emit('change', _v)
+        this.$emit('update:modelValue', _v)
       }
     },
 

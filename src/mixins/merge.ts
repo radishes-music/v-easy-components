@@ -30,16 +30,19 @@ export default {
     disabled: { type: [Boolean, String], default: false },
     spliceChar: { type: String, default: '.' },
     message: { type: String },
-    value: [String, Array],
+    modelValue: [String, Array],
     readonly: { type: [Boolean, String], default: false }
   },
   computed: {
     result() {
-      let { value } = this
+      let { modelValue } = this
       let data = []
-      data = value === undefined || value === null || value === '' ? [] : value
-      if (!Array.isArray(value)) {
-        const port = value.split(':')
+      data =
+        modelValue === undefined || modelValue === null || modelValue === ''
+          ? []
+          : modelValue
+      if (!Array.isArray(modelValue)) {
+        const port = modelValue.split(':')
         if (port[0]) {
           data = port[0].split('.')
           data = data[0] === '' ? [] : data
@@ -101,9 +104,9 @@ export default {
     setCurrentValue(value, index) {
       let { result } = this
       const _v = value.replace(/\D/g, '')
-      this.$set(result, index, _v ? Number(_v) : '')
+      result[index] = _v ? Number(_v) : ''
       result = result.map(n => (n ? Number(n) : n))
-      this.$emit('change', result)
+      this.$emit('update:modelValue', result)
     },
     getCursorPosition(el) {
       let cursorPos = 0,

@@ -2,14 +2,14 @@
   <div>
     <li>
       ip:{{ ip }}
-      <ve-ip port v-model:value="ip"></ve-ip>
+      <ve-ip port v-model="ip"></ve-ip>
       {{ ip1 }}
-      <ve-ip v-model:value="ip1"></ve-ip>
+      <ve-ip v-model="ip1"></ve-ip>
     </li>
     <li>
       subnet:{{ subnet }}
-      <ve-subnet v-model:value="subnet"></ve-subnet>
-      <ve-subnet v-model:value="subnet1"></ve-subnet>
+      <ve-subnet v-model="subnet"></ve-subnet>
+      <ve-subnet v-model="subnet1"></ve-subnet>
     </li>
   </div>
 </template>
