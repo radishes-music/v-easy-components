@@ -19,7 +19,8 @@ module.exports = {
   },
   output: {
     filename: '[name].js',
-    chunkFilename: '[name].chunk.js'
+    chunkFilename: '[name].chunk.js',
+    libraryExport: 'default'
   },
   performance: {
     hints: false

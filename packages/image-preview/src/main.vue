@@ -35,30 +35,7 @@ import { defineComponent } from 'vue'
 
 export default defineComponent({
   name: 'ImageBox',
-  data() {
-    return {
-      visible: false,
-      targetAnimate: true,
-      src: [],
-      current: 0,
-      isOut: false,
-      fullScreen: false,
-      stop: false
-    }
-  },
-  computed: {
-    computedStyle() {
-      return {
-        transform: `translateX(${this.current * -100}%)`
-      }
-    },
-    isDisabledNext() {
-      return this.current < this.src.length - 1
-    },
-    isDisabledPrev() {
-      return this.current > 0
-    }
-  },
+
   methods: {
     stopEvent(e) {
       if (this.stop) {

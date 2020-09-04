@@ -1,5 +1,5 @@
 import ImageBox from './main.vue'
-import { createApp } from 'vue'
+import { createApp, reactive, computed } from 'vue'
 import { type } from '@/utils/utils'
 import { TipDirectiveType } from '../type'
 
@@ -12,7 +12,7 @@ let handlerIndicator = new WeakMap()
 function handlerControl(src, instance, index) {
   if (Array.isArray(src)) {
     src.forEach(item => {
-      if (!instance.src.includes(item)) {
+      if (!instance.src?.includes(item)) {
         instance.addImage(item)
       }
       instance.current = index
@@ -32,18 +32,34 @@ function handlerControl(src, instance, index) {
   }
 }
 
+interface Src {
+  default: string
+}
+
+function insertSrc(src: string | Src): string {
+  return typeof src === 'string' ? src : src.default
+}
+
 function targetImage(el, binding) {
   el.classList.add('image-read-parent')
-  let src, fullScreen, stop
-  const _type = type(binding.value)
+  let src,
+    fullScreen,
+    stop,
+    value = binding.value
+  const _type = type(value)
   if (_type === '[object String]') {
-    src = binding.value
+    src = [value]
   } else if (_type === '[object Undefined]') {
-    src = el?.dataset?.previewSrc || el.src
+    // const v = el.dataset?.previewSrc || el.src
+    // src = [insertSrc(v)]
+    // eslint-disable-next-line no-console
+    console.error(`Vue-next does not support dateset binding temporarily`)
   } else if (_type === '[object Object]') {
-    src = binding.value.src
-    fullScreen = binding.value.fullScreen
-    stop = binding.value.stop
+    src = [insertSrc(value.src)]
+    fullScreen = value.fullScreen
+    stop = value.stop
+  } else if (_type === '[object Module]') {
+    src = [insertSrc(value)]
   } else {
     // eslint-disable-next-line no-console
     console.warn(
@@ -52,10 +68,36 @@ function targetImage(el, binding) {
   }
   /* fix isServer */
 
-  const ImageBoxInstance = createApp(ImageBox, {
-    data: {
-      fullScreen: fullScreen,
-      stop: stop
+  const ImageBoxInstance = createApp({
+    ...ImageBox,
+    setup() {
+      const data = reactive(
+        Object.assign(
+          {
+            visible: false,
+            targetAnimate: true,
+            src: [],
+            current: 0,
+            isOut: false,
+            fullScreen: false,
+            stop: false
+          },
+          {
+            fullScreen: fullScreen,
+            stop: stop
+          }
+        )
+      )
+
+      const computedStyle = computed(() => {
+        return {
+          transform: `translateX(${data.current * -100}%)`
+        }
+      })
+      const isDisabledNext = computed(() => data.current < data.src?.length - 1)
+      const isDisabledPrev = computed(() => data.current > 0)
+
+      return { ...data, computedStyle, isDisabledNext, isDisabledPrev }
     }
   }).mount(document.createElement('div'))
   el.addEventListener('click', handlerControl.bind(null, src, ImageBoxInstance))
