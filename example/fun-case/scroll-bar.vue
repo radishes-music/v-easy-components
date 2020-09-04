@@ -7,6 +7,7 @@
         </li>
       </ul>
     </ve-scroll>
+    <ve-button @click="test1">加载完成</ve-button>
   </div>
 </template>
 
@@ -21,6 +22,11 @@ export default {
       str: Array(20)
         .fill(0)
         .join('+')
+    }
+  },
+  methods: {
+    test1() {
+      debugger
     }
   }
 }

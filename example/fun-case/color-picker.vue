@@ -2,7 +2,7 @@
   <div class="flex">
     <ve-color-picker
       style="margin: 0 auto"
-      v-model="value"
+      v-model:value="value"
       color-format="hsl"
     />
     <div>
@@ -15,7 +15,7 @@
       <ve-color-picker
         style="margin: 0 auto"
         simple
-        v-model="value1"
+        v-model:value="value1"
         color-format="hsl"
       />
     </div>

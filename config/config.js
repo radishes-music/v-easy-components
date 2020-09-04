@@ -70,26 +70,17 @@ exports.rules = [
     }
   },
   {
-    test: /\.otf|ttf|woff2?|eot(\?\S*)?$/,
+    test: /\.otf|ttf|png|jpg|JPG|gif|woff2?|eot(\?\S*)?$/,
     loader: 'url-loader'
-  },
-  {
-    test: /\.(png|jpg|JPG|gif)$/,
-    use: [
-      {
-        loader: 'file-loader',
-        options: {}
-      }
-    ]
   },
   {
     test: /\.tsx?$/,
     exclude: /(node_modules)/,
-    loader: ['ts-loader', 'eslint-loader']
+    use: ['ts-loader', 'eslint-loader']
   },
   {
     test: /\.js$/,
-    loader: ['babel-loader', 'eslint-loader'],
-    include: [resolve('example'), resolve('src'), resolve('packages')]
+    include: [resolve('example'), resolve('src'), resolve('packages')],
+    use: ['babel-loader', 'eslint-loader']
   }
 ]

@@ -60,6 +60,7 @@ export default {
       default: 'hex'
     }
   },
+  emits: ['input', 'change', 'update:value'],
   data() {
     const color = new Color({
       format: this.colorFormat
@@ -106,6 +107,7 @@ export default {
     handleConfirm() {
       const { value } = this.color
       this.currentColor = value
+      this.$emit('update:value', value)
       this.$emit('input', value)
       this.$emit('change', value)
       if (!this.simple) {

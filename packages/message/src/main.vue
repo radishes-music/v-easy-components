@@ -32,19 +32,6 @@ let typeMap = {
 }
 export default defineComponent({
   name: 'Message',
-  data: function() {
-    return {
-      visible: false,
-      type: 'info',
-      message: '',
-      html: false,
-      duration: 3000,
-      showClose: true,
-      onClose: null,
-      timer: null,
-      verticalOffset: 20
-    }
-  },
 
   computed: {
     typeIcon() {
@@ -59,8 +46,7 @@ export default defineComponent({
 
   methods: {
     handleAfterLeave() {
-      this.$destroy(true)
-      this.$el.parentNode.removeChild(this.$el)
+      document.body.removeChild(this.$el.parentNode)
     },
     clearTimer() {
       clearTimeout(this.timer)

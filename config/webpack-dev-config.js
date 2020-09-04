@@ -1,4 +1,5 @@
 const path = require('path')
+const webpack = require('webpack')
 const configDev = require('./dev-server-config')
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
@@ -50,6 +51,10 @@ module.exports = {
   },
   plugins: [
     ...config.plugins,
+    new webpack.DefinePlugin({
+      __VUE_OPTIONS_API__: true,
+      __VUE_PROD_DEVTOOLS__: true
+    }),
     new HtmlWebpackPlugin({
       template: './example/index.html'
     }),

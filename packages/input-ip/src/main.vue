@@ -179,8 +179,6 @@ export default defineComponent({
     },
 
     isIpv4(index) {
-      // 正则检验
-
       if (this.result[index] && this.result[index].length > 3 && index === 3) {
         this.result[index] = this.result[index].substring(4, 1)
       }

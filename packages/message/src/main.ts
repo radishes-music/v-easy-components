@@ -1,4 +1,4 @@
-import { createApp } from 'vue'
+import { createApp, reactive, onMounted } from 'vue'
 import Message from './main.vue'
 
 const hasOwnProperty = Object.prototype.hasOwnProperty
@@ -36,26 +36,55 @@ const MessageFn = function(options) {
   options.onClose = function() {
     MessageFn.close(id, userOnClose)
   }
+  const app = {
+    ...Message,
+    setup() {
+      const data = reactive(
+        Object.assign(
+          {
+            visible: false,
+            type: 'info',
+            message: '',
+            html: false,
+            duration: 3000,
+            showClose: true,
+            onClose: null,
+            timer: null,
+            verticalOffset: 20
+          },
+          options
+        )
+      )
 
-  instance = createApp(Message, {
-    data: options
-  }).mount(document.createElement('div'))
+      onMounted(() => {
+        data.visible = true
+      })
 
-  instance.id = id
-  if (isVNode(instance.message)) {
-    instance.$slots.default = [instance.message]
-    instance.message = null
+      return data
+    }
   }
-  instance.$mount()
-  document.body.appendChild(instance.$el)
+
+  instance = createApp(app)
+
+  const div = document.createElement('div')
+  const message = instance.mount(div)
+
+  document.body.appendChild(div)
+  message.id = id
+  if (isVNode(message.message)) {
+    message.$slots.default = [message.message]
+    message.message = null
+  }
+
   let verticalOffset = options.offset || 20
   instances.forEach(item => {
     verticalOffset += item.$el.offsetHeight + 16
   })
-  instance.verticalOffset = verticalOffset
-  instance.visible = true
-  instances.push(instance)
-  return instance
+
+  message.verticalOffset = verticalOffset
+
+  instances.push(message)
+  return message
 }
 
 MessageFn.close = function(id, userOnClose) {

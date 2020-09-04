@@ -3,7 +3,6 @@
     <textarea
       style="opacity: 0;height: 0;padding: 0;position: absolute;z-index: -1"
       ref="code"
-      type="text"
       :value="icon"
     />
     <ve-icon
@@ -55,8 +54,6 @@ export default {
 </script>
 
 <style scoped lang="less">
-.v-e-icon {
-}
 .p-box {
   position: absolute;
   height: 24px;

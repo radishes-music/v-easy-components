@@ -46,15 +46,11 @@ const install = function(App, opts: Opts = {}) {
   App.use(ToolTip.directive)
   App.use(Skeleton.directive)
   App.use(ImagePreview.directive)
-  App.mixin({
-    data() {
-      return {
-        $VEasy: {
-          iconStyle: opts.iconStyle || 'fa'
-        }
-      }
-    }
-  })
+
+  App.config.globalProperties.$message = Message
+  App.config.globalProperties.$VEasy = {
+    iconStyle: opts.iconStyle || 'fa'
+  }
 }
 
 export const main = {

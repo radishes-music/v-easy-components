@@ -44,8 +44,8 @@
   </button>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue'
+<script>
+import { defineComponent, nextTick } from 'vue'
 import { computedIconStyle } from '@/utils/icon-style'
 
 export default defineComponent({
@@ -65,6 +65,8 @@ export default defineComponent({
     mask: { type: [Boolean, String], default: false },
     loading: { type: Boolean, default: false }
   },
+
+  emits: ['click'],
 
   data() {
     return {
@@ -91,7 +93,7 @@ export default defineComponent({
 
   mounted() {
     if (this.maskType !== 'default') {
-      this.$nextTick(this.calc)
+      nextTick(this.calc)
     }
   },
 
@@ -136,7 +138,7 @@ export default defineComponent({
           ...this.maskPosition,
           transition: 'all .2s linear'
         }
-      }, 14)
+      }, 0)
     },
     handleClick(evt) {
       if (this.buttonDisabled) return false

@@ -1,5 +1,6 @@
 <template>
   <div>
+    <button @click="m('info')">Click</button>
     <ve-button @click="m('info')">info</ve-button>
     <ve-button @click="m('warning')">warning</ve-button>
     <ve-button @click="m('error')">error</ve-button>
@@ -20,7 +21,8 @@ export default {
       console.log(this)
       Message({
         type: type || 'warning',
-        duration: 0,
+        duration: 1000,
+        html: true,
         message: '<h1>Hello Word</h1>'
       })
     }
