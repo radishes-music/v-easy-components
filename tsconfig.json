@@ -16,6 +16,7 @@
     "lib": ["esnext", "dom"],
     "rootDir": ".",
     "paths": {
+      "root/*": ["/*"],
       "@/*": ["src/*"],
       "@packages/*": ["packages/*"],
       "lib/*": ["lib"]

@@ -1,5 +1,10 @@
-import { createApp, reactive, onMounted } from 'vue'
+import { createApp, reactive, onMounted, ComponentPublicInstance } from 'vue'
 import Message from './main.vue'
+
+interface ElMessageOptionsInstance extends ComponentPublicInstance {
+  id?: string
+  verticalOffset?: number
+}
 
 const hasOwnProperty = Object.prototype.hasOwnProperty
 
@@ -17,7 +22,6 @@ export function isVNode(node) {
   )
 }
 
-let instance
 let instances = []
 let seed = 1
 
@@ -50,7 +54,8 @@ const MessageFn = function(options) {
             showClose: true,
             onClose: null,
             timer: null,
-            verticalOffset: 20
+            verticalOffset: 20,
+            id: ''
           },
           options
         )
@@ -64,10 +69,8 @@ const MessageFn = function(options) {
     }
   }
 
-  instance = createApp(app)
-
   const div = document.createElement('div')
-  const message = instance.mount(div)
+  const message: ElMessageOptionsInstance = createApp(app).mount(div)
 
   document.body.appendChild(div)
 

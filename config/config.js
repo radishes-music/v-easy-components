@@ -26,6 +26,7 @@ externals = [
 ]
 
 const alias = {
+  root: resolve('.'),
   '@': resolve('src'),
   '@packages': resolve('packages'),
   lib: resolve('lib'),
