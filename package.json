@@ -127,9 +127,9 @@
     "webpack-node-externals": "^2.5.2"
   },
   "dependencies": {
+    "@popperjs/core": "^2.4.4",
     "core-js": "^3.6.5",
     "deepmerge": "^3.1.0",
-    "popper.js": "^1.16.0",
     "regenerator-runtime": "^0.13.3"
   },
   "peerDependencies": {

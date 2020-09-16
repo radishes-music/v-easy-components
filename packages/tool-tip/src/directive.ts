@@ -1,6 +1,6 @@
-import { createApp, nextTick, ComponentPublicInstance } from 'vue'
+import { createApp, nextTick, ComponentPublicInstance, reactive } from 'vue'
 import Tip from './main.vue'
-import Popper from 'popper.js'
+import { createPopper } from '@popperjs/core'
 import { addClass, getStyle } from '@/utils/dom'
 import { TipDirectiveType } from '../type'
 
@@ -30,16 +30,22 @@ const insertDom = el => {
     !el.tip.isConnected && document.body.appendChild(el.tip)
     el._is_instance_remove_ = false
 
-    el.tip.popper = new Popper(el, el.tip, {
+    el.tip.popper = createPopper(el, el.tip, {
       placement: el.instance.placement,
-      modifiers: {
-        arrow: {
-          element: el.tip.querySelector('.popper__arrow')
+      modifiers: [
+        {
+          name: 'arrow',
+          options: {
+            element: el.tip.querySelector('.popper__arrow') as HTMLElement
+          }
         },
-        offset: {
-          offset: '0,' + ((el.instance.offset || 0) + 6)
+        {
+          name: 'offset',
+          options: {
+            offset: [0, (el.instance.offset || 0) + 6]
+          }
         }
-      }
+      ]
     })
   }
 }
@@ -77,8 +83,29 @@ const enter = (el, binding, simple, event) => {
     interface TipType extends ComponentPublicInstance {
       _uuid_tip_?: number
     }
-    const tip: TipType = createApp(Tip, {
-      data
+
+    const tip: TipType = createApp({
+      ...Tip,
+      setup() {
+        return reactive(
+          Object.assign(
+            {
+              placement: 'top',
+              Class: [],
+              content: '',
+              domVisible: false,
+              hover: false,
+              hideAfter: 200,
+              transition: 'fade',
+              enterable: true,
+              target: '',
+              html: '',
+              effect: 'dark'
+            },
+            data
+          )
+        )
+      }
     }).mount(document.createElement('div'))
 
     tip._uuid_tip_ = index
@@ -124,7 +151,7 @@ const addEvent = (el, binding, simple) => {
 }
 
 export const tip = {
-  mount: function(el, binding) {
+  mounted: function(el, binding) {
     el._uuid_tip_ = 0
     el._is_instance_remove_ = false
 

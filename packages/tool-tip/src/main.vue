@@ -18,38 +18,24 @@
 </template>
 
 <script>
-import { defineComponent } from 'vue'
+import { defineComponent, h } from 'vue'
 
 export default defineComponent({
   name: 'VTip',
+
   components: {
     renderNode: {
-      render(h) {
-        const parent = this.$parent
+      render() {
+        const tipVNde = this.$root?.VNode
         let VNode = h('span')
-        if (typeof parent.VNode === 'function') {
-          VNode = parent.VNode()
+        if (typeof tipVNde === 'function') {
+          VNode = tipVNde()
         } else {
           // eslint-disable-next-line no-console
           console.warn('VNode is not a function')
         }
         return VNode
       }
-    }
-  },
-  data() {
-    return {
-      placement: 'top',
-      Class: [],
-      content: '',
-      domVisible: false,
-      hover: false,
-      hideAfter: 200,
-      transition: 'fade',
-      enterable: true,
-      target: '',
-      html: '',
-      effect: 'dark'
     }
   },
   mounted() {},
