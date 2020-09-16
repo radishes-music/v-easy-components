@@ -68,14 +68,10 @@ export default {
     },
     renderColor() {
       return h(ColorPicker, {
-        props: {
-          value: this.color,
-          simple: true,
-          'color-format': 'hsl'
-        },
-        on: {
-          input: this.clickHandler
-        }
+        modelValue: this.color,
+        simple: true,
+        'color-format': 'hsl',
+        onInput: this.clickHandler
       })
     }
   },

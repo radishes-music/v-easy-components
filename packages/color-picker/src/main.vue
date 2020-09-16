@@ -51,7 +51,7 @@ export default {
       type: [String, Number],
       default: 150
     },
-    value: {
+    modelValue: {
       type: String,
       required: true
     },
@@ -60,7 +60,7 @@ export default {
       default: 'hex'
     }
   },
-  emits: ['input', 'change', 'update:value'],
+  emits: ['input', 'change', 'confirm', 'update:modelValue'],
   data() {
     const color = new Color({
       format: this.colorFormat
@@ -69,7 +69,7 @@ export default {
     return {
       color,
       display: this.simple,
-      currentColor: this.value
+      currentColor: this.modelValue
     }
   },
   computed: {
@@ -82,7 +82,7 @@ export default {
     }
   },
   watch: {
-    value(val) {
+    modelValue(val) {
       if (val && val !== this.color.value) {
         this.color.fromString(val)
         this.currentColor = this.color.value
@@ -90,9 +90,9 @@ export default {
     }
   },
   beforeMount() {
-    const value = this.value
-    if (value) {
-      this.color.fromString(value)
+    const modelValue = this.modelValue
+    if (modelValue) {
+      this.color.fromString(modelValue)
     }
   },
   mounted() {
@@ -107,7 +107,7 @@ export default {
     handleConfirm() {
       const { value } = this.color
       this.currentColor = value
-      this.$emit('update:value', value)
+      this.$emit('update:modelValue', value)
       this.$emit('input', value)
       this.$emit('change', value)
       if (!this.simple) {

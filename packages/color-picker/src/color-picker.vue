@@ -97,6 +97,7 @@ export default defineComponent({
       }
     }
   },
+  emits: ['confirm'],
   methods: {
     noop() {},
     handleChange() {
