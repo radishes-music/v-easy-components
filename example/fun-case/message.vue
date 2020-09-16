@@ -22,8 +22,7 @@ export default {
       Message({
         type: type || 'warning',
         duration: 1000,
-        html: true,
-        message: '<h1>Hello Word</h1>'
+        message: 'Hello Word'
       })
     }
   }

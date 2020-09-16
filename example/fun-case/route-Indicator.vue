@@ -1,11 +1,11 @@
 <template>
   <ve-route-indicator>
-    <template slot="first-stop">
+    <template v-slot:first-stop>
       <h2>第一站</h2>
     </template>
-    <template slot="middle-stop">
+    <template v-slot:middle-stop>
       <ve-collapse :list="list">
-        <template slot="control">
+        <template v-slot:control>
           <h4>控制器</h4>
         </template>
         <template v-slot:item="{ item }">
@@ -13,10 +13,10 @@
         </template>
       </ve-collapse>
     </template>
-    <template slot="last-stop">
+    <template v-slot:last-stop>
       <h2>最后一站</h2>
     </template>
-    <template slot="tag" />
+    <template v-slot:tag />
   </ve-route-indicator>
 </template>
 

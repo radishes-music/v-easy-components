@@ -33,7 +33,7 @@ yarn add v-easy-components@next -D
 
 ```javascript
 import { createApp } from 'vue'
-import 'v-easy-components/lib/theme-chalk/index.css'
+import 'v-easy-components/dist/theme-chalk/index.css'
 import VEasyComponents from 'v-easy-components'
 
 const app = createApp()

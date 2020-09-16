@@ -15,7 +15,7 @@
       <i
         v-if="showClose"
         class="easy_message_close fa fa-times"
-        @click="close"
+        @click="privateClose"
       />
     </div>
   </transition>
@@ -46,7 +46,7 @@ export default defineComponent({
 
   methods: {
     handleAfterLeave() {
-      document.body.removeChild(this.$el.parentNode)
+      // document.body.removeChild(this.$el.parentNode)
     },
     clearTimer() {
       clearTimeout(this.timer)
@@ -55,12 +55,12 @@ export default defineComponent({
       if (this.duration > 0) {
         this.timer = setTimeout(() => {
           if (this.visible) {
-            this.close()
+            this.privateClose()
           }
         }, this.duration)
       }
     },
-    close() {
+    privateClose() {
       this.visible = false
       if (typeof this.onClose === 'function') {
         this.onClose(this)

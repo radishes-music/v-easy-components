@@ -70,11 +70,8 @@ const MessageFn = function(options) {
   const message = instance.mount(div)
 
   document.body.appendChild(div)
+
   message.id = id
-  if (isVNode(message.message)) {
-    message.$slots.default = [message.message]
-    message.message = null
-  }
 
   let verticalOffset = options.offset || 20
   instances.forEach(item => {
@@ -101,11 +98,12 @@ MessageFn.close = function(id, userOnClose) {
     }
   }
   if (len <= 1 || index === -1 || index > instances.length - 1) return
+
   const removedHeight = instances[index].$el.offsetHeight
   for (let i = index; i < len - 1; i++) {
-    let dom = instances[i].$el
-    dom.style['top'] =
-      parseInt(dom.style['top'], 10) - removedHeight - 16 + 'px'
+    const dom = instances[i].$el
+    const top = parseInt(dom.style['top'], 10) - removedHeight - 16
+    instances[i].verticalOffset = top
   }
 }
 
