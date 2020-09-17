@@ -8,9 +8,9 @@ before_install:
 install:
   - npm install
 script:
-  - npm run test
-  - npm run build
-  - npm run build:docs
+  - yarn test
+  - yarn build
+  - yarn build:docs
 after_success:
   - sh build/docs.sh
 deploy:
