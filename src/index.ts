@@ -32,14 +32,14 @@ const components = [
   ColorPicker,
   ScrollBar,
   RouteIndicator,
-  Collapse
+  Collapse,
 ]
 
-const install = function(App, opts: Opts = {}) {
+const install = function (App, opts: Opts = {}) {
   locale.use(opts.locale)
   locale.i18n(opts.i18n)
 
-  components.forEach(component => {
+  components.forEach((component) => {
     App.component(component.name, component)
   })
 
@@ -49,7 +49,7 @@ const install = function(App, opts: Opts = {}) {
 
   App.config.globalProperties.$message = Message
   App.config.globalProperties.$VEasy = {
-    iconStyle: opts.iconStyle || 'fa'
+    iconStyle: opts.iconStyle || 'fa',
   }
 }
 
@@ -72,7 +72,7 @@ export const main = {
   ColorPicker,
   ScrollBar,
   RouteIndicator,
-  Collapse
+  Collapse,
 }
 
 export default main

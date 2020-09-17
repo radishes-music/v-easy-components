@@ -11,8 +11,8 @@
         'button-is-plain': plain,
         'button-is-circle': circle,
         'button-is-mask': mask,
-        ['button-is-mask-' + maskType]: mask
-      }
+        ['button-is-mask-' + maskType]: mask,
+      },
     ]"
     :type="nativeType"
     @mouseleave="leave"
@@ -26,7 +26,7 @@
         iconClass,
         'fa-' + icon,
         { 'button-icon-normal': $slots.default },
-        { 'fa-spin': rotate }
+        { 'fa-spin': rotate },
       ]"
     />
     <span
@@ -63,7 +63,7 @@ export default defineComponent({
     plain: Boolean,
     rotate: Boolean,
     mask: { type: [Boolean, String], default: false },
-    loading: { type: Boolean, default: false }
+    loading: { type: Boolean, default: false },
   },
 
   emits: ['click'],
@@ -77,8 +77,8 @@ export default defineComponent({
       iconS: {
         brands: 'fab',
         regular: 'far',
-        solid: 'fa'
-      }
+        solid: 'fa',
+      },
     }
   },
 
@@ -88,7 +88,7 @@ export default defineComponent({
     },
     iconClass() {
       return computedIconStyle(this.iconStyle)
-    }
+    },
   },
 
   mounted() {
@@ -106,7 +106,7 @@ export default defineComponent({
 
       this.maskPosition = {
         width: this.rect * 2 + 'px',
-        height: this.rect * 2 + 'px'
+        height: this.rect * 2 + 'px',
       }
     },
     leave(e) {
@@ -116,7 +116,7 @@ export default defineComponent({
       this.style = {
         left: e.offsetX + 'px',
         top: e.offsetY + 'px',
-        transition: 'all .2s linear'
+        transition: 'all .2s linear',
       }
     },
     enter(e) {
@@ -128,7 +128,7 @@ export default defineComponent({
       this.style = {
         left: e.offsetX + 'px',
         top: e.offsetY + 'px',
-        transition: ''
+        transition: '',
       }
 
       // Last position offset problem
@@ -136,14 +136,14 @@ export default defineComponent({
         if (this.isLeave) return
         this.style = {
           ...this.maskPosition,
-          transition: 'all .2s linear'
+          transition: 'all .2s linear',
         }
       }, 0)
     },
     handleClick(evt) {
       if (this.buttonDisabled) return false
       this.$emit('click', evt)
-    }
-  }
+    },
+  },
 })
 </script>

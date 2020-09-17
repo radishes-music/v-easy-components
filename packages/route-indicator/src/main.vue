@@ -22,6 +22,6 @@
 import { defineComponent } from 'vue'
 
 export default defineComponent({
-  name: 'VeRouteIndicator'
+  name: 'VeRouteIndicator',
 })
 </script>

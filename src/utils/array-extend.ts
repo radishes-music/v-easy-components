@@ -6,8 +6,8 @@
  * @returns {boolean}
  */
 export const contain = (arr, ...target) => {
-  const array = target.map(val => arr.includes(val))
-  return array.filter(value => value).length === target.length
+  const array = target.map((val) => arr.includes(val))
+  return array.filter((value) => value).length === target.length
 }
 
 /**

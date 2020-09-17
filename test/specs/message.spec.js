@@ -1,4 +1,4 @@
-import Message from "@packages/message/index"
+import Message from '@packages/message/index'
 import { sleep } from '../utils'
 
 describe('Message', () => {
@@ -31,8 +31,8 @@ describe('Message', () => {
       warning: 'fa-exclamation-circle',
       info: 'fa-info-circle',
       error: 'fa-times-circle'
-    };
-    ['success', 'error', 'info', 'warning'].forEach(item => {
+    }
+    ;['success', 'error', 'info', 'warning'].forEach((item) => {
       const instancc = Message({
         type: item,
         message: 'Link',

@@ -25,19 +25,19 @@ export function isVNode(node) {
 let instances = []
 let seed = 1
 
-const MessageFn = function(options) {
+const MessageFn = function (options) {
   // TODO
   // if (Vue.prototype.$isServer) return
   options = options || {}
   if (typeof options === 'string') {
     options = {
-      message: options
+      message: options,
     }
   }
   let userOnClose = options.onClose
   let id = 'message_' + seed++
 
-  options.onClose = function() {
+  options.onClose = function () {
     MessageFn.close(id, userOnClose)
   }
   const app = {
@@ -55,7 +55,7 @@ const MessageFn = function(options) {
             onClose: null,
             timer: null,
             verticalOffset: 20,
-            id: ''
+            id: '',
           },
           options
         )
@@ -66,7 +66,7 @@ const MessageFn = function(options) {
       })
 
       return data
-    }
+    },
   }
 
   const div = document.createElement('div')
@@ -77,7 +77,7 @@ const MessageFn = function(options) {
   message.id = id
 
   let verticalOffset = options.offset || 20
-  instances.forEach(item => {
+  instances.forEach((item) => {
     verticalOffset += item.$el.offsetHeight + 16
   })
 
@@ -87,7 +87,7 @@ const MessageFn = function(options) {
   return message
 }
 
-MessageFn.close = function(id, userOnClose) {
+MessageFn.close = function (id, userOnClose) {
   let len = instances.length
   let index = -1
   for (let i = 0; i < len; i++) {

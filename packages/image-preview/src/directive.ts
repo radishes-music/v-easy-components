@@ -11,7 +11,7 @@ let handlerIndicator = new WeakMap()
 
 function handlerControl(src, instance, index) {
   if (Array.isArray(src)) {
-    src.forEach(item => {
+    src.forEach((item) => {
       if (!instance.src?.includes(item)) {
         instance.addImage(item)
       }
@@ -21,7 +21,7 @@ function handlerControl(src, instance, index) {
     instance.addImage(src)
     instance.current = instance.src.length - 1
   } else {
-    instance.current = instance.src.findIndex(item => item === src)
+    instance.current = instance.src.findIndex((item) => item === src)
   }
 
   instance.visible = true
@@ -80,25 +80,25 @@ function targetImage(el, binding) {
             current: 0,
             isOut: false,
             fullScreen: false,
-            stop: false
+            stop: false,
           },
           {
             fullScreen: fullScreen,
-            stop: stop
+            stop: stop,
           }
         )
       )
 
       const computedStyle = computed(() => {
         return {
-          transform: `translateX(${data.current * -100}%)`
+          transform: `translateX(${data.current * -100}%)`,
         }
       })
       const isDisabledNext = computed(() => data.current < data.src?.length - 1)
       const isDisabledPrev = computed(() => data.current > 0)
 
       return { ...data, computedStyle, isDisabledNext, isDisabledPrev }
-    }
+    },
   }).mount(document.createElement('div'))
   el.addEventListener('click', handlerControl.bind(null, src, ImageBoxInstance))
 }
@@ -140,9 +140,9 @@ function targetParent(el, binding, _NodeID?: number) {
   })
 }
 
-imageDirective.install = App => {
+imageDirective.install = (App) => {
   App.directive('image', {
-    mounted: function(el, binding) {
+    mounted: function (el, binding) {
       if (el.tagName === 'IMG' || el.dataset?.previewSrc) {
         targetImage(el, binding)
       } else {
@@ -150,13 +150,13 @@ imageDirective.install = App => {
       }
     },
 
-    updated: function(el, binding) {
+    updated: function (el, binding) {
       if (el._NodeID) {
         targetParent(el, binding, el._NodeID)
       }
     },
 
-    unmounted: function(el) {
+    unmounted: function (el) {
       if (el._NodeID) {
         const needRemoveElement = el.$instace
         if (
@@ -166,7 +166,7 @@ imageDirective.install = App => {
           document.body.removeChild(needRemoveElement.$el)
         }
       }
-    }
+    },
   })
 }
 

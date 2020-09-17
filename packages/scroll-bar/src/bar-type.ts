@@ -8,7 +8,7 @@ export const BAR_MAP = {
     key: 'horizontal',
     axis: 'X',
     client: 'clientX',
-    direction: 'left'
+    direction: 'left',
   },
   vertical: {
     offset: 'offsetHeight',
@@ -19,6 +19,6 @@ export const BAR_MAP = {
     key: 'vertical',
     axis: 'Y',
     client: 'clientY',
-    direction: 'top'
-  }
+    direction: 'top',
+  },
 }

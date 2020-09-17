@@ -126,20 +126,14 @@ const map = [
   0,
   2,
   0,
-  4
+  4,
 ]
 
 export default defineComponent({
   name: 'VLoadingPreloadStyle',
   data() {
     return {
-      width: 0,
-      height: 0,
-      nodeNum: 0,
-      type: '',
-      circleStyle: {},
-      domVisible: true,
-      map: map
+      map: map,
     }
   },
   computed: {
@@ -158,7 +152,7 @@ export default defineComponent({
         }
         this.map
           .filter((o, i) => i < this.nodeNum)
-          .forEach(item => {
+          .forEach((item) => {
             if (item) {
               placeholder += _initArray(item, char).join('')
             } else {
@@ -167,12 +161,12 @@ export default defineComponent({
           })
       }
       return placeholder
-    }
+    },
   },
   methods: {
     showHide(visible) {
       this.domVisible = visible
-    }
-  }
+    },
+  },
 })
 </script>

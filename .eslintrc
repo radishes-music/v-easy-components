@@ -5,7 +5,7 @@
     "es6": true,
     "node": true
   },
-  "extends": ["plugin:vue/recommended", "plugin:prettier/recommended"],
+  "extends": ["plugin:vue/recommended", "prettier/@typescript-eslint", "plugin:prettier/recommended"],
   "parserOptions": {
     "parser": "@typescript-eslint/parser",
     "project": "./tsconfig.json",
@@ -23,6 +23,7 @@
     "vue/html-self-closing": "off",
     "vue/require-prop-types": "off",
     "vue/singleline-html-element-content-newline": "off",
-    "vue/no-v-model-argument": "off"
+    "vue/no-v-model-argument": "off",
+    "vue/no-v-html": "off"
   }
 }

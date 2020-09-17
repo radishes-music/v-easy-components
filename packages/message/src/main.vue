@@ -28,7 +28,7 @@ let typeMap = {
   success: 'fa-check-circle',
   warning: 'fa-exclamation-circle',
   info: 'fa-info-circle',
-  error: 'fa-times-circle'
+  error: 'fa-times-circle',
 }
 export default defineComponent({
   name: 'Message',
@@ -39,9 +39,9 @@ export default defineComponent({
     },
     positionStyle() {
       return {
-        top: `${this.verticalOffset}px`
+        top: `${this.verticalOffset}px`,
       }
-    }
+    },
   },
 
   methods: {
@@ -68,11 +68,11 @@ export default defineComponent({
     },
     change() {
       this.visible = !this.visible
-    }
+    },
   },
 
   mounted() {
     this.startTimer()
-  }
+  },
 })
 </script>

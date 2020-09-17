@@ -1,13 +1,13 @@
 <template>
   <div class="v-color-hue">
-    <div class="v-color-hue__bar" @click="handleClick" ref="bar"></div>
+    <div ref="bar" class="v-color-hue__bar" @click="handleClick"></div>
     <div
+      ref="thumb"
       class="v-color-hue__thumb"
       :style="{
         left: thumbLeft + 'px',
-        top: thumbTop + 'px'
+        top: thumbTop + 'px',
       }"
-      ref="thumb"
     ></div>
   </div>
 </template>
@@ -20,30 +20,30 @@ export default defineComponent({
   name: 'ColorHue',
   props: {
     color: {
-      required: true
+      required: true,
     },
     vertical: {
       type: Boolean,
-      default: true
-    }
+      default: true,
+    },
   },
   data() {
     return {
       thumbLeft: 0,
-      thumbTop: 0
+      thumbTop: 0,
     }
   },
   computed: {
     hueValue() {
       const hue = this.color.get('hue')
       return hue
-    }
+    },
   },
 
   watch: {
     hueValue() {
       this.update()
-    }
+    },
   },
 
   methods: {
@@ -107,24 +107,24 @@ export default defineComponent({
     update() {
       this.thumbLeft = this.getThumbLeft()
       this.thumbTop = this.getThumbTop()
-    }
+    },
   },
 
   mounted() {
     const { bar, thumb } = this.$refs
 
     const dragConfig = {
-      drag: event => {
+      drag: (event) => {
         this.handleDrag(event)
       },
-      end: event => {
+      end: (event) => {
         this.handleDrag(event)
-      }
+      },
     }
 
     draggable(bar, dragConfig)
     draggable(thumb, dragConfig)
     this.update()
-  }
+  },
 })
 </script>

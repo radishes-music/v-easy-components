@@ -4,5 +4,5 @@ export default {
   install(Vue) {
     Vue.use(Image)
   },
-  directive
+  directive,
 }

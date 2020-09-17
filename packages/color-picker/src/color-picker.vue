@@ -2,7 +2,7 @@
   <transition name="v-stretch">
     <div v-show="display" class="v-color-main" @click.stop="noop">
       <div class="v-color-top">
-        <div class="v-color-content" ref="content" :style="mergeStyle">
+        <div ref="content" class="v-color-content" :style="mergeStyle">
           <div class="v-color-white"></div>
           <div class="v-color-black"></div>
           <div class="v-color-pointer" :style="pointerStyle"></div>
@@ -39,19 +39,19 @@ export default defineComponent({
   components: {
     VeInput,
     ColorHue,
-    VeButton
+    VeButton,
   },
   props: {
     width: {
-      required: true
+      required: true,
     },
     height: {
-      required: true
+      required: true,
     },
     color: {
-      required: true
+      required: true,
     },
-    display: Boolean
+    display: Boolean,
   },
   computed: {
     mergeStyle() {
@@ -60,7 +60,7 @@ export default defineComponent({
       return {
         width,
         height,
-        backgroundColor: 'hsl(' + this.color.get('hue') + ', 100%, 50%)'
+        backgroundColor: 'hsl(' + this.color.get('hue') + ', 100%, 50%)',
       }
     },
     previewColor() {
@@ -71,9 +71,9 @@ export default defineComponent({
       const top = formatCss(this.cursorTop)
       return {
         left,
-        top
+        top,
       }
-    }
+    },
   },
   data() {
     return {
@@ -81,21 +81,21 @@ export default defineComponent({
       cursorLeft: '',
       cursorTop: '',
       background: '',
-      t: t
+      t: t,
     }
   },
   watch: {
     color: {
       deep: true,
-      handler: function(value) {
+      handler: function (value) {
         this.formatString = value.value
-      }
+      },
     },
     display(v) {
       if (v) {
         this.tickUpdate()
       }
-    }
+    },
   },
   emits: ['confirm'],
   methods: {
@@ -146,21 +146,21 @@ export default defineComponent({
 
       this.color.set({
         saturation: (left / rect.width) * 100,
-        value: value
+        value: value,
       })
 
       this.cursorLeft = left - 4
       this.cursorTop = top - 4
-    }
+    },
   },
   mounted() {
     draggable(this.$refs.content, {
-      drag: event => {
+      drag: (event) => {
         this.handleDrag(event)
       },
-      end: event => {
+      end: (event) => {
         this.handleDrag(event)
-      }
+      },
     })
 
     if (this.$parent.simple) {
@@ -168,6 +168,6 @@ export default defineComponent({
     } else {
       this.update()
     }
-  }
+  },
 })
 </script>

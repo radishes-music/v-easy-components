@@ -25,7 +25,7 @@ export function toObject(arr) {
   return res
 }
 
-export const getValueByPath = function(object, prop) {
+export const getValueByPath = function (object, prop) {
   prop = prop || ''
   const paths = prop.split('.')
   let current = object
@@ -65,11 +65,11 @@ export function getPropByPath(obj, path, strict) {
   return {
     o: tempObj,
     k: keyArr[i],
-    v: tempObj ? tempObj[keyArr[i]] : null
+    v: tempObj ? tempObj[keyArr[i]] : null,
   }
 }
 
-export const generateId = function() {
+export const generateId = function () {
   return Math.floor(Math.random() * 10000)
 }
 
@@ -89,7 +89,7 @@ export const escapeRegexpString = (value = '') =>
   String(value).replace(/[|\\{}()[\]^$+*?.]/g, '\\$&')
 
 // TODO: use native Array.find, Array.findIndex when IE support is dropped
-export const arrayFindIndex = function(arr, pred) {
+export const arrayFindIndex = function (arr, pred) {
   for (let i = 0; i !== arr.length; ++i) {
     if (pred(arr[i])) {
       return i
@@ -98,13 +98,13 @@ export const arrayFindIndex = function(arr, pred) {
   return -1
 }
 
-export const arrayFind = function(arr, pred) {
+export const arrayFind = function (arr, pred) {
   const idx = arrayFindIndex(arr, pred)
   return idx !== -1 ? arr[idx] : undefined
 }
 
 // coerce truthy value to array
-export const coerceTruthyValueToArray = function(val) {
+export const coerceTruthyValueToArray = function (val) {
   if (Array.isArray(val)) {
     return val
   } else if (val) {
@@ -114,10 +114,10 @@ export const coerceTruthyValueToArray = function(val) {
   }
 }
 
-export const isIE = function() {
+export const isIE = function () {
   return !isNaN(Number(dc.documentMode))
 }
 
-export const isEdge = function() {
+export const isEdge = function () {
   return navigator.userAgent.indexOf('Edge') > -1
 }

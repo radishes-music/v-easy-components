@@ -24,13 +24,13 @@ export default defineComponent({
     list: {
       type: Array,
       default: () => [],
-      require: true
-    }
+      require: true,
+    },
   },
   data() {
     return {
-      open: false
+      open: false,
     }
-  }
+  },
 })
 </script>

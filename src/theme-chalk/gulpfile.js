@@ -13,9 +13,7 @@ function compile() {
 }
 
 function copyfont() {
-  return src('./src/fonts/**')
-    .pipe(cssmin())
-    .pipe(dest('./dist/fonts'))
+  return src('./src/fonts/**').pipe(cssmin()).pipe(dest('./dist/fonts'))
 }
 
 exports.build = series(compile, copyfont)

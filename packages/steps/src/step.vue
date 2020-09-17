@@ -14,30 +14,30 @@ export default defineComponent({
   props: {
     title: {
       type: String,
-      required: true
+      required: true,
     },
     icon: {
       type: String,
-      required: false
+      required: false,
     },
     iconStyle: {
       type: String,
-      default: 'solid'
-    }
+      default: 'solid',
+    },
   },
 
   setup(props, context) {
     const isActive = ref(false)
 
     return {
-      isActive
+      isActive,
     }
   },
 
   methods: {
     updateStatus(status) {
       this.isActive = status
-    }
+    },
   },
 
   beforeMount() {
@@ -46,9 +46,9 @@ export default defineComponent({
         title: this.title,
         icon: this.icon,
         iconClass: computedIconStyle(this.iconStyle),
-        self: this
+        self: this,
       })
     }
-  }
+  },
 })
 </script>

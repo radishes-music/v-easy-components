@@ -21,33 +21,33 @@ import { defineComponent } from 'vue'
 export default defineComponent({
   name: 'VeScroll',
   components: {
-    Bar
+    Bar,
   },
   props: {
     size: {
       type: [Number, String],
-      default: 6
+      default: 6,
     },
     always: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   data() {
     const size = this.size + 'px'
     return {
       vertical: {
-        width: size
+        width: size,
       },
       horizontal: {
-        height: size
-      }
+        height: size,
+      },
     }
   },
   computed: {
     wrap() {
       return this.$refs.wrap
-    }
+    },
   },
   watch: {},
   mounted() {
@@ -76,7 +76,7 @@ export default defineComponent({
         this.vertical.transform = `translateY(${moveY}%)`
         this.horizontal.transform = `translateX(${moveX}%)`
       })
-    }
-  }
+    },
+  },
 })
 </script>

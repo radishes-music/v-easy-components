@@ -1,4 +1,4 @@
-import { createApp } from 'vue'
+import { createApp, reactive } from 'vue'
 import Loading from './main.vue'
 import { addClass, removeClass } from '@/utils/dom'
 import { TipDirectiveType } from '../type'
@@ -30,13 +30,30 @@ const insertDom = (el, binding) => {
     domVisible: !binding.value,
     circleStyle: {
       width: d + 'px',
-      height: d + 'px'
-    }
+      height: d + 'px',
+    },
   }
 
-  const loading = createApp(Loading, {
-    el: el,
-    data
+  const loading = createApp({
+    ...Loading,
+    setup() {
+      return reactive(
+        Object.assign(
+          {
+            width: 0,
+            height: 0,
+            nodeNum: 0,
+            type: '',
+            circleStyle: {},
+            domVisible: true,
+          },
+          {
+            el: el,
+            data,
+          }
+        )
+      )
+    },
   }).mount(document.createElement('div'))
 
   el.instance = loading
@@ -58,17 +75,17 @@ const removeLoadingDom = (el, binding) => {
   }
 }
 
-loadingDirective.install = Vue => {
+loadingDirective.install = (Vue) => {
   Vue.directive('loading-preload', {
-    mounted: function(el, binding) {
+    mounted: function (el, binding) {
       addClass(el, 've-loading-parent--relative')
 
       insertDom(el, binding)
     },
 
-    updated: function(el, binding) {
+    updated: function (el, binding) {
       removeLoadingDom(el, binding)
-    }
+    },
   })
 }
 

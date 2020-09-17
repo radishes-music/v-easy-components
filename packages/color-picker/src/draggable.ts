@@ -1,14 +1,14 @@
 let isDragging = false
 
-export default function(element, options) {
+export default function (element, options) {
   // TODO
   // if (Vue.prototype.$isServer) return
-  const moveFn = function(event) {
+  const moveFn = function (event) {
     if (options.drag) {
       options.drag(event)
     }
   }
-  const upFn = function(event) {
+  const upFn = function (event) {
     document.removeEventListener('mousemove', moveFn)
     document.removeEventListener('mouseup', upFn)
     document.onselectstart = null
@@ -20,12 +20,12 @@ export default function(element, options) {
       options.end(event)
     }
   }
-  element.addEventListener('mousedown', function(event) {
+  element.addEventListener('mousedown', function (event) {
     if (isDragging) return
-    document.onselectstart = function() {
+    document.onselectstart = function () {
       return false
     }
-    document.ondragstart = function() {
+    document.ondragstart = function () {
       return false
     }
 

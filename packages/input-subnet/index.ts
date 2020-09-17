@@ -1,6 +1,6 @@
 import VESubnet from './src/main.vue'
 
-VESubnet.install = function(Vue) {
+VESubnet.install = function (Vue) {
   Vue.component(VESubnet.name, VESubnet)
 }
 

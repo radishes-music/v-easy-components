@@ -1,6 +1,6 @@
 const webpackConfig = require('../config/webpack-test')
 
-module.exports = function(config) {
+module.exports = function (config) {
   const configuration = {
     browsers: ['ChromeHeadless'],
     frameworks: ['mocha', 'sinon-chai'],

@@ -2,60 +2,13 @@
   "name": "v-easy-components",
   "description": "Vue.js UI Components",
   "version": "2.0.0-beta.1",
-  "scripts": {
-    "bootstrap": "yarn || npm i",
-    "dev": "webpack-dev-server --config config/webpack-dev-config.js --open",
-    "dev:docs": "vuepress dev docs",
-    "build": "npm run clean && npm run lint && npm run build:main && npm run build:cm && npm run build:common && npm run build:theme && rimraf dist/index.min.js.LICENSE",
-    "build:main": "webpack --config config/webpack-build-config.js",
-    "build:cm": "webpack --config config/webpack-build-components.js",
-    "build:common": "webpack --config config/webpack-build-common.js",
-    "build:theme": "rimraf src/theme-chalk/dist && gulp build --gulpfile src/theme-chalk/gulpfile.js && rimraf src/theme-chalk/dist/_font.css && cp-cli src/theme-chalk/dist dist/theme-chalk && rimraf dist/theme-chalk/dist",
-    "build:docs": "vuepress build docs",
-    "lint": "eslint \"packages/**/*\" \"src/**/*.js\" --quiet",
-    "test": "npm run lint && cross-env CI_ENV=/dev/ BABEL_ENV=test karma start test/karma.conf.js --single-run",
-    "test:watch": "npm run lint && cross-env BABEL_ENV=test karma start test/karma.conf.js",
-    "clean": "rimraf dist",
-    "validate:commit": "validate-commit-msg",
-    "change:log": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
-    "prettier": "prettier --write packages/**/*.vue packages/**/*.js example/**"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run validate:commit && npm run lint"
-    }
-  },
-  "homepage": "https://linkorg.club",
-  "bugs": {
-    "url": "https://github.com/Linkontoask/v-easy-components/issues"
-  },
-  "files": [
-    "dist",
-    "src",
-    "types",
-    "packages"
-  ],
-  "keywords": [
-    "Vue",
-    "UI",
-    "Components"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/Linkontoask/v-easy-components.git"
-  },
-  "style": "dist/theme-chalk/index.css",
-  "main": "index.js",
-  "typings": "types/index.d.ts",
-  "unpkg": "dist/index.min.js",
-  "author": "Link",
-  "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.6.4",
     "@babel/plugin-proposal-nullish-coalescing-operator": "^7.10.4",
     "@babel/plugin-proposal-optional-chaining": "^7.6.0",
     "@babel/plugin-transform-runtime": "^7.6.2",
     "@babel/preset-env": "^7.6.3",
+    "@popperjs/core": "^2.4.4",
     "@typescript-eslint/eslint-plugin": "^4.0.1",
     "@typescript-eslint/parser": "^4.0.1",
     "@vue/compiler-sfc": "^3.0.0-rc.9",
@@ -73,6 +26,7 @@
     "cp-cli": "^2.0.0",
     "cross-env": "^6.0.3",
     "css-loader": "^3.2.0",
+    "deepmerge": "^3.1.0",
     "eslint": "^6.7.2",
     "eslint-config-prettier": "^6.11.0",
     "eslint-loader": "^4.0.2",
@@ -103,7 +57,10 @@
     "postcss": "^5.2.18",
     "postcss-loader": "^3.0.0",
     "postcss-salad": "^2.0.1",
-    "prettier": "^1.19.1",
+    "prettier": "^2.1.2",
+    "prettier-eslint": "^11.0.0",
+    "prettier-eslint-cli": "^5.0.0",
+    "prettier-stylelint": "^0.4.2",
     "progress-bar-webpack-plugin": "^1.12.1",
     "rimraf": "^3.0.0",
     "sass-loader": "^7.2.0",
@@ -127,12 +84,60 @@
     "webpack-node-externals": "^2.5.2"
   },
   "dependencies": {
-    "@popperjs/core": "^2.4.4",
     "core-js": "^3.6.5",
-    "deepmerge": "^3.1.0",
     "regenerator-runtime": "^0.13.3"
   },
   "peerDependencies": {
     "vue": "^3.0.0-rc.10"
-  }
+  },
+  "scripts": {
+    "bootstrap": "yarn || npm i",
+    "dev": "webpack-dev-server --config config/webpack-dev-config.js --open",
+    "dev:docs": "vuepress dev docs",
+    "build": "npm run clean && npm run lint && npm run build:main && npm run build:cm && npm run build:common && npm run build:theme && rimraf dist/index.min.js.LICENSE",
+    "build:main": "webpack --config config/webpack-build-config.js",
+    "build:cm": "webpack --config config/webpack-build-components.js",
+    "build:common": "webpack --config config/webpack-build-common.js",
+    "build:theme": "rimraf src/theme-chalk/dist && gulp build --gulpfile src/theme-chalk/gulpfile.js && rimraf src/theme-chalk/dist/_font.css && cp-cli src/theme-chalk/dist dist/theme-chalk && rimraf dist/theme-chalk/dist",
+    "build:docs": "vuepress build docs",
+    "lint": "eslint packages/**/* src/**/*.js --quiet",
+    "lint:fix": "eslint packages/**/* src/**/*.js --fix",
+    "test": "npm run lint && cross-env CI_ENV=/dev/ BABEL_ENV=test karma start test/karma.conf.js --single-run",
+    "test:watch": "npm run lint && cross-env BABEL_ENV=test karma start test/karma.conf.js",
+    "clean": "rimraf dist",
+    "validate:commit": "validate-commit-msg",
+    "change:log": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
+    "prettier": "prettier-eslint --write %INIT_CWD%/**/*.{js,ts,vue}",
+    "prettier:style": "prettier-stylelint --write %INIT_CWD%/**/*.{less}"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run validate:commit && npm run lint"
+    }
+  },
+  "homepage": "https://linkorg.club",
+  "bugs": {
+    "url": "https://github.com/Linkontoask/v-easy-components/issues"
+  },
+  "files": [
+    "dist",
+    "src",
+    "types",
+    "packages"
+  ],
+  "keywords": [
+    "Vue",
+    "UI",
+    "Components"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Linkontoask/v-easy-components.git"
+  },
+  "style": "dist/theme-chalk/index.css",
+  "main": "index.js",
+  "typings": "types/index.d.ts",
+  "unpkg": "dist/index.min.js",
+  "author": "Link",
+  "license": "MIT"
 }

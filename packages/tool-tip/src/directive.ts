@@ -8,18 +8,18 @@ const tipDirective: TipDirectiveType = {}
 let index = 1
 let tipInstance = []
 
-const toggleTip = el => {
+const toggleTip = (el) => {
   nextTick().then(() => {
     insertDom(el)
   })
 }
 
-const insertDom = el => {
+const insertDom = (el) => {
   if (
     getStyle(el, 'display') !== 'none' &&
     getStyle(el, 'visibility') !== 'hidden'
   ) {
-    Object.keys(el.tipStyle).forEach(property => {
+    Object.keys(el.tipStyle).forEach((property) => {
       el.tip.style[property] = el.tipStyle[property] + 'px'
     })
 
@@ -36,16 +36,16 @@ const insertDom = el => {
         {
           name: 'arrow',
           options: {
-            element: el.tip.querySelector('.popper__arrow') as HTMLElement
-          }
+            element: el.tip.querySelector('.popper__arrow') as HTMLElement,
+          },
         },
         {
           name: 'offset',
           options: {
-            offset: [0, (el.instance.offset || 0) + 6]
-          }
-        }
-      ]
+            offset: [0, (el.instance.offset || 0) + 6],
+          },
+        },
+      ],
     })
   }
 }
@@ -72,12 +72,12 @@ const enter = (el, binding, simple, event) => {
           ...value,
           placement: placement,
           effect: effect,
-          domVisible: true
+          domVisible: true,
         }
       : {
           content: value,
           placement: placement,
-          domVisible: true
+          domVisible: true,
         }
 
     interface TipType extends ComponentPublicInstance {
@@ -100,12 +100,12 @@ const enter = (el, binding, simple, event) => {
               enterable: true,
               target: '',
               html: '',
-              effect: 'dark'
+              effect: 'dark',
             },
             data
           )
         )
-      }
+      },
     }).mount(document.createElement('div'))
 
     tip._uuid_tip_ = index
@@ -117,28 +117,28 @@ const enter = (el, binding, simple, event) => {
 
     // Manage Tip Instances
     tipInstance.push({
-      [index]: tip.$el
+      [index]: tip.$el,
     })
   }
 
   // 隐藏 Tip
   if (target === 'click') {
     document.documentElement.addEventListener('click', el.instance.leave, {
-      once: true
+      once: true,
     })
   }
 
   binding.value && toggleTip(el)
 }
 
-const leave = el => {
+const leave = (el) => {
   el.instance.leave()
 }
 
 const addEvent = (el, binding, simple) => {
   nextTick(() => {
     if (binding.value.target === 'click') {
-      el.addEventListener('click', e => enter(el, binding, simple, e), false)
+      el.addEventListener('click', (e) => enter(el, binding, simple, e), false)
     } else {
       el.addEventListener(
         'mouseenter',
@@ -151,27 +151,27 @@ const addEvent = (el, binding, simple) => {
 }
 
 export const tip = {
-  mounted: function(el, binding) {
+  mounted: function (el, binding) {
     el._uuid_tip_ = 0
     el._is_instance_remove_ = false
 
     addEvent(el, binding, typeof binding.value !== 'string')
   },
 
-  unmounted: function(el) {
+  unmounted: function (el) {
     if (el._autoRemoveTip) {
       const id = el._uuid_tip_
-      const tipIndex = tipInstance.findIndex(o => o[id])
+      const tipIndex = tipInstance.findIndex((o) => o[id])
       if (tipIndex === 0 || tipIndex) {
         const tip = tipInstance.splice(tipIndex, 1)[0][id]
         tip.popper.destroy()
         document.body.removeChild(tip)
       }
     }
-  }
+  },
 }
 
-tipDirective.install = App => {
+tipDirective.install = (App) => {
   App.directive('tip', tip)
 }
 

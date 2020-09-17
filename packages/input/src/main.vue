@@ -58,7 +58,7 @@ export default defineComponent({
     step: { type: [Number, String], default: 1 },
     target: { type: [String, Array], default: 'blur' },
     options: [Object, Array],
-    value: { default: '' }
+    value: { default: '' },
   },
 
   data() {
@@ -68,7 +68,7 @@ export default defineComponent({
       error: false,
       eventContainer: '',
       isOnComposition: false,
-      valueBeforeComposition: null
+      valueBeforeComposition: null,
     }
   },
 
@@ -96,7 +96,7 @@ export default defineComponent({
     },
     isNumberPrefix() {
       return this.typeInput === 'number'
-    }
+    },
   },
 
   watch: {
@@ -110,7 +110,7 @@ export default defineComponent({
     },
     error(val) {
       this.$emit('status', !val)
-    }
+    },
   },
 
   methods: {
@@ -195,7 +195,7 @@ export default defineComponent({
         }
       }
       this.$emit('input', this.currentVal)
-    }
-  }
+    },
+  },
 })
 </script>

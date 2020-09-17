@@ -3,7 +3,7 @@
     class="v-easy-input input input-subnet"
     :style="{
       'max-width': maxWidth + 'px',
-      width: width + 'px'
+      width: width + 'px',
     }"
   >
     <ul ref="box" :class="disabled ? 'disabled' : ''">
@@ -50,13 +50,13 @@ export default defineComponent({
     'blur',
     'keyDown',
     'keyUp',
-    'focus'
+    'focus',
   ],
 
   computed: {
     msg() {
       return this.message
-    }
+    },
   },
 
   watch: {
@@ -67,13 +67,13 @@ export default defineComponent({
           statusSuccess = false
         }
       }
-      if (val.every(item => item === '')) {
+      if (val.every((item) => item === '')) {
         this.conformity = false
         this.errorClass = [] // 如果数据全部为空，那么对错误信息进行影藏
       }
       if (statusSuccess && val.length > 3)
         this.$emit('status', this.checkSub(val.join('.')))
-    }
+    },
   },
 
   methods: {
@@ -83,7 +83,7 @@ export default defineComponent({
       if (this.checkSub(paste)) {
         this.$emit(
           'update:modelValue',
-          paste.split('.').map(n => (n ? Number(n) : n))
+          paste.split('.').map((n) => (n ? Number(n) : n))
         )
       }
     },
@@ -136,12 +136,12 @@ export default defineComponent({
 
     handleBlur(index, $event) {
       let isCheck =
-        this.result.length > 3 && this.result.every(item => item !== '')
+        this.result.length > 3 && this.result.every((item) => item !== '')
       if (isCheck && !this.checkSub(this.result.join('.'))) {
         this.conformity = true
       }
       this.$emit('blur', { $event, index })
-    }
-  }
+    },
+  },
 })
 </script>

@@ -4,7 +4,7 @@
     :class="{
       'v-easy-scroll-bar--thumb': true,
       'v-easy-scroll-bar--thumb__always': always,
-      'v-easy-scroll-bar--thumb__show': cursorDown
+      'v-easy-scroll-bar--thumb__show': cursorDown,
     }"
     @mousedown="handleMouseDown"
   />
@@ -20,12 +20,12 @@ export default defineComponent({
   props: {
     horizontal: Boolean,
     vertical: Boolean,
-    always: Boolean
+    always: Boolean,
   },
   data() {
     return {
       Y: 0,
-      cursorDown: false
+      cursorDown: false,
     }
   },
   computed: {
@@ -34,7 +34,7 @@ export default defineComponent({
     },
     bar() {
       return this.horizontal ? BAR_MAP.horizontal : BAR_MAP.vertical
-    }
+    },
   },
   beforeDestroy() {
     off(document, 'mouseup', this.handleMouseMove)
@@ -66,7 +66,7 @@ export default defineComponent({
       this.cursorDown = false
       off(document, 'mousemove', this.handleMouseMove)
       document.onselectstart = null
-    }
-  }
+    },
+  },
 })
 </script>

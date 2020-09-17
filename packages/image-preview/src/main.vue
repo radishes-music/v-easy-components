@@ -56,7 +56,7 @@ export default defineComponent({
     },
     handlerNext() {
       this.current++
-    }
-  }
+    },
+  },
 })
 </script>

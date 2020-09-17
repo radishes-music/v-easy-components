@@ -35,8 +35,8 @@ export default defineComponent({
           console.warn('VNode is not a function')
         }
         return VNode
-      }
-    }
+      },
+    },
   },
   mounted() {},
   beforeCreate() {},
@@ -63,7 +63,7 @@ export default defineComponent({
       } else {
         this.domVisible = false
       }
-    }
-  }
+    },
+  },
 })
 </script>

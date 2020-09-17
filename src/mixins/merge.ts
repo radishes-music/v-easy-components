@@ -16,13 +16,13 @@ export default {
       errorClass: [],
       currentIndex: 0,
       conformity: false,
-      maxLength: _initArray(4, '3')
+      maxLength: _initArray(4, '3'),
     }
   },
   watch: {
     conformity(val) {
       this.$emit('status', !val)
-    }
+    },
   },
   props: {
     maxWidth: { type: String },
@@ -31,7 +31,7 @@ export default {
     spliceChar: { type: String, default: '.' },
     message: { type: String },
     modelValue: [String, Array],
-    readonly: { type: [Boolean, String], default: false }
+    readonly: { type: [Boolean, String], default: false },
   },
   computed: {
     result() {
@@ -52,7 +52,7 @@ export default {
         }
       }
       return data
-    }
+    },
   },
   methods: {
     handleKeyUp(index, $event) {
@@ -105,7 +105,7 @@ export default {
       let { result } = this
       const _v = value.replace(/\D/g, '')
       result[index] = _v ? Number(_v) : ''
-      result = result.map(n => (n ? Number(n) : n))
+      result = result.map((n) => (n ? Number(n) : n))
       this.$emit('update:modelValue', result)
     },
     getCursorPosition(el) {
@@ -149,6 +149,6 @@ export default {
     checkSub(mask) {
       let regexp = /^(((255\.){3}(255|254|252|248|240|224|192|128|0+))|((255\.){2}(255|254|252|248|240|224|192|128|0+)\.0)|((255\.)(255|254|252|248|240|224|192|128|0+)(\.0+){2})|((255|254|252|248|240|224|192|128|0+)(\.0+){3}))$/
       return regexp.test(mask)
-    }
-  }
+    },
+  },
 }
