@@ -10,7 +10,6 @@ install:
 script:
   - yarn test
   - yarn build
-  - yarn build:docs
 after_success:
   - sh build/docs.sh
 deploy:
