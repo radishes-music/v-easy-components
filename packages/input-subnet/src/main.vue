@@ -83,7 +83,7 @@ export default defineComponent({
       if (this.checkSub(paste)) {
         this.$emit(
           'update:modelValue',
-          paste.split('.').map((n) => (n ? Number(n) : n))
+          paste.split('.').map((n) => (n ? Number(n) : n)),
         )
       }
     },

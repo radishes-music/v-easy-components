@@ -21,6 +21,6 @@ export const createElm = function (component, props = {}, mounted = true) {
   const Ctor = Vue.extend(component)
   const elm = createDiv()
   return new Ctor({
-    propsData: props
+    propsData: props,
   }).$mount(mounted ? elm : null)
 }

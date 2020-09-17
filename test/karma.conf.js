@@ -7,21 +7,21 @@ module.exports = function (config) {
     reporters: ['spec', 'coverage'],
     files: ['./index.js'],
     preprocessors: {
-      './index.js': ['webpack']
+      './index.js': ['webpack'],
     },
     webpack: webpackConfig,
     webpackMiddleware: {
-      noInfo: true
+      noInfo: true,
     },
     coverageReporter: {
       dir: './coverage',
-      reporters: [{ type: 'lcov', subdir: '.' }, { type: 'text-summary' }]
+      reporters: [{ type: 'lcov', subdir: '.' }, { type: 'text-summary' }],
     },
     client: {
       mocha: {
-        timeout: 4000
-      }
-    }
+        timeout: 4000,
+      },
+    },
   }
 
   config.set(configuration)

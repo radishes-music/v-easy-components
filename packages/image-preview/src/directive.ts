@@ -63,7 +63,7 @@ function targetImage(el, binding) {
   } else {
     // eslint-disable-next-line no-console
     console.warn(
-      `v-image command error, binding value ${_type} is not accepted`
+      `v-image command error, binding value ${_type} is not accepted`,
     )
   }
   /* fix isServer */
@@ -85,8 +85,8 @@ function targetImage(el, binding) {
           {
             fullScreen: fullScreen,
             stop: stop,
-          }
-        )
+          },
+        ),
       )
 
       const computedStyle = computed(() => {
@@ -134,7 +134,7 @@ function targetParent(el, binding, _NodeID?: number) {
     handlerIndicator.has(item) && handlerIndicator.delete(item) // Delete the destroyed listener handler
     handlerIndicator.set(
       item,
-      handlerControl.bind(null, src, ImageBoxParent, index)
+      handlerControl.bind(null, src, ImageBoxParent, index),
     )
     item.addEventListener('click', handlerIndicator.get(item))
   })

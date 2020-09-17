@@ -5,7 +5,7 @@ describe('Message', () => {
   it('message basic', async () => {
     Message({
       message: 'Link',
-      duration: 500
+      duration: 500,
     })
     const message = document.querySelector('.message p')
     expect(document.querySelector('.message')).to.exist
@@ -17,7 +17,7 @@ describe('Message', () => {
 
   it('message manually close', async () => {
     Message({
-      message: 'Link'
+      message: 'Link',
     })
     await sleep(500)
     document.querySelector('.easy_message_close').click()
@@ -30,13 +30,13 @@ describe('Message', () => {
       success: 'fa-check-circle',
       warning: 'fa-exclamation-circle',
       info: 'fa-info-circle',
-      error: 'fa-times-circle'
+      error: 'fa-times-circle',
     }
     ;['success', 'error', 'info', 'warning'].forEach((item) => {
       const instancc = Message({
         type: item,
         message: 'Link',
-        duration: 100
+        duration: 100,
       })
       expect(instancc.typeIcon).to.equal(typeMap[item])
     })
@@ -44,7 +44,7 @@ describe('Message', () => {
 
   it('message options showClose', () => {
     const instance = Message({
-      showClose: false
+      showClose: false,
     })
     expect(instance.showClose).to.equal(false)
   })
@@ -52,7 +52,7 @@ describe('Message', () => {
   it('message option html', () => {
     const instance = Message({
       html: true,
-      message: '<h1>Link</h1>'
+      message: '<h1>Link</h1>',
     })
     const el = instance.$el.querySelector('h1')
     expect(el.textContent).to.equal('Link')

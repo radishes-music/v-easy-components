@@ -13,7 +13,7 @@ const insertDom = (el, binding) => {
     if (!/^\d+$/.test('' + nodeNum)) {
       /*eslint no-console:0*/
       console.error(
-        `v-loading-preload only accepts numeric modifiers and only supports one numeric modifier. \n key: ${modifiers[0]}`
+        `v-loading-preload only accepts numeric modifiers and only supports one numeric modifier. \n key: ${modifiers[0]}`,
       )
       nodeNum = 0
     }
@@ -50,8 +50,8 @@ const insertDom = (el, binding) => {
           {
             el: el,
             data,
-          }
-        )
+          },
+        ),
       )
     },
   }).mount(document.createElement('div'))

@@ -57,8 +57,8 @@ const MessageFn = function (options) {
             verticalOffset: 20,
             id: '',
           },
-          options
-        )
+          options,
+        ),
       )
 
       onMounted(() => {

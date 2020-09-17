@@ -283,7 +283,7 @@ export default class Color {
 
       if (hex.length === 8) {
         this._alpha = Math.floor(
-          (parseHexChannel(hex.substring(6)) / 255) * 100
+          (parseHexChannel(hex.substring(6)) / 255) * 100,
         )
       } else if (hex.length === 3 || hex.length === 6) {
         this._alpha = 100
@@ -312,12 +312,12 @@ export default class Color {
           // eslint-disable-next-line no-case-declarations
           const hsl = hsv2hsl(_hue, _saturation / 100, _value / 100)
           this.value = `hsla(${_hue}, ${Math.round(
-            hsl[1] * 100
+            hsl[1] * 100,
           )}%, ${Math.round(hsl[2] * 100)}%, ${_alpha / 100})`
           break
         case 'hsv':
           this.value = `hsva(${_hue}, ${Math.round(_saturation)}%, ${Math.round(
-            _value
+            _value,
           )}%, ${_alpha / 100})`
           break
         default:
@@ -331,12 +331,12 @@ export default class Color {
           // eslint-disable-next-line no-case-declarations
           const hsl = hsv2hsl(_hue, _saturation / 100, _value / 100)
           this.value = `hsl(${_hue}, ${Math.round(hsl[1] * 100)}%, ${Math.round(
-            hsl[2] * 100
+            hsl[2] * 100,
           )}%)`
           break
         case 'hsv':
           this.value = `hsv(${_hue}, ${Math.round(_saturation)}%, ${Math.round(
-            _value
+            _value,
           )}%)`
           break
         case 'rgb':

@@ -24,6 +24,7 @@
     "vue/require-prop-types": "off",
     "vue/singleline-html-element-content-newline": "off",
     "vue/no-v-model-argument": "off",
-    "vue/no-v-html": "off"
+    "vue/no-v-html": "off",
+    "prettier/prettier": "off"
   }
 }

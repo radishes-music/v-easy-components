@@ -1,4 +1,16 @@
 types/*.ts
-*.html
 example/
 config/
+test/
+*.html
+*.sh
+*.md
+*.json
+*.ai
+*.enc
+*.ttf
+*.css
+*.lock
+*.less
+LICENSE
+index.js

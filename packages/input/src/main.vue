@@ -164,7 +164,7 @@ export default defineComponent({
         const text = event.target.value
         const lastCharacter = text[text.length - 1] || ''
         this.isOnComposition = !/([(\uAC00-\uD7AF)|(\u3130-\u318F)])+/gi.test(
-          lastCharacter
+          lastCharacter,
         )
         if (this.isOnComposition && event.type === 'compositionstart') {
           this.valueBeforeComposition = text

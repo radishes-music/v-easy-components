@@ -102,8 +102,8 @@ const enter = (el, binding, simple, event) => {
               html: '',
               effect: 'dark',
             },
-            data
-          )
+            data,
+          ),
         )
       },
     }).mount(document.createElement('div'))
@@ -143,7 +143,7 @@ const addEvent = (el, binding, simple) => {
       el.addEventListener(
         'mouseenter',
         enter.bind(null, el, binding, simple),
-        false
+        false,
       )
       el.addEventListener('mouseleave', leave.bind(null, el), false)
     }

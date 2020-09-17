@@ -66,7 +66,7 @@ export default defineComponent({
         left = Math.max(thumb.offsetWidth / 2, left)
         hue = Math.round(
           ((left - thumb.offsetWidth / 2) / (rect.width - thumb.offsetWidth)) *
-            360
+            360,
         )
       } else {
         let top = event.clientY - rect.top
@@ -76,7 +76,7 @@ export default defineComponent({
         hue = Math.round(
           ((top - thumb.offsetHeight / 2) /
             (rect.height - thumb.offsetHeight)) *
-            360
+            360,
         )
       }
 
@@ -100,7 +100,7 @@ export default defineComponent({
       if (!el) return 0
       const thumb = this.$refs.thumb
       return Math.round(
-        (hue * (el.offsetHeight - thumb.offsetHeight / 2)) / 360
+        (hue * (el.offsetHeight - thumb.offsetHeight / 2)) / 360,
       )
     },
 

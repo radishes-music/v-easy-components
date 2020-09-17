@@ -13,7 +13,7 @@ let i18nHandler = function () {
       merged = true
       this.locale(
         this.config.lang,
-        deepmerge(lang, this.locale(this.config.lang) || {}, { clone: true })
+        deepmerge(lang, this.locale(this.config.lang) || {}, { clone: true }),
       )
     }
     return vuei18n.apply(this, arguments)

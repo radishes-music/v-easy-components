@@ -73,7 +73,9 @@ export default {
         input[index - 1].focus()
         this.setCaretPosition(
           input[index - 1],
-          this.result[index - 1] + '' ? (this.result[index - 1] + '').length : 0
+          this.result[index - 1] + ''
+            ? (this.result[index - 1] + '').length
+            : 0,
         )
       }
       if (
@@ -96,7 +98,9 @@ export default {
         input[index - 1].focus()
         this.setCaretPosition(
           input[index - 1],
-          this.result[index - 1] + '' ? (this.result[index - 1] + '').length : 0
+          this.result[index - 1] + ''
+            ? (this.result[index - 1] + '').length
+            : 0,
         )
       }
       this.$emit('keyDown', { $event, index })
