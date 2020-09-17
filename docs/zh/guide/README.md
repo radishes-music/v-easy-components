@@ -58,9 +58,9 @@ yarn add v-easy-components -D
 ```html
 <script src="//unpkg.com/vue@2.6.10/dist/vue.js"></script>
 <!-- 组件库 -->
-<script src="//unpkg.com/v-easy-components@1.2.3/lib/index.js"></script>
+<script src="//unpkg.com/v-easy-components@1.3.0/lib/index.js"></script>
 <!-- 组件样式 -->
-<link rel="stylesheet" href="//unpkg.com/v-easy-components@1.2.3/lib/theme-chalk/index.css">
+<link rel="stylesheet" href="//unpkg.com/v-easy-components@1.3.0/lib/theme-chalk/index.css">
 ```
 
 ## Hello world

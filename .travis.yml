@@ -15,9 +15,9 @@ after_success:
 deploy:
   provider: npm
   edge: true
-  cleanup: true
-  email: "$NPM_EMAIL"
-  api_token: "$NPM_TOKEN"
+  skip_cleanup: true
+  email: '$NPM_EMAIL'
+  api_token: '$NPM_TOKEN'
   on:
     tags: false
     branch: master

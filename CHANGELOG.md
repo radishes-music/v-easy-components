@@ -3,6 +3,7 @@
 
 ### Bug Fixes
 
+* [#66](https://github.com/Linkontoask/v-easy-components/issues/66) Fix the IP input box cannot enter the same number ([b12fa1f](https://github.com/Linkontoask/v-easy-components/commit/b12fa1f216ebcba956be29db487a55d2692cd203))
 * error-class remove 'none' class name ([810b601](https://github.com/Linkontoask/v-easy-components/commit/810b60150d607946f9189fdc6b46db9ba8e708cd))
 * fix: fix route-indicator transition animation ([fb14834](https://github.com/Linkontoask/v-easy-components/commit/fb14834c69d9af4c448b23d90578bf23864e74b5))
 * ip bind string data ([1d77968](https://github.com/Linkontoask/v-easy-components/commit/1d77968579286c69dcd185c546f476c2ca50db2c))
