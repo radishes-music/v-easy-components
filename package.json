@@ -100,7 +100,7 @@
     "build:common": "webpack --config config/webpack-build-common.js",
     "build:theme": "rimraf src/theme-chalk/dist && gulp build --gulpfile src/theme-chalk/gulpfile.js && rimraf src/theme-chalk/dist/_font.css && cp-cli src/theme-chalk/dist dist/theme-chalk && rimraf dist/theme-chalk/dist",
     "build:docs": "vuepress build docs",
-    "lint": "eslint -c ./.eslintrc --fix --no-error-on-unmatched-pattern --quiet ./",
+    "lint": "eslint -c ./.eslintrc --fix --quiet ./",
     "test": "npm run lint && cross-env CI_ENV=/dev/ BABEL_ENV=test karma start test/karma.conf.js --single-run",
     "test:watch": "npm run lint && cross-env BABEL_ENV=test karma start test/karma.conf.js",
     "clean": "rimraf dist",
