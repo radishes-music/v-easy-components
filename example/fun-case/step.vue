@@ -63,7 +63,7 @@ export default {
   name: 'step',
   data() {
     return {
-      active: 2,
+      active: 0,
       loading: false
     }
   },

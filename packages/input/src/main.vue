@@ -39,9 +39,12 @@
 <script>
 import { t } from '@/locale/index'
 import { contain } from '@/utils/array-extend'
+import { defineComponent } from 'vue'
 
-export default {
+export default defineComponent({
   name: 'VeInput',
+
+  emits: ['status', 'input', 'blur', 'focus', 'change'],
 
   props: {
     maxWidth: { type: String },
@@ -55,7 +58,7 @@ export default {
     step: { type: [Number, String], default: 1 },
     target: { type: [String, Array], default: 'blur' },
     options: [Object, Array],
-    value: { default: '' }
+    value: { default: '' },
   },
 
   data() {
@@ -65,7 +68,7 @@ export default {
       error: false,
       eventContainer: '',
       isOnComposition: false,
-      valueBeforeComposition: null
+      valueBeforeComposition: null,
     }
   },
 
@@ -93,7 +96,7 @@ export default {
     },
     isNumberPrefix() {
       return this.typeInput === 'number'
-    }
+    },
   },
 
   watch: {
@@ -107,7 +110,7 @@ export default {
     },
     error(val) {
       this.$emit('status', !val)
-    }
+    },
   },
 
   methods: {
@@ -161,7 +164,7 @@ export default {
         const text = event.target.value
         const lastCharacter = text[text.length - 1] || ''
         this.isOnComposition = !/([(\uAC00-\uD7AF)|(\u3130-\u318F)])+/gi.test(
-          lastCharacter
+          lastCharacter,
         )
         if (this.isOnComposition && event.type === 'compositionstart') {
           this.valueBeforeComposition = text
@@ -192,7 +195,7 @@ export default {
         }
       }
       this.$emit('input', this.currentVal)
-    }
-  }
-}
+    },
+  },
+})
 </script>

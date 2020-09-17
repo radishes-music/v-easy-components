@@ -16,37 +16,38 @@
 
 <script>
 import Bar from './bar'
+import { defineComponent } from 'vue'
 
-export default {
+export default defineComponent({
   name: 'VeScroll',
   components: {
-    Bar
+    Bar,
   },
   props: {
     size: {
       type: [Number, String],
-      default: 6
+      default: 6,
     },
     always: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   data() {
     const size = this.size + 'px'
     return {
       vertical: {
-        width: size
+        width: size,
       },
       horizontal: {
-        height: size
-      }
+        height: size,
+      },
     }
   },
   computed: {
     wrap() {
       return this.$refs.wrap
-    }
+    },
   },
   watch: {},
   mounted() {
@@ -59,10 +60,10 @@ export default {
         const sizeHeight = (wrap.clientHeight * 100) / wrap.scrollHeight
         const sizeWidth = (wrap.clientWidth * 100) / wrap.scrollWidth
         if (sizeHeight < 100) {
-          this.$set(this.vertical, 'height', sizeHeight + '%')
+          this.vertical.height = sizeHeight + '%'
         }
         if (sizeWidth < 100) {
-          this.$set(this.horizontal, 'width', sizeWidth + '%')
+          this.horizontal.width = sizeWidth + '%'
         }
         wrap.addEventListener('scroll', this.scroll)
       }
@@ -72,10 +73,10 @@ export default {
         const wrap = this.wrap
         const moveY = (wrap.scrollTop * 100) / wrap.clientHeight
         const moveX = (wrap.scrollLeft * 100) / wrap.clientWidth
-        this.$set(this.vertical, 'transform', `translateY(${moveY}%)`)
-        this.$set(this.horizontal, 'transform', `translateX(${moveX}%)`)
+        this.vertical.transform = `translateY(${moveY}%)`
+        this.horizontal.transform = `translateX(${moveX}%)`
       })
-    }
-  }
-}
+    },
+  },
+})
 </script>

@@ -1,6 +1,5 @@
 <template>
-  <div style="height: 100vh;overflow: scroll">
-    <h1 style="width: 2000px;height: 1000px">a</h1>
+  <div>
     <div style="margin-top: 300px;display: flex;justify-content: space-around">
       <ve-button
         v-tip.left="{ VNode: renderColor, effect: 'light', target: 'click' }"
@@ -40,6 +39,7 @@
 </template>
 
 <script>
+import { h } from 'vue'
 import ColorPicker from '@packages/color-picker/src/main'
 export default {
   name: 'tool-tip',
@@ -67,16 +67,11 @@ export default {
       this.color = value
     },
     renderColor() {
-      const h = this.$createElement
       return h(ColorPicker, {
-        props: {
-          value: this.color,
-          simple: true,
-          'color-format': 'hsl'
-        },
-        on: {
-          input: this.clickHandler
-        }
+        modelValue: this.color,
+        simple: true,
+        'color-format': 'hsl',
+        onInput: this.clickHandler
       })
     }
   },

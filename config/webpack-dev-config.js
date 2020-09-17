@@ -1,8 +1,9 @@
 const path = require('path')
+const webpack = require('webpack')
 const configDev = require('./dev-server-config')
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const { VueLoaderPlugin } = require('vue-loader')
+
 const notifier = require('node-notifier')
 const config = require('./config')
 
@@ -18,46 +19,22 @@ module.exports = {
   },
   output: {
     filename: '[name].js',
-    chunkFilename: '[name].chunk.js'
+    chunkFilename: '[name].chunk.js',
+    libraryExport: 'default'
   },
   performance: {
     hints: false
   },
   devtool: 'eval-source-map',
   devServer: {
-    quiet: true,
     host: HOST || configDev.dev.host,
     port: PORT || configDev.dev.port,
-    clientLogLevel: 'none',
     historyApiFallback: true
   },
-  resolve: {
-    extensions: config.extensions,
-    alias: config.alias,
-    modules: config.modules
-  },
+  resolve: config.resolve,
   module: {
     rules: [
-      {
-        test: /\.vue$/,
-        loader: 'vue-loader',
-        options: {
-          preserveWhitespace: false
-        }
-      },
-      {
-        test: /\.otf|ttf|woff2?|eot(\?\S*)?$/,
-        loader: 'url-loader'
-      },
-      {
-        test: /\.(png|jpg|JPG|gif)$/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {}
-          }
-        ]
-      },
+      ...config.rules,
       {
         test: /\.less$/,
         use: [
@@ -70,21 +47,15 @@ module.exports = {
           },
           'less-loader'
         ]
-      },
-      {
-        test: /\.ts$/,
-        exclude: /(node_modules)/,
-        use: 'ts-loader'
-      },
-      {
-        test: /\.js$/,
-        loader: ['babel-loader', 'eslint-loader'],
-        include: [resolve('example'), resolve('src'), resolve('packages')]
       }
     ]
   },
   plugins: [
-    new VueLoaderPlugin(),
+    ...config.plugins,
+    new webpack.DefinePlugin({
+      __VUE_OPTIONS_API__: true,
+      __VUE_PROD_DEVTOOLS__: true
+    }),
     new HtmlWebpackPlugin({
       template: './example/index.html'
     }),

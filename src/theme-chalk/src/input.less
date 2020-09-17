@@ -1,14 +1,15 @@
-@import "./mixins/_color";
-@import "./mixins/_input";
+@import './mixins/_color';
+@import './mixins/_input';
 
 .v-easy-input-plain {
   position: relative;
   min-height: 24px;
   min-width: 114px;
-  input[type=number]::-webkit-inner-spin-button {
+  input[type='number']::-webkit-inner-spin-button {
     -webkit-appearance: none;
   }
-  input, textarea {
+  input,
+  textarea {
     color: @inputColor;
     margin: auto;
     padding: 2px 12px;
@@ -17,14 +18,16 @@
     width: calc(100% - 24px);
     border: 1px solid @border-color-leave1;
     border-radius: 4px;
-    transition: box-shadow .4s;
+    transition: box-shadow 0.4s;
     box-sizing: content-box;
   }
-  textarea:focus, input:focus {
+  textarea:focus,
+  input:focus {
     outline: none;
     box-shadow: 0 0 4px 1px #4190f3;
   }
-  textarea:disabled, input:disabled {
+  textarea:disabled,
+  input:disabled {
     background-color: #f5f7fa;
     border-color: #e4e7ed;
     color: #c0c4cc;
@@ -61,6 +64,7 @@
   }
 }
 
-.v-easy-error-enter, .v-easy-error-leave-to {
-  .-input-error()
+.v-easy-error-enter,
+.v-easy-error-leave-to {
+  .-input-error();
 }

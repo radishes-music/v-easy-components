@@ -6,11 +6,10 @@ before_install:
     -in id_rsa.enc -out ~/.ssh/id_rsa -d
   - chmod 600 ~/.ssh/id_rsa
 install:
-  - npm install
+  - yarn
 script:
-  - npm run test
-  - npm run build
-  - npm run build:docs
+  - yarn test
+  - yarn build
 after_success:
   - sh build/docs.sh
 deploy:

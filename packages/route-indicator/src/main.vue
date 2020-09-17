@@ -19,7 +19,9 @@
 </template>
 
 <script>
-export default {
-  name: 'VeRouteIndicator'
-}
+import { defineComponent } from 'vue'
+
+export default defineComponent({
+  name: 'VeRouteIndicator',
+})
 </script>

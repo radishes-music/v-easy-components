@@ -3,7 +3,7 @@
     :class="['v-easy-input', 'input', 'input-ip']"
     :style="{
       'max-width': maxWidth + 'px',
-      width: width + 'px'
+      width: width + 'px',
     }"
   >
     <div class="v-easy-input--box">
@@ -48,31 +48,40 @@
 </template>
 
 <script>
-import { t } from '@/locale/index'
+// import { t } from '@/locale/index'
 import { _initArray } from '@/utils/array-extend'
 import merge from '@/mixins/merge'
+import { defineComponent } from 'vue'
 
-export default {
+export default defineComponent({
   name: 'VeIp',
   mixins: [merge],
-  model: {
-    event: 'change'
-  },
+
+  emits: [
+    'status',
+    'update:modelValue',
+    'error',
+    'input',
+    'blur',
+    'focus',
+    'keyDown',
+    'keyUp',
+  ],
 
   props: {
     format: { type: String, default: 'ipv4' },
-    port: { type: Boolean, default: false }
+    port: { type: Boolean, default: false },
   },
 
   data() {
     return {
-      portValue: ''
+      portValue: '',
     }
   },
 
   computed: {
     msg() {
-      return this.message || t('ip.err')
+      return this.message
     },
     splitChar() {
       if (this.spliceChar !== '.') {
@@ -89,7 +98,7 @@ export default {
         this.maxLength = _initArray(8, '4')
       }
       return this.maxLength
-    }
+    },
   },
 
   watch: {
@@ -100,7 +109,7 @@ export default {
           statusSuccess = false
         }
       }
-      if (val.every(item => item === '')) {
+      if (val.every((item) => item === '')) {
         this.conformity = false
         this.errorClass = [] // 如果数据全部为空，那么对错误信息进行隐藏
       }
@@ -109,7 +118,7 @@ export default {
         this.conformity = !this.isIpv4Reg(val.join('.'))
         this.$emit('status', this.conformity)
       }
-    }
+    },
   },
 
   created() {
@@ -127,15 +136,15 @@ export default {
       this.portValue = _v
       if (_v > 65536) {
         this.portValue = 65536
-        this.$set(this.result, 4, 65536)
+        this.result[4] = 65536
       }
       if (_v < 0) {
         this.portValue = 0
-        this.$set(this.result, 4, 0)
+        this.result[4] = 0
       }
       result[4] = this.portValue
-      result = result.map(n => (n ? Number(n) : n))
-      this.$emit('change', result)
+      result = result.map((n) => (n ? Number(n) : n))
+      this.$emit('update:modelValue', result)
     },
 
     handlePaste(index, $event) {
@@ -144,12 +153,12 @@ export default {
       let _r = paste.split(':')
       let _v = _r[0]
       if (this.isIpv4Reg(_v)) {
-        _v = _v.split('.').map(n => (n ? Number(n) : n))
+        _v = _v.split('.').map((n) => (n ? Number(n) : n))
         if (_r[1] && this.port) {
           _v.push(+_r[1])
           this.portValue = _r[1]
         }
-        this.$emit('change', _v)
+        this.$emit('update:modelValue', _v)
       }
     },
 
@@ -189,7 +198,7 @@ export default {
       } else {
         this.errorClass[index] = ''
         this.conformity = false
-        this.errorClass.forEach(item => {
+        this.errorClass.forEach((item) => {
           if (item === 'red') {
             this.conformity = true
           }
@@ -211,13 +220,13 @@ export default {
       }
       if (format === 'ipv4' && index === 3) {
         const _r = result.slice(0, 4)
-        let isCheck = _r.length > 3 && _r.every(item => item !== '')
+        let isCheck = _r.length > 3 && _r.every((item) => item !== '')
         if (isCheck && !this.isIpv4Reg(_r.join('.'))) {
           this.conformity = true
         }
       }
       this.$emit('blur', { $event, index })
-    }
-  }
-}
+    },
+  },
+})
 </script>

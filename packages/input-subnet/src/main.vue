@@ -3,7 +3,7 @@
     class="v-easy-input input input-subnet"
     :style="{
       'max-width': maxWidth + 'px',
-      width: width + 'px'
+      width: width + 'px',
     }"
   >
     <ul ref="box" :class="disabled ? 'disabled' : ''">
@@ -35,20 +35,28 @@
 </template>
 
 <script>
-import { t } from '@/locale/index'
+// import { t } from '@/locale/index'
 import merge from '@/mixins/merge'
+import { defineComponent } from 'vue'
 
-export default {
+export default defineComponent({
   name: 'VeSubnet',
   mixins: [merge],
-  model: {
-    event: 'change'
-  },
+
+  emits: [
+    'status',
+    'update:modelValue',
+    'input',
+    'blur',
+    'keyDown',
+    'keyUp',
+    'focus',
+  ],
 
   computed: {
     msg() {
-      return this.message || t('subnet.err')
-    }
+      return this.message
+    },
   },
 
   watch: {
@@ -59,13 +67,13 @@ export default {
           statusSuccess = false
         }
       }
-      if (val.every(item => item === '')) {
+      if (val.every((item) => item === '')) {
         this.conformity = false
         this.errorClass = [] // 如果数据全部为空，那么对错误信息进行影藏
       }
       if (statusSuccess && val.length > 3)
         this.$emit('status', this.checkSub(val.join('.')))
-    }
+    },
   },
 
   methods: {
@@ -74,8 +82,8 @@ export default {
       let paste = ($event.clipboardData || window.clipboardData).getData('text')
       if (this.checkSub(paste)) {
         this.$emit(
-          'change',
-          paste.split('.').map(n => (n ? Number(n) : n))
+          'update:modelValue',
+          paste.split('.').map((n) => (n ? Number(n) : n)),
         )
       }
     },
@@ -128,12 +136,12 @@ export default {
 
     handleBlur(index, $event) {
       let isCheck =
-        this.result.length > 3 && this.result.every(item => item !== '')
+        this.result.length > 3 && this.result.every((item) => item !== '')
       if (isCheck && !this.checkSub(this.result.join('.'))) {
         this.conformity = true
       }
       this.$emit('blur', { $event, index })
-    }
-  }
-}
+    },
+  },
+})
 </script>

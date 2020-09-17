@@ -1,12 +1,12 @@
 // @ts-ignore
-import Vue, {VNode} from 'vue'
+import Vue, { VNode } from 'vue'
 
 export type MessageType = 'success' | 'warning' | 'info' | 'error'
 
 /** Message Component */
-export declare class VeMessageComponent extends Vue {
+export declare class VeMessageComponent {
   /** Close the Loading instance */
-  close (): void
+  close(): void
 }
 
 export interface CloseEventHandler {
@@ -21,7 +21,7 @@ export interface CloseEventHandler {
 /** Options used in Message */
 export interface ElMessageOptions {
   /** Message text */
-  message: string | VNode
+  message?: string | VNode
 
   /** Message type */
   type?: MessageType
@@ -49,6 +49,8 @@ export interface ElMessageOptions {
 
   /** Set the distance to the top of viewport. Default is 20 px. */
   offset?: number
+
+  setup?: () => any
 }
 
 export interface VeMessage {
@@ -59,33 +61,33 @@ export interface VeMessage {
   (options: ElMessageOptions): VeMessageComponent
 
   /** Show a success message */
-  success (text: string): VeMessageComponent
+  success(text: string): VeMessageComponent
 
   /** Show a success message with options */
-  success (options: ElMessageOptions): VeMessageComponent
+  success(options: ElMessageOptions): VeMessageComponent
 
   /** Show a warning message */
-  warning (text: string): VeMessageComponent
+  warning(text: string): VeMessageComponent
 
   /** Show a warning message with options */
-  warning (options: ElMessageOptions): VeMessageComponent
+  warning(options: ElMessageOptions): VeMessageComponent
 
   /** Show an info message */
-  info (text: string): VeMessageComponent
+  info(text: string): VeMessageComponent
 
   /** Show an info message with options */
-  info (options: ElMessageOptions): VeMessageComponent
+  info(options: ElMessageOptions): VeMessageComponent
 
   /** Show an error message */
-  error (text: string): VeMessageComponent
+  error(text: string): VeMessageComponent
 
   /** Show an error message with options */
-  error (options: ElMessageOptions): VeMessageComponent
+  error(options: ElMessageOptions): VeMessageComponent
 }
 
 declare module 'vue/types/vue' {
   interface Vue {
-  /** Used to show feedback after an activity. The difference with Notification is that the latter is often used to show a system level passive notification. */
+    /** Used to show feedback after an activity. The difference with Notification is that the latter is often used to show a system level passive notification. */
     $message: VeMessage
   }
 }

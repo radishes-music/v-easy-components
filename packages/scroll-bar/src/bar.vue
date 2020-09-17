@@ -4,7 +4,7 @@
     :class="{
       'v-easy-scroll-bar--thumb': true,
       'v-easy-scroll-bar--thumb__always': always,
-      'v-easy-scroll-bar--thumb__show': cursorDown
+      'v-easy-scroll-bar--thumb__show': cursorDown,
     }"
     @mousedown="handleMouseDown"
   />
@@ -13,18 +13,19 @@
 <script>
 import { BAR_MAP } from './bar-type'
 import { on, off } from '@/utils/dom'
+import { defineComponent } from 'vue'
 
-export default {
+export default defineComponent({
   name: 'Bar',
   props: {
     horizontal: Boolean,
     vertical: Boolean,
-    always: Boolean
+    always: Boolean,
   },
   data() {
     return {
       Y: 0,
-      cursorDown: false
+      cursorDown: false,
     }
   },
   computed: {
@@ -33,7 +34,7 @@ export default {
     },
     bar() {
       return this.horizontal ? BAR_MAP.horizontal : BAR_MAP.vertical
-    }
+    },
   },
   beforeDestroy() {
     off(document, 'mouseup', this.handleMouseMove)
@@ -65,7 +66,7 @@ export default {
       this.cursorDown = false
       off(document, 'mousemove', this.handleMouseMove)
       document.onselectstart = null
-    }
-  }
-}
+    },
+  },
+})
 </script>

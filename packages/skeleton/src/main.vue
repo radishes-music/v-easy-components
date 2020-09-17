@@ -22,6 +22,7 @@
 
 <script>
 import { _initArray } from '@/utils/array-extend'
+import { defineComponent } from 'vue'
 
 const char = '—'
 const map = [
@@ -125,20 +126,14 @@ const map = [
   0,
   2,
   0,
-  4
+  4,
 ]
 
-export default {
+export default defineComponent({
   name: 'VLoadingPreloadStyle',
   data() {
     return {
-      width: 0,
-      height: 0,
-      nodeNum: 0,
-      type: '',
-      circleStyle: {},
-      domVisible: true,
-      map: map
+      map: map,
     }
   },
   computed: {
@@ -157,7 +152,7 @@ export default {
         }
         this.map
           .filter((o, i) => i < this.nodeNum)
-          .forEach(item => {
+          .forEach((item) => {
             if (item) {
               placeholder += _initArray(item, char).join('')
             } else {
@@ -166,12 +161,12 @@ export default {
           })
       }
       return placeholder
-    }
+    },
   },
   methods: {
     showHide(visible) {
       this.domVisible = visible
-    }
-  }
-}
+    },
+  },
+})
 </script>

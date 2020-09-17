@@ -5,19 +5,15 @@
     "es6": true,
     "node": true
   },
-  "extends": [
-    "plugin:vue/recommended",
-    "plugin:prettier/recommended"
-  ],
-  "parser": "vue-eslint-parser",
+  "extends": ["plugin:vue/recommended", "prettier/@typescript-eslint", "plugin:prettier/recommended"],
   "parserOptions": {
-    "parser": "babel-eslint",
+    "parser": "@typescript-eslint/parser",
+    "project": "./tsconfig.json",
+    "extraFileExtensions": [".vue"],
     "ecmaVersion": 2018,
     "sourceType": "module"
   },
-  "plugins": [
-    "vue"
-  ],
+  "plugins": ["vue", "babel", "@typescript-eslint"],
   "rules": {
     "no-useless-escape": "off",
     "no-prototype-builtins": "off",
@@ -26,6 +22,9 @@
     "vue/require-default-prop": "off",
     "vue/html-self-closing": "off",
     "vue/require-prop-types": "off",
-    "vue/singleline-html-element-content-newline": "off"
+    "vue/singleline-html-element-content-newline": "off",
+    "vue/no-v-model-argument": "off",
+    "vue/no-v-html": "off",
+    "prettier/prettier": "off"
   }
 }

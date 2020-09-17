@@ -1,50 +1,54 @@
 <template>
-  <div class="ve-step" v-bind="$attrs" v-show="isActive">
+  <div v-show="isActive" class="ve-step" v-bind="$attrs">
     <slot />
   </div>
 </template>
 
 <script>
 import { computedIconStyle } from '@/utils/icon-style'
+import { defineComponent, ref, onMounted } from 'vue'
 
-export default {
+export default defineComponent({
   name: 'VeStep',
 
   props: {
     title: {
       type: String,
-      required: true
+      required: true,
     },
     icon: {
       type: String,
-      required: false
+      required: false,
     },
     iconStyle: {
       type: String,
-      default: 'solid'
-    }
+      default: 'solid',
+    },
   },
 
-  data() {
+  setup(props, context) {
+    const isActive = ref(false)
+
     return {
-      isActive: false
+      isActive,
     }
   },
 
   methods: {
     updateStatus(status) {
       this.isActive = status
-    }
+    },
   },
 
-  created() {
-    if (Array.isArray(this.$parent.steps)) {
+  beforeMount() {
+    if (Array.isArray(this.$parent?.steps)) {
       this.$parent.steps.push({
         title: this.title,
         icon: this.icon,
-        iconClass: computedIconStyle(this.iconStyle)
+        iconClass: computedIconStyle(this.iconStyle),
+        self: this,
       })
     }
-  }
-}
+  },
+})
 </script>

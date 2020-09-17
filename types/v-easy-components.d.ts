@@ -21,7 +21,7 @@ export const version: string
  * Please do not invoke this method directly.
  * Call `Vue.use(EasyComponents)` to install.
  */
-export function install (vue: typeof Vue, options: InstallationOptions): void
+export function install(vue: typeof Vue, options: InstallationOptions): void
 
 /** EasyComponents component common definition */
 export type Component = VEasyComponent

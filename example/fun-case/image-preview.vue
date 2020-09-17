@@ -11,12 +11,12 @@
       <img src="../assets/3-min.png" alt="">
       <img src="../assets/2-min.png" alt="" class="image">
     </div>-->
-    <img
+    <!-- <img
       v-image
-      :data-preview-src="require('../assets/CSS.jpg')"
+      v-bind:data-preview-src="require('../assets/CSS.jpg')"
       src="../assets/CSS-min.jpg"
       alt="CSS"
-    />
+    /> -->
     <img
       v-image="require('../assets/CSS.jpg')"
       src="../assets/CSS-min.jpg"
@@ -31,7 +31,7 @@
       src="../assets/CSS-min.jpg"
       alt="CSS"
     />
-    <div v-image>
+    <!-- <div v-image>
       <img
         src="../assets/1-min.png"
         alt="https://linkorg.club"
@@ -50,7 +50,7 @@
         alt="https://linkorg.club"
         :data-preview-src="img[1]"
       />
-    </div>
+    </div> -->
     <h2>1. Make business content beautiful.</h2>
     <div>
       HTML is a well-accepted format for internal publishing at most companies.

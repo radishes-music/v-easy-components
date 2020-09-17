@@ -2,7 +2,13 @@ import { VEasyComponent } from './component'
 import { Size } from './size'
 
 /** Button type */
-export type ButtonType = 'primary' | 'success' | 'warning' | 'error' | 'info' | 'text'
+export type ButtonType =
+  | 'primary'
+  | 'success'
+  | 'warning'
+  | 'error'
+  | 'info'
+  | 'text'
 
 /** Same as native button's type */
 export type ButtonNativeType = 'button' | 'submit' | 'reset' | 'menu'

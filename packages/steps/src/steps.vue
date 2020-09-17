@@ -8,7 +8,7 @@
           :class="{
             've-steps-active': active === index,
             've-steps-success': successStatus.includes(index),
-            've-steps-error': errorStatus.includes(index)
+            've-steps-error': errorStatus.includes(index),
           }"
         >
           <i v-if="item.icon" :class="[item.iconClass, 'fa-' + item.icon]" />{{
@@ -29,58 +29,61 @@
 </template>
 
 <script>
-export default {
+import { defineComponent } from 'vue'
+
+export default defineComponent({
   name: 'VeSteps',
 
   props: {
     active: {
       type: Number,
-      required: true
+      required: true,
     },
     placement: {
       type: String,
-      default: 'left'
+      default: 'left',
     },
     navClassName: {
-      type: String
+      type: String,
     },
     iconStyle: {
       type: String,
-      default: 'solid'
-    }
+      default: 'solid',
+    },
   },
 
   data() {
     return {
       steps: [],
       errorStatus: [],
-      oldActive: 0
+      oldActive: 0,
     }
   },
 
   computed: {
     successStatus() {
       /* Documenting steps completed */
-      return Object.keys(Array.from({ length: this.active })).map(i => +i)
-    }
+      return Object.keys(Array.from({ length: this.active })).map((i) => +i)
+    },
   },
 
   watch: {
     active: {
-      handler: async function(index) {
+      handler: async function (index) {
         await this.$nextTick()
-        const steps = this.$slots.default.filter(o => o.componentInstance)
+        const steps = this.steps.filter((o) => o.self._.isMounted)
+
         if (steps.length) {
-          const oldComponentInstance = steps[this.oldActive].componentInstance
-          const componentInstance = steps[index].componentInstance
+          const oldComponentInstance = steps[this.oldActive].self
+          const componentInstance = steps[index].self
           oldComponentInstance.updateStatus(false)
           componentInstance.updateStatus(true)
 
           this.oldActive = index
         }
       },
-      immediate: true
-    }
-  }
-}
+      immediate: true,
+    },
+  },
+})
 </script>

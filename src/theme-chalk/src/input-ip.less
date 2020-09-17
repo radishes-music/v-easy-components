@@ -1,12 +1,11 @@
-@import "./mixins/_input";
-@import "./mixins/_color";
+@import './mixins/_input';
+@import './mixins/_color';
 
 .input-ip {
-  .-input-children()
+  .-input-children();
 }
 
 .v-easy-input {
-
   &--box {
     display: flex;
     align-content: center;
@@ -24,14 +23,14 @@
         outline: none;
       }
 
-      input[type=number]::-webkit-inner-spin-button {
+      input[type='number']::-webkit-inner-spin-button {
         -webkit-appearance: none;
       }
     }
   }
-
 }
 
-.v-easy-error-enter, .v-easy-error-leave-to {
-  .-input-error()
+.v-easy-error-enter,
+.v-easy-error-leave-to {
+  .-input-error();
 }

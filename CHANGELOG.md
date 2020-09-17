@@ -1,14 +1,16 @@
-## [1.2.5](https://github.com/Linkontoask/v-easy-components/compare/1.1.1...1.2.5) (2020-09-03)
+# [2.0.0-beta.1](https://github.com/Linkontoask/v-easy-components/compare/1.1.1...2.0.0-beta.1) (2020-09-17)
 
 
 ### Bug Fixes
 
 * [#66](https://github.com/Linkontoask/v-easy-components/issues/66) Fix the IP input box cannot enter the same number ([b12fa1f](https://github.com/Linkontoask/v-easy-components/commit/b12fa1f216ebcba956be29db487a55d2692cd203))
 * error-class remove 'none' class name ([810b601](https://github.com/Linkontoask/v-easy-components/commit/810b60150d607946f9189fdc6b46db9ba8e708cd))
+* fix: fix route-indicator transition animation ([fb14834](https://github.com/Linkontoask/v-easy-components/commit/fb14834c69d9af4c448b23d90578bf23864e74b5))
 * ip bind string data ([1d77968](https://github.com/Linkontoask/v-easy-components/commit/1d77968579286c69dcd185c546f476c2ca50db2c))
 * ip port bug ([baecc56](https://github.com/Linkontoask/v-easy-components/commit/baecc563da4b78c915ae94012dc13f43e764f1b2))
 * ip-subnet last input overflow ([cd56824](https://github.com/Linkontoask/v-easy-components/commit/cd568243ba18d530eaf2d7d144196d1c0f7dd5bf))
 * scroll-bar auto warp size in the mounted ([a1b852a](https://github.com/Linkontoask/v-easy-components/commit/a1b852adc4310ed422a80ccc8805115a947018a9))
+* Solve the type inference of Message component ([15d111e](https://github.com/Linkontoask/v-easy-components/commit/15d111e1cea85fb297f2556a8f621d29be6d43f5))
 * subnet '<' and '>' zero bug ([faf335d](https://github.com/Linkontoask/v-easy-components/commit/faf335d5009f1aefd442985cd2bbb92aacdfd3b7))
 * subnet backspace o bug ([54bcb81](https://github.com/Linkontoask/v-easy-components/commit/54bcb81011db32f78cc6dcb0e0ec7f996d8b5b52))
 
@@ -16,9 +18,16 @@
 ### Features
 
 * [#48](https://github.com/Linkontoask/v-easy-components/issues/48) ve-ip support port ([c50861b](https://github.com/Linkontoask/v-easy-components/commit/c50861bb16a09180c58c38d59ebf7ce61b74dc07))
+* IP and Subnet and Input Support vue-next ([53dc458](https://github.com/Linkontoask/v-easy-components/commit/53dc458b323caa70b7d0fcd1b06b06e7fe06a769))
 * ip-input support port, modified binding worth type ([5783209](https://github.com/Linkontoask/v-easy-components/commit/578320918a8da9e0eb87faef679a72bb29bb8feb))
+* Some components support vue-next ([1d3393d](https://github.com/Linkontoask/v-easy-components/commit/1d3393d4b0b52f818c157f907c8797505958e5a7))
+* Step support vue-next ([ca73dbd](https://github.com/Linkontoask/v-easy-components/commit/ca73dbdec8804c1f241da67cbf1e7bf13b7a33be))
+* Support Message ([8f36884](https://github.com/Linkontoask/v-easy-components/commit/8f36884fc7f9632c37799645a1bdec4b8a915dad))
+* Support Tip ([fb1fb3f](https://github.com/Linkontoask/v-easy-components/commit/fb1fb3f9157cd29418d89109810bcc8867e9d5ef))
 * The IP input box and subnet mask input box support paste, and fix the problem of cursor movement and flashing ([67a3040](https://github.com/Linkontoask/v-easy-components/commit/67a3040182a8aaa5c7b967fc699a0a387c3d183e))
+* upgrade popper 1.x to 2.x ([bcdc8d5](https://github.com/Linkontoask/v-easy-components/commit/bcdc8d576a91cef31bd523185a5f33c6806097df))
 * v-image support fullscreen and stop e ([451a8c1](https://github.com/Linkontoask/v-easy-components/commit/451a8c1456a5692a83837ec2f4cf2f37410be6fe))
+* v-image support vue-next ([58a5540](https://github.com/Linkontoask/v-easy-components/commit/58a5540fb3ac19c5af21e9eab9d59955da1882ab))
 
 
 

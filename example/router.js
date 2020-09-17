@@ -1,5 +1,4 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router'
 
 import ImagePreview from './fun-case/image-preview'
 import Button from './fun-case/button'
@@ -13,8 +12,6 @@ import Icon from './fun-case/icon'
 import ColorPicker from './fun-case/color-picker'
 import ScrollBar from './fun-case/scroll-bar'
 import RouteIndicator from './fun-case/route-Indicator'
-
-Vue.use(VueRouter)
 
 const routes = [
   {
@@ -117,8 +114,8 @@ const routes = [
 
 export { routes }
 
-export default new VueRouter({
-  mode: 'history',
+const router = createRouter({
+  history: createWebHistory(),
   routes: [
     {
       path: '/',
@@ -126,3 +123,5 @@ export default new VueRouter({
     }
   ].concat(routes)
 })
+
+export default router

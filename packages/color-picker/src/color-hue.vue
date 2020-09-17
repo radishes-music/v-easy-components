@@ -1,48 +1,49 @@
 <template>
   <div class="v-color-hue">
-    <div class="v-color-hue__bar" @click="handleClick" ref="bar"></div>
+    <div ref="bar" class="v-color-hue__bar" @click="handleClick"></div>
     <div
+      ref="thumb"
       class="v-color-hue__thumb"
       :style="{
         left: thumbLeft + 'px',
-        top: thumbTop + 'px'
+        top: thumbTop + 'px',
       }"
-      ref="thumb"
     ></div>
   </div>
 </template>
 
 <script>
 import draggable from '@packages/color-picker/src/draggable'
+import { defineComponent } from 'vue'
 
-export default {
+export default defineComponent({
   name: 'ColorHue',
   props: {
     color: {
-      required: true
+      required: true,
     },
     vertical: {
       type: Boolean,
-      default: true
-    }
+      default: true,
+    },
   },
   data() {
     return {
       thumbLeft: 0,
-      thumbTop: 0
+      thumbTop: 0,
     }
   },
   computed: {
     hueValue() {
       const hue = this.color.get('hue')
       return hue
-    }
+    },
   },
 
   watch: {
     hueValue() {
       this.update()
-    }
+    },
   },
 
   methods: {
@@ -65,7 +66,7 @@ export default {
         left = Math.max(thumb.offsetWidth / 2, left)
         hue = Math.round(
           ((left - thumb.offsetWidth / 2) / (rect.width - thumb.offsetWidth)) *
-            360
+            360,
         )
       } else {
         let top = event.clientY - rect.top
@@ -75,7 +76,7 @@ export default {
         hue = Math.round(
           ((top - thumb.offsetHeight / 2) /
             (rect.height - thumb.offsetHeight)) *
-            360
+            360,
         )
       }
 
@@ -99,33 +100,31 @@ export default {
       if (!el) return 0
       const thumb = this.$refs.thumb
       return Math.round(
-        (hue * (el.offsetHeight - thumb.offsetHeight / 2)) / 360
+        (hue * (el.offsetHeight - thumb.offsetHeight / 2)) / 360,
       )
     },
 
     update() {
       this.thumbLeft = this.getThumbLeft()
       this.thumbTop = this.getThumbTop()
-    }
+    },
   },
 
   mounted() {
     const { bar, thumb } = this.$refs
 
     const dragConfig = {
-      drag: event => {
+      drag: (event) => {
         this.handleDrag(event)
       },
-      end: event => {
+      end: (event) => {
         this.handleDrag(event)
-      }
+      },
     }
 
     draggable(bar, dragConfig)
     draggable(thumb, dragConfig)
     this.update()
-  }
-}
+  },
+})
 </script>
-
-<style scoped></style>

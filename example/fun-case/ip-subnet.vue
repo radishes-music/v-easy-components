@@ -4,7 +4,7 @@
       ip:{{ ip }}
       <ve-ip port v-model="ip"></ve-ip>
       {{ ip1 }}
-      <ve-ip v-model="ip1"></ve-ip>
+      <ve-ip v-model="ip1" disabled></ve-ip>
     </li>
     <li>
       subnet:{{ subnet }}
@@ -19,7 +19,7 @@ export default {
   name: 'test-ip',
   data() {
     return {
-      ip: '',
+      ip: '172.1',
       ip1: [172, 15, 1],
       subnet: '252.0.0.0',
       subnet1: []
