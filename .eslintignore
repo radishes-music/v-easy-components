@@ -1,7 +1,9 @@
 types/*.ts
 example/
+example/umd/
 config/
 test/
+dist/
 *.html
 *.sh
 *.md
