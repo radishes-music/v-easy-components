@@ -1,4 +1,4 @@
-import Vue from 'vue'
+import { createApp } from 'vue'
 
 let id = 0
 
@@ -18,9 +18,10 @@ export const createDiv = function () {
 }
 
 export const createElm = function (component, props = {}, mounted = true) {
-  const Ctor = Vue.extend(component)
+  const Ctor = createApp({
+    ...component,
+    props
+  })
   const elm = createDiv()
-  return new Ctor({
-    propsData: props,
-  }).$mount(mounted ? elm : null)
+  return Ctor.mount(mounted ? elm : null)
 }

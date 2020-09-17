@@ -46,7 +46,7 @@ export default defineComponent({
 
   methods: {
     handleAfterLeave() {
-      // document.body.removeChild(this.$el.parentNode)
+      document.body.removeChild(this.$el.parentNode)
     },
     clearTimer() {
       clearTimeout(this.timer)

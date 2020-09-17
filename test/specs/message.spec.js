@@ -2,17 +2,17 @@ import Message from '@packages/message/index'
 import { sleep } from '../utils'
 
 describe('Message', () => {
-  it('message basic', async () => {
+  it('message basic duration', async () => {
     Message({
       message: 'Link',
       duration: 500,
     })
     const message = document.querySelector('.message p')
-    expect(document.querySelector('.message')).to.exist
+    expect(document.querySelector('.message')).to.not.be.null
     expect(message.textContent).to.equal('Link')
 
     await sleep(1000)
-    expect(document.querySelector('.message')).to.not.exist
+    expect(document.querySelector('.message')).to.be.null
   })
 
   it('message manually close', async () => {
@@ -22,7 +22,14 @@ describe('Message', () => {
     await sleep(500)
     document.querySelector('.easy_message_close').click()
     await sleep(500)
-    expect(document.querySelector('.message')).to.not.exist
+    expect(document.querySelector('.message')).to.be.null
+
+    const m = Message()
+    await sleep(500)
+    expect(document.querySelector('.message')).to.not.be.null
+    m.close()
+    await sleep(500)
+    expect(document.querySelector('.message')).to.be.null
   })
 
   it('message options type', () => {

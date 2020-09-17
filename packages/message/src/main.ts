@@ -4,6 +4,8 @@ import Message from './main.vue'
 interface ElMessageOptionsInstance extends ComponentPublicInstance {
   id?: string
   verticalOffset?: number
+  close?: () => void
+  visible?: boolean
 }
 
 const hasOwnProperty = Object.prototype.hasOwnProperty
@@ -82,6 +84,10 @@ const MessageFn = function (options) {
   })
 
   message.verticalOffset = verticalOffset
+  message.close = () => {
+    message.visible = false
+    MessageFn.close(id, userOnClose)
+  }
 
   instances.push(message)
   return message

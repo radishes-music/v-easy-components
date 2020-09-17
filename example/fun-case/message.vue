@@ -21,7 +21,7 @@ export default {
       console.log(this)
       Message({
         type: type || 'warning',
-        duration: 1000,
+        duration: 200,
         message: 'Hello Word'
       })
     }
