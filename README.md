@@ -2,15 +2,15 @@
   <img src="https://linkorg.club/logo.png" alt="v-easy-components">
 </p>
 
-# v-easy-components
+# v-easy-components (support Vue3)
 
 [![Build Status](https://travis-ci.com/Linkontoask/v-easy-components.svg?token=DxCbMdsVpziN8id5YUJs&branch=master)](https://travis-ci.com/Linkontoask/v-easy-components)
-<a href="https://github.com/Linkontoask/v-easy-components"><img src="https://img.shields.io/badge/dev-v1.2.4-blue.svg" alt=""></a>
-<a href="https://github.com/Linkontoask/v-easy-components"><img src="https://img.shields.io/badge/size-151kb-green.svg" alt=""></a>
-<a href="https://github.com/Linkontoask/v-easy-components"><img src="https://img.shields.io/badge/vue-2.x-orange.svg" alt=""></a>
+<a href="https://github.com/Linkontoask/v-easy-components"><img src="https://img.shields.io/badge/dev-v2.0.0-blue.svg" alt=""></a>
+<a href="https://github.com/Linkontoask/v-easy-components"><img src="https://img.shields.io/badge/size-158kb-green.svg" alt=""></a>
+<a href="https://github.com/Linkontoask/v-easy-components"><img src="https://img.shields.io/badge/vue-3.x-orange.svg" alt=""></a>
 <a href="https://github.com/Linkontoask/v-easy-components"><img src="https://img.shields.io/badge/license-MIT-red.svg" alt=""></a>
 
-### Document
+### Document (not up-to-date)
 
 - Homepage and documentation
   - [International users](https://linkorg.club)
@@ -49,6 +49,7 @@ app.use(VEasyComponents)
   <head>
     <meta charset="UTF-8" />
     <title>v-easy-components</title>
+    <script src="https://unpkg.com/vue@3.0.0-rc.10/dist/vue.global.js"></script>
     <script src="https://unpkg.com/v-easy-components@next/lib/index.js"></script>
     <link
       rel="stylesheet"
@@ -56,19 +57,22 @@ app.use(VEasyComponents)
     />
   </head>
   <body>
-    <div id="root">
-      <ve-button @click="$msg('Test')">Click</ve-button>
-    </div>
+    <div id="root"></div>
   </body>
-  <script type="module">
-    import { createApp } from 'https://unpkg.com/vue@3.0.0-rc.9/dist/vue.esm-browser.js'
-    const app = createApp()
-    app.use(VEASY)
+  <script>
+    const { createApp } = Vue
+
+    const App = createApp({
+      template: `<ve-button @click="$message('Test')">Click</ve-button>`
+    })
+    App.use(VEASY)
+
+    App.mount('#root')
   </script>
 </html>
 ```
 
-### Browser Support
+### Browser Support (IE is currently not supported)
 
 Modern browsers and Internet Explorer 11+.
 

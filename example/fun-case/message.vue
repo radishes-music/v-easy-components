@@ -9,8 +9,6 @@
 </template>
 
 <script>
-import Message from '@packages/message/index'
-
 export default {
   name: 'message',
   data() {
@@ -19,7 +17,7 @@ export default {
   methods: {
     m(type) {
       console.log(this)
-      Message({
+      this.$message({
         type: type || 'warning',
         duration: 200,
         message: 'Hello Word'
