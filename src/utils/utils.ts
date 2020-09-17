@@ -1,4 +1,4 @@
-function throttle(fn, delay) {
+export function throttle(fn, delay) {
   let prev = Date.now()
   return function () {
     const now = Date.now()
@@ -9,7 +9,7 @@ function throttle(fn, delay) {
   }
 }
 
-function debounce(fn, delay) {
+export function debounce(fn, delay) {
   let timer
   return function () {
     if (timer) clearTimeout(timer)
@@ -17,21 +17,24 @@ function debounce(fn, delay) {
   }
 }
 
-function stopEvent(e) {
+export function stopEvent(e) {
   e.preventDefault()
 }
 
-function type(target) {
+export function type(target) {
   return Object.prototype.toString.call(target)
 }
 
-const utils = {
+export function isString(target) {
+  return type(target) === '[object String]'
+}
+
+export const utils = {
   throttle,
   debounce,
   stopEvent,
   type,
+  isString,
 }
-
-export { throttle, debounce, stopEvent, type }
 
 export default utils

@@ -4,7 +4,7 @@
       ip:{{ ip }}
       <ve-ip port v-model="ip"></ve-ip>
       {{ ip1 }}
-      <ve-ip v-model="ip1"></ve-ip>
+      <ve-ip v-model="ip1" disabled></ve-ip>
     </li>
     <li>
       subnet:{{ subnet }}

@@ -1,14 +1,14 @@
-import { createApp } from 'vue'
+import { createApp, h } from 'vue'
 
 let id = 0
 
-export const sleep = function (ms) {
+export function sleep (ms) {
   return new Promise((reslove) => {
     setTimeout(() => reslove(), ms)
   })
 }
 
-export const createDiv = function () {
+export function createDiv () {
   const dom = document.createElement('div')
 
   dom.id = 'app' + ++id
@@ -17,11 +17,12 @@ export const createDiv = function () {
   return dom
 }
 
-export const createElm = function (component, props = {}, mounted = true) {
-  const Ctor = createApp({
-    ...component,
-    props
-  })
+export function createElm (component, props = {}, mounted = true) {
+  const Ctor = createApp(h(component, props))
   const elm = createDiv()
   return Ctor.mount(mounted ? elm : null)
+}
+
+export function toString(target) {
+  return target.join('')
 }

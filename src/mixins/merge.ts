@@ -1,4 +1,5 @@
 import { _initArray } from '../utils/array-extend'
+import { isString } from '../utils/utils'
 interface Range {
   createRange: () => {
     moveStart: (v: string, l: number) => void
@@ -25,12 +26,15 @@ export default {
     },
   },
   props: {
-    maxWidth: { type: String },
+    maxWidth: { type: [String, Number] },
     width: { type: [String, Number], default: 240 },
     disabled: { type: [Boolean, String], default: false },
     spliceChar: { type: String, default: '.' },
     message: { type: String },
-    modelValue: [String, Array],
+    modelValue: {
+      type: [String, Array],
+      required: true
+    },
     readonly: { type: [Boolean, String], default: false },
   },
   computed: {
@@ -41,7 +45,7 @@ export default {
         modelValue === undefined || modelValue === null || modelValue === ''
           ? []
           : modelValue
-      if (!Array.isArray(modelValue)) {
+      if (!Array.isArray(modelValue) && isString(modelValue)) {
         const port = modelValue.split(':')
         if (port[0]) {
           data = port[0].split('.')
