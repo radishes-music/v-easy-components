@@ -4,6 +4,7 @@ example/umd/
 config/
 test/
 dist/
+docs/
 *.html
 *.sh
 *.md
