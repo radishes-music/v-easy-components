@@ -1,7 +1,7 @@
 import { VEasyComponent } from './component'
 
 /** ScrollBar Component */
-export declare class VeScroll extends VEasyComponent {
+export interface VeScroll extends VEasyComponent {
   /** thumb bar size */
   size: String | Number
 

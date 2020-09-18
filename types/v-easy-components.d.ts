@@ -1,9 +1,7 @@
-// @ts-ignore
-import Vue, { PluginObject } from 'vue'
+import { App } from 'vue'
 import { VEasyComponent } from './component'
 
 import { VeMessage } from './message'
-import { VeSwitch } from './switch'
 import { VeButton } from './button'
 import { VeIp } from './input-ip'
 import { VeInput } from './input-plain'
@@ -11,6 +9,10 @@ import { VeSubnet } from './input-subnet'
 
 export interface InstallationOptions {
   locale: any
+}
+
+export interface IconStyle {
+  iconStyle?: string
 }
 
 /** The version of v-easy-components */
@@ -21,7 +23,7 @@ export const version: string
  * Please do not invoke this method directly.
  * Call `Vue.use(EasyComponents)` to install.
  */
-export function install(vue: typeof Vue, options: InstallationOptions): void
+export function install(vue: App, options: InstallationOptions): void
 
 /** EasyComponents component common definition */
 export type Component = VEasyComponent
@@ -29,23 +31,60 @@ export type Component = VEasyComponent
 /** Used to show feedback after an activity. The difference with Notification is that the latter is often used to show a system level passive notification. */
 export const Message: VeMessage
 
-/** Switch Component */
-export class Switch extends VeSwitch {}
-
 /** Button Component */
-export class Button extends VeButton {}
+export interface Button extends VeButton {}
 
 /** Ip Component */
-export class Ip extends VeIp {}
+export interface InputIp extends VeIp {}
 
 /** Input Component */
-export class Input extends VeInput {}
+export interface InputPlain extends VeInput {}
 
 /** Subnet Component */
-export class Subnet extends VeSubnet {}
+export interface InputSubnet extends VeSubnet {}
 
-/** Vue instruction. Reference https://cn.vuejs.org/v2/guide/custom-directive.html */
+export interface Icon extends IconStyle {
+  name?: string
+  size?: string | number
+}
 
-/** ImagePreview directive */
-/** ToolTip directive */
-/** LoadingDom directive */
+export interface Steps extends IconStyle {
+  active?: number
+  placement?: string
+  navClassName?: string
+}
+
+export interface Step extends IconStyle {
+  title?: string
+  icon?: string
+}
+
+export interface ToolTip {
+  placement?: 'top' | 'right' | 'bottom' | 'left'
+  Class?: string[]
+  content?: string
+  hideAfter?: number
+  transition?: string
+  enterable?: boolean
+  target?: 'hover' | 'click'
+  html?: string
+  effect?: 'dark' | 'light'
+  offset?: number
+}
+
+export interface ColorPicker {
+  simple?: boolean
+  size?: number
+  width?: number
+  height?: number
+  colorFormat?: 'hsl' | 'hsv' | 'hex' | 'rgb'
+}
+
+export interface ScrollBar {
+  size?: number | string
+  always?: boolean
+}
+
+export interface RouteIndicator {}
+
+export interface Collapse {}
