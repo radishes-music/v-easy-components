@@ -116,4 +116,8 @@ MessageFn.close = function (id, userOnClose) {
   }
 }
 
+MessageFn.install = (App) => {
+  App.config.globalProperties.$message = MessageFn
+}
+
 export default MessageFn
