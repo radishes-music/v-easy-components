@@ -26,9 +26,10 @@ externals = [
 ]
 
 const alias = {
-  root: resolve('.'),
   '@': resolve('src'),
   '@packages': resolve('packages'),
+  'v-easy-components': resolve('src'),
+  root: resolve('.'),
   lib: resolve('lib'),
   vue: '@vue/runtime-dom'
 }

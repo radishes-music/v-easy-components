@@ -25,22 +25,16 @@ export const version: string
  */
 export function install(vue: App, options: InstallationOptions): void
 
-/** EasyComponents component common definition */
 export type Component = VEasyComponent
 
-/** Used to show feedback after an activity. The difference with Notification is that the latter is often used to show a system level passive notification. */
 export const Message: VeMessage
 
-/** Button Component */
 export interface Button extends VeButton {}
 
-/** Ip Component */
 export interface InputIp extends VeIp {}
 
-/** Input Component */
 export interface InputPlain extends VeInput {}
 
-/** Subnet Component */
 export interface InputSubnet extends VeSubnet {}
 
 export interface Icon extends IconStyle {
