@@ -22,6 +22,5 @@
     },
     "typeRoots": ["./types"]
   },
-  "include": ["./packages/**/*", "./src/**/*", "./types/*"],
-  "exclude": ["node_modules", "config"]
+  "exclude": ["node_modules"]
 }
