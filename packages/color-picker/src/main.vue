@@ -100,7 +100,7 @@ export default {
       document.documentElement.addEventListener('click', this.handleDocument)
     }
   },
-  beforeDestroy() {
+  beforeUnmount() {
     document.documentElement.removeEventListener('click', this.handleDocument)
   },
   methods: {

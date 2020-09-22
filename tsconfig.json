@@ -18,11 +18,9 @@
     "paths": {
       "root/*": ["/*"],
       "@/*": ["src/*"],
-      "@packages/*": ["packages/*"],
-      "lib/*": ["lib"]
-    }
+      "@packages/*": ["packages/*"]
+    },
+    "typeRoots": ["./types"]
   },
-  "files": ["./types/index.d.ts"],
-  "include": ["./packages/**/*", "./src/**/*", "./types/*"],
-  "exclude": ["node_modules", "config"]
+  "exclude": ["node_modules"]
 }

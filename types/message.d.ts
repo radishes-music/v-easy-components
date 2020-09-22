@@ -4,7 +4,7 @@ import Vue, { VNode } from 'vue'
 export type MessageType = 'success' | 'warning' | 'info' | 'error'
 
 /** Message Component */
-export declare class VeMessageComponent {
+export class VeMessageComponent {
   /** Close the Loading instance */
   close(): void
 }
@@ -83,11 +83,4 @@ export interface VeMessage {
 
   /** Show an error message with options */
   error(options: ElMessageOptions): VeMessageComponent
-}
-
-declare module 'vue/types/vue' {
-  interface Vue {
-    /** Used to show feedback after an activity. The difference with Notification is that the latter is often used to show a system level passive notification. */
-    $message: VeMessage
-  }
 }

@@ -36,7 +36,7 @@ export default defineComponent({
       return this.horizontal ? BAR_MAP.horizontal : BAR_MAP.vertical
     },
   },
-  beforeDestroy() {
+  beforeUnmount() {
     off(document, 'mouseup', this.handleMouseMove)
   },
   methods: {

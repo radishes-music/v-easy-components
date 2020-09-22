@@ -15,7 +15,7 @@ const resolve = src => path.resolve(__dirname, '../', src)
 module.exports = {
   mode: 'development',
   entry: {
-    index: './example/main.js'
+    index: './example/main.ts'
   },
   output: {
     filename: '[name].js',

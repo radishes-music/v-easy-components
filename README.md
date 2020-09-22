@@ -50,10 +50,10 @@ app.use(VEasyComponents)
     <meta charset="UTF-8" />
     <title>v-easy-components</title>
     <script src="https://unpkg.com/vue@3.0.0-rc.10/dist/vue.global.js"></script>
-    <script src="https://unpkg.com/v-easy-components@next/lib/index.js"></script>
+    <script src="https://unpkg.com/v-easy-components/dist/index.js"></script>
     <link
       rel="stylesheet"
-      href="https://unpkg.com/v-easy-components@next/lib/theme-chalk/index.css"
+      href="https://unpkg.com/v-easy-components/dist/theme-chalk/index.css"
     />
   </head>
   <body>
