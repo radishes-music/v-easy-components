@@ -1,6 +1,6 @@
 {
   "name": "v-easy-components",
-  "description": "Vue.js UI Components",
+  "description": "Vue3 UI Components",
   "version": "2.0.0-beta.3",
   "devDependencies": {
     "@babel/core": "^7.6.4",
