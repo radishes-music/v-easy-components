@@ -1491,6 +1491,9 @@ MessageFn.close = function (id, userOnClose) {
         instances[i].verticalOffset = top;
     }
 };
+MessageFn.install = (App) => {
+    App.config.globalProperties.$message = MessageFn;
+};
 /* harmony default export */ __webpack_exports__["default"] = (MessageFn);
 
 
@@ -4857,13 +4860,13 @@ __webpack_require__.r(__webpack_exports__);
       default: 'blur'
     },
     options: [Object, Array],
-    value: {
+    modelValue: {
       default: ''
     }
   },
   data: function data() {
     return {
-      currentVal: this.value === undefined || this.value === null ? '' : this.value,
+      currentVal: this.modelValue === undefined || this.modelValue === null ? '' : this.modelValue,
       error: false,
       eventContainer: '',
       isOnComposition: false,
@@ -4898,7 +4901,7 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   watch: {
-    value: function value(val) {
+    modelValue: function modelValue(val) {
       this.setCurrentValue(val);
       this.mergeTarget('modify');
     },
@@ -8392,7 +8395,7 @@ function render(_ctx, _cache) {
             }, null, 8 /* PROPS */, ["innerHTML"]))
           : (_ctx.content)
             ? (Object(vue__WEBPACK_IMPORTED_MODULE_0__["openBlock"])(), Object(vue__WEBPACK_IMPORTED_MODULE_0__["createBlock"])("p", _hoisted_1, Object(vue__WEBPACK_IMPORTED_MODULE_0__["toDisplayString"])(_ctx.content), 1 /* TEXT */))
-            : Object(vue__WEBPACK_IMPORTED_MODULE_0__["createVNode"])(_component_render_node, { key: 2 }),
+            : (Object(vue__WEBPACK_IMPORTED_MODULE_0__["openBlock"])(), Object(vue__WEBPACK_IMPORTED_MODULE_0__["createBlock"])(_component_render_node, { key: 2 })),
         Object(vue__WEBPACK_IMPORTED_MODULE_0__["createVNode"])("div", {
           class: ['popper__arrow', 'popper__arrow--' + _ctx.effect]
         }, null, 2 /* CLASS */)
@@ -11847,7 +11850,7 @@ __webpack_require__.r(__webpack_exports__);
       document.documentElement.addEventListener('click', this.handleDocument);
     }
   },
-  beforeDestroy: function beforeDestroy() {
+  beforeUnmount: function beforeUnmount() {
     document.documentElement.removeEventListener('click', this.handleDocument);
   },
   methods: {
@@ -12283,7 +12286,7 @@ function render(_ctx, _cache) {
             modelValue: _ctx.formatString,
             "onUpdate:modelValue": _cache[1] || (_cache[1] = $event => (_ctx.formatString = $event)),
             onChange: _ctx.handleChange,
-            onKeyup: Object(vue__WEBPACK_IMPORTED_MODULE_0__["withKeys"])(_ctx.handleChange, ["native","enter"])
+            onKeyup: Object(vue__WEBPACK_IMPORTED_MODULE_0__["withKeys"])(_ctx.handleEnter, ["enter"])
           }, null, 8 /* PROPS */, ["modelValue", "onChange", "onKeyup"]),
           Object(vue__WEBPACK_IMPORTED_MODULE_0__["createVNode"])(_component_ve_button, { onClick: _ctx.handleConfirm }, {
             default: Object(vue__WEBPACK_IMPORTED_MODULE_0__["withCtx"])(() => [
@@ -12412,10 +12415,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   emits: ['confirm'],
   methods: {
     noop: function noop() {},
-    handleChange: function handleChange() {
-      this.color.fromString(this.formatString);
+    handleChange: function handleChange(v) {
+      this.color.fromString(v);
       this.tickUpdate();
       this.handleConfirm();
+    },
+    handleEnter: function handleEnter(e) {
+      this.handleChange(e.target.value);
     },
     handleConfirm: function handleConfirm() {
       this.$emit('confirm');
@@ -13009,7 +13015,7 @@ __webpack_require__.r(__webpack_exports__);
       return this.horizontal ? _bar_type__WEBPACK_IMPORTED_MODULE_0__["BAR_MAP"].horizontal : _bar_type__WEBPACK_IMPORTED_MODULE_0__["BAR_MAP"].vertical;
     }
   },
-  beforeDestroy: function beforeDestroy() {
+  beforeUnmount: function beforeUnmount() {
     Object(_utils_dom__WEBPACK_IMPORTED_MODULE_1__["off"])(document, 'mouseup', this.handleMouseMove);
   },
   methods: {
@@ -13328,7 +13334,7 @@ __webpack_require__.r(__webpack_exports__);
 /* 310 */
 /***/ (function(module) {
 
-module.exports = JSON.parse("{\"name\":\"v-easy-components\",\"description\":\"Vue.js UI Components\",\"version\":\"2.0.0-beta.1\",\"devDependencies\":{\"@babel/core\":\"^7.6.4\",\"@babel/plugin-proposal-nullish-coalescing-operator\":\"^7.10.4\",\"@babel/plugin-proposal-optional-chaining\":\"^7.6.0\",\"@babel/plugin-transform-runtime\":\"^7.6.2\",\"@babel/preset-env\":\"^7.6.3\",\"@popperjs/core\":\"^2.4.4\",\"@typescript-eslint/eslint-plugin\":\"^4.0.1\",\"@typescript-eslint/parser\":\"^4.0.1\",\"@vue/compiler-sfc\":\"3.0.0-rc.10\",\"@vuepress/plugin-back-to-top\":\"^1.2.0\",\"@vuepress/plugin-google-analytics\":\"^1.2.0\",\"@vuepress/plugin-pwa\":\"^1.2.0\",\"acorn\":\"^6.3.0\",\"autoprefixer\":\"^9.6.1\",\"babel-eslint\":\"^10.0.3\",\"babel-loader\":\"^8.1.0\",\"babel-plugin-istanbul\":\"^5.2.0\",\"babel-regenerator-runtime\":\"^6.5.0\",\"chai\":\"^4.2.0\",\"conventional-changelog-cli\":\"^2.0.25\",\"cp-cli\":\"^2.0.0\",\"cross-env\":\"^6.0.3\",\"css-loader\":\"^3.2.0\",\"deepmerge\":\"^3.1.0\",\"eslint\":\"^6.7.2\",\"eslint-config-prettier\":\"^6.11.0\",\"eslint-loader\":\"^4.0.2\",\"eslint-plugin-babel\":\"^5.3.1\",\"eslint-plugin-prettier\":\"^3.1.4\",\"eslint-plugin-vue\":\"^6.0.1\",\"friendly-errors-webpack-plugin\":\"^1.7.0\",\"gulp\":\"^4.0.2\",\"gulp-cssmin\":\"^0.2.0\",\"gulp-less\":\"^4.0.1\",\"gulp-postcss\":\"^8.0.0\",\"html-webpack-plugin\":\"^4.4.1\",\"husky\":\"^3.0.9\",\"jest\":\"^24.9.0\",\"karma\":\"^5.2.1\",\"karma-chrome-launcher\":\"^3.1.0\",\"karma-coverage\":\"^2.0.1\",\"karma-mocha\":\"^1.3.0\",\"karma-sinon-chai\":\"^2.0.2\",\"karma-spec-reporter\":\"^0.0.32\",\"karma-webpack\":\"^4.0.2\",\"less\":\"^3.8.1\",\"less-loader\":\"^4.1.0\",\"mocha\":\"^6.2.2\",\"node-notifier\":\"^7.0.2\",\"node-sass\":\"^4.12.0\",\"path\":\"^0.12.7\",\"postcss\":\"^5.2.18\",\"postcss-loader\":\"^3.0.0\",\"postcss-salad\":\"^2.0.1\",\"prettier\":\"^2.1.2\",\"prettier-eslint\":\"^11.0.0\",\"prettier-eslint-cli\":\"^5.0.0\",\"prettier-stylelint\":\"^0.4.2\",\"progress-bar-webpack-plugin\":\"^1.12.1\",\"rimraf\":\"^3.0.0\",\"sass-loader\":\"^7.2.0\",\"sinon\":\"^7.5.0\",\"sinon-chai\":\"^3.3.0\",\"style-loader\":\"^0.23.1\",\"terser-webpack-plugin\":\"2.2.2\",\"ts-loader\":\"^8.0.3\",\"typescript\":\"^4.0.2\",\"url-loader\":\"^4.1.0\",\"validate-commit-msg\":\"^2.14.0\",\"vue\":\"^3.0.0-rc.10\",\"vue-i18n\":\"^9.0.0-alpha.16\",\"vue-loader\":\"^16.0.0-beta.4\",\"vue-router\":\"^4.0.0-beta.4\",\"vuepress\":\"1.2.0\",\"webpack\":\"^4.44.1\",\"webpack-cli\":\"^3.3.12\",\"webpack-dev-server\":\"^3.11.0\",\"webpack-merge\":\"^4.1.0\",\"webpack-node-externals\":\"^2.5.2\"},\"dependencies\":{\"core-js\":\"^3.6.5\",\"regenerator-runtime\":\"^0.13.3\"},\"peerDependencies\":{\"vue\":\"^3.0.0-rc.10\"},\"scripts\":{\"bootstrap\":\"yarn || npm i\",\"dev\":\"webpack-dev-server --config config/webpack-dev-config.js --open\",\"dev:docs\":\"vuepress dev docs\",\"build\":\"npm run clean && npm run lint && npm run build:main && npm run build:cm && npm run build:common && npm run build:theme && rimraf dist/index.min.js.LICENSE\",\"build:main\":\"webpack --config config/webpack-build-config.js\",\"build:cm\":\"webpack --config config/webpack-build-components.js\",\"build:common\":\"webpack --config config/webpack-build-common.js\",\"build:theme\":\"rimraf src/theme-chalk/dist && gulp build --gulpfile src/theme-chalk/gulpfile.js && rimraf src/theme-chalk/dist/_font.css && cp-cli src/theme-chalk/dist dist/theme-chalk && rimraf dist/theme-chalk/dist\",\"build:docs\":\"vuepress build docs\",\"lint\":\"eslint **/* --quiet\",\"lint:fix\":\"eslint **/* --fix\",\"test\":\"npm run lint && cross-env CI_ENV=/dev/ BABEL_ENV=test karma start test/karma.conf.js --single-run\",\"test:watch\":\"npm run lint && cross-env BABEL_ENV=test karma start test/karma.conf.js\",\"clean\":\"rimraf dist\",\"validate:commit\":\"validate-commit-msg\",\"change:log\":\"conventional-changelog -p angular -i CHANGELOG.md -s -r 0\",\"prettier\":\"prettier-eslint --write %INIT_CWD%/**/*.{js,ts,vue}\",\"prettier:style\":\"prettier-stylelint --write %INIT_CWD%/**/*.{less}\"},\"husky\":{\"hooks\":{\"pre-commit\":\"npm run validate:commit && npm run lint\"}},\"homepage\":\"https://linkorg.club\",\"bugs\":{\"url\":\"https://github.com/Linkontoask/v-easy-components/issues\"},\"files\":[\"dist\",\"src\",\"types\",\"packages\"],\"keywords\":[\"Vue\",\"UI\",\"Components\"],\"repository\":{\"type\":\"git\",\"url\":\"https://github.com/Linkontoask/v-easy-components.git\"},\"style\":\"dist/theme-chalk/index.css\",\"main\":\"index.js\",\"typings\":\"types/index.d.ts\",\"unpkg\":\"dist/index.min.js\",\"author\":\"Link\",\"license\":\"MIT\"}");
+module.exports = JSON.parse("{\"name\":\"v-easy-components\",\"description\":\"Vue3 UI Components\",\"version\":\"2.0.0-beta.3\",\"devDependencies\":{\"@babel/core\":\"^7.6.4\",\"@babel/plugin-proposal-nullish-coalescing-operator\":\"^7.10.4\",\"@babel/plugin-proposal-optional-chaining\":\"^7.6.0\",\"@babel/plugin-transform-runtime\":\"^7.6.2\",\"@babel/preset-env\":\"^7.6.3\",\"@typescript-eslint/eslint-plugin\":\"^4.0.1\",\"@typescript-eslint/parser\":\"^4.0.1\",\"@vue/compiler-sfc\":\"3.0.0\",\"@vuepress/plugin-back-to-top\":\"^1.2.0\",\"@vuepress/plugin-google-analytics\":\"^1.2.0\",\"@vuepress/plugin-pwa\":\"^1.2.0\",\"acorn\":\"^6.3.0\",\"autoprefixer\":\"^9.6.1\",\"babel-eslint\":\"^10.0.3\",\"babel-loader\":\"^8.1.0\",\"babel-plugin-istanbul\":\"^5.2.0\",\"babel-regenerator-runtime\":\"^6.5.0\",\"chai\":\"^4.2.0\",\"conventional-changelog-cli\":\"^2.0.25\",\"cp-cli\":\"^2.0.0\",\"cross-env\":\"^6.0.3\",\"css-loader\":\"^3.2.0\",\"eslint\":\"^7.9.0\",\"eslint-config-prettier\":\"^6.11.0\",\"eslint-loader\":\"^4.0.2\",\"eslint-plugin-babel\":\"^5.3.1\",\"eslint-plugin-prettier\":\"^3.1.4\",\"eslint-plugin-vue\":\"^6.0.1\",\"friendly-errors-webpack-plugin\":\"^1.7.0\",\"gulp\":\"^4.0.2\",\"gulp-cssmin\":\"^0.2.0\",\"gulp-less\":\"^4.0.1\",\"gulp-postcss\":\"^8.0.0\",\"html-webpack-plugin\":\"^4.4.1\",\"husky\":\"^3.0.9\",\"jest\":\"^24.9.0\",\"karma\":\"^5.2.1\",\"karma-chrome-launcher\":\"^3.1.0\",\"karma-coverage\":\"^2.0.1\",\"karma-mocha\":\"^1.3.0\",\"karma-sinon-chai\":\"^2.0.2\",\"karma-spec-reporter\":\"^0.0.32\",\"karma-webpack\":\"^4.0.2\",\"less\":\"^3.8.1\",\"less-loader\":\"^4.1.0\",\"mocha\":\"^6.2.2\",\"node-notifier\":\"^7.0.2\",\"node-sass\":\"^4.12.0\",\"path\":\"^0.12.7\",\"postcss\":\"^5.2.18\",\"postcss-loader\":\"^3.0.0\",\"postcss-salad\":\"^2.0.1\",\"prettier\":\"^2.1.2\",\"prettier-eslint\":\"^11.0.0\",\"prettier-eslint-cli\":\"^5.0.0\",\"prettier-stylelint\":\"^0.4.2\",\"progress-bar-webpack-plugin\":\"^1.12.1\",\"rimraf\":\"^3.0.0\",\"sass-loader\":\"^7.2.0\",\"sinon\":\"^7.5.0\",\"sinon-chai\":\"^3.3.0\",\"style-loader\":\"^0.23.1\",\"terser-webpack-plugin\":\"2.2.2\",\"ts-loader\":\"^8.0.3\",\"typescript\":\"^4.0.2\",\"url-loader\":\"^4.1.0\",\"validate-commit-msg\":\"^2.14.0\",\"vue\":\"3.0.0\",\"vue-i18n\":\"^9.0.0-alpha.16\",\"vue-loader\":\"^16.0.0-beta.4\",\"vue-router\":\"^4.0.0-beta.4\",\"vuepress\":\"1.2.0\",\"webpack\":\"^4.44.1\",\"webpack-cli\":\"^3.3.12\",\"webpack-dev-server\":\"^3.11.0\",\"webpack-merge\":\"^4.1.0\",\"webpack-node-externals\":\"^2.5.2\"},\"dependencies\":{\"@popperjs/core\":\"^2.4.4\",\"core-js\":\"^3.6.5\",\"deepmerge\":\"^3.1.0\",\"regenerator-runtime\":\"^0.13.3\"},\"peerDependencies\":{\"vue\":\"^3.0.0-rc.10\"},\"scripts\":{\"bootstrap\":\"yarn || npm i\",\"dev\":\"webpack-dev-server --config config/webpack-dev-config.js --open\",\"dev:docs\":\"vuepress dev docs\",\"build\":\"npm run clean && npm run lint && npm run build:main && npm run build:cm && npm run build:common && npm run build:theme && rimraf dist/index.min.js.LICENSE\",\"build:main\":\"webpack --config config/webpack-build-config.js\",\"build:cm\":\"webpack --config config/webpack-build-components.js\",\"build:common\":\"webpack --config config/webpack-build-common.js\",\"build:theme\":\"rimraf src/theme-chalk/dist && gulp build --gulpfile src/theme-chalk/gulpfile.js && rimraf src/theme-chalk/dist/_font.css && cp-cli src/theme-chalk/dist dist/theme-chalk && rimraf dist/theme-chalk/dist\",\"build:docs\":\"vuepress build docs\",\"lint\":\"eslint -c ./.eslintrc --fix --quiet ./\",\"test\":\"npm run lint && cross-env CI_ENV=/dev/ BABEL_ENV=test karma start test/karma.conf.js --single-run\",\"test:watch\":\"npm run lint && cross-env BABEL_ENV=test karma start test/karma.conf.js\",\"clean\":\"rimraf dist\",\"validate:commit\":\"validate-commit-msg\",\"change:log\":\"conventional-changelog -p angular -i CHANGELOG.md -s -r 0\",\"prettier\":\"prettier-eslint --write %INIT_CWD%/**/*.{js,ts,vue}\",\"prettier:style\":\"prettier-stylelint --write %INIT_CWD%/**/*.{less}\"},\"husky\":{\"hooks\":{\"pre-commit\":\"npm run validate:commit && npm run lint\"}},\"homepage\":\"https://linkorg.club\",\"bugs\":{\"url\":\"https://github.com/Linkontoask/v-easy-components/issues\"},\"files\":[\"dist\",\"src\",\"types\",\"packages\"],\"keywords\":[\"Vue\",\"UI\",\"Components\"],\"repository\":{\"type\":\"git\",\"url\":\"https://github.com/Linkontoask/v-easy-components.git\"},\"style\":\"dist/theme-chalk/index.css\",\"main\":\"index.js\",\"typings\":\"types/index.d.ts\",\"unpkg\":\"dist/index.min.js\",\"author\":\"Link\",\"license\":\"MIT\"}");
 
 /***/ })
 /******/ ])["default"];

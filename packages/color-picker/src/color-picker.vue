@@ -17,7 +17,7 @@
         <ve-input
           v-model="formatString"
           @change="handleChange"
-          @keyup.native.enter="handleChange"
+          @enter="handleEnter"
         />
         <ve-button @click="handleConfirm">{{ t('button.confirm') }}</ve-button>
       </div>
@@ -100,10 +100,13 @@ export default defineComponent({
   emits: ['confirm'],
   methods: {
     noop() {},
-    handleChange() {
-      this.color.fromString(this.formatString)
+    handleChange(v) {
+      this.color.fromString(v)
       this.tickUpdate()
       this.handleConfirm()
+    },
+    handleEnter(e) {
+      this.handleChange(e)
     },
     handleConfirm() {
       this.$emit('confirm')
