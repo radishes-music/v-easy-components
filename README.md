@@ -5,10 +5,11 @@
 # v-easy-components (support Vue3)
 
 [![Build Status](https://travis-ci.com/Linkontoask/v-easy-components.svg?token=DxCbMdsVpziN8id5YUJs&branch=master)](https://travis-ci.com/Linkontoask/v-easy-components)
-<a href="https://github.com/Linkontoask/v-easy-components"><img src="https://img.shields.io/badge/dev-v2.0.0-blue.svg" alt=""></a>
-<a href="https://github.com/Linkontoask/v-easy-components"><img src="https://img.shields.io/badge/size-158kb-green.svg" alt=""></a>
-<a href="https://github.com/Linkontoask/v-easy-components"><img src="https://img.shields.io/badge/vue-3.x-orange.svg" alt=""></a>
-<a href="https://github.com/Linkontoask/v-easy-components"><img src="https://img.shields.io/badge/license-MIT-red.svg" alt=""></a>
+<a href="https://www.npmjs.com/package/v-easy-components"><img src="https://img.shields.io/badge/2.0.0-npm-brightgreen" alt=""></a>
+<a href="https://github.com/Linkontoask/v-easy-components"><img src="https://img.shields.io/badge/dev-v2.0.0-blue" alt=""></a>
+<a href="https://www.npmjs.com/package/v-easy-components"><img src="https://img.shields.io/badge/size-158kb-green" alt=""></a>
+<a href="https://github.com/Linkontoask/v-easy-components"><img src="https://img.shields.io/badge/vue-3.x-orange" alt=""></a>
+<a href="https://github.com/Linkontoask/v-easy-components/blob/dev-vue-next/LICENSE"><img src="https://img.shields.io/badge/license-MIT-red" alt=""></a>
 
 ### Document (not up-to-date)
 
@@ -49,7 +50,7 @@ app.use(VEasyComponents)
   <head>
     <meta charset="UTF-8" />
     <title>v-easy-components</title>
-    <script src="https://unpkg.com/vue@3.0.0-rc.10/dist/vue.global.js"></script>
+    <script src="https://unpkg.com/vue@3.0.0/dist/vue.global.js"></script>
     <script src="https://unpkg.com/v-easy-components/dist/index.js"></script>
     <link
       rel="stylesheet"

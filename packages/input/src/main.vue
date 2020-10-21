@@ -22,6 +22,7 @@
         @blur="handleBlur"
         @focus="handleFocus"
         @change="handleChange"
+        @keyup.enter="handleEnter"
       />
       <div v-if="isNumberPrefix" class="input-inner-spin">
         <i class="fa fa-chevron-up" @click="handleIncrease" />
@@ -44,7 +45,7 @@ import { defineComponent } from 'vue'
 export default defineComponent({
   name: 'VeInput',
 
-  emits: ['status', 'input', 'blur', 'focus', 'change'],
+  emits: ['status', 'input', 'blur', 'focus', 'change', 'enter'],
 
   props: {
     maxWidth: { type: String },
@@ -58,13 +59,13 @@ export default defineComponent({
     step: { type: [Number, String], default: 1 },
     target: { type: [String, Array], default: 'blur' },
     options: [Object, Array],
-    value: { default: '' },
+    modelValue: { default: '' },
   },
 
   data() {
     return {
       currentVal:
-        this.value === undefined || this.value === null ? '' : this.value,
+        this.modelValue === undefined || this.modelValue === null ? '' : this.modelValue,
       error: false,
       eventContainer: '',
       isOnComposition: false,
@@ -100,7 +101,7 @@ export default defineComponent({
   },
 
   watch: {
-    value(val) {
+    modelValue(val) {
       this.setCurrentValue(val)
 
       this.mergeTarget('modify')
@@ -114,6 +115,9 @@ export default defineComponent({
   },
 
   methods: {
+    handleEnter(e) {
+      this.$emit('enter', e.target.value)
+    },
     handleIncrease() {
       if (this.exceedMax()) {
         this.setCurrentValue(+this.currentVal + +this.step)

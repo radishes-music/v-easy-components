@@ -17,6 +17,7 @@
         simple
         v-model="value1"
         color-format="hsl"
+        @change="handleChange"
       />
     </div>
   </div>
@@ -29,6 +30,11 @@ export default {
     return {
       value: 'rgb(0, 87, 209)',
       value1: 'hsl(68, 87%, 60%)'
+    }
+  },
+  methods: {
+    handleChange(e) {
+      console.log(e)
     }
   }
 }
