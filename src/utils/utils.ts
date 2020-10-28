@@ -29,7 +29,11 @@ export function isString(target: unknown) {
   return type(target) === '[object String]'
 }
 
-export function contain(input: string, container: string[], isCase: boolean = false): string[] {
+export function contain(
+  input: string,
+  container: string[],
+  isCase: boolean = false,
+): string[] {
   function isToLower(s: string) {
     if (!isCase) {
       return s.toLocaleLowerCase()

@@ -65,7 +65,9 @@ export default defineComponent({
   data() {
     return {
       currentVal:
-        this.modelValue === undefined || this.modelValue === null ? '' : this.modelValue,
+        this.modelValue === undefined || this.modelValue === null
+          ? ''
+          : this.modelValue,
       error: false,
       isOnComposition: false,
       valueBeforeComposition: null,

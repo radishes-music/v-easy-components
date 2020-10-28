@@ -1,12 +1,36 @@
 <template>
   <div class="auto-complete">
-    <ve-input ref="target" v-model="value" v-bind="$attrs" type="text" @focus="handleFocus" @blur="handleBlur" @input="handleInput" />
+    <ve-input
+      ref="target"
+      v-model="value"
+      v-bind="$attrs"
+      type="text"
+      @focus="handleFocus"
+      @blur="handleBlur"
+      @input="handleInput"
+    />
     <teleport to="body">
       <transition name="auto-complete-fade">
-        <div v-show="showPopper" ref="popper" class="auto-complete-template" @mouseenter="canHidePopper = false" @mouseleave="canHidePopper = true">
+        <div
+          v-show="showPopper"
+          ref="popper"
+          class="auto-complete-template"
+          @mouseenter="canHidePopper = false"
+          @mouseleave="canHidePopper = true"
+        >
           <ve-scroll v-if="dataSource.length" @scroll="handleScroll">
             <ul>
-              <li v-for="(item, index) in dataComputed" :key="index" :class="{'auto-complete-template-active': value === item, 'auto-complete-template-normal': true}" @click="() => handleSelect(item)">{{ item }}</li>
+              <li
+                v-for="(item, index) in dataComputed"
+                :key="index"
+                :class="{
+                  'auto-complete-template-active': value === item,
+                  'auto-complete-template-normal': true,
+                }"
+                @click="() => handleSelect(item)"
+              >
+                {{ item }}
+              </li>
             </ul>
           </ve-scroll>
           <div v-if="loadingComputed" class="auto-complete-template-none-data">
@@ -31,29 +55,29 @@ export default {
 
   components: {
     VeInput,
-    VeScroll
+    VeScroll,
   },
 
   props: {
     dataSource: {
       type: Array,
-      default: () => ([])
+      default: () => [],
     },
     value: {
-      type: [Array, String]
+      type: [Array, String],
     },
     type: {
       type: String,
-      default: 'select'
+      default: 'select',
     },
     loading: {
       type: Boolean,
-      default: false
+      default: false,
     },
     multiple: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
 
   computed: {
@@ -65,7 +89,7 @@ export default {
         return this.dataSource
       }
       return contain(this.value, this.dataSource)
-    }
+    },
   },
 
   watch: {
@@ -87,21 +111,25 @@ export default {
         }
         this.loadingComputed = v
       }
-    }
+    },
   },
 
   mounted() {
     this.$nextTick(() => {
-      this.popperInstance = createPopper(this.$refs.target.$el, this.$refs.popper, {
-        modifiers: [
-          {
-            name: 'offset',
-            options: {
-              offset: [0, 8],
+      this.popperInstance = createPopper(
+        this.$refs.target.$el,
+        this.$refs.popper,
+        {
+          modifiers: [
+            {
+              name: 'offset',
+              options: {
+                offset: [0, 8],
+              },
             },
-          },
-        ],
-      })
+          ],
+        },
+      )
     })
   },
 
@@ -140,7 +168,7 @@ export default {
     handleScroll() {
       this.$refs.target.$el.querySelector('input').focus()
     },
-    noop() {}
+    noop() {},
   },
 
   setup(props) {
@@ -150,8 +178,10 @@ export default {
       isSearch: ref(false),
       canShowPopper: ref(type.value !== 'search'),
       canHidePopper: ref(true),
-      loadingComputed: ref(type.value === 'search' ? loading.value : !dataSource.value.length),
-      popperInstance: ref(null)
+      loadingComputed: ref(
+        type.value === 'search' ? loading.value : !dataSource.value.length,
+      ),
+      popperInstance: ref(null),
     }
   },
 }
