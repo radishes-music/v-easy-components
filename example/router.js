@@ -12,6 +12,7 @@ import Icon from './fun-case/icon'
 import ColorPicker from './fun-case/color-picker'
 import ScrollBar from './fun-case/scroll-bar'
 import RouteIndicator from './fun-case/route-Indicator'
+import AutoComplete from './fun-case/auto-complete.vue'
 
 const routes = [
   {
@@ -109,6 +110,14 @@ const routes = [
       formatter: 've-route-indicator'
     },
     component: RouteIndicator
+  },
+  {
+    path: '/auto-complete',
+    name: 'AutoComplete',
+    meta: {
+      formatter: 've-auto-complete'
+    },
+    component: AutoComplete
   }
 ]
 

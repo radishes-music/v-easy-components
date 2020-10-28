@@ -33,7 +33,7 @@ export default {
     message: { type: String },
     modelValue: {
       type: [String, Array],
-      required: true
+      required: true,
     },
     readonly: { type: [Boolean, String], default: false },
   },

@@ -12,6 +12,7 @@ import ColorPicker from '@packages/color-picker/index'
 import ScrollBar from '@packages/scroll-bar/index'
 import RouteIndicator from '@packages/route-indicator/index'
 import Collapse from '@packages/collapse/index'
+import AutoComplete from '@packages/auto-complete/index'
 import locale from '@/locale/index'
 import Package from '../package.json'
 
@@ -33,6 +34,7 @@ const components = [
   ScrollBar,
   RouteIndicator,
   Collapse,
+  AutoComplete,
 ]
 
 const install = function (App, opts: Opts = {}) {
@@ -73,6 +75,7 @@ export const main = {
   ScrollBar,
   RouteIndicator,
   Collapse,
+  AutoComplete,
 }
 
 export default main
