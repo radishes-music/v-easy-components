@@ -12,5 +12,6 @@
   "color-picker": "./packages/color-picker/index.ts",
   "scroll-bar": "./packages/scroll-bar/index.ts",
   "route-indicator": "./packages/route-indicator/index.ts",
-  "collapse": "./packages/collapse/index.ts"
+  "collapse": "./packages/collapse/index.ts",
+  "auto-complete": "./packages//auto-complete/index.ts"
 }

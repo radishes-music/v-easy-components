@@ -22,6 +22,7 @@ export default defineComponent({
     vertical: Boolean,
     always: Boolean,
   },
+  emits: ['scroll', 'mousedown'],
   data() {
     return {
       Y: 0,
@@ -46,6 +47,7 @@ export default defineComponent({
       this[this.bar.axis] =
         this.$el.getBoundingClientRect()[this.bar.size] - e[this.bar.offsetSize]
       document.onselectstart = () => false
+      this.$emit('mousedown')
       on(document, 'mousemove', this.handleMouseMove)
       on(document, 'mouseup', this.handleMouseUp)
     },
@@ -61,6 +63,7 @@ export default defineComponent({
 
       this.wrap[scroll] =
         (thumbPositionPercentage * this.wrap[scrollSize]) / 100
+      this.$emit('scroll')
     },
     handleMouseUp() {
       this.cursorDown = false

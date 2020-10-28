@@ -169,6 +169,11 @@ export const tip = {
       }
     }
   },
+
+  updated(el, binding) {
+    // eslint-disable-next-line no-console
+    console.log(binding.value)
+  },
 }
 
 tipDirective.install = (App) => {

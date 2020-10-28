@@ -67,7 +67,6 @@ export default defineComponent({
       currentVal:
         this.modelValue === undefined || this.modelValue === null ? '' : this.modelValue,
       error: false,
-      eventContainer: '',
       isOnComposition: false,
       valueBeforeComposition: null,
     }
@@ -106,9 +105,6 @@ export default defineComponent({
 
       this.mergeTarget('modify')
     },
-    eventContainer(val) {
-      this.mergeMesh(val)
-    },
     error(val) {
       this.$emit('status', !val)
     },
@@ -140,7 +136,6 @@ export default defineComponent({
     handleInput(event) {
       this.setCurrentValue(event.target.value)
       this.mergeTarget('input')
-      this.$emit('input', event.target.value)
     },
     handleBlur(event) {
       this.$emit('blur', event)

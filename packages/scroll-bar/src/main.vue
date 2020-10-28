@@ -6,10 +6,10 @@
       </div>
     </div>
     <div class="v-easy-scroll-bar is-horizontal">
-      <bar horizontal :always="always" :style="horizontal" />
+      <bar horizontal :always="always" :style="horizontal" @mousedown="$emit('mousedown')" @scroll="$emit('scroll', 'horizontal')" />
     </div>
     <div class="v-easy-scroll-bar is-vertical">
-      <bar vertical :always="always" :style="vertical" />
+      <bar vertical :always="always" :style="vertical" @mousedown="$emit('mousedown')" @scroll="$emit('scroll', 'vertical')" />
     </div>
   </div>
 </template>
@@ -33,6 +33,7 @@ export default defineComponent({
       default: false,
     },
   },
+  emits: ['scroll', 'mousedown'],
   data() {
     const size = this.size + 'px'
     return {
@@ -52,6 +53,9 @@ export default defineComponent({
   watch: {},
   mounted() {
     this.$nextTick(this.update)
+  },
+  updated() {
+    this.update()
   },
   methods: {
     update() {
