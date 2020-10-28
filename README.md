@@ -84,3 +84,7 @@ Detailed changes for each release are documented in the [release notes](CHANGELO
 ### LICENSE
 
 [MIT](./src/LICENSE)
+
+### Note
+
+If you have any problems during use, you can raise issues, this project will be kept updated at all times, but due to limited personal energy, please clone by yourself for commercial use.
