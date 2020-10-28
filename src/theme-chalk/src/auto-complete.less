@@ -35,12 +35,25 @@
         transform: rotate(360deg);
       }
     }
-    &-none-data {
+    &-loading {
       display: flex;
       justify-content: center;
       i {
         color: @info-leave0;
         animation: rotate 0.6s linear infinite;
+      }
+    }
+    &-none-data {
+      color: #d2d5db;
+      .fa {
+        font-size: 36px;
+      }
+      p {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        margin-top: 0;
+        margin-bottom: 6px;
       }
     }
   }

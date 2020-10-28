@@ -18,8 +18,9 @@
           @mouseenter="canHidePopper = false"
           @mouseleave="canHidePopper = true"
         >
-          <ve-scroll v-if="dataSource.length" @scroll="handleScroll">
-            <ul>
+          <ve-scroll v-if="dataComputed.length" @scroll="handleScroll">
+            <slot v-if="$slots.popper" name="popper"></slot>
+            <ul v-else>
               <li
                 v-for="(item, index) in dataComputed"
                 :key="index"
@@ -33,8 +34,19 @@
               </li>
             </ul>
           </ve-scroll>
-          <div v-if="loadingComputed" class="auto-complete-template-none-data">
+          <div
+            v-else-if="loadingComputed"
+            class="auto-complete-template-loading"
+          >
             <i class="fa fa-spinner"></i>
+          </div>
+          <div
+            v-else
+            class="auto-complete-template-none-data"
+            @click="handleScroll"
+          >
+            <p class="fa fa-inbox"></p>
+            <p>暂无数据</p>
           </div>
         </div>
       </transition>
@@ -61,6 +73,7 @@ export default {
   props: {
     dataSource: {
       type: Array,
+      required: true,
       default: () => [],
     },
     value: {
@@ -108,14 +121,25 @@ export default {
         if (v) {
           this.canShowPopper = true
           this.showPopperFn()
+        } else if (!this.dataSource.length) {
         }
         this.loadingComputed = v
       }
     },
   },
 
+  beforeMount() {
+    if (this.popper) {
+      this.$slots.default = [this.popper]
+    }
+  },
+
   mounted() {
-    this.$nextTick(() => {
+    this.$nextTick(() => {})
+  },
+
+  methods: {
+    instancePopper() {
       this.popperInstance = createPopper(
         this.$refs.target.$el,
         this.$refs.popper,
@@ -130,15 +154,13 @@ export default {
           ],
         },
       )
-    })
-  },
-
-  methods: {
+    },
     async showPopperFn() {
       if (this.canShowPopper) {
         this.showPopper = true
         await this.$nextTick()
-        const state = await this.popperInstance.update()
+        if (!this.popperInstance) this.instancePopper()
+        else await this.popperInstance.update()
       } else {
         this.showPopper = false
       }

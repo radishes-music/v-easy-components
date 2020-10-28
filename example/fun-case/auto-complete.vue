@@ -13,6 +13,16 @@
       <ve-auto-complete v-model:value="value1" :data-source="data1" type="search" @search="handleChange" :loading="loading" />
     </div>
     <div>
+      <div>远程搜索DataSource + render</div>
+      <ve-auto-complete v-model:value="value4" :data-source="data4" type="search" @search="handleChange2" :loading="loading2">
+        <template v-slot:popper>
+          <div>
+            <li v-for="(i, index) in data4" :key="index">{{i}}</li>
+          </div>
+        </template>
+      </ve-auto-complete>
+    </div>
+    <div>
       <div>远程搜索DataSource + 多选</div>
       <ve-auto-complete v-model:value="value3" multiple :data-source="data3" type="search" @search="handleChange1" :loading="loading1" />
     </div>
@@ -20,6 +30,7 @@
 </template>
 
 <script>
+import { h } from 'vue'
 import { contain } from '@/utils/utils'
 import { debounce } from 'lodash'
 export default {
@@ -30,12 +41,15 @@ export default {
       value1: '',
       value2: '',
       value3: '',
+      value4: '',
       loading: false,
       loading1: false,
+      loading2: false,
       data: ['gmail.com', '163.com', 'qq.com'],
       data1: [],
       data2: [],
       data3: [],
+      data4: [],
     }
   },
   methods: {
@@ -57,16 +71,26 @@ export default {
         }, (Math.random() * 2000) | 0 + 1000)
       }
     },
+    search2() {
+      if (this.value4) {
+        this.loading2 = true
+        setTimeout(() => {
+          this.loading2 = false
+          this.data4 = ['gmail.com', '163.com', 'qq.com']
+        }, (Math.random() * 2000) | 0 + 1000)
+      }
+    },
     handleFocus() {
       if (this.data2.length) return
       setTimeout(() => {
         this.data2 = ['gmail.com', '163.com', 'qq.com']
       }, 3000)
-    }
+    },
   },
   beforeMount() {
     this.handleChange = debounce(this.search, 500)
     this.handleChange1 = debounce(this.search1, 500)
+    this.handleChange2 = debounce(this.search2, 500)
   }
 }
 </script>
