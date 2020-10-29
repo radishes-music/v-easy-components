@@ -17,7 +17,7 @@
       <ve-auto-complete v-model:value="value4" :data-source="data4" type="search" @search="handleChange2" :loading="loading2">
         <template v-slot:popper>
           <div>
-            <li v-for="(i, index) in data4" :key="index">{{i}}</li>
+            <li v-for="(i, index) in data4" :key="index" @click="value4 = i">{{i}}</li>
           </div>
         </template>
       </ve-auto-complete>

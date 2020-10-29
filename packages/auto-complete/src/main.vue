@@ -26,12 +26,14 @@
           v-show="showPopper"
           ref="popper"
           :class="['auto-complete-template', classPopper]"
-          @mouseenter="canHidePopper = false"
-          @mouseleave="canHidePopper = true"
         >
           <ve-scroll v-if="dataComputed.length" @scroll="handleScroll">
             <slot v-if="$slots.popper" name="popper"></slot>
-            <ul v-else>
+            <ul
+              v-else
+              @mouseenter="canHidePopper = false"
+              @mouseleave="canHidePopper = true"
+            >
               <li
                 v-for="(item, index) in dataComputed"
                 :key="index"
