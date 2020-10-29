@@ -46,7 +46,7 @@
 
 <script>
 import { defineComponent, nextTick } from 'vue'
-import { computedIconStyle } from '@/utils/icon-style'
+import { computedIconStyle } from '@/utils/icon-style.ts'
 
 export default defineComponent({
   name: 'VeButton',

@@ -2,11 +2,11 @@
   <div class="auto">
     <div>
       <div>已经初始化DataSource</div>
-      <ve-auto-complete v-model:value="value" :data-source="data" />
+      <ve-auto-complete v-model:value="value" :data-source="data" prefix-icon="twitter-square" suffixIcon="facebook-square" icon-style="brands" />
     </div>
     <div>
       <div>ajax初始化DataSource</div>
-      <ve-auto-complete v-model:value="value2" :data-source="data2" @focus="handleFocus" />
+      <ve-auto-complete v-model:value="value2" :data-source="data2" @focus="handleFocus" suffix-icon="search" />
     </div>
     <div>
       <div>远程搜索DataSource</div>
@@ -99,8 +99,11 @@ export default {
   .auto {
     display: flex;
     align-items: center;
-    /deep/ div {
-      margin-right: 10px;
+    > div {
+      margin-right: 20px;
+      > div {
+        margin-bottom: 10px;
+      }
     }
   }
 </style>

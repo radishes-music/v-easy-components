@@ -1,10 +1,14 @@
 <template>
   <div
-    class="v-easy-input input v-easy-input-plain"
+    :class="['v-easy-input-plain', 'v-easy-input-' + size]"
     :style="{ 'max-width': maxWidth + 'px' }"
   >
     <textarea v-if="typeInput === 'textarea'" v-bind="$attrs" />
     <template v-else>
+      <slot v-if="$slots.prefixIcon" name="prefixIcon"></slot>
+      <span v-if="prefixIcon" class="prefix-icon">
+        <i :class="[iconClass, 'fa-' + prefixIcon]"></i>
+      </span>
       <input
         :type="typeInput"
         :value="currentVal"
@@ -12,7 +16,11 @@
         :min="propertyMaxMin ? propertyMaxMin.min : null"
         :step="typeInput === 'number' ? step : null"
         :disabled="disabled"
-        :class="{ 'v-easy-input--error': error }"
+        :class="{
+          'v-easy-input--error': error,
+          'v-easy-input--prefix': !!$slots.prefixIcon || prefixIcon,
+          'v-easy-input--suffix': !!$slots.suffixIcon || suffixIcon,
+        }"
         :readonly="readonly"
         v-bind="$attrs"
         @compositionstart="handleComposition"
@@ -24,6 +32,10 @@
         @change="handleChange"
         @keyup.enter="handleEnter"
       />
+      <slot v-if="$slots.suffixIcon" name="suffixIcon"></slot>
+      <span v-if="suffixIcon" class="suffix-icon">
+        <i :class="[iconClass, 'fa-' + suffixIcon]"></i>
+      </span>
       <div v-if="isNumberPrefix" class="input-inner-spin">
         <i class="fa fa-chevron-up" @click="handleIncrease" />
         <i class="fa fa-chevron-down" @click="handleDecrease" />
@@ -41,11 +53,20 @@
 import { t } from '@/locale/index'
 import { contain } from '@/utils/array-extend'
 import { defineComponent } from 'vue'
+import { computedIconStyle } from '@/utils/icon-style.ts'
 
 export default defineComponent({
   name: 'VeInput',
 
-  emits: ['status', 'input', 'blur', 'focus', 'change', 'enter'],
+  emits: [
+    'status',
+    'input',
+    'blur',
+    'focus',
+    'change',
+    'enter',
+    'update:value',
+  ],
 
   props: {
     maxWidth: { type: String },
@@ -59,15 +80,22 @@ export default defineComponent({
     step: { type: [Number, String], default: 1 },
     target: { type: [String, Array], default: 'blur' },
     options: [Object, Array],
-    modelValue: { default: '' },
+    value: { default: '' },
+    size: { type: String, default: 'middle' },
+    prefixIcon: {
+      type: String,
+    },
+    suffixIcon: {
+      type: String,
+    },
+    iconStyle: { type: String, default: 'solid' },
+    // large | middle | small
   },
 
   data() {
     return {
       currentVal:
-        this.modelValue === undefined || this.modelValue === null
-          ? ''
-          : this.modelValue,
+        this.value === undefined || this.value === null ? '' : this.value,
       error: false,
       isOnComposition: false,
       valueBeforeComposition: null,
@@ -99,10 +127,13 @@ export default defineComponent({
     isNumberPrefix() {
       return this.typeInput === 'number'
     },
+    iconClass() {
+      return computedIconStyle(this.iconStyle)
+    },
   },
 
   watch: {
-    modelValue(val) {
+    value(val) {
       this.setCurrentValue(val, true)
 
       this.mergeTarget('modify')
@@ -195,6 +226,7 @@ export default defineComponent({
           this.currentVal = this.normalizedOptions.min
         }
       }
+      this.$emit('update:value', this.currentVal)
       if (!watch) {
         this.$emit('input', this.currentVal)
       }

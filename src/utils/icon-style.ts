@@ -1,4 +1,4 @@
-export const computedIconStyle = function computedIconStyle(style) {
+export function computedIconStyle(style: string): string {
   let className = 'fa'
   switch (style) {
     case 'brands':
