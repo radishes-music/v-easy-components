@@ -103,7 +103,7 @@ export default defineComponent({
 
   watch: {
     modelValue(val) {
-      this.setCurrentValue(val)
+      this.setCurrentValue(val, true)
 
       this.mergeTarget('modify')
     },
@@ -184,7 +184,7 @@ export default defineComponent({
         this.error = !regexp.test(this.currentVal)
       }
     },
-    setCurrentValue(value) {
+    setCurrentValue(value, watch = false) {
       if (value === this.currentVal) return
       this.currentVal = value
       if (this.typeInput === 'number') {
@@ -195,7 +195,9 @@ export default defineComponent({
           this.currentVal = this.normalizedOptions.min
         }
       }
-      this.$emit('input', this.currentVal)
+      if (!watch) {
+        this.$emit('input', this.currentVal)
+      }
     },
   },
 })

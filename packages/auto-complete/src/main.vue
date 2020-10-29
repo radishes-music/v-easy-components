@@ -176,14 +176,10 @@ export default {
     },
     handleSelect(item) {
       this.showPopper = false
-      this.isSearch = false
       this.$emit('update:value', item)
     },
     handleInput(v) {
-      if (this.isSearch) {
-        this.$emit('search', v)
-      }
-      this.isSearch = true
+      this.$emit('search', v)
       this.$emit('change', v)
       this.$emit('update:value', v)
     },
@@ -197,7 +193,6 @@ export default {
     const { type, loading, dataSource } = toRefs(props)
     return {
       showPopper: ref(false),
-      isSearch: ref(false),
       canShowPopper: ref(type.value !== 'search'),
       canHidePopper: ref(true),
       loadingComputed: ref(
