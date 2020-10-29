@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import { computedIconStyle } from '@/utils/icon-style'
+import { computedIconStyle } from '@/utils/icon-style.ts'
 import { defineComponent } from 'vue'
 
 export default defineComponent({

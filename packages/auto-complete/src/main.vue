@@ -2,19 +2,30 @@
   <div class="auto-complete">
     <ve-input
       ref="target"
-      v-model="value"
+      v-model:value="modelValue"
       v-bind="$attrs"
       type="text"
       @focus="handleFocus"
       @blur="handleBlur"
       @input="handleInput"
-    />
+    >
+      <template v-if="prefixIcon" v-slot:prefixIcon>
+        <span class="prefix-icon">
+          <i :class="[iconClass, 'fa-' + prefixIcon]"></i>
+        </span>
+      </template>
+      <template v-if="suffixIcon" v-slot:suffixIcon>
+        <span class="suffix-icon">
+          <i :class="[iconClass, 'fa-' + suffixIcon]"></i>
+        </span>
+      </template>
+    </ve-input>
     <teleport to="body">
       <transition name="auto-complete-fade">
         <div
           v-show="showPopper"
           ref="popper"
-          class="auto-complete-template"
+          :class="['auto-complete-template', classPopper]"
           @mouseenter="canHidePopper = false"
           @mouseleave="canHidePopper = true"
         >
@@ -57,9 +68,10 @@
 <script>
 import { ref, h, toRefs } from 'vue'
 import VeInput from '@packages/input/src/main'
-import { createPopper } from '@popperjs/core'
 import VeScroll from '@packages/scroll-bar/src/main'
+import { createPopper } from '@popperjs/core'
 import { contain } from '@/utils/utils'
+import { computedIconStyle } from '@/utils/icon-style.ts'
 export default {
   name: 'VeAutoComplete',
 
@@ -91,6 +103,17 @@ export default {
       type: Boolean,
       default: false,
     },
+    classPopper: {
+      type: String,
+      default: '',
+    },
+    prefixIcon: {
+      type: String,
+    },
+    suffixIcon: {
+      type: String,
+    },
+    iconStyle: { type: String, default: 'solid' },
   },
 
   computed: {
@@ -102,6 +125,17 @@ export default {
         return this.dataSource
       }
       return contain(this.value, this.dataSource)
+    },
+    iconClass() {
+      return computedIconStyle(this.iconStyle)
+    },
+    modelValue: {
+      get() {
+        return this.value
+      },
+      set(v) {
+        this.$emit('update:value', v)
+      },
     },
   },
 
