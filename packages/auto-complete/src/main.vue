@@ -206,7 +206,7 @@ export default {
       this.$emit('focus', this.value)
     },
     handleBlur() {
-      this.canHidePopper && (this.showPopper = false)
+      this.showPopper = false
       this.$emit('blur', this.value)
     },
     handleSelect(item) {
@@ -229,7 +229,6 @@ export default {
     return {
       showPopper: ref(visible.value),
       canShowPopper: ref(type.value !== 'search'),
-      canHidePopper: ref(true),
       loadingComputed: ref(
         type.value === 'search' ? loading.value : !dataSource.value.length,
       ),

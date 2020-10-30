@@ -15,7 +15,7 @@
           :style="{ backgroundColor: previewColor }"
         ></div>
         <ve-input
-          v-model="formatString"
+          v-model:value="formatString"
           @change="handleChange"
           @enter="handleEnter"
         />
