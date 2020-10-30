@@ -59,6 +59,9 @@ export default defineComponent({
   name: 'VeInput',
 
   emits: [
+    'compositionstart',
+    'compositionupdate',
+    'compositionend',
     'status',
     'input',
     'blur',
@@ -187,6 +190,7 @@ export default defineComponent({
       else this.target === type && this.mergeMesh(type)
     },
     handleComposition(event) {
+      this.$emit(event.type, event)
       if (event.type === 'compositionend') {
         this.isOnComposition = false
         this.currentVal = this.valueBeforeComposition
