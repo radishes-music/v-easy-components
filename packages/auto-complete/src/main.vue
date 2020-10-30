@@ -26,8 +26,6 @@
           v-show="showPopper"
           ref="popper"
           :class="['auto-complete-template', classPopper]"
-          @mouseenter="canHidePopper = false"
-          @mouseleave="canHidePopper = true"
         >
           <ve-scroll v-if="dataComputed.length" @scroll="handleScroll">
             <slot v-if="$slots.popper" name="popper"></slot>
@@ -51,13 +49,12 @@
           >
             <i class="fa fa-spinner"></i>
           </div>
-          <div
-            v-else
-            class="auto-complete-template-none-data"
-            @click="handleScroll"
-          >
-            <p class="fa fa-inbox"></p>
-            <p>暂无数据</p>
+          <div v-else class="auto-complete-template-none-data">
+            <slot v-if="$slots.noneData" name="noneData"></slot>
+            <template v-else>
+              <p class="fa fa-inbox"></p>
+              <p>暂无数据</p>
+            </template>
           </div>
         </div>
       </transition>
@@ -66,7 +63,7 @@
 </template>
 
 <script>
-import { ref, h, toRefs } from 'vue'
+import { ref, h, toRefs, onMounted } from 'vue'
 import VeInput from '@packages/input/src/main'
 import VeScroll from '@packages/scroll-bar/src/main'
 import { createPopper } from '@popperjs/core'
@@ -112,6 +109,10 @@ export default {
     },
     suffixIcon: {
       type: String,
+    },
+    visible: {
+      type: Boolean,
+      default: false,
     },
     iconStyle: { type: String, default: 'solid' },
   },
@@ -160,16 +161,16 @@ export default {
         this.loadingComputed = v
       }
     },
+    visible(v) {
+      this.canShowPopper = v
+      this.showPopperFn()
+    },
   },
 
   beforeMount() {
     if (this.popper) {
       this.$slots.default = [this.popper]
     }
-  },
-
-  mounted() {
-    this.$nextTick(() => {})
   },
 
   methods: {
@@ -224,9 +225,9 @@ export default {
   },
 
   setup(props) {
-    const { type, loading, dataSource } = toRefs(props)
+    const { type, loading, dataSource, visible } = toRefs(props)
     return {
-      showPopper: ref(false),
+      showPopper: ref(visible.value),
       canShowPopper: ref(type.value !== 'search'),
       canHidePopper: ref(true),
       loadingComputed: ref(

@@ -7,7 +7,7 @@
     "multiple": false
   },
   "warnOnFail": false,
-  "maxSubjectLength": 100,
+  "maxSubjectLength": 120,
   "subjectPattern": ".+",
   "subjectPatternErrorMsg": "subject does not match subject pattern!",
   "helpMessage": "",

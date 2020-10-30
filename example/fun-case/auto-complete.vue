@@ -6,18 +6,30 @@
     </div>
     <div>
       <div>ajax初始化DataSource</div>
-      <ve-auto-complete v-model:value="value2" :data-source="data2" @focus="handleFocus" suffix-icon="search" />
+      <ve-auto-complete v-model:value="value2" :data-source="data2" @focus="handleFocus" suffix-icon="search">
+        <template #noneData>
+          <div>
+            <h3 style="text-align: center">没有数据哦</h3>
+          </div>
+        </template>
+      </ve-auto-complete>
     </div>
     <div>
       <div>远程搜索DataSource</div>
-      <ve-auto-complete v-model:value="value1" :data-source="data1" type="search" @search="handleChange" :loading="loading" />
+      <ve-auto-complete v-model:value="value1" :data-source="data1" type="search" @search="handleChange" :loading="loading">
+        <template #noneData>
+          <div>
+            <h3>没有数据哦</h3>
+          </div>
+        </template>
+      </ve-auto-complete>
     </div>
     <div>
       <div>远程搜索DataSource + render</div>
-      <ve-auto-complete v-model:value="value4" :data-source="data4" type="search" @search="handleChange2" :loading="loading2">
+      <ve-auto-complete v-model:value="value4" :data-source="data4" type="search" @search="handleChange2" :loading="loading2" :visible="visible" @focus="visible = true" @blur="visible = false">
         <template v-slot:popper>
           <div>
-            <li v-for="(i, index) in data4" :key="index">{{i}}</li>
+            <li v-for="(i, index) in data4" :key="index" @click="value4 = i">{{i}}</li>
           </div>
         </template>
       </ve-auto-complete>
@@ -50,6 +62,7 @@ export default {
       data2: [],
       data3: [],
       data4: [],
+      visible: false
     }
   },
   methods: {
