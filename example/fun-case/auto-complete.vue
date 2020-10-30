@@ -16,7 +16,7 @@
     </div>
     <div>
       <div>远程搜索DataSource</div>
-      <ve-auto-complete v-model:value="value1" :data-source="data1" type="search" @search="handleChange" :loading="loading">
+      <ve-auto-complete v-model:value="value1" :data-source="data1" type="search" @compositionend="handleChange" :loading="loading">
         <template #noneData>
           <div>
             <h3>没有数据哦</h3>

@@ -5,6 +5,9 @@
       v-model:value="modelValue"
       v-bind="$attrs"
       type="text"
+      @compositionstart="handleComposition"
+      @compositionupdate="handleComposition"
+      @compositionend="handleComposition"
       @focus="handleFocus"
       @blur="handleBlur"
       @input="handleInput"
@@ -72,7 +75,16 @@ import { computedIconStyle } from '@/utils/icon-style.ts'
 export default {
   name: 'VeAutoComplete',
 
-  emits: ['focus', 'blur', 'change', 'search', 'update:value'],
+  emits: [
+    'focus',
+    'blur',
+    'change',
+    'search',
+    'compositionstart',
+    'compositionupdate',
+    'compositionend',
+    'update:value',
+  ],
 
   components: {
     VeInput,
@@ -174,6 +186,9 @@ export default {
   },
 
   methods: {
+    handleComposition(e) {
+      this.$emit(e.type, e)
+    },
     instancePopper() {
       this.popperInstance = createPopper(
         this.$refs.target.$el,
