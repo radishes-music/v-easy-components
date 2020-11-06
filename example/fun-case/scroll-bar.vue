@@ -1,13 +1,15 @@
 <template>
-  <div style="width: 300px;margin: 0 auto">
-    <ve-scroll size="8">
+  <div style="width: 300px;margin: 0 auto;position: relative">
+    <div class="tag"></div>
+    <ve-scroll size="8" v-model:to="to" :offset="200" :duration="500" easing="Sine-easeOut" :disabled="disabled" @start="disabled = true" @stop="disabled = false">
       <ul>
+        <li style="height: 50%"></li>
         <li v-for="item in array" :key="item">
           {{ item + str }}
         </li>
+        <li style="height: 50%"></li>
       </ul>
     </ve-scroll>
-    <ve-button @click="test1">加载完成</ve-button>
   </div>
 </template>
 
@@ -21,25 +23,40 @@ export default {
         .map((o, i) => i),
       str: Array(20)
         .fill(0)
-        .join('+')
+        .join('+'),
+      to: 0,
+      disabled: false
     }
   },
-  methods: {
-    test1() {
-      debugger
-    }
+  mounted() {
+    let t = setInterval(() => {
+      if (this.to < this.array.length - 1) {
+        this.to+=10
+      } else {
+        clearInterval(t)
+      }
+    }, 2000)
   }
 }
 </script>
 
 <style scoped lang="less">
+.tag {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  height: 1px;
+  background-color: red;
+}
 ul {
+  position: relative;
   height: 400px;
   padding: 0;
   margin: 0;
 }
 li {
+  height: 40px;
+  line-height: 40px;
   list-style-type: none;
-  margin-bottom: 10px;
 }
 </style>
