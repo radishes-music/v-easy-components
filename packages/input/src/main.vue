@@ -5,7 +5,7 @@
   >
     <textarea v-if="typeInput === 'textarea'" v-bind="$attrs" />
     <template v-else>
-      <slot v-if="$slots.prefixIcon" name="prefixIcon"></slot>
+      <slot v-if="$slots.prefix" name="prefix"></slot>
       <span v-if="prefixIcon" class="prefix-icon">
         <i :class="[iconClass, 'fa-' + prefixIcon]"></i>
       </span>
@@ -18,8 +18,8 @@
         :disabled="disabled"
         :class="{
           'v-easy-input--error': error,
-          'v-easy-input--prefix': !!$slots.prefixIcon || prefixIcon,
-          'v-easy-input--suffix': !!$slots.suffixIcon || suffixIcon,
+          'v-easy-input--prefix': !!$slots.prefix || prefixIcon,
+          'v-easy-input--suffix': !!$slots.suffix || suffixIcon,
         }"
         :readonly="readonly"
         v-bind="$attrs"
@@ -32,7 +32,7 @@
         @change="handleChange"
         @keyup.enter="handleEnter"
       />
-      <slot v-if="$slots.suffixIcon" name="suffixIcon"></slot>
+      <slot v-if="$slots.suffix" name="suffix"></slot>
       <span v-if="suffixIcon" class="suffix-icon">
         <i :class="[iconClass, 'fa-' + suffixIcon]"></i>
       </span>

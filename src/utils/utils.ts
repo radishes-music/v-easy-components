@@ -83,7 +83,7 @@ export const utils = {
   debounce,
   stopEvent,
   type,
-  isString,
+  isString
 }
 
 export default utils

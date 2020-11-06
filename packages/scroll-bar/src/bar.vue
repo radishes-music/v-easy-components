@@ -22,7 +22,7 @@ export default defineComponent({
     vertical: Boolean,
     always: Boolean,
   },
-  emits: ['scroll', 'mousedown'],
+  emits: ['scroll', 'mousedown', 'mouseup'],
   data() {
     return {
       Y: 0,
@@ -69,6 +69,7 @@ export default defineComponent({
       this.cursorDown = false
       off(document, 'mousemove', this.handleMouseMove)
       document.onselectstart = null
+      this.$emit('mouseup')
     },
   },
 })
