@@ -10,7 +10,7 @@
     "@babel/preset-env": "^7.6.3",
     "@typescript-eslint/eslint-plugin": "^4.0.1",
     "@typescript-eslint/parser": "^4.0.1",
-    "@vue/compiler-sfc": "3.0.0",
+    "@vue/compiler-sfc": "^3.0.2",
     "@vuepress/plugin-back-to-top": "^1.2.0",
     "@vuepress/plugin-google-analytics": "^1.2.0",
     "@vuepress/plugin-pwa": "^1.2.0",
@@ -71,7 +71,6 @@
     "typescript": "^4.0.2",
     "url-loader": "^4.1.0",
     "validate-commit-msg": "^2.14.0",
-    "vue": "3.0.0",
     "vue-i18n": "^9.0.0-alpha.16",
     "vue-loader": "^16.0.0-beta.4",
     "vue-router": "^4.0.0-beta.4",
@@ -89,7 +88,7 @@
     "regenerator-runtime": "^0.13.3"
   },
   "peerDependencies": {
-    "vue": "^3.0.0-rc.10"
+    "vue": "^3.0.2"
   },
   "scripts": {
     "bootstrap": "yarn || npm i",
