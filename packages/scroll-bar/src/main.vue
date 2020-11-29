@@ -87,9 +87,6 @@ export default defineComponent({
     wrap() {
       return this.$refs.wrap
     },
-    wrapTop() {
-      return this.wrap.getBoundingClientRect().top
-    },
     contanier() {
       return this.$refs.contanier
     },
@@ -102,7 +99,7 @@ export default defineComponent({
     currentTop() {
       if (this.contanierChildren) {
         try {
-          return this.contanierChildren.children[this.to].getBoundingClientRect().top - this.wrapTop
+          return this.contanierChildren.children[this.to].getBoundingClientRect().top - this.wrap.getBoundingClientRect().top
         } catch (e) {
           // eslint-disable-next-line no-console
           console.warn(e)
