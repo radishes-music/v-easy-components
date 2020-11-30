@@ -2,7 +2,11 @@
   <div class="auto">
     <div>
       <div>已经初始化DataSource</div>
-      <ve-auto-complete v-model:value="value" :data-source="data" prefix-icon="twitter-square" suffixIcon="facebook-square" icon-style="brands" />
+      <ve-auto-complete v-model:value="value" :data-source="data" prefix-icon="twitter-square" icon-style="brands">
+        <template #suffix>
+          <i class="fa fa-search"></i>
+        </template>
+      </ve-auto-complete>
     </div>
     <div>
       <div>ajax初始化DataSource</div>
