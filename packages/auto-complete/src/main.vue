@@ -12,16 +12,16 @@
       @blur="handleBlur"
       @input="handleInput"
     >
-      <template v-if="prefixIcon || $slots.prefix" v-slot:prefixIcon>
-        <slot v-if="$slots.prefix" name="prefixIcon"></slot>
-        <span v-else class="prefix-icon">
-          <i :class="[iconClass, 'fa-' + prefixIcon]"></i>
+      <template v-if="prefixIcon || $slots.prefix" #prefix>
+        <span class="prefix-icon">
+          <slot v-if="$slots.prefix" name="prefix"></slot>
+          <i v-else :class="[iconClass, 'fa-' + prefixIcon]"></i>
         </span>
       </template>
-      <template v-if="suffixIcon || $slots.suffix" v-slot:suffixIcon>
-        <slot v-if="$slots.suffix" name="suffixIcon"></slot>
-        <span v-else class="suffix-icon">
-          <i :class="[iconClass, 'fa-' + suffixIcon]"></i>
+      <template v-if="suffixIcon || $slots.suffix" #suffix>
+        <span class="suffix-icon">
+          <slot v-if="$slots.suffix" name="suffix"></slot>
+          <i v-else :class="[iconClass, 'fa-' + suffixIcon]"></i>
         </span>
       </template>
     </ve-input>
