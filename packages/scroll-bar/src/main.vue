@@ -68,7 +68,7 @@ export default defineComponent({
       default: 'Quad-easeOut'
     }
   },
-  emits: ['scroll', 'start', 'stop', 'mousedown'],
+  emits: ['scroll', 'start', 'stop', 'mousedown', 'touch-start', 'touch-stop'],
   data() {
     const size = this.size + 'px'
     return {
@@ -133,12 +133,22 @@ export default defineComponent({
         // eslint-disable-next-line no-console
         console.warn('ve-scroll accepts a follow element')
       }
+      contanier.addEventListener('touchstart', this.touchStart)
+      contanier.addEventListener('touchend', this.touchEnd)
     }
   },
   updated() {
     this.update()
   },
   methods: {
+    touchStart(e) {
+      this.$emit('touch-start')
+      this.$emit('start')
+    },
+    touchEnd(e) {
+      this.$emit('touch-stop')
+      this.$emit('stop')
+    },
     animation(from, to, cb) {
       let start = 0
       var step = () => {
@@ -155,6 +165,7 @@ export default defineComponent({
       const wrap = this.wrap
       
       if (wrap) {
+        wrap.removeEventListener('scroll', this.scroll)
         const sizeHeight = (wrap.clientHeight * 100) / wrap.scrollHeight
         const sizeWidth = (wrap.clientWidth * 100) / wrap.scrollWidth
         if (sizeHeight < 100) {
