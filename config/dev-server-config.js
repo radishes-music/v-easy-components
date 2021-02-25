@@ -2,7 +2,7 @@ module.exports = {
   dev: {
     https: false,
     port: 9000,
-    host: '0.0.0.0',
+    host: 'localhost',
     notifyOnErrors: true
   },
   devMode: process.env.NODE_ENV !== 'production'
