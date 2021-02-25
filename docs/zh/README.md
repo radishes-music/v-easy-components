@@ -39,5 +39,3 @@ Vue.use(VEasy);
 ::: warning
 `v-easy-components` 是一款基于 Vue 2.0 的组件/指令库
 :::
-
-ICP备: [湘ICP备17008304号](http://beian.miit.gov.cn)
