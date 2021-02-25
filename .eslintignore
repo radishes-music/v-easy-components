@@ -1,1 +1,3 @@
 types/*.ts
+*.html
+example/

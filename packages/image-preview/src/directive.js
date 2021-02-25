@@ -1,5 +1,6 @@
 import ImageBox from './main.vue'
 import _Vue from 'vue'
+import { type } from '@/utils/utils'
 
 const imageDirective = {}
 
@@ -33,15 +34,29 @@ function handlerControl(src, instance, index) {
 
 function targetImage(el, binding) {
   el.classList.add('image-read-parent')
-  let src
-  if (typeof binding.value === 'string') {
+  let src, fullScreen, stop
+  const _type = type(binding.value)
+  if (_type === '[object String]') {
     src = binding.value
-  } else {
+  } else if (_type === '[object Undefined]') {
     src = el.dataset?.previewSrc || el.src
+  } else if (_type === '[object Object]') {
+    src = binding.value.src
+    fullScreen = binding.value.fullScreen
+    stop = binding.value.stop
+  } else {
+    // eslint-disable-next-line no-console
+    console.warn(
+      `v-image command error, binding value ${_type} is not accepted`
+    )
   }
   /* fix isServer */
   const ImageBoxInstance = new (_Vue.extend(ImageBox))({
-    el: document.createElement('div')
+    el: document.createElement('div'),
+    data: {
+      fullScreen: fullScreen,
+      stop: stop
+    }
   })
   el.addEventListener('click', handlerControl.bind(null, src, ImageBoxInstance))
 }

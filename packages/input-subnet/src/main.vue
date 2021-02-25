@@ -8,25 +8,28 @@
   >
     <ul ref="box" :class="disabled ? 'disabled' : ''">
       <li v-for="(val, index) in maxLength" :key="index">
-        <input
-          type="text"
-          :value="result[index]"
-          :readonly="readonly"
-          :class="errorClass[index]"
-          :maxlength="maxLength[index]"
-          :disabled="disabled"
-          v-bind="$attrs"
-          @keydown="handleKeyDown(index, $event)"
-          @keyup="handleKeyUp(index, $event)"
-          @focus="handleFocus(index, $event)"
-          @input="handleInput(index, $event)"
-          @blur="handleBlur(index, $event)"
-        />
+        <label>
+          <input
+            type="text"
+            :value="result[index]"
+            :readonly="readonly"
+            :class="errorClass[index]"
+            :maxlength="val"
+            :disabled="disabled"
+            v-bind="$attrs"
+            @keydown="handleKeyDown(index, $event)"
+            @keyup="handleKeyUp(index, $event)"
+            @focus="handleFocus(index, $event)"
+            @input="handleInput(index, $event)"
+            @blur="handleBlur(index, $event)"
+            @paste="handlePaste(index, $event)"
+          />
+        </label>
         <span v-if="index !== maxLength.length - 1">{{ spliceChar }}</span>
       </li>
     </ul>
     <transition name="v-easy-error">
-      <div class="error inspection" v-show="conformity">{{ msg }}</div>
+      <div v-show="conformity" class="error inspection">{{ msg }}</div>
     </transition>
   </div>
 </template>
@@ -36,11 +39,17 @@ import { t } from '@/locale/index'
 import merge from '@/mixins/merge'
 
 export default {
+  name: 'VeSubnet',
+  mixins: [merge],
   model: {
     event: 'change'
   },
-  name: 'VeSubnet',
-  mixins: [merge],
+
+  computed: {
+    msg() {
+      return this.message || t('subnet.err')
+    }
+  },
 
   watch: {
     result(val) {
@@ -59,28 +68,32 @@ export default {
     }
   },
 
-  computed: {
-    msg() {
-      return this.message || t('subnet.err')
-    }
-  },
-
   methods: {
+    handlePaste(index, $event) {
+      $event.preventDefault()
+      let paste = ($event.clipboardData || window.clipboardData).getData('text')
+      if (this.checkSub(paste)) {
+        this.$emit(
+          'change',
+          paste.split('.').map(n => (n ? Number(n) : n))
+        )
+      }
+    },
+
     handleInput(index, $event) {
       this.setCurrentValue($event.target.value, index)
-
-      let first = this.result[index - 1] !== '255'
+      let first = this.result[index - 1] !== 255
       if (index === 0) first = false
       if (first) {
         for (let i = index; i < this.maxLength.length; i++) {
           this.maxLength[i] = '1'
         }
-        if (this.result[index] !== '0') {
+        if (this.result[index] !== 0) {
           this.errorClass[index] = 'red'
           this.conformity = true
         } else {
           this.conformity = false
-          this.errorClass[index] = 'none'
+          this.errorClass[index] = ''
         }
       } else {
         for (let i = index; i < this.maxLength.length; i++) {
@@ -95,14 +108,14 @@ export default {
           this.conformity = true
         } else {
           this.conformity = false
-          this.errorClass[index] = 'none'
+          this.errorClass[index] = ''
         }
       }
       if (
         !this.conformity &&
         index !== 3 &&
-        this.result[index] &&
-        this.result[index].length >= this.maxLength[index]
+        $event.target.value &&
+        $event.target.value.length >= this.maxLength[index]
       ) {
         this.$refs.box.getElementsByTagName('input')[index + 1].focus()
       }
@@ -120,48 +133,6 @@ export default {
         this.conformity = true
       }
       this.$emit('blur', { $event, index })
-    },
-
-    checkSub(mask) {
-      let regexp = /^(((255\.){3}(255|254|252|248|240|224|192|128|0+))|((255\.){2}(255|254|252|248|240|224|192|128|0+)\.0)|((255\.)(255|254|252|248|240|224|192|128|0+)(\.0+){2})|((255|254|252|248|240|224|192|128|0+)(\.0+){3}))$/
-      return regexp.test(mask)
-    },
-
-    handleKeyDown(index, $event) {
-      if (
-        $event.keyCode === 8 &&
-        this.currentIndex !== 0 &&
-        (!this.result[this.currentIndex] ||
-          this.result[this.currentIndex].length === 0)
-      ) {
-        this.$refs.box
-          .getElementsByTagName('input')[this.currentIndex - 1].focus()
-      }
-      if ($event.keyCode === 110 && index !== 3 && $event.target.value !== '') {
-        this.$refs.box
-          .getElementsByTagName('input')[this.currentIndex + 1].focus()
-      }
-      let obj = this.$refs.box.getElementsByTagName('input'),
-        current = this.getCursortPosition(obj[index]),
-        len = $event.target.value.length
-      if ($event.keyCode === 39 && current >= len && index !== 3) {
-        // 往后
-        obj[index + 1].focus()
-        setTimeout(() => {
-          this.setCaretPosition(obj[index + 1], 0)
-        }, 0)
-      }
-      if ($event.keyCode === 37 && current === 0 && index !== 0) {
-        // 往前
-        this.$refs.box.getElementsByTagName('input')[index - 1].focus()
-        setTimeout(() => {
-          this.setCaretPosition(
-            obj[index - 1],
-            this.result[index - 1] ? this.result[index - 1].length : 0
-          )
-        }, 0)
-      }
-      this.$emit('keyDown', { $event, index })
     }
   }
 }

@@ -12,7 +12,7 @@ const PORT = process.env.PORT && Number(process.env.PORT)
 const resolve = src => path.resolve(__dirname, '../', src)
 
 module.exports = {
-  mode: "development",
+  mode: 'development',
   entry: {
     index: './example/main.js'
   },
@@ -23,6 +23,7 @@ module.exports = {
   performance: {
     hints: false
   },
+  devtool: 'eval-source-map',
   devServer: {
     quiet: true,
     host: HOST || configDev.dev.host,

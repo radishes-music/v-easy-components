@@ -1,0 +1,63 @@
+/*
+ collapse animation
+ */
+.collapse-enter-active, .collapse-leave-active {
+  transition: height .2s;
+}
+.collapse-enter, .collapse-leave-to {
+  height: 0 !important;
+}
+
+.v-easy-collapse {
+
+  .arrow {
+    transition: transform .2s;
+  }
+  .arrow-down {
+    transform: rotateZ(180deg);
+  }
+
+  &-control {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin-bottom: 10px;
+
+    span {
+      margin-left: 6px;
+      cursor: pointer;
+    }
+  }
+
+  &-content {
+    width: calc(100% + 36px);
+    margin-left: -36px;
+
+    ul {
+      margin: 0;
+      overflow: hidden;
+      padding: 0;
+
+      li {
+        display: flex;
+        align-items: center;
+        position: relative;
+        height: 24px;
+
+        span:first-child {
+          margin-left: 56px;
+        }
+        &:after {
+          content: '';
+          position: absolute;
+          left: 3px;
+          top: 8px;
+          width: 10px;
+          height: 10px;
+          border-radius: 50%;
+          background-color: white;
+        }
+      }
+    }
+  }
+}

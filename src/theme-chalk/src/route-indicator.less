@@ -1,0 +1,65 @@
+@import "mixins/_color";
+
+@w: 16px;
+
+.round() {
+  content: '';
+  width: @w - 4px;
+  height: @w - 4px;
+  border-radius: 50%;
+  background-color: white;
+}
+
+.v-easy-route {
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  padding: 14px 30px 14px 10px;
+
+  &-process {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: @w;
+    padding: 2px;
+    border-radius: @w;
+    background-color: @primary;
+    margin-right: 20px;
+    box-sizing: border-box;
+
+    &:before {
+      .round()
+    }
+
+    &:after {
+      .round()
+    }
+  }
+
+  &-content {
+    flex: 1;
+    font-size: 14px;
+
+    &--name {
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    &--tag {
+      margin-top: 6px;
+      span + span {
+        margin-left: 4px;
+      }
+      span {
+        font-size: 12px;
+      }
+    }
+
+    &--middle {
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+  }
+
+}
+

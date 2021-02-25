@@ -17,9 +17,16 @@ deploy:
   provider: npm
   edge: true
   skip_cleanup: true
-  email: "$NPM_EMAIL"
-  api_key: "$NPM_TOKEN"
+  email: '$NPM_EMAIL'
+  api_token: '$NPM_TOKEN'
   on:
     tags: false
     branch: master
     repo: Linkontoask/v-easy-components
+notifications:
+  slack:
+    if: branch = docs
+  email:
+    on_success: always
+    recipients:
+      - linkorgs@163.com

@@ -208,6 +208,83 @@ IP Format State Switching Triggers Callback
 ```
 :::
 
+## IP 输入框端口的支持
+
+通常我们在配置某些设备IP的时候需要指定端口。  
+这里只需要指定`port` 即可完成端口的配置
+
+<div>
+  <preview-code _id="4">
+    <template #default>
+      <ve-ip port v-model="value5"></ve-ip>
+      <ve-ip port v-model="value6"></ve-ip>
+    </template>
+    <template #txt>
+      <div>IP组件支持两种不同类型值得绑定，一种为 <em>string</em> 类型，还有一种是 <em>array</em> 类型。需要注意的是，使用 <em>string</em> 类型时可以参考 <em>xxx.xxx.xxx.xxx:ooooo</em>，如果是array类型，那最后一个值代表端口</div>
+    </template>
+  </preview-code>
+</div>
+
+::: slot code4
+```vue
+<template>
+  <ve-ip port v-model="value5"></ve-ip>
+  <ve-ip port v-model="value6"></ve-ip>
+</template>
+
+<script>
+  export default {
+    data() {
+      return {
+        value5: [],
+        value6: '172.0.0.1:10000',
+      }
+    }
+  }
+</script>
+```
+:::
+
+## IP / SubNet 输入框的用户体验
+
+为了方便我们输入IP地址，以及方便我们进行修改，参考windows平台的输入框，监听了用户的左右键、粘贴键、BackSpace、小数点。
+
+<div>
+  <preview-code _id="5">
+    <template #default>
+      <p>172.16.1.1</p>
+      <p>172.16.1.1:10000</p>
+      <ve-ip v-model="value7"></ve-ip>
+      <ve-ip port v-model="value8"></ve-ip>
+    </template>
+    <template #txt>
+      <div>你可以尝试复制粘贴后，然后使用BackSpace删除，最后在手动输入时使用小数点进行光标位移，也可以使用键盘的左右键进行位移</div>
+    </template>
+  </preview-code>
+</div>
+
+::: slot code5
+```vue
+<template>
+  <p>172.16.1.1</p>
+  <p>172.16.1.1:10000</p>
+  <ve-ip v-model="value7"></ve-ip>
+  <ve-ip port v-model="value8"></ve-ip>
+</template>
+
+<script>
+  export default {
+    data() {
+      return {
+        value7: [],
+        value8: [],
+      }
+    }
+  }
+</script>
+```
+:::
+
 <script>
   export default {
     data() {
@@ -217,6 +294,10 @@ IP Format State Switching Triggers Callback
         value2: [255, 255, 255, 255],
         value3: [],
         value4: [],
+        value5: [],
+        value6: '172.0.0.1:10000',
+        value7: [],
+        value8: [],
         subnet: [],
       }
     },
@@ -247,8 +328,9 @@ IP Format State Switching Triggers Callback
 | width |	The width of the Component	| string | - | - |
 | disabled | Whether to disable the component, if it is disabled, you can not write data | boolean / string	true / false | false |
 | readonly | Read-only component, users cannot directly change |	boolean / string	true / false | false |
-| spliceChar | Delimiter, specifying the incoming IP string to use for splitting | string | - | . |
+| splice-char | Delimiter, specifying the incoming IP string to use for splitting | string | - | . |
 | message	| Error message, used in the wrong situation	| string | - | Please enter the correct IP address |
+| port	| 是否支持端口的输入 | boolean | false / true | false |
 | format | Specify input box type | string | ipv4 / ipv6 | ipv4 |
 :::
 
@@ -261,3 +343,4 @@ IP Format State Switching Triggers Callback
 | focus | Triggered when a component gains focus | {$event: Event, index: Number} |
 | keyUp | Triggered when the button is raised | {$event: Event, index: Number} |
 | keyDown | Triggered when the button is pressed | {$event: Event, index: Number} |
+| status | 监听此时输入的值是否正确 | status: Boolean |

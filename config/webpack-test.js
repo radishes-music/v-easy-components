@@ -6,7 +6,7 @@ const config = require('./config')
 const resolve = src => path.resolve(__dirname, '../', src)
 
 const webpackConfig = {
-  mode: "development",
+  mode: 'development',
   entry: {
     index: './src/index.js'
   },
@@ -38,11 +38,7 @@ const webpackConfig = {
       },
       {
         test: /\.less$/,
-        use: [
-          'style-loader',
-          'css-loader',
-          'less-loader'
-        ]
+        use: ['style-loader', 'css-loader', 'less-loader']
       },
       {
         test: /\.js$/,
@@ -51,15 +47,11 @@ const webpackConfig = {
       }
     ]
   },
-  plugins: [
-    new VueLoaderPlugin()
-  ]
+  plugins: [new VueLoaderPlugin()]
 }
 
 if (!process.env.CI_ENV) {
-  webpackConfig.plugins.push(
-    new ProgressBarPlugin()
-  );
+  webpackConfig.plugins.push(new ProgressBarPlugin())
 }
 
 module.exports = webpackConfig
