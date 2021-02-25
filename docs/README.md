@@ -40,4 +40,3 @@ If you also want to contribute code, please go to [GitHub](https://github.com/Li
 `v-easy-components` is a Vue 2.0-based component/instruction library
 :::
 
-ICP备: [湘ICP备17008304号](http://beian.miit.gov.cn)
