@@ -13,6 +13,7 @@ import ColorPicker from './fun-case/color-picker'
 import ScrollBar from './fun-case/scroll-bar'
 import RouteIndicator from './fun-case/route-Indicator'
 import AutoComplete from './fun-case/auto-complete.vue'
+import Swiper from './fun-case/swiper.vue'
 
 const routes = [
   {
@@ -118,6 +119,14 @@ const routes = [
       formatter: 've-auto-complete'
     },
     component: AutoComplete
+  },
+  {
+    path: '/mobile-swiper',
+    name: 'MobileSwiper',
+    meta: {
+      formatter: 've-mobile-swiper'
+    },
+    component: Swiper
   }
 ]
 

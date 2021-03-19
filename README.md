@@ -14,8 +14,8 @@
 ### Document (not up-to-date)
 
 - Homepage and documentation
-  - [International users](https://linkorg.club)
-  - [Chinese users](https://linkorg.club/zh/)
+  - [International users](https://v-easy-components.netlify.app/)
+  - [Chinese users](https://v-easy-components.netlify.app/zh/)
 - [fontawesome](https://fontawesome.com/start)
 
 ### Install

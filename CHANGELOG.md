@@ -1,14 +1,23 @@
-# [2.0.0-beta.1](https://github.com/Linkontoask/v-easy-components/compare/1.1.1...2.0.0-beta.1) (2020-09-17)
+# [2.0.0](https://github.com/Linkontoask/v-easy-components/compare/1.3.0...2.0.0) (2021-03-19)
 
 
 ### Bug Fixes
 
-* [#66](https://github.com/Linkontoask/v-easy-components/issues/66) Fix the IP input box cannot enter the same number ([b12fa1f](https://github.com/Linkontoask/v-easy-components/commit/b12fa1f216ebcba956be29db487a55d2692cd203))
+* [#76](https://github.com/Linkontoask/v-easy-components/issues/76) Change the lib directory to the dist directory ([809c205](https://github.com/Linkontoask/v-easy-components/commit/809c205ee2ab417db06edb6201a7ed12091f2aa5))
+* beforeDestroy change to beforeUnmount ([e4bdf02](https://github.com/Linkontoask/v-easy-components/commit/e4bdf025db6765804d7b5d088039bf03e100bcc6))
+* Do not cache the location of warp ([22e04a8](https://github.com/Linkontoask/v-easy-components/commit/22e04a8d12df8dd1211521a15beaf568ca001345))
 * error-class remove 'none' class name ([810b601](https://github.com/Linkontoask/v-easy-components/commit/810b60150d607946f9189fdc6b46db9ba8e708cd))
+* fix colorPicker input box not displaying problem ([fa41ebf](https://github.com/Linkontoask/v-easy-components/commit/fa41ebfb7e7d8c0ca83c0dba5ba3217f5dfaaed0))
+* Fix the auto-complete icon is not displayed ([6caa2ca](https://github.com/Linkontoask/v-easy-components/commit/6caa2cad68546ef80e85e9102251fe59e83bb523))
+* **AutoComplete:** fix the first input does not trigger search ([04d998a](https://github.com/Linkontoask/v-easy-components/commit/04d998a16381ddf1eb312312ac901fd4826cef2e))
+* **AutoComplete:** when auto-complete custom rendering popper, the popper is not closed after losing focus ([990e62b](https://github.com/Linkontoask/v-easy-components/commit/990e62b41e50eadda5c2ac6bed72adb3caab776c))
+* [#66](https://github.com/Linkontoask/v-easy-components/issues/66) Fix the IP input box cannot enter the same number ([b12fa1f](https://github.com/Linkontoask/v-easy-components/commit/b12fa1f216ebcba956be29db487a55d2692cd203))
 * fix: fix route-indicator transition animation ([fb14834](https://github.com/Linkontoask/v-easy-components/commit/fb14834c69d9af4c448b23d90578bf23864e74b5))
 * ip bind string data ([1d77968](https://github.com/Linkontoask/v-easy-components/commit/1d77968579286c69dcd185c546f476c2ca50db2c))
 * ip port bug ([baecc56](https://github.com/Linkontoask/v-easy-components/commit/baecc563da4b78c915ae94012dc13f43e764f1b2))
 * ip-subnet last input overflow ([cd56824](https://github.com/Linkontoask/v-easy-components/commit/cd568243ba18d530eaf2d7d144196d1c0f7dd5bf))
+* Message close is not function ([d0d07f3](https://github.com/Linkontoask/v-easy-components/commit/d0d07f3b5274866c449613879c660a183b1e8cba))
+* Message independent loading ([a4b5992](https://github.com/Linkontoask/v-easy-components/commit/a4b5992514eaae132d7474cf78a7f8ef397273e8))
 * scroll-bar auto warp size in the mounted ([a1b852a](https://github.com/Linkontoask/v-easy-components/commit/a1b852adc4310ed422a80ccc8805115a947018a9))
 * Solve the type inference of Message component ([15d111e](https://github.com/Linkontoask/v-easy-components/commit/15d111e1cea85fb297f2556a8f621d29be6d43f5))
 * subnet '<' and '>' zero bug ([faf335d](https://github.com/Linkontoask/v-easy-components/commit/faf335d5009f1aefd442985cd2bbb92aacdfd3b7))
@@ -17,6 +26,13 @@
 
 ### Features
 
+* ve-scroll supports easing animation ([ef01471](https://github.com/Linkontoask/v-easy-components/commit/ef0147194feed87dc3be43c6e62755b91df0b2de))
+* **AutoComplete:** Add auto-complete component to support remote search ([ddb4cd2](https://github.com/Linkontoask/v-easy-components/commit/ddb4cd26fbf53c8b9d7b7f501243e8f715e10cb3))
+* **AutoComplete:** custom none rendering ([ae24dcc](https://github.com/Linkontoask/v-easy-components/commit/ae24dcca230a22da13260456ad8d13fe6a065f7e))
+* **AutoComplete:** custom rendering popper ([7acb474](https://github.com/Linkontoask/v-easy-components/commit/7acb4743b753f5ba0d2e86edc5ddec88446beb14))
+* **AutoComplete:** support compositionend event ([7384c6b](https://github.com/Linkontoask/v-easy-components/commit/7384c6bad43c71ddf3cd40a42ced38556dca2619))
+* **AutoComplete:** support prefix icon and suffix icon ([3588e22](https://github.com/Linkontoask/v-easy-components/commit/3588e225ac0de5f27f585251e449a16164b1b76c))
+* **release:** 2.0.0-beta.4 ([c36196a](https://github.com/Linkontoask/v-easy-components/commit/c36196ace38b96e357e702afc0803651b2d22507))
 * [#48](https://github.com/Linkontoask/v-easy-components/issues/48) ve-ip support port ([c50861b](https://github.com/Linkontoask/v-easy-components/commit/c50861bb16a09180c58c38d59ebf7ce61b74dc07))
 * IP and Subnet and Input Support vue-next ([53dc458](https://github.com/Linkontoask/v-easy-components/commit/53dc458b323caa70b7d0fcd1b06b06e7fe06a769))
 * ip-input support port, modified binding worth type ([5783209](https://github.com/Linkontoask/v-easy-components/commit/578320918a8da9e0eb87faef679a72bb29bb8feb))
