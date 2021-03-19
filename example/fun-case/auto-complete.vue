@@ -70,7 +70,8 @@ export default {
     }
   },
   methods: {
-    search() {
+    search(e) {
+      console.log('compositionend', e)
       if (this.value1) {
         this.loading = true
         setTimeout(() => {

@@ -1,7 +1,7 @@
 {
   "name": "v-easy-components",
   "description": "Vue3 UI Components",
-  "version": "2.0.0-beta.15",
+  "version": "2.0.0",
   "devDependencies": {
     "@babel/core": "^7.6.4",
     "@babel/plugin-proposal-nullish-coalescing-operator": "^7.10.4",
@@ -10,7 +10,7 @@
     "@babel/preset-env": "^7.6.3",
     "@typescript-eslint/eslint-plugin": "^4.0.1",
     "@typescript-eslint/parser": "^4.0.1",
-    "@vue/compiler-sfc": "^3.0.2",
+    "@vue/compiler-sfc": "^3.0.7",
     "@vuepress/plugin-back-to-top": "^1.2.0",
     "@vuepress/plugin-google-analytics": "^1.2.0",
     "@vuepress/plugin-pwa": "^1.2.0",
@@ -86,10 +86,10 @@
     "core-js": "^3.6.5",
     "deepmerge": "^3.1.0",
     "regenerator-runtime": "^0.13.3",
-    "vue": "3.0.2"
+    "vue": "3.0.7"
   },
   "peerDependencies": {
-    "vue": "^3.0.2"
+    "vue": "^3.0.7"
   },
   "scripts": {
     "bootstrap": "yarn || npm i",
