@@ -2,7 +2,7 @@
 home: true
 heroImage: /logo.svg
 heroText: v-easy-components
-tagline: Vue2.0-based component/instruction library
+tagline: Vue3.0-based component/instruction library
 actionText: Get Started →
 actionLink: /guide/
 features:
@@ -37,7 +37,7 @@ Please refer to the [Quick Start](/guide/quick-start.html) section for more deta
 If you also want to contribute code, please go to [GitHub](https://github.com/Linkontoask/v-easy-components) or contact me [linkorgs@163.com](mailto:linkorgs@163.com)
 
 ::: warning
-`v-easy-components` is a Vue 2.0-based component/instruction library
+`v-easy-components` is a Vue 3.0-based component/instruction library
 :::
 
 ICP备: [湘ICP备17008304号](http://beian.miit.gov.cn)
