@@ -12,20 +12,17 @@ const resolve = dir => {
 module.exports = {
   mode: 'production',
   entry: {
-    'v-easy-components.common': './src/index.js',
-    'v-easy-components.common.min': './src/index.js'
+    'v-easy-components.common': './src/index.ts',
+    'v-easy-components.common.min': './src/index.ts'
   },
   output: {
-    path: resolve('lib'),
+    path: resolve('dist'),
     publicPath: './',
     filename: '[name].js',
     libraryTarget: 'commonjs2',
     libraryExport: 'default'
   },
-  resolve: {
-    extensions: config.extensions,
-    alias: config.alias
-  },
+  resolve: config.resolve,
   stats: 'errors-only',
   optimization: {
     minimize: true,
@@ -42,29 +39,7 @@ module.exports = {
   },
   externals: config.externals,
   module: {
-    rules: [
-      {
-        test: /\.vue$/,
-        loader: 'vue-loader',
-        options: {
-          preserveWhitespace: false
-        }
-      },
-      {
-        test: /\.otf|ttf|woff2?|eot(\?\S*)?$/,
-        loader: 'url-loader'
-      },
-      {
-        test: /\.ts$/,
-        exclude: /(node_modules)/,
-        use: 'ts-loader'
-      },
-      {
-        test: /\.js$/,
-        loader: ['babel-loader', 'eslint-loader'],
-        include: [resolve('src'), resolve('packages')]
-      }
-    ]
+    rules: config.rules
   },
   plugins: [
     new ProgressBarPlugin(),

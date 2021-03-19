@@ -4,7 +4,7 @@
       <div
         class="simple-placeholder"
         :style="{
-          background: currentColor
+          background: currentColor,
         }"
         @click.stop="display = !display"
       >
@@ -32,43 +32,44 @@ export default {
   name: 'VeColorPicker',
   components: {
     ColorPicker,
-    VeIcon
+    VeIcon,
   },
   props: {
     simple: {
       type: Boolean,
-      default: false
+      default: false,
     },
     size: {
       type: [String, Number],
-      default: 34
+      default: 34,
     },
     width: {
       type: [String, Number],
-      default: 300
+      default: 300,
     },
     height: {
       type: [String, Number],
-      default: 150
+      default: 150,
     },
-    value: {
+    modelValue: {
       type: String,
-      required: true
+      required: true,
     },
     colorFormat: {
       type: String,
-      default: 'hex'
-    }
+      default: 'hex',
+    },
   },
+  emits: ['input', 'change', 'confirm', 'update:modelValue'],
   data() {
     const color = new Color({
-      format: this.colorFormat
+      format: this.colorFormat,
     })
 
     return {
       color,
       display: this.simple,
-      currentColor: this.value
+      currentColor: this.modelValue,
     }
   },
   computed: {
@@ -76,22 +77,22 @@ export default {
       const size = formatCss(this.size)
       return {
         width: size,
-        height: size
+        height: size,
       }
-    }
+    },
   },
   watch: {
-    value(val) {
+    modelValue(val) {
       if (val && val !== this.color.value) {
         this.color.fromString(val)
         this.currentColor = this.color.value
       }
-    }
+    },
   },
   beforeMount() {
-    const value = this.value
-    if (value) {
-      this.color.fromString(value)
+    const modelValue = this.modelValue
+    if (modelValue) {
+      this.color.fromString(modelValue)
     }
   },
   mounted() {
@@ -99,13 +100,14 @@ export default {
       document.documentElement.addEventListener('click', this.handleDocument)
     }
   },
-  beforeDestroy() {
+  beforeUnmount() {
     document.documentElement.removeEventListener('click', this.handleDocument)
   },
   methods: {
     handleConfirm() {
       const { value } = this.color
       this.currentColor = value
+      this.$emit('update:modelValue', value)
       this.$emit('input', value)
       this.$emit('change', value)
       if (!this.simple) {
@@ -116,7 +118,7 @@ export default {
       if (this.display) {
         this.display = false
       }
-    }
-  }
+    },
+  },
 }
 </script>

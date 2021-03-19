@@ -5,15 +5,15 @@
 </template>
 
 <script>
-  export default {
-    name: "divBox",
-    props: {
-      _id: {
-        type: String,
-        required: true
-      }
+export default {
+  name: 'divBox',
+  props: {
+    _id: {
+      type: String,
+      required: true
     }
   }
+}
 </script>
 
 <style scoped>

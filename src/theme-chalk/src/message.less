@@ -1,4 +1,4 @@
-@import "./mixins/_color";
+@import './mixins/_color';
 
 .message {
   min-width: 340px;
@@ -7,10 +7,9 @@
   border: 1px solid #ebeef5;
   position: fixed;
   left: 50%;
-  top: 20px;
   transform: translateX(-50%);
   background-color: #edf2fc;
-  transition: opacity .3s, transform .4s, top .3s;
+  transition: opacity 0.3s, transform 0.4s, top 0.3s;
   overflow: hidden;
   padding: 15px 15px 15px 20px;
   display: flex;
@@ -41,7 +40,8 @@
 .v-easy-message {
   &-info {
     color: @info-leave1;
-    .message-type, p {
+    .message-type,
+    p {
       color: @info-leave1;
     }
   }
@@ -49,7 +49,8 @@
     background-color: #f0f9eb;
     border-color: #e1f3d8;
     color: @success;
-    .message-type, p {
+    .message-type,
+    p {
       color: @success;
     }
   }
@@ -57,7 +58,8 @@
     background-color: #fdf6ec;
     border-color: #faecd8;
     color: @warning;
-    .message-type, p {
+    .message-type,
+    p {
       color: @warning;
     }
   }
@@ -65,13 +67,15 @@
     background-color: #fef0f0;
     border-color: #fde2e2;
     color: @error;
-    .message-type, p {
+    .message-type,
+    p {
       color: @error;
     }
   }
 }
 
-.v-easy-message-animation-enter, .v-easy-message-animation-leave-to {
+.v-easy-message-animation-enter-from,
+.v-easy-message-animation-leave-to {
   transform: translate(-50%, -100%);
   opacity: 0;
 }

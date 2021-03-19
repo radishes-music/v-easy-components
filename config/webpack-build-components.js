@@ -14,46 +14,19 @@ const webpackConfig = {
   mode: 'production',
   externals: config.externals,
   output: {
-    path: resolve('lib'),
+    path: resolve('dist'),
     publicPath: './',
     filename: '[name].js',
     libraryTarget: 'commonjs2'
   },
-  resolve: {
-    extensions: config.extensions,
-    alias: config.alias
-  },
+  resolve: config.resolve,
   stats: 'errors-only',
   module: {
     rules: [
-      {
-        test: /\.vue$/,
-        loader: 'vue-loader',
-        options: {
-          preserveWhitespace: false
-        }
-      },
-      {
-        test: /\.otf|ttf|woff2?|eot(\?\S*)?$/,
-        loader: 'url-loader'
-      },
+      ...config.rules,
       {
         test: /\.less$/,
         use: ['style-loader', 'css-loader', 'less-loader']
-      },
-      {
-        test: /\.css$/,
-        use: [
-          { loader: 'style-loader' },
-          {
-            loader: 'css-loader'
-          }
-        ]
-      },
-      {
-        test: /\.js$/,
-        include: [resolve('src'), resolve('packages')],
-        loader: ['babel-loader', 'eslint-loader']
       }
     ]
   },

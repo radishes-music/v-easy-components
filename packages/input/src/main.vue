@@ -1,10 +1,14 @@
 <template>
   <div
-    class="v-easy-input input v-easy-input-plain"
+    :class="['v-easy-input-plain', 'v-easy-input-' + size]"
     :style="{ 'max-width': maxWidth + 'px' }"
   >
     <textarea v-if="typeInput === 'textarea'" v-bind="$attrs" />
     <template v-else>
+      <slot v-if="$slots.prefix" name="prefix"></slot>
+      <span v-if="prefixIcon" class="prefix-icon">
+        <i :class="[iconClass, 'fa-' + prefixIcon]"></i>
+      </span>
       <input
         :type="typeInput"
         :value="currentVal"
@@ -12,7 +16,11 @@
         :min="propertyMaxMin ? propertyMaxMin.min : null"
         :step="typeInput === 'number' ? step : null"
         :disabled="disabled"
-        :class="{ 'v-easy-input--error': error }"
+        :class="{
+          'v-easy-input--error': error,
+          'v-easy-input--prefix': !!$slots.prefix || prefixIcon,
+          'v-easy-input--suffix': !!$slots.suffix || suffixIcon,
+        }"
         :readonly="readonly"
         v-bind="$attrs"
         @compositionstart="handleComposition"
@@ -22,7 +30,12 @@
         @blur="handleBlur"
         @focus="handleFocus"
         @change="handleChange"
+        @keyup.enter="handleEnter"
       />
+      <slot v-if="$slots.suffix" name="suffix"></slot>
+      <span v-if="suffixIcon" class="suffix-icon">
+        <i :class="[iconClass, 'fa-' + suffixIcon]"></i>
+      </span>
       <div v-if="isNumberPrefix" class="input-inner-spin">
         <i class="fa fa-chevron-up" @click="handleIncrease" />
         <i class="fa fa-chevron-down" @click="handleDecrease" />
@@ -39,9 +52,24 @@
 <script>
 import { t } from '@/locale/index'
 import { contain } from '@/utils/array-extend'
+import { defineComponent } from 'vue'
+import { computedIconStyle } from '@/utils/icon-style.ts'
 
-export default {
+export default defineComponent({
   name: 'VeInput',
+
+  emits: [
+    'compositionstart',
+    'compositionupdate',
+    'compositionend',
+    'status',
+    'input',
+    'blur',
+    'focus',
+    'change',
+    'enter',
+    'update:value',
+  ],
 
   props: {
     maxWidth: { type: String },
@@ -55,7 +83,16 @@ export default {
     step: { type: [Number, String], default: 1 },
     target: { type: [String, Array], default: 'blur' },
     options: [Object, Array],
-    value: { default: '' }
+    value: { default: '' },
+    size: { type: String, default: 'middle' },
+    prefixIcon: {
+      type: String,
+    },
+    suffixIcon: {
+      type: String,
+    },
+    iconStyle: { type: String, default: 'solid' },
+    // large | middle | small
   },
 
   data() {
@@ -63,9 +100,8 @@ export default {
       currentVal:
         this.value === undefined || this.value === null ? '' : this.value,
       error: false,
-      eventContainer: '',
       isOnComposition: false,
-      valueBeforeComposition: null
+      valueBeforeComposition: null,
     }
   },
 
@@ -93,24 +129,27 @@ export default {
     },
     isNumberPrefix() {
       return this.typeInput === 'number'
-    }
+    },
+    iconClass() {
+      return computedIconStyle(this.iconStyle)
+    },
   },
 
   watch: {
     value(val) {
-      this.setCurrentValue(val)
+      this.setCurrentValue(val, true)
 
       this.mergeTarget('modify')
     },
-    eventContainer(val) {
-      this.mergeMesh(val)
-    },
     error(val) {
       this.$emit('status', !val)
-    }
+    },
   },
 
   methods: {
+    handleEnter(e) {
+      this.$emit('enter', e.target.value)
+    },
     handleIncrease() {
       if (this.exceedMax()) {
         this.setCurrentValue(+this.currentVal + +this.step)
@@ -133,7 +172,6 @@ export default {
     handleInput(event) {
       this.setCurrentValue(event.target.value)
       this.mergeTarget('input')
-      this.$emit('input', event.target.value)
     },
     handleBlur(event) {
       this.$emit('blur', event)
@@ -152,6 +190,7 @@ export default {
       else this.target === type && this.mergeMesh(type)
     },
     handleComposition(event) {
+      this.$emit(event.type, event)
       if (event.type === 'compositionend') {
         this.isOnComposition = false
         this.currentVal = this.valueBeforeComposition
@@ -161,7 +200,7 @@ export default {
         const text = event.target.value
         const lastCharacter = text[text.length - 1] || ''
         this.isOnComposition = !/([(\uAC00-\uD7AF)|(\u3130-\u318F)])+/gi.test(
-          lastCharacter
+          lastCharacter,
         )
         if (this.isOnComposition && event.type === 'compositionstart') {
           this.valueBeforeComposition = text
@@ -180,7 +219,7 @@ export default {
         this.error = !regexp.test(this.currentVal)
       }
     },
-    setCurrentValue(value) {
+    setCurrentValue(value, watch = false) {
       if (value === this.currentVal) return
       this.currentVal = value
       if (this.typeInput === 'number') {
@@ -191,8 +230,11 @@ export default {
           this.currentVal = this.normalizedOptions.min
         }
       }
-      this.$emit('input', this.currentVal)
-    }
-  }
-}
+      this.$emit('update:value', this.currentVal)
+      if (!watch) {
+        this.$emit('input', this.currentVal)
+      }
+    },
+  },
+})
 </script>

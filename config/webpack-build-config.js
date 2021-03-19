@@ -9,11 +9,11 @@ const resolve = src => path.resolve(__dirname, '../', src)
 module.exports = {
   mode: 'none', // Support for compressed file packaging
   entry: {
-    index: './src/index.js',
-    'index.min': './src/index.js'
+    index: './src/index.ts',
+    'index.min': './src/index.ts'
   },
   output: {
-    path: resolve('lib'),
+    path: resolve('dist'),
     publicPath: './',
     filename: '[name].js',
     libraryTarget: 'umd',
@@ -22,10 +22,7 @@ module.exports = {
     umdNamedDefine: true
   },
   stats: 'errors-only',
-  resolve: {
-    extensions: config.extensions,
-    alias: config.alias
-  },
+  resolve: config.resolve,
   externals: {
     vue: {
       root: 'Vue',
@@ -48,29 +45,7 @@ module.exports = {
     ]
   },
   module: {
-    rules: [
-      {
-        test: /\.vue$/,
-        loader: 'vue-loader',
-        options: {
-          preserveWhitespace: false
-        }
-      },
-      {
-        test: /\.otf|ttf|woff2?|eot(\?\S*)?$/,
-        loader: 'url-loader'
-      },
-      {
-        test: /\.ts$/,
-        exclude: /(node_modules)/,
-        use: 'ts-loader'
-      },
-      {
-        test: /\.js$/,
-        loader: ['babel-loader', 'eslint-loader'],
-        include: [resolve('src'), resolve('packages')]
-      }
-    ]
+    rules: config.rules
   },
   plugins: [new ProgressBarPlugin(), new VueLoaderPlugin()]
 }

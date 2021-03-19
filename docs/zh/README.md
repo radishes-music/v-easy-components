@@ -2,7 +2,7 @@
 home: true
 heroImage: /logo.svg
 heroText: v-easy-components
-tagline: 基于Vue2.0的组件/指令库
+tagline: 基于Vue3.0的组件/指令库
 actionText: 快速上手 →
 actionLink: /zh/guide/
 features:
@@ -37,5 +37,5 @@ Vue.use(VEasy);
 如果你也想贡献代码，请移步 [GitHub](https://github.com/Linkontoask/v-easy-components) 或者联系我 [linkorgs@163.com](mailto:linkorgs@163.com)
 
 ::: warning
-`v-easy-components` 是一款基于 Vue 2.0 的组件/指令库
+`v-easy-components` 是一款基于 Vue 3.0 的组件/指令库
 :::

@@ -1,0 +1,81 @@
+@import "./mixins/_color.less";
+
+.auto-complete {
+  display: flex;
+  align-items: center;
+  width: 160px;
+  &-template {
+    width: 160px;
+    max-height: 240px;
+    padding: 10px 0;
+    box-shadow: 0 3px 6px 0 #e7e7e7;
+    background-color: white;
+    overflow: hidden;
+    ul {
+      max-height: 240px;
+      margin: 0;
+      padding: 0;
+    }
+    &-normal {
+      padding: 10px 10px;
+      list-style-type: none;
+      color: @info-leave1;
+      cursor: pointer;
+      &:hover {
+        background-color: #f0f0f0;
+      }
+    }
+    &-active {
+      color: white;
+      background-color: #6094c9;
+      &:hover {
+        background-color: #6094c9;
+      }
+    }
+    @keyframes rotate {
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+    &-loading {
+      display: flex;
+      justify-content: center;
+      padding: 20px 0;
+      i {
+        color: @info-leave0;
+        animation: rotate 0.6s linear infinite;
+      }
+    }
+    &-none-data {
+      color: #d2d5db;
+      .fa {
+        font-size: 36px;
+      }
+      p {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        margin-top: 0;
+        margin-bottom: 6px;
+      }
+    }
+  }
+
+  .transition() {
+    transition: opacity 0.2s;
+  }
+
+  &-fade {
+    &-enter-active {
+      .transition();
+    }
+    &-leave-active {
+      .transition();
+    }
+    &-enter-from,
+    &-leave-to {
+      opacity: 0;
+      transform: scaleY(0);
+    }
+  }
+}

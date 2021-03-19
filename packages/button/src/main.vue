@@ -11,8 +11,8 @@
         'button-is-plain': plain,
         'button-is-circle': circle,
         'button-is-mask': mask,
-        ['button-is-mask-' + maskType]: mask
-      }
+        ['button-is-mask-' + maskType]: mask,
+      },
     ]"
     :type="nativeType"
     @mouseleave="leave"
@@ -26,7 +26,7 @@
         iconClass,
         'fa-' + icon,
         { 'button-icon-normal': $slots.default },
-        { 'fa-spin': rotate }
+        { 'fa-spin': rotate },
       ]"
     />
     <span
@@ -45,9 +45,10 @@
 </template>
 
 <script>
-import { computedIconStyle } from '@/utils/icon-style'
+import { defineComponent, nextTick } from 'vue'
+import { computedIconStyle } from '@/utils/icon-style.ts'
 
-export default {
+export default defineComponent({
   name: 'VeButton',
 
   props: {
@@ -62,19 +63,22 @@ export default {
     plain: Boolean,
     rotate: Boolean,
     mask: { type: [Boolean, String], default: false },
-    loading: { type: Boolean, default: false }
+    loading: { type: Boolean, default: false },
   },
+
+  emits: ['click'],
 
   data() {
     return {
       style: {},
       maskPosition: {},
       rect: 0,
+      isLeave: false,
       iconS: {
         brands: 'fab',
         regular: 'far',
-        solid: 'fa'
-      }
+        solid: 'fa',
+      },
     }
   },
 
@@ -84,12 +88,12 @@ export default {
     },
     iconClass() {
       return computedIconStyle(this.iconStyle)
-    }
+    },
   },
 
   mounted() {
     if (this.maskType !== 'default') {
-      this.$nextTick(this.calc)
+      nextTick(this.calc)
     }
   },
 
@@ -102,16 +106,17 @@ export default {
 
       this.maskPosition = {
         width: this.rect * 2 + 'px',
-        height: this.rect * 2 + 'px'
+        height: this.rect * 2 + 'px',
       }
     },
     leave(e) {
       if (this.maskType === 'default') return false
 
+      this.isLeave = true
       this.style = {
         left: e.offsetX + 'px',
         top: e.offsetY + 'px',
-        transition: 'all .2s linear'
+        transition: 'all .2s linear',
       }
     },
     enter(e) {
@@ -123,21 +128,22 @@ export default {
       this.style = {
         left: e.offsetX + 'px',
         top: e.offsetY + 'px',
-        transition: ''
+        transition: '',
       }
 
       // Last position offset problem
       setTimeout(() => {
+        if (this.isLeave) return
         this.style = {
           ...this.maskPosition,
-          transition: 'all .2s linear'
+          transition: 'all .2s linear',
         }
-      }, 14)
+      }, 0)
     },
     handleClick(evt) {
       if (this.buttonDisabled) return false
       this.$emit('click', evt)
-    }
-  }
-}
+    },
+  },
+})
 </script>

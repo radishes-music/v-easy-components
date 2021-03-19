@@ -15,34 +15,23 @@
       <i
         v-if="showClose"
         class="easy_message_close fa fa-times"
-        @click="close"
+        @click="privateClose"
       />
     </div>
   </transition>
 </template>
 
 <script>
+import { defineComponent } from 'vue'
+
 let typeMap = {
   success: 'fa-check-circle',
   warning: 'fa-exclamation-circle',
   info: 'fa-info-circle',
-  error: 'fa-times-circle'
+  error: 'fa-times-circle',
 }
-export default {
+export default defineComponent({
   name: 'Message',
-  data: function() {
-    return {
-      visible: false,
-      type: 'info',
-      message: '',
-      html: false,
-      duration: 3000,
-      showClose: true,
-      onClose: null,
-      timer: null,
-      verticalOffset: 20
-    }
-  },
 
   computed: {
     typeIcon() {
@@ -50,15 +39,14 @@ export default {
     },
     positionStyle() {
       return {
-        top: `${this.verticalOffset}px`
+        top: `${this.verticalOffset}px`,
       }
-    }
+    },
   },
 
   methods: {
     handleAfterLeave() {
-      this.$destroy(true)
-      this.$el.parentNode.removeChild(this.$el)
+      document.body.removeChild(this.$el.parentNode)
     },
     clearTimer() {
       clearTimeout(this.timer)
@@ -67,12 +55,12 @@ export default {
       if (this.duration > 0) {
         this.timer = setTimeout(() => {
           if (this.visible) {
-            this.close()
+            this.privateClose()
           }
         }, this.duration)
       }
     },
-    close() {
+    privateClose() {
       this.visible = false
       if (typeof this.onClose === 'function') {
         this.onClose(this)
@@ -80,11 +68,11 @@ export default {
     },
     change() {
       this.visible = !this.visible
-    }
+    },
   },
 
   mounted() {
     this.startTimer()
-  }
-}
+  },
+})
 </script>

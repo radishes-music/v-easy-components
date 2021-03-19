@@ -1,5 +1,4 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router'
 
 import ImagePreview from './fun-case/image-preview'
 import Button from './fun-case/button'
@@ -13,8 +12,8 @@ import Icon from './fun-case/icon'
 import ColorPicker from './fun-case/color-picker'
 import ScrollBar from './fun-case/scroll-bar'
 import RouteIndicator from './fun-case/route-Indicator'
-
-Vue.use(VueRouter)
+import AutoComplete from './fun-case/auto-complete.vue'
+import Swiper from './fun-case/swiper.vue'
 
 const routes = [
   {
@@ -112,13 +111,29 @@ const routes = [
       formatter: 've-route-indicator'
     },
     component: RouteIndicator
+  },
+  {
+    path: '/auto-complete',
+    name: 'AutoComplete',
+    meta: {
+      formatter: 've-auto-complete'
+    },
+    component: AutoComplete
+  },
+  {
+    path: '/mobile-swiper',
+    name: 'MobileSwiper',
+    meta: {
+      formatter: 've-mobile-swiper'
+    },
+    component: Swiper
   }
 ]
 
 export { routes }
 
-export default new VueRouter({
-  mode: 'history',
+const router = createRouter({
+  history: createWebHistory(),
   routes: [
     {
       path: '/',
@@ -126,3 +141,5 @@ export default new VueRouter({
     }
   ].concat(routes)
 })
+
+export default router

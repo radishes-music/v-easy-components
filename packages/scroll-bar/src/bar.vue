@@ -4,7 +4,7 @@
     :class="{
       'v-easy-scroll-bar--thumb': true,
       'v-easy-scroll-bar--thumb__always': always,
-      'v-easy-scroll-bar--thumb__show': cursorDown
+      'v-easy-scroll-bar--thumb__show': cursorDown,
     }"
     @mousedown="handleMouseDown"
   />
@@ -13,18 +13,20 @@
 <script>
 import { BAR_MAP } from './bar-type'
 import { on, off } from '@/utils/dom'
+import { defineComponent } from 'vue'
 
-export default {
+export default defineComponent({
   name: 'Bar',
   props: {
     horizontal: Boolean,
     vertical: Boolean,
-    always: Boolean
+    always: Boolean,
   },
+  emits: ['scroll', 'mousedown', 'mouseup'],
   data() {
     return {
       Y: 0,
-      cursorDown: false
+      cursorDown: false,
     }
   },
   computed: {
@@ -33,9 +35,9 @@ export default {
     },
     bar() {
       return this.horizontal ? BAR_MAP.horizontal : BAR_MAP.vertical
-    }
+    },
   },
-  beforeDestroy() {
+  beforeUnmount() {
     off(document, 'mouseup', this.handleMouseMove)
   },
   methods: {
@@ -45,6 +47,7 @@ export default {
       this[this.bar.axis] =
         this.$el.getBoundingClientRect()[this.bar.size] - e[this.bar.offsetSize]
       document.onselectstart = () => false
+      this.$emit('mousedown')
       on(document, 'mousemove', this.handleMouseMove)
       on(document, 'mouseup', this.handleMouseUp)
     },
@@ -60,12 +63,14 @@ export default {
 
       this.wrap[scroll] =
         (thumbPositionPercentage * this.wrap[scrollSize]) / 100
+      this.$emit('scroll')
     },
     handleMouseUp() {
       this.cursorDown = false
       off(document, 'mousemove', this.handleMouseMove)
       document.onselectstart = null
-    }
-  }
-}
+      this.$emit('mouseup')
+    },
+  },
+})
 </script>

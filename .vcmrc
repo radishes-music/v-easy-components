@@ -1,5 +1,5 @@
 {
-  "types": ["feat", "fix", "docs", "style", "refactor", "perf", "test", "build", "ci", "chore", "revert", "webpack"],
+  "types": ["feat", "fix", "docs", "style", "refactor", "perf", "test", "build", "ci", "chore", "revert", "webpack", "vscode"],
   "scope": {
     "required": false,
     "allowed": ["*"],
@@ -7,7 +7,7 @@
     "multiple": false
   },
   "warnOnFail": false,
-  "maxSubjectLength": 100,
+  "maxSubjectLength": 120,
   "subjectPattern": ".+",
   "subjectPatternErrorMsg": "subject does not match subject pattern!",
   "helpMessage": "",

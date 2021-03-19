@@ -16,19 +16,21 @@
 </template>
 
 <script>
-export default {
+import { defineComponent } from 'vue'
+
+export default defineComponent({
   name: 'VeCollapse',
   props: {
     list: {
       type: Array,
       default: () => [],
-      require: true
-    }
+      require: true,
+    },
   },
   data() {
     return {
-      open: false
+      open: false,
     }
-  }
-}
+  },
+})
 </script>

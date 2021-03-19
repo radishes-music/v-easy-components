@@ -1,68 +1,178 @@
 <template>
   <div class="v-easy-scroll">
     <div ref="wrap" class="v-easy-scroll-wrap">
-      <div class="v-easy-scroll-wrap--view">
+      <div ref="contanier" class="v-easy-scroll-wrap--view">
         <slot />
       </div>
     </div>
     <div class="v-easy-scroll-bar is-horizontal">
-      <bar horizontal :always="always" :style="horizontal" />
+      <bar
+        horizontal
+        :always="always"
+        :style="horizontal"
+        @mouseup="$emit('stop')"
+        @mousedown="$emit('start')"
+        @scroll="$emit('scroll', 'horizontal')"
+      />
     </div>
     <div class="v-easy-scroll-bar is-vertical">
-      <bar vertical :always="always" :style="vertical" />
+      <bar
+        vertical
+        :always="always"
+        :style="vertical"
+        @mouseup="$emit('stop')"
+        @mousedown="$emit('start')"
+        @scroll="$emit('scroll', 'vertical')"
+      />
     </div>
   </div>
 </template>
 
 <script>
 import Bar from './bar'
+import { defineComponent } from 'vue'
+import { TweenMap } from '@/utils/tween'
 
-export default {
+export default defineComponent({
   name: 'VeScroll',
   components: {
-    Bar
+    Bar,
   },
   props: {
     size: {
       type: [Number, String],
-      default: 6
+      default: 6,
     },
     always: {
       type: Boolean,
+      default: false,
+    },
+    to: {
+      type: [Number, Object],
+      default: 0
+    },
+    disabled: {
+      type: Boolean,
       default: false
+    },
+    duration: {
+      type: Number,
+      default: 300
+    },
+    offset: {
+      type: Number,
+      default: 0
+    },
+    easing: {
+      type: String,
+      default: 'Quad-easeOut'
     }
   },
+  emits: ['scroll', 'start', 'stop', 'mousedown', 'touch-start', 'touch-stop'],
   data() {
     const size = this.size + 'px'
     return {
       vertical: {
-        width: size
+        width: size,
       },
       horizontal: {
-        height: size
+        height: size,
       }
     }
   },
   computed: {
+    easingFn() {
+      return TweenMap[this.easing]
+    },
     wrap() {
       return this.$refs.wrap
+    },
+    contanier() {
+      return this.$refs.contanier
+    },
+    contanierChildren() {
+      if (this.contanier.children.length <= 1) {
+        return this.contanier.children[0]
+      }
+      return null
+    },
+    currentTop() {
+      if (this.contanierChildren) {
+        try {
+          return this.contanierChildren.children[this.to].getBoundingClientRect().top - this.wrap.getBoundingClientRect().top
+        } catch (e) {
+          // eslint-disable-next-line no-console
+          console.warn(e)
+        }
+      }
+      return 0
     }
   },
-  watch: {},
+  watch: {
+    to(v) {
+      if (!this.disabled) {
+        if (typeof v === 'number') {
+          // The left and right displacements are temporarily not supported
+          const top = this.currentTop + this.wrap.scrollTop
+          
+          this.animation(this.wrap.scrollTop, top - this.offset, (v) => {
+            this.wrap.scrollTop = v
+          })
+        } else {
+
+        }
+      }
+      
+    }
+  },
   mounted() {
     this.$nextTick(this.update)
+    const contanier = this.contanier
+    if (contanier) {
+      if (contanier.children.length > 1) {
+        // eslint-disable-next-line no-console
+        console.warn('ve-scroll accepts a follow element')
+      }
+      contanier.addEventListener('touchstart', this.touchStart)
+      contanier.addEventListener('touchend', this.touchEnd)
+    }
+  },
+  updated() {
+    this.update()
   },
   methods: {
+    touchStart(e) {
+      this.$emit('touch-start')
+      this.$emit('start')
+    },
+    touchEnd(e) {
+      this.$emit('touch-stop')
+      this.$emit('stop')
+    },
+    animation(from, to, cb) {
+      let start = 0
+      var step = () => {
+        var value = this.easingFn(start, from, to - from, this.duration / 10)
+        cb(Number(value.toFixed(2)))
+        start++
+        if (start <= this.duration / 10) {
+          requestAnimationFrame(step)
+        }
+      }
+      step()
+    },
     update() {
       const wrap = this.wrap
+      
       if (wrap) {
+        wrap.removeEventListener('scroll', this.scroll)
         const sizeHeight = (wrap.clientHeight * 100) / wrap.scrollHeight
         const sizeWidth = (wrap.clientWidth * 100) / wrap.scrollWidth
         if (sizeHeight < 100) {
-          this.$set(this.vertical, 'height', sizeHeight + '%')
+          this.vertical.height = sizeHeight + '%'
         }
         if (sizeWidth < 100) {
-          this.$set(this.horizontal, 'width', sizeWidth + '%')
+          this.horizontal.width = sizeWidth + '%'
         }
         wrap.addEventListener('scroll', this.scroll)
       }
@@ -72,10 +182,10 @@ export default {
         const wrap = this.wrap
         const moveY = (wrap.scrollTop * 100) / wrap.clientHeight
         const moveX = (wrap.scrollLeft * 100) / wrap.clientWidth
-        this.$set(this.vertical, 'transform', `translateY(${moveY}%)`)
-        this.$set(this.horizontal, 'transform', `translateX(${moveX}%)`)
+        this.vertical.transform = `translateY(${moveY}%)`
+        this.horizontal.transform = `translateX(${moveX}%)`
       })
-    }
-  }
-}
+    },
+  },
+})
 </script>
