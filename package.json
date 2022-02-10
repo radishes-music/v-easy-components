@@ -51,7 +51,7 @@
     "lodash": "^4.17.20",
     "mocha": "^6.2.2",
     "node-notifier": "^8.0.1",
-    "node-sass": "^4.12.0",
+    "node-sass": "^7.0.0",
     "path": "^0.12.7",
     "postcss": "^5.2.18",
     "postcss-loader": "^3.0.0",
